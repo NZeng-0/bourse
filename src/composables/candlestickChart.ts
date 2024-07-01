@@ -3,7 +3,7 @@ import type { DataType } from './candlestickData'
 const upColor = '#2EA21C'
 const downColor = '#DD4646'
 
-interface optionData {
+export interface optionData {
   categoryData: number[]
   values: object[]
   volumes: object[]

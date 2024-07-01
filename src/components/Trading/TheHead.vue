@@ -1,13 +1,19 @@
 <script setup lang="ts">
+defineProps<{
+  title: string
+  back: string
+}>()
+
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 </script>
 
 <template>
   <div h25 flex="~" items-center justify-between>
-    <img :src="backUrl" h10 w10>
-    <div text-trading-title text-xl>
-      <!-- TODO title -->
-      BTC/USDT
+    <RouterLink :to="back">
+      <img :src="backUrl" h10 w10>
+    </RouterLink>
+    <div text-xl text-trading-title>
+      {{ title === 'USDT' ? title : `${title}/USDT` }}
     </div>
     <div h10 w10 />
   </div>

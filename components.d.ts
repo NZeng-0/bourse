@@ -9,15 +9,21 @@ declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheCandle: typeof import('./src/components/Trading/TheCandle.vue')['default']
     TheCard: typeof import('./src/components/index/TheCard.vue')['default']
     TheContent: typeof import('./src/components/Trading/TheContent.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
+    TheDetail: typeof import('./src/components/Trading/TheDetail.vue')['default']
+    Thefluctuation: typeof import('./src/components/Trading/Thefluctuation.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHead: typeof import('./src/components/Trading/TheHead.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
     TheList: typeof import('./src/components/index/TheList.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
+    TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
+    TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
+    TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
     Trading: typeof import('./src/components/Trading/index.vue')['default']
   }
 }

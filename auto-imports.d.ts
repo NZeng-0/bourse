@@ -36,6 +36,7 @@ declare global {
   const definePage: typeof import('unplugin-vue-router/runtime')['definePage']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
+  const export: typeof import('./src/composables/portfolioListData')['export']
   const extendRef: typeof import('@vueuse/core')['extendRef']
   const get: typeof import('./src/composables/indexChartOptions')['get']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
@@ -55,6 +56,7 @@ declare global {
   const list: typeof import('./src/composables/portfolioListData')['list']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
+  const menuData: typeof import('./src/composables/portfolioListData')['menuData']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
@@ -352,6 +354,7 @@ declare module 'vue' {
     readonly list: UnwrapRef<typeof import('./src/composables/portfolioListData')['list']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly menuData: UnwrapRef<typeof import('./src/composables/portfolioListData')['menuData']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
@@ -640,6 +643,7 @@ declare module '@vue/runtime-core' {
     readonly list: UnwrapRef<typeof import('./src/composables/portfolioListData')['list']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly menuData: UnwrapRef<typeof import('./src/composables/portfolioListData')['menuData']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>

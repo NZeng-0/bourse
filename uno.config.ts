@@ -22,6 +22,9 @@ export default defineConfig({
       'text-portolio-primary': 'text-#121826',
       'text-list-cn': 'text-#8F92A1',
       'text-trading-title': 'text-#121826',
+      'bg-btn-select': 'bg-#7751f1',
+      'bg-btn': 'bg-#C4B4F6',
+      'text-btn': 'text-#3B82F6',
     },
   ],
   presets: [

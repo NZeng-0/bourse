@@ -1,7 +1,7 @@
 import type { ComposeOption } from 'echarts/core'
 import type { BarSeriesOption, XAXisOption, YAXisOption } from 'echarts/types/dist/shared'
 
-type ECOption = ComposeOption<
+export type ECOption = ComposeOption<
   | XAXisOption
   | YAXisOption
   | BarSeriesOption

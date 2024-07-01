@@ -1,27 +1,41 @@
-import { defineComponent, onMounted, ref } from 'vue'
-
 export default defineComponent({
   name: 'TheCharts',
   props: {
     dom: String,
-    option: Object,
+    option: Object || [],
   },
   setup(props) {
+    const onChange: any = inject('changeData')
+
+    const diynamicOption = computed(() => onChange())
+
     const internalInstance = getCurrentInstance()
     const echarts = internalInstance!.appContext.config.globalProperties.$echarts
+    const option = props.option
+      ? ref(props.option)
+      : toRaw(diynamicOption.value)
 
+    let myChart: any
     function init() {
-      const option = ref(props.option)
       const dom = document.querySelector(`.${props.dom}`)
-      const myChart = echarts.init(dom)
-      myChart.setOption(option.value)
+      myChart = echarts.init(dom)
+      myChart.setOption(option)
       window.addEventListener('resize', () => {
         myChart.resize()
       })
     }
+
+    function dispose() {
+      window.removeEventListener('resize', myChart.resize)
+      myChart.dispose()
+    }
+
     onMounted(() => {
       init()
     })
+
+    onBeforeUnmount(() => dispose())
+
     return () => {
       return (
         h('div', {

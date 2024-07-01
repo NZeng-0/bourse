@@ -5,7 +5,7 @@ import { data as chartData } from '~/composables/cardChartData'
 import type { Props } from '~/composables/indexChartOptions'
 import { getOption } from '~/composables/indexChartOptions'
 
-const url = new URL('~/assets/images/image.png', import.meta.url).href
+const url = new URL('~/assets/images/bg.png', import.meta.url).href
 const series = [
   {
     data: chartData,
@@ -13,23 +13,21 @@ const series = [
     smooth: 0.5,
     // 线条渐变
     lineStyle: {
-      normal: {
-        width: 4,
-        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-          {
-            offset: 0,
-            color: 'rgba(239, 246, 255, 0.102)',
-          },
-          {
-            offset: 0.5,
-            color: '#EFF6FF',
-          },
-          {
-            offset: 1,
-            color: 'rgba(239, 246, 255, 0.102)',
-          },
-        ]),
-      },
+      width: 4,
+      color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+        {
+          offset: 0,
+          color: 'rgba(239, 246, 255, 0.102)',
+        },
+        {
+          offset: 0.5,
+          color: '#EFF6FF',
+        },
+        {
+          offset: 1,
+          color: 'rgba(239, 246, 255, 0.102)',
+        },
+      ]),
     },
     // 渐变填充
     areaStyle: {
@@ -51,14 +49,9 @@ const series = [
     },
     // 拐点
     itemStyle: {
-      normal: {
-        color: '#fff',
-        borderColor: '#000000',
-        borderWidth: 16,
-      },
-      emphasis: {
-        color: '#000000',
-      },
+      color: '#fff',
+      borderColor: '#000000',
+      borderWidth: 16,
     },
   },
 ]
