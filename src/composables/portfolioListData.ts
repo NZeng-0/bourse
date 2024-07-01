@@ -1,6 +1,6 @@
 interface Portfolio {
   icon: string
-  nameZN: string
+  nameZH: string
   nameEN: string
   presentValue: number
   range: number
@@ -10,7 +10,7 @@ interface Portfolio {
 export const list: Portfolio[] = [
   {
     icon: new URL('~/assets/images/BTC.png', import.meta.url).href,
-    nameZN: '比特币',
+    nameZH: '比特币',
     nameEN: 'BTC',
     presentValue: 43215.23,
     range: 11.23,
@@ -18,7 +18,7 @@ export const list: Portfolio[] = [
   },
   {
     icon: new URL('~/assets/images/USDT.png', import.meta.url).href,
-    nameZN: '泰塔币',
+    nameZH: '泰塔币',
     nameEN: 'USDT',
     presentValue: 4315.23,
     range: -10.09,
@@ -26,7 +26,7 @@ export const list: Portfolio[] = [
   },
   {
     icon: new URL('~/assets/images/ETH.png', import.meta.url).href,
-    nameZN: '以太坊',
+    nameZH: '以太坊',
     nameEN: 'ETH',
     presentValue: 215.23,
     range: 1.87,
@@ -34,7 +34,7 @@ export const list: Portfolio[] = [
   },
   {
     icon: new URL('~/assets/images/ETH.png', import.meta.url).href,
-    nameZN: '以太坊',
+    nameZH: '以太坊',
     nameEN: 'ETH',
     presentValue: 215.23,
     range: 1.87,
@@ -42,7 +42,7 @@ export const list: Portfolio[] = [
   },
   {
     icon: new URL('~/assets/images/ETH.png', import.meta.url).href,
-    nameZN: '以太坊',
+    nameZH: '以太坊',
     nameEN: 'ETH',
     presentValue: 215.23,
     range: 1.87,

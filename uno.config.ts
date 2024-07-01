@@ -12,11 +12,16 @@ export default defineConfig({
     ['icon-btn', 'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600 !outline-none'],
     {
       'bg-card-color': 'bg-#6A3BF6',
+      'bg-portfolioItem': 'bg-#F5F4F7',
+      'bg-trading': 'bg-#F9FAFB',
+      'bg-menu': 'bg-#E5E4E7',
+      'bg-menu-selected': 'bg-#6A3BF6',
       'text-card': 'text-#EFF6FF',
       'text-all-list': 'text-#4400FF',
-      'bg-portfolioItem': 'bg-#F5F4F7',
       'text-portolio': 'text-#6C727F',
       'text-portolio-primary': 'text-#121826',
+      'text-list-cn': 'text-#8F92A1',
+      'text-trading-title': 'text-#121826',
     },
   ],
   presets: [

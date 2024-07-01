@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div p="x-4 y-10">
     <TheCard />
     <ThePortfolio />
     <TheFooter />

@@ -1,38 +1,23 @@
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 
 export default defineComponent({
   name: 'TheCharts',
   props: {
     dom: String,
-    grid: Object,
-    series: Object,
+    option: Object,
   },
   setup(props) {
     const internalInstance = getCurrentInstance()
     const echarts = internalInstance!.appContext.config.globalProperties.$echarts
-    const options = {
-      grid: props.grid,
-      xAxis: {
-        show: false,
-        type: 'category',
-      },
-      yAxis: {
-        show: false,
-        type: 'value',
-        axisLabel: {
-          show: false,
-        },
-        axisTick: {
-          show: false,
-        },
-      },
-      series: props.series,
-    }
 
     function init() {
+      const option = ref(props.option)
       const dom = document.querySelector(`.${props.dom}`)
       const myChart = echarts.init(dom)
-      myChart.setOption(options)
+      myChart.setOption(option.value)
+      window.addEventListener('resize', () => {
+        myChart.resize()
+      })
     }
     onMounted(() => {
       init()

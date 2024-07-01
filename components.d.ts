@@ -10,11 +10,14 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheCard: typeof import('./src/components/index/TheCard.vue')['default']
+    TheContent: typeof import('./src/components/Trading/TheContent.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
+    TheHead: typeof import('./src/components/Trading/TheHead.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
     TheList: typeof import('./src/components/index/TheList.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
+    Trading: typeof import('./src/components/Trading/index.vue')['default']
   }
 }

@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
-import TheCharts from './TheCharts'
+import TheCharts from '~/components/TheCharts'
 import { data as chartData } from '~/composables/cardChartData'
+import type { Props } from '~/composables/indexChartOptions'
+import { getOption } from '~/composables/indexChartOptions'
 
-const grid = {
-  left: '0',
-  right: '0',
-  top: '10%',
-  containLabel: true,
-}
+const url = new URL('~/assets/images/image.png', import.meta.url).href
 const series = [
   {
     data: chartData,
@@ -65,6 +62,31 @@ const series = [
     },
   },
 ]
+
+const chartProps: Props = {
+  grid: {
+    left: '0',
+    right: '0',
+    top: '10%',
+    containLabel: true,
+  },
+  series,
+  graphic: [
+    {
+      type: 'image',
+      id: 'bg',
+      right: 'center',
+      top: '0%',
+      z: 0,
+      bounding: 'all',
+      style: {
+        image: url,
+        width: 300,
+        height: 200,
+      },
+    },
+  ],
+}
 </script>
 
 <template>
@@ -86,7 +108,7 @@ const series = [
       </div>
     </div>
     <div h-full overflow-hidden>
-      <TheCharts :grid :series dom="card-charts" />
+      <TheCharts :option="getOption(chartProps as Props)" dom="card-charts" />
     </div>
   </div>
 </template>
