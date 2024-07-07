@@ -2,8 +2,8 @@
 import * as echarts from 'echarts'
 import TheCharts from '~/components/TheCharts'
 import { data as chartData } from '~/composables/cardChartData'
-import type { Props } from '~/composables/indexChartOptions'
-import { getOption } from '~/composables/indexChartOptions'
+import type { Props } from '~/composables/lineChartOption'
+import { getOption } from '~/composables/lineChartOption'
 
 const url = new URL('~/assets/images/bg.png', import.meta.url).href
 const series = [

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import TheCharts from '~/components/TheCharts'
 import { list } from '~/composables/portfolioListData'
-import type { Props } from '~/composables/indexChartOptions'
-import { getOption } from '~/composables/indexChartOptions'
+import type { Props } from '~/composables/lineChartOption'
+import { getOption } from '~/composables/lineChartOption'
 
 const router = useRouter()
 

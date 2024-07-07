@@ -25,6 +25,7 @@ export default defineConfig({
       'bg-btn-select': 'bg-#7751f1',
       'bg-btn': 'bg-#C4B4F6',
       'text-btn': 'text-#3B82F6',
+      'bg-btn-default': 'bg-#CBBCFB',
     },
   ],
   presets: [

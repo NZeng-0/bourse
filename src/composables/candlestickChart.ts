@@ -1,12 +1,22 @@
 import type { DataType } from './candlestickData'
+import { data as rawData } from '~/composables/candlestickData'
 
 const upColor = '#2EA21C'
 const downColor = '#DD4646'
+const index = ref(14)
+
+export function setIndex(value: number) {
+  index.value = value
+}
+
+const data = ref<optionData>()
+watchEffect(() => {
+  data.value = splitData(rawData.slice(0, index.value))
+})
 
 export interface optionData {
   categoryData: number[]
   values: object[]
-  volumes: object[]
 }
 
 export function splitData(rawData: DataType[]): optionData {
@@ -22,15 +32,14 @@ export function splitData(rawData: DataType[]): optionData {
   return {
     categoryData,
     values,
-    volumes,
   }
 }
 
-export function getOption(data: optionData) {
+export function getOption() {
   return {
     animation: false,
     tooltip: {
-      trigger: 'item',
+      trigger: 'axis',
       axisPointer: {
         show: false,
         type: 'cross',
@@ -57,7 +66,7 @@ export function getOption(data: optionData) {
     xAxis: [
       {
         type: 'category',
-        data: data.categoryData,
+        data: data.value!.categoryData,
         boundaryGap: true,
         axisLine: {
           onZero: false,
@@ -108,7 +117,7 @@ export function getOption(data: optionData) {
       {
         name: 'Dow-Jones index',
         type: 'candlestick',
-        data: data.values,
+        data: data.value!.values,
         itemStyle: {
           color: upColor,
           color0: downColor,

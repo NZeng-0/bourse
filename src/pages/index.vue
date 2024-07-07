@@ -6,6 +6,6 @@
   <div p="x-4 y-10">
     <TheCard />
     <ThePortfolio />
-    <TheFooter />
+    <TheFooter :index="0" />
   </div>
 </template>

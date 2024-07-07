@@ -13,3 +13,11 @@ body{
 ::-webkit-scrollbar {
   display: none;
 }
+
+input{
+  outline: none;
+}
+
+input::placeholder{
+  color: black;
+}

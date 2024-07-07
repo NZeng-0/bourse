@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import TheCharts from '~/components/TheCharts'
-import type { optionData } from '~/composables/candlestickChart'
-import { getOption, splitData } from '~/composables/candlestickChart'
-import { data as rawData } from '~/composables/candlestickData'
+import { getOption, setIndex } from '~/composables/candlestickChart'
 
 defineProps<{
   range: number
@@ -11,29 +9,28 @@ defineProps<{
   ud: number
 }>()
 
-const index = ref(14)
-const data = ref<optionData>()
 const selected = ref(2)
-
+const option = ref()
 function onSelected(tar: number, idx: number) {
-  index.value = idx
+  setIndex(idx)
   selected.value = tar
 }
 
-function getBg(idx: number) {
-  return selected.value === idx ? '#7751F1' : '#CBBCFB'
-}
-
-const options = ref({})
 watchEffect(() => {
-  data.value = splitData(rawData.slice(0, index.value))
-  options.value = getOption(data.value!)
+  option.value = getOption()
 })
 
-function returnOption() {
-  return options.value
+function getBg(idx: number) {
+  return selected.value === idx ? 'bg-btn-select' : 'bg-btn-default'
 }
-provide('changeData', returnOption)
+
+function getRandom() {
+  return `canlestick${Number.parseInt(`${Math.random() * 100}`)}`
+}
+
+onBeforeUnmount(() => {
+  // dispose()
+})
 </script>
 
 <template>
@@ -52,23 +49,23 @@ provide('changeData', returnOption)
     </div>
   </div>
   <div flex="~" mt3 justify-between px4>
-    <div :bg="getBg(0)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(0, 1)">
+    <div :class="getBg(0)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(0, 1)">
       1D
     </div>
-    <div :bg="getBg(1)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(1, 7)">
+    <div :class="getBg(1)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(1, 7)">
       1W
     </div>
-    <div :bg="getBg(2)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(2, 14)">
+    <div :class="getBg(2)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(2, 14)">
       1M
     </div>
-    <div :bg="getBg(3)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(3, 19)">
+    <div :class="getBg(3)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(3, 25)">
       1Y
     </div>
-    <div :bg="getBg(4)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(4, 37)">
+    <div :class="getBg(4)" flex="~" h8 w13 items-center justify-center rounded-xl text-sm @click="onSelected(4, 37)">
       5Y
     </div>
   </div>
   <div h65 w-full>
-    <TheCharts dom="canlestick" />
+    <TheCharts :dom="getRandom()" :option />
   </div>
 </template>

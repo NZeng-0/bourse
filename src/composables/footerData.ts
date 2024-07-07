@@ -15,7 +15,7 @@ export const data: footerItem[] = [
   {
     icon: new URL('~/assets/images/footer/assets.png', import.meta.url).href,
     name: '资产',
-    pointTo: '/',
+    pointTo: '/assets',
     onlyIcon: false,
   },
   {
@@ -27,13 +27,13 @@ export const data: footerItem[] = [
   {
     icon: new URL('~/assets/images/footer/manage_money.png', import.meta.url).href,
     name: '理财',
-    pointTo: '/',
+    pointTo: '/grow',
     onlyIcon: false,
   },
   {
     icon: new URL('~/assets/images/footer/me.png', import.meta.url).href,
     name: '我的',
-    pointTo: '/',
+    pointTo: '/me',
     onlyIcon: false,
   },
 ]

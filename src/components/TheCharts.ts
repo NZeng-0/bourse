@@ -2,24 +2,18 @@ export default defineComponent({
   name: 'TheCharts',
   props: {
     dom: String,
-    option: Object || [],
+    option: Object,
   },
   setup(props) {
-    const onChange: any = inject('changeData')
-
-    const diynamicOption = computed(() => onChange())
-
-    const internalInstance = getCurrentInstance()
-    const echarts = internalInstance!.appContext.config.globalProperties.$echarts
-    const option = props.option
-      ? ref(props.option)
-      : toRaw(diynamicOption.value)
+    const _dom = props.dom!
 
     let myChart: any
     function init() {
-      const dom = document.querySelector(`.${props.dom}`)
+      const internalInstance = getCurrentInstance()
+      const echarts = internalInstance!.appContext.config.globalProperties.$echarts
+      const dom = document.querySelector(`.${_dom}`)
       myChart = echarts.init(dom)
-      myChart.setOption(option)
+      myChart.setOption(props.option)
       window.addEventListener('resize', () => {
         myChart.resize()
       })
@@ -30,16 +24,23 @@ export default defineComponent({
       myChart.dispose()
     }
 
+    watch(() => props, () => {
+      dispose()
+      init()
+    })
+
     onMounted(() => {
       init()
     })
 
-    onBeforeUnmount(() => dispose())
+    onBeforeUnmount(() => {
+      dispose()
+    })
 
     return () => {
       return (
         h('div', {
-          class: props.dom,
+          class: _dom,
           style: { height: '100%', width: '100%' },
         })
       )
