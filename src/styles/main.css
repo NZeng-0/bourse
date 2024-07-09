@@ -31,3 +31,21 @@ input::placeholder {
   background: linear-gradient(#F9FAFB, #F9FAFB) padding-box,
     repeating-linear-gradient(-45deg, #ccc 0, #ccc 0.5em, white 0, white 0.75em);
 }
+
+@keyframes rotateImage {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.test-img {
+  animation: rotateImage 10s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -22,6 +22,7 @@ declare module 'vue' {
     TheHistroy: typeof import('./src/components/grow/TheHistroy.vue')['default']
     TheInput: typeof import('./src/components/TheInput.vue')['default']
     TheList: typeof import('./src/components/index/TheList.vue')['default']
+    TheLoading: typeof import('./src/components/TheLoading.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
     TheSolution: typeof import('./src/components/grow/TheSolution.vue')['default']
