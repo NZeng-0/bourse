@@ -6,7 +6,7 @@ body,
   padding: 0;
 }
 
-body{
+body {
   overflow: hidden;
 }
 
@@ -14,10 +14,14 @@ body{
   display: none;
 }
 
-input{
+input {
   outline: none;
 }
 
-input::placeholder{
+input::placeholder {
   color: black;
+}
+
+.custom {
+  border-radius: 8px 8px 8px 0 !important;
 }

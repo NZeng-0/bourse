@@ -12,11 +12,11 @@ function style(isShow: boolean) {
 }
 
 function toTrading(current: string) {
-  router.push(`/trading/${current}`)
+  router.push(`/trading/week/${current}`)
 }
 
 function fluctuation(current: string) {
-  router.push(`/fluctuation/${current}`)
+  router.push(`/fluctuation/week/${current}`)
 }
 </script>
 

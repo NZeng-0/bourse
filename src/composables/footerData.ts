@@ -27,7 +27,7 @@ export const data: footerItem[] = [
   {
     icon: new URL('~/assets/images/footer/manage_money.png', import.meta.url).href,
     name: '理财',
-    pointTo: '/grow',
+    pointTo: '/grow/solution',
     onlyIcon: false,
   },
   {

@@ -13,7 +13,7 @@ export default defineComponent({
       const echarts = internalInstance!.appContext.config.globalProperties.$echarts
       const dom = document.querySelector(`.${_dom}`)
       myChart = echarts.init(dom)
-      myChart.setOption(props.option)
+      myChart.setOption(props.option, true)
       window.addEventListener('resize', () => {
         myChart.resize()
       })
@@ -24,13 +24,9 @@ export default defineComponent({
       myChart.dispose()
     }
 
-    watch(() => props, () => {
-      dispose()
-      init()
-    })
-
     onMounted(() => {
       init()
+      document.querySelector(`.${_dom}`)?.setAttribute('_echarts_instance_', '')
     })
 
     onBeforeUnmount(() => {

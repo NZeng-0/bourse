@@ -12,7 +12,7 @@ function getColor(range: number) {
 }
 
 function go(key: number) {
-  router.push(`/trading/${key}`)
+  router.push(`/trading/week/${key}`)
 }
 </script>
 

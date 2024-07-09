@@ -7,7 +7,7 @@
     <p mt-5 text-lg>
       实时交易
     </p>
-    <div v-for="(item, key) in 2" :key flex="~ wrap" wfull justify-between>
+    <div flex="~ wrap" wfull justify-between>
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
           平均
@@ -19,7 +19,24 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          平均
+          最高
+        </div>
+        <div style="color:#121826" text-lg>
+          160.36
+        </div>
+      </div>
+      <div w="1/5" />
+      <div mt2.5 w="1/5">
+        <div style="color:#9EA3AE" text-sm>
+          最低
+        </div>
+        <div style="color:#121826" text-lg>
+          130.68
+        </div>
+      </div>
+      <div mt2.5 w="1/5">
+        <div style="color:#9EA3AE" text-sm>
+          Vloume
         </div>
         <div style="color:#121826" text-lg>
           160.32
@@ -28,7 +45,16 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          平均
+          Avg.Vol
+        </div>
+        <div style="color:#121826" text-lg>
+          160.32
+        </div>
+      </div>
+      <div w="1/5" />
+      <div mt2.5 w="1/5">
+        <div style="color:#9EA3AE" text-sm>
+          Market
         </div>
         <div style="color:#121826" text-lg>
           160.32
