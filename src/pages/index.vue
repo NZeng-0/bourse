@@ -23,8 +23,9 @@ onUnmounted(() => {
     <TheCard />
     <ThePortfolio />
     <TheFooter :index="0" />
-    <div v-if="loading">
+    <!-- <div v-if="loading">
       <TheLoading :done />
-    </div>
+    </div> -->
+    <ThePopup />
   </div>
 </template>

@@ -24,7 +24,7 @@
           </div>
           <div flex="~" ml5 mt13>
             <div mr4 flex="~" h8.3 w18.3 items-center justify-center rounded-lg bg-white text-base class="text-#4e53e6">
-              重置
+              充值
             </div>
             <div mr4 flex="~" h8.3 w18.3 items-center justify-center rounded-lg bg-white text-base class="text-#4e53e6">
               提现

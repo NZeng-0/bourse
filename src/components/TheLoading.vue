@@ -35,16 +35,16 @@ function getBg() {
   <div top="0" left="0" flex="~" fixed z100 h-screen wfull items-center justify-center bg-black:70>
     <div flex="~" :class="getBg()">
       <div v-if="!done" flex="~ wrap" h11.5 w11.5 p0.6>
-        <div m0.2 h4.5 w4.5 :class="getClass(0)" />
-        <div m0.2 h4.5 w4.5 :class="getClass(1)" />
-        <div m0.2 h4.5 w4.5 :class="getClass(2)" />
-        <div m0.2 h4.5 w4.5 :class="getClass(3)" />
+        <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(0)" />
+        <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(1)" />
+        <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(2)" />
+        <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(3)" />
       </div>
       <div v-else flex="~ wrap" class="done" h11.5 w11.5 p0.6>
-        <div m0.2 h4.5 w4.5 class="bg-#ecedfb" />
-        <div m0.2 h4.5 w4.5 class="bg-#ecedfb" />
-        <div m0.2 h4.5 w4.5 class="bg-#404fd7" />
-        <div m0.2 h4.5 w4.5 class="bg-#ecedfb" />
+        <div m0.2 h4.5 w4.5 rounded-sm class="bg-#ecedfb" />
+        <div m0.2 h4.5 w4.5 rounded-sm class="bg-#ecedfb" />
+        <div m0.2 h4.5 w4.5 rounded-sm class="bg-#404fd7" />
+        <div m0.2 h4.5 w4.5 rounded-sm class="bg-#ecedfb" />
       </div>
     </div>
   </div>

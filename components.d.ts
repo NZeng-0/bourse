@@ -23,6 +23,7 @@ declare module 'vue' {
     TheInput: typeof import('./src/components/TheInput.vue')['default']
     TheList: typeof import('./src/components/index/TheList.vue')['default']
     TheLoading: typeof import('./src/components/TheLoading.vue')['default']
+    ThePopup: typeof import('./src/components/ThePopup.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
     TheSolution: typeof import('./src/components/grow/TheSolution.vue')['default']
