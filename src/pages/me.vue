@@ -36,7 +36,7 @@ const menu = [
     title: '消息通知',
     icon: '../assets/images/me/menu/message.png',
     right: ' ',
-    to: '/',
+    to: 'message/list',
   },
   {
     title: '账户安全',

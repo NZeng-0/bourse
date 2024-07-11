@@ -1,5 +1,7 @@
 <script setup lang=ts>
-
+function getCommonStyle() {
+  return 'mr4  rounded-lg bg-white text-#4e53e6'
+}
 </script>
 
 <template>
@@ -22,18 +24,17 @@
           <div ml5 mt7 text-7.5>
             &#165;5000.12
           </div>
-          <div flex="~" ml5 mt13>
+          <div flex="~" ml5 mt13 text-base>
             <RouterLink to="/top-up/usdt">
-              <div
-                mr4 flex="~" h8.3 w18.3 items-center justify-center rounded-lg bg-white text-base
-                class="text-#4e53e6"
-              >
+              <div :class="getCommonStyle()" flex="~" h8.3 w18.3 items-center justify-center>
                 充值
               </div>
             </RouterLink>
-            <div mr4 flex="~" h8.3 w18.3 items-center justify-center rounded-lg bg-white text-base class="text-#4e53e6">
-              提现
-            </div>
+            <RouterLink to="/withdraw/balance">
+              <div :class="getCommonStyle()" flex="~" h8.3 w18.3 items-center justify-center>
+                提现
+              </div>
+            </RouterLink>
           </div>
         </div>
       </div>

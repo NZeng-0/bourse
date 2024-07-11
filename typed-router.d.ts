@@ -30,6 +30,9 @@ declare module 'vue-router/auto-routes' {
     '/me': RouteRecordInfo<'/me', '/me', Record<never, never>, Record<never, never>>,
     '/menu/auth': RouteRecordInfo<'/menu/auth', '/menu/auth', Record<never, never>, Record<never, never>>,
     '/menu/language': RouteRecordInfo<'/menu/language', '/menu/language', Record<never, never>, Record<never, never>>,
+    '/menu/message/detail/[key]': RouteRecordInfo<'/menu/message/detail/[key]', '/menu/message/detail/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
+    '/menu/message/full': RouteRecordInfo<'/menu/message/full', '/menu/message/full', Record<never, never>, Record<never, never>>,
+    '/menu/message/list': RouteRecordInfo<'/menu/message/list', '/menu/message/list', Record<never, never>, Record<never, never>>,
     '/menu/payment': RouteRecordInfo<'/menu/payment', '/menu/payment', Record<never, never>, Record<never, never>>,
     '/menu/top-up': RouteRecordInfo<'/menu/top-up', '/menu/top-up', Record<never, never>, Record<never, never>>,
     '/menu/withdraw': RouteRecordInfo<'/menu/withdraw', '/menu/withdraw', Record<never, never>, Record<never, never>>,
@@ -43,6 +46,7 @@ declare module 'vue-router/auto-routes' {
     '/trading/month/[key]': RouteRecordInfo<'/trading/month/[key]', '/trading/month/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/trading/week/[key]': RouteRecordInfo<'/trading/week/[key]', '/trading/week/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/trading/year/[key]': RouteRecordInfo<'/trading/year/[key]', '/trading/year/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
+    '/withdraw/balance': RouteRecordInfo<'/withdraw/balance', '/withdraw/balance', Record<never, never>, Record<never, never>>,
     '/YuEBao/transfer-in': RouteRecordInfo<'/YuEBao/transfer-in', '/YuEBao/transfer-in', Record<never, never>, Record<never, never>>,
     '/YuEBao/transfer-out': RouteRecordInfo<'/YuEBao/transfer-out', '/YuEBao/transfer-out', Record<never, never>, Record<never, never>>,
   }
