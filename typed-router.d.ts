@@ -20,7 +20,6 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/assets': RouteRecordInfo<'/assets', '/assets', Record<never, never>, Record<never, never>>,
-    '/balance/top-up': RouteRecordInfo<'/balance/top-up', '/balance/top-up', Record<never, never>, Record<never, never>>,
     '/buy/down/[key]': RouteRecordInfo<'/buy/down/[key]', '/buy/down/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/buy/up/[key]': RouteRecordInfo<'/buy/up/[key]', '/buy/up/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/fluctuation/week/[key]': RouteRecordInfo<'/fluctuation/week/[key]', '/fluctuation/week/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
@@ -37,6 +36,8 @@ declare module 'vue-router/auto-routes' {
     '/order/history': RouteRecordInfo<'/order/history', '/order/history', Record<never, never>, Record<never, never>>,
     '/order/to-hold': RouteRecordInfo<'/order/to-hold', '/order/to-hold', Record<never, never>, Record<never, never>>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,
+    '/top-up/bank': RouteRecordInfo<'/top-up/bank', '/top-up/bank', Record<never, never>, Record<never, never>>,
+    '/top-up/usdt': RouteRecordInfo<'/top-up/usdt', '/top-up/usdt', Record<never, never>, Record<never, never>>,
     '/trading/day/[key]': RouteRecordInfo<'/trading/day/[key]', '/trading/day/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/trading/five-year/[key]': RouteRecordInfo<'/trading/five-year/[key]', '/trading/five-year/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/trading/month/[key]': RouteRecordInfo<'/trading/month/[key]', '/trading/month/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
