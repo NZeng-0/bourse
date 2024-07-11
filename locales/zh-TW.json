@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "title": "實名認證",
+    "name": "姓名",
+    "idCard": "身份證號碼",
+    "frontAndBack": "身份證正反面",
+    "front": "點擊上傳正面",
+    "back": "點擊上傳反面",
+    "submit": "提交認證"
+  },
+  "language": {
+    "title": "更換語言"
+  }
+}

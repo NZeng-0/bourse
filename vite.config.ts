@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import UnoCSS from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import VueRouter from 'unplugin-vue-router/vite'
@@ -37,6 +38,7 @@ export default defineConfig({
     AutoImport({
       imports: [
         'vue',
+        'vue-i18n',
         '@vueuse/core',
         VueRouterAutoImports,
         {
@@ -49,6 +51,13 @@ export default defineConfig({
         './src/composables',
       ],
       vueTemplate: true,
+    }),
+
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      fullInstall: true,
+      include: [path.resolve(__dirname, 'locales/**')],
     }),
 
     // https://github.com/antfu/vite-plugin-components

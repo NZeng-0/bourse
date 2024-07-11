@@ -1,49 +1,63 @@
 <script setup lang=ts>
+const route = useRouter()
+
 const menu = [
   {
     title: '提现记录',
     icon: '../assets/images/me/menu/record.png',
     right: ' ',
+    to: 'withdraw',
   },
   {
     title: '充值记录',
     icon: '../assets/images/me/menu/top-up.png',
     right: ' ',
+    to: 'top-up',
   },
   {
     title: '支付方式',
     icon: '../assets/images/me/menu/method.png',
     right: ' ',
+    to: 'payment',
   },
   {
     title: '实名认证',
     icon: '../assets/images/me/menu/auth.png',
     right: ' ',
+    to: 'auth',
   },
   {
     title: '语言',
     icon: '../assets/images/me/menu/language.png',
     right: '简体中文',
+    to: 'language',
   },
   {
     title: '消息通知',
     icon: '../assets/images/me/menu/message.png',
     right: ' ',
+    to: '/',
   },
   {
     title: '账户安全',
     icon: '../assets/images/me/menu/secure.png',
     right: ' ',
+    to: '/',
   },
   {
     title: 'APP下载',
     icon: '../assets/images/me/menu/download.png',
     right: ' ',
+    to: '/',
   },
 ]
 
 function getFullUrl(url: string) {
   return new URL(url, import.meta.url).href
+}
+
+function go(to: string) {
+  route.push(`/menu/${to}`)
 }
 </script>
 
@@ -73,7 +87,7 @@ function getFullUrl(url: string) {
         退出
       </div>
     </div>
-    <div class="font-['PingFang_SC']" h-screen overflow-x-scroll bg-trading px6 pt4.5>
+    <div class="font-['PingFang_SC']" h-screen overflow-y-scroll bg-trading px6 pt4.5>
       <div h50 rounded-5 bg-white px7.5 pt4>
         <div class="text-#9EA3AE" text-center>
           <div text-xs>
@@ -119,7 +133,10 @@ function getFullUrl(url: string) {
         </div>
       </div>
       <div mb70 mt0.25>
-        <div v-for="(item, key) in menu" :key mt3.75 flex="~" h15 items-center rounded-2xl bg-white px4>
+        <div
+          v-for="(item, key) in menu" :key flex="~"
+          mt3.75 h15 items-center rounded-2xl bg-white px4 @click="go(item.to)"
+        >
           <div w="1/5">
             <img :src="getFullUrl(item.icon)" h10 w10>
           </div>

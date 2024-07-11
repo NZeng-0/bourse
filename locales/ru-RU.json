@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "title": "实名认证",
+    "name": "姓名",
+    "idCard": "身份证号码",
+    "frontAndBack": "身份证正反面",
+    "front": "点击上传正面",
+    "back": "点击上传反面",
+    "submit": "提交认证"
+  },
+  "language": {
+    "title": "Смена языка"
+  }
+}

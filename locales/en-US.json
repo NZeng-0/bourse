@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "title": "Real-name Verification",
+    "name": "Name",
+    "idCard": "Identity card number",
+    "frontAndBack": "Front and back of identity card",
+    "front": "Click upload front",
+    "back": "Click upload back",
+    "submit": "Submit"
+  },
+  "language": {
+    "title": "Change Language"
+  }
+}
