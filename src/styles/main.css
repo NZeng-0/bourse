@@ -6,8 +6,9 @@ body,
   padding: 0;
 }
 
-body {
+main {
   overflow: hidden;
+  font-family: 'PingFang_SC';
 }
 
 ::-webkit-scrollbar {

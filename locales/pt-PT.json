@@ -1,12 +1,12 @@
 {
   "auth": {
-    "title": "实名认证",
-    "name": "姓名",
-    "idCard": "身份证号码",
-    "frontAndBack": "身份证正反面",
-    "front": "点击上传正面",
-    "back": "点击上传反面",
-    "submit": "提交认证"
+    "title": "Nome verdadeiro",
+    "name": "O nome",
+    "idCard": "Número de identificação",
+    "frontAndBack": "Identificação frente e verso",
+    "front": "Clique para carregar fachadas",
+    "back": "Clique para carregar ao contrário",
+    "submit": "apresentação"
   },
   "language": {
     "title": "Alterar o idioma"

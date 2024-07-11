@@ -1,12 +1,12 @@
 {
   "auth": {
-    "title": "实名认证",
-    "name": "姓名",
-    "idCard": "身份证号码",
-    "frontAndBack": "身份证正反面",
-    "front": "点击上传正面",
-    "back": "点击上传反面",
-    "submit": "提交认证"
+    "title": "Xác thực tên thật",
+    "name": "Tên",
+    "idCard": "Số nhận dạng",
+    "frontAndBack": "Mặt trước và mặt sau của thẻ ID",
+    "front": "Tải lên mặt trước",
+    "back": "Tải lên mặt sau",
+    "submit": "trình"
   },
   "language": {
     "title": "Thay đổi ngôn ngữ"

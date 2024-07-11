@@ -24,6 +24,9 @@ function setI18nLanguage(lang: Locale) {
   return lang
 }
 
+// 本地存储用户选择
+const _lang = useStorage('lang', 'zh-CN')
+
 export async function loadLanguageAsync(lang: string): Promise<Locale> {
   // 如果是同一语言
   if (i18n.global.locale.value === lang)
@@ -34,6 +37,7 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
     return setI18nLanguage(lang)
 
   // 如果语言还没有加载
+  _lang.value = lang
   const messages = await localesMap[lang]()
   i18n.global.setLocaleMessage(lang, messages.default)
   loadedLanguages.push(lang)
@@ -42,5 +46,5 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
 
 export const install: UserModule = (app) => {
   app.use(i18n)
-  loadLanguageAsync('zh-CN')
+  loadLanguageAsync(_lang.value)
 }
