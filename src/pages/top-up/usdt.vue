@@ -76,7 +76,7 @@ function back() {
   </div>
 </template>
 
-<style>
+<style scoped>
 .bg {
   background: url(../../assets/images/assets/qr-bg.png);
   background-size: cover;

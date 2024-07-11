@@ -48,7 +48,7 @@ const menu = [
     title: 'APP下载',
     icon: '../assets/images/me/menu/download.png',
     right: ' ',
-    to: '',
+    to: 'download',
   },
 ]
 
