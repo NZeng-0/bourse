@@ -7,6 +7,10 @@ function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
 }
 
+function go() {
+  route.push(`/binding/usdt`)
+}
+
 function back() {
   route.push('/assets')
 }
@@ -58,7 +62,7 @@ function back() {
       </div>
     </div>
     <div flex="~" mt32.25 w-full justify-center>
-      <button v-if="!banding" h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button v-if="!banding" h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="go()">
         绑定提现账户
       </button>
       <button v-else h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>

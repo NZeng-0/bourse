@@ -42,13 +42,13 @@ const menu = [
     title: '账户安全',
     icon: '../assets/images/me/menu/secure.png',
     right: ' ',
-    to: '/',
+    to: 'secure',
   },
   {
     title: 'APP下载',
     icon: '../assets/images/me/menu/download.png',
     right: ' ',
-    to: '/',
+    to: '',
   },
 ]
 
