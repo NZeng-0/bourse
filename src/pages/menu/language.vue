@@ -64,7 +64,7 @@ async function toggleLocales(newLocale: string) {
 
 <template>
   <div class="font-['PingFang_SC']">
-    <TheMenuHead :title="t('language.title')" />
+    <TheMenuHead :title="t('me.language.title')" />
     <div h-screen overflow-y-scroll px4 text-base>
       <div
         v-for="(item, key) in data" :key flex="~" mt4.1 h13 items-center rounded-2xl :class="getClass(item.value)"

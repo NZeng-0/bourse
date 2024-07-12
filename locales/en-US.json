@@ -1,14 +1,22 @@
 {
+  "login": {
+    "account": "Account",
+    "password": "password",
+    "forget": "forget",
+    "login": "Log in",
+    "sign_up": "register",
+    "service": "customer service"
+  },
   "auth": {
-    "title": "Real-name Verification",
+    "title": "Verified",
     "name": "Name",
-    "idCard": "Identity card number",
-    "frontAndBack": "Front and back of identity card",
-    "front": "Click upload front",
-    "back": "Click upload back",
-    "submit": "Submit"
+    "id_card": "identification number",
+    "front_and_back": "ID card front and back",
+    "front": "Click to upload the front",
+    "back": "Click to upload the reverse side",
+    "submit": "Submit certification"
   },
   "language": {
-    "title": "Change Language"
+    "title": "Change language"
   }
 }

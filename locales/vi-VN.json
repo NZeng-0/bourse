@@ -2,8 +2,8 @@
   "auth": {
     "title": "Xác thực tên thật",
     "name": "Tên",
-    "idCard": "Số nhận dạng",
-    "frontAndBack": "Mặt trước và mặt sau của thẻ ID",
+    "id_card": "Số nhận dạng",
+    "front_and_back": "Mặt trước và mặt sau của thẻ ID",
     "front": "Tải lên mặt trước",
     "back": "Tải lên mặt sau",
     "submit": "trình"

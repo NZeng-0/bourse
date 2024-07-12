@@ -1,16 +1,18 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const list = [
   {
     type: 1,
     time: '2023-05-25 18:30:31',
     title: '提现已到账',
-    content: 'Lorem ipsum dolor sit amet.',
+    content: '消息内容消息内容消息内容消息内容',
   },
   {
     type: 1,
     time: '2023-05-25 18:30:31',
     title: '提现已到账',
-    content: 'Lorem ipsum dolor sit amet.',
+    content: '消息内容消息内容消息内容消息内容',
   },
 ]
 
@@ -20,8 +22,8 @@ function getBgStyle() {
 </script>
 
 <template>
-  <div class="font-['PingFang_SC']" bg-trading>
-    <TheMenuHead title="消息通知" />
+  <div bg-trading>
+    <TheMenuHead :title="t('me.message.title')" />
     <div h-screen overflow-y-scroll px3>
       <div v-for="(item, key) in list" :key flex="~ wrap" :class="getBgStyle()">
         <div wfull flex="~" items-center justify-between>

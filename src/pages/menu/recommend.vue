@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRouter()
+const { t } = useI18n()
 
 const code = ref('ST0CK15')
 
@@ -13,11 +14,11 @@ function back() {
 </script>
 
 <template>
-  <div class="font-['PingFang_SC']">
+  <div>
     <div flex="~" h30 items-center justify-between bg-white px6>
       <img src="../../assets/images/recommend/back.png" h10 w10 @click="back()">
       <div class="text-5.5" text-trading-title>
-        推荐有礼
+        {{ t('recommend.title') }}
       </div>
       <div h10 w10 />
     </div>
@@ -28,10 +29,14 @@ function back() {
         </div>
       </div>
       <div mt10 class="text-5.5" text-center>
-        推荐赚礼金
+        {{ t('recommend.content') }}
       </div>
       <div mt3.75 text-center text-sm class="text-#9EA3AE">
-        分享您的推荐码并获得 <span class="text-#673BF6">10 美元</span> 的免费股票
+        {{ t('recommend.first') }}
+        <span class="text-#673BF6">
+          {{ t('recommend.reward') }}
+        </span>
+        {{ t('recommend.last') }}
       </div>
       <div mt13.5>
         <div class="border-#eeeeee" flex="~" border-box h14 items-center justify-between border rounded-2xl px6>
@@ -40,13 +45,13 @@ function back() {
           </div>
           <div :class="getCodeStyle()" flex="~" :data-clipboard-text="code" @click="useClipboard('code')">
             <img src="../../assets/images/recommend/copy.png" mr2 h6 w6>
-            复制推荐码
+            {{ t('recommend.copy') }}
           </div>
         </div>
       </div>
       <div flex="~" mt4 justify-center>
         <button h14 wfull rounded-lg bg-btn-select text-white>
-          分享
+          {{ t('recommend.share') }}
         </button>
       </div>
     </div>

@@ -54,7 +54,7 @@ function back() {
         </button>
       </div>
     </div>
-    <div px2>
+    <div h-screen overflow-y-scroll px2>
       <div v-for="(item, key) in data" :key mt2.8 h50 rounded-lg bg-white px2 py2.3>
         <div wfull>
           <div flex="~">
@@ -128,6 +128,7 @@ function back() {
           </div>
         </div>
       </div>
+      <div h60 />
     </div>
   </div>
   <TheFooter :index="2" />

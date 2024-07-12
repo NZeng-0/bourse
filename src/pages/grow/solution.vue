@@ -1,4 +1,5 @@
 <script setup lang=ts>
+const { t } = useI18n()
 const route = useRouter()
 const index = ref(0)
 
@@ -22,27 +23,33 @@ function changeCurrent(current: number, to: string) {
       <TheInfo />
       <div mx8 wfull>
         <div mt5 flex="~" justify-between>
-          <b text-base class="text-#673BF6" @click="changeCurrent(0, 'grow/solution')">固定方案</b>
-          <b text-base class="text-#121826" @click="changeCurrent(1, 'grow/current')">当前收益</b>
-          <b text-base class="text-#121826" @click="changeCurrent(2, 'grow/histroy')">历史收益</b>
+          <b text-base class="text-#673BF6" @click="changeCurrent(0, 'grow/solution')">
+            {{ t('fortune.yesterdays_earnings') }}
+          </b>
+          <b text-base class="text-#121826" @click="changeCurrent(1, 'grow/current')">
+            {{ t('fortune.current_yield') }}
+          </b>
+          <b text-base class="text-#121826" @click="changeCurrent(2, 'grow/histroy')">
+            {{ t('fortune.historical_yield') }}
+          </b>
         </div>
       </div>
       <div mx5 mt2 wfull text-sm>
         <div v-for="(item, key) in data" :key mt4 h20 border rounded-lg pl2 pt4.5>
           <div flex="~" justify-between>
             <div>
-              产品名称: {{ item.title }}
+              {{ t('fortune.product_name') }}: {{ item.title }}
             </div>
             <div pl6 w="1/2">
-              最低存款: {{ item.minimum }}.00
+              {{ t('fortune.minimum_deposit') }}: {{ item.minimum }}.00
             </div>
           </div>
           <div flex="~" mt2 justify-between>
             <div>
-              年化收益: {{ item.yield }}%
+              {{ t('fortune.annualized_income') }}: {{ item.yield }}%
             </div>
             <div pl6 w="1/2">
-              预期收益: {{ item.prospective }}
+              {{ t('fortune.projected_revenue') }}: {{ item.prospective }}
             </div>
           </div>
         </div>

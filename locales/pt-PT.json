@@ -2,8 +2,8 @@
   "auth": {
     "title": "Nome verdadeiro",
     "name": "O nome",
-    "idCard": "Número de identificação",
-    "frontAndBack": "Identificação frente e verso",
+    "id_card": "Número de identificação",
+    "front_and_back": "Identificação frente e verso",
     "front": "Clique para carregar fachadas",
     "back": "Clique para carregar ao contrário",
     "submit": "apresentação"

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-
+const { t } = useI18n()
 </script>
 
 <template>
   <div mx6 mt4 h45 wfull rounded-2xl bg-white px4 pb4 pl4>
     <p mt-5 text-lg>
-      实时交易
+      {{ t('trading.real_time') }}
     </p>
     <div flex="~ wrap" wfull justify-between>
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          平均
+          {{ t('trading.avg') }}
         </div>
         <div style="color:#121826" text-lg>
           160.32
@@ -19,7 +19,7 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          最高
+          {{ t('trading.max') }}
         </div>
         <div style="color:#121826" text-lg>
           160.36
@@ -28,7 +28,7 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          最低
+          {{ t('trading.min') }}
         </div>
         <div style="color:#121826" text-lg>
           130.68
@@ -36,7 +36,7 @@
       </div>
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          Vloume
+          {{ t('trading.vloume') }}
         </div>
         <div style="color:#121826" text-lg>
           160.32
@@ -45,7 +45,7 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          Avg.Vol
+          {{ t('trading.avg_vol') }}
         </div>
         <div style="color:#121826" text-lg>
           160.32
@@ -54,7 +54,7 @@
       <div w="1/5" />
       <div mt2.5 w="1/5">
         <div style="color:#9EA3AE" text-sm>
-          Market
+          {{ t('trading.market') }}
         </div>
         <div style="color:#121826" text-lg>
           160.32

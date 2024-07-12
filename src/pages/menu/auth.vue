@@ -10,10 +10,10 @@ const { t } = useI18n()
         <input type="text" h13 wfull border rounded-2xl pl5.4 :placeholder="t('auth.name')">
       </div>
       <div mt5.25>
-        <input type="text" h13 wfull border rounded-2xl pl5.4 :placeholder="t('auth.idCard')">
+        <input type="text" h13 wfull border rounded-2xl pl5.4 :placeholder="t('auth.id_card')">
       </div>
       <div mt3.25 h59.25 border rounded-2xl>
-        <input type="text" readonly h11.5 wfull border-b rounded-t-2xl pl5.4 :placeholder="t('auth.frontAndBack')">
+        <input type="text" readonly h11.5 wfull border-b rounded-t-2xl pl5.4 :placeholder="t('auth.front_and_back')">
         <div h47.55 flex="~" text-base class="text-#999999">
           <div w="1/2" flex="~" items-center justify-center border-r>
             {{ t('auth.front') }}

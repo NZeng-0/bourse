@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const route = useRouter()
 
 const list = [
@@ -26,12 +28,12 @@ function getBgStyle() {
 </script>
 
 <template>
-  <div class="font-['PingFang_SC']" bg-trading font-normal opacity70>
-    <TheMenuHead title="消息通知" />
+  <div bg-trading font-normal opacity70>
+    <TheMenuHead :title="t('me.message.title')" />
     <div h-screen overflow-y-scroll px7.5>
       <div v-for="(item, key) in list" :key :class="getBgStyle()">
         <div class="font-['youshe']" text-lg>
-          消息通知:
+          {{ t('me.message.title') }}:
         </div>
         <div wfull>
           <div>
@@ -47,7 +49,7 @@ function getBgStyle() {
           </p>
         </div>
         <div wfull class="text-#4AADF0" @click="go(key)">
-          查看详情
+          {{ t('me.message.details') }}
         </div>
       </div>
       <div h50 />

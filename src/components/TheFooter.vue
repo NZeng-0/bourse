@@ -1,9 +1,42 @@
 <script setup lang="ts">
-import { data } from '~/composables/footerData'
-
 defineProps<{
   index: number
 }>()
+
+const { t } = useI18n()
+
+const data = [
+  {
+    icon: new URL('~/assets/images/footer/home.png', import.meta.url).href,
+    name: t('footer.index'),
+    pointTo: '/',
+    onlyIcon: false,
+  },
+  {
+    icon: new URL('~/assets/images/footer/assets.png', import.meta.url).href,
+    name: t('footer.assets'),
+    pointTo: '/assets',
+    onlyIcon: false,
+  },
+  {
+    icon: new URL('~/assets/images/footer/nav_item.png', import.meta.url).href,
+    name: '',
+    pointTo: '/',
+    onlyIcon: true,
+  },
+  {
+    icon: new URL('~/assets/images/footer/manage_money.png', import.meta.url).href,
+    name: t('footer.fortune'),
+    pointTo: '/grow/solution',
+    onlyIcon: false,
+  },
+  {
+    icon: new URL('~/assets/images/footer/me.png', import.meta.url).href,
+    name: t('footer.me'),
+    pointTo: '/me',
+    onlyIcon: false,
+  },
+]
 </script>
 
 <template>

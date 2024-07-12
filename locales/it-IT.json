@@ -2,8 +2,8 @@
   "auth": {
     "title": "generalità",
     "name": "nomi",
-    "idCard": "Numero d’identità",
-    "frontAndBack": "Carta d’identità a testa alta",
+    "id_card": "Numero d’identità",
+    "front_and_back": "Carta d’identità a testa alta",
     "front": "Cliccare sull’immagine positiva",
     "back": "Cliccare sul rovescio",
     "submit": "presentazione"

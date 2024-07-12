@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { menuData as list } from '~/composables/portfolioListData'
 
+const { t } = useI18n()
 const router = useRouter()
 
 function getIcon(range: number) {
@@ -33,9 +34,9 @@ function go(key: number) {
         </div>
       </div>
       <div ml4 mt5 text-sm text-portolio font-normal>
-        涨幅
+        {{ t('index.rise_range') }}
       </div>
-      <div flex="~ gap2 wrap" ml4 justify-between>
+      <div flex="~ gap2" ml4 justify-between>
         <div text-left text-lg text-portolio-primary>
           ￥{{ item.presentValue }}
         </div>

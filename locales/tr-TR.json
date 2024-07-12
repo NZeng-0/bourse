@@ -2,8 +2,8 @@
   "auth": {
     "title": "Kimlik doğrulama",
     "name": "ad",
-    "idCard": "Kimlik numarası",
-    "frontAndBack": "Kimlik kartının ön ve arka yüzü",
+    "id_card": "Kimlik numarası",
+    "front_and_back": "Kimlik kartının ön ve arka yüzü",
     "front": "Önden yükle'ye tıklayın",
     "back": "Geri yükle'yi tıklayın",
     "submit": "için gönderin"

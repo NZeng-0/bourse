@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { list } from '~/composables/portfolioListData'
 
+const { t } = useI18n()
 const key = useRoute('/buy/up/[key]').params.key
 
 const data = list[Number.parseInt(key)]
@@ -18,6 +19,10 @@ function getMoneyStyle(index: number) {
   return selectMoney.value === index ? 'bg-btn-select text-white rounded-xl' : 'bg-white'
 }
 
+function subClass() {
+  return 'text-#707070 ml-6.8 h8.5 w25 rounded-xl bg-white pl4 text-lg'
+}
+
 function back() {
   route.back()
 }
@@ -28,41 +33,41 @@ function back() {
     <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px4>
       <img :src="backUrl" h10 w10 @click="back()">
       <div text-xl text-trading-title>
-        买跌
+        {{ t('trading.buy_to_fall') }}
       </div>
       <div h10 w10 />
     </div>
     <div mt5 px6.8>
       <div text-lg>
-        结算时间
+        {{ t('trading.buy.settlement_time') }}
       </div>
       <div mt3.5 flex="~" justify-between>
         <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(0)" @click="selectTime = 0">
-          <div text-2xl font-black leading-6>
+          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
             30
           </div><span self-end text-xl>s</span>
         </div>
         <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(1)" @click="selectTime = 1">
-          <div text-2xl font-black leading-6>
+          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
             60
           </div>
           <span self-end text-xl>s</span>
         </div>
         <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(2)" @click="selectTime = 2">
-          <div text-2xl font-black leading-6>
+          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
             90
           </div>
           <span self-end text-xl>s</span>
         </div>
         <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(3)" @click="selectTime = 3">
-          <div text-2xl font-black leading-6>
+          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
             120
           </div>
           <span self-end text-xl>s</span>
         </div>
       </div>
       <div mt5.5 text-lg>
-        金额
+        {{ t('trading.buy.amount') }}
       </div>
       <div mt3.5 flex="~" justify-between text-lg>
         <div flex="~" h8.5 w12.5 items-center justify-center :class="getMoneyStyle(0)" @click="selectMoney = 0">
@@ -84,41 +89,43 @@ function back() {
     </div>
     <div mt4 pl5.8>
       <button h8.5 w25 rounded-xl bg-white text-lg>
-        全部资金
+        {{ t('trading.buy.all') }}
       </button>
-      <input type="text" placeholder="其他金额" class="text-#707070" ml-6.8 h8.5 w25 rounded-xl bg-white pl4 text-lg>
+      <input type="text" :placeholder="t('trading.buy.orther')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
-        <div>品种</div>
+        <div> {{ t('trading.buy.breed') }}</div>
         <div>{{ data.nameEN }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
-        <div>实时价格</div>
+        <div> {{ t('trading.buy.real_price') }}</div>
         <div>{{ data.presentValue }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
-        <div>金额</div>
+        <div> {{ t('trading.buy.amount') }}</div>
         <div>200</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
-        <div>预期收益</div>
+        <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
           168.00
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>
         <div>
-          可用金额<span ml7 class="text-#5425EB">218</span>
+          {{ t('trading.buy.amount_available') }}
+          <span ml7 class="text-#5425EB">218</span>
         </div>
         <div>
-          手续费 &nbsp;&nbsp; <span class="text-#5425EB">0% </span>
+          {{ t('trading.buy.service_charge') }} &nbsp;&nbsp;
+          <span class="text-#5425EB">0% </span>
         </div>
       </div>
     </div>
     <div flex="~" justify-center>
       <button mt7.5 h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
-        提交订单
+        {{ t('trading.submit') }}
       </button>
     </div>
   </div>

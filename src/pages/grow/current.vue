@@ -1,11 +1,12 @@
 <script setup lang=ts>
+const { t } = useI18n()
 const route = useRouter()
 const index = ref(0)
 
 const data = ref([
-  { title: '余额宝365天', state: '进行中', current: 0, prospective: 1500, date: '08-08 10:10', savings: 10000 },
-  { title: '余额宝180天', state: '进行中', current: 0, prospective: 29.85, date: '08-08 10:10', savings: 1000 },
-  { title: '余额宝30天', state: '进行中', current: 0, prospective: 0.2, date: '08-08 10:10', savings: 100 },
+  { title: '余额宝365天', state: t('fortune.state_type.underway'), current: 0, prospective: 1500, date: '08-08 10:10', savings: 10000 },
+  { title: '余额宝180天', state: t('fortune.state_type.underway'), current: 0, prospective: 29.85, date: '08-08 10:10', savings: 1000 },
+  { title: '余额宝30天', state: t('fortune.state_type.underway'), current: 0, prospective: 0.2, date: '08-08 10:10', savings: 100 },
 ])
 
 function changeCurrent(current: number, to: string) {

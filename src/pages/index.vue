@@ -23,9 +23,11 @@ onUnmounted(() => {
     <TheCard />
     <ThePortfolio />
     <TheFooter :index="0" />
+    <!-- 加载中组件 -->
     <!-- <div v-if="loading">
       <TheLoading :done />
     </div> -->
+    <!-- 弹窗组件 -->
     <ThePopup />
   </div>
 </template>

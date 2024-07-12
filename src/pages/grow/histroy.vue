@@ -1,11 +1,12 @@
 <script setup lang=ts>
+const { t } = useI18n()
 const route = useRouter()
 const index = ref(0)
 
 const data = ref([
-  { title: '余额宝365天', state: '已到期', total: 1500, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 10000 },
-  { title: '余额宝180天', state: '已到期', total: 29.85, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 1000 },
-  { title: '余额宝30天', state: '已到期', total: 0.2, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 100 },
+  { title: '余额宝365天', state: t('fortune.state_type.failed'), total: 1500, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 10000 },
+  { title: '余额宝180天', state: t('fortune.state_type.failed'), total: 29.85, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 1000 },
+  { title: '余额宝30天', state: t('fortune.state_type.failed'), total: 0.2, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 100 },
 ])
 
 function changeCurrent(current: number, to: string) {
@@ -40,11 +41,11 @@ function changeCurrent(current: number, to: string) {
           </div>
           <div flex="~" mt2 justify-between text-xs class="text-#707070">
             <div w="1/3">
-              状态: {{ item.state }}
+              {{ t('fortune.state') }}: {{ item.state }}
             </div>
             <div w="1/3" />
             <div w="1/3">
-              累计收益: {{ item.total }}
+              {{ t('fortune.accumulated_earnings') }}: {{ item.total }}
             </div>
           </div>
           <div mt2 flex="~" justify-between text-xs>
@@ -52,7 +53,7 @@ function changeCurrent(current: number, to: string) {
               {{ item.date }}
             </div>
             <div w="1/3" class="text-#673BF6">
-              重新购买
+              {{ t('fortune.repurchase') }}
             </div>
           </div>
         </div>

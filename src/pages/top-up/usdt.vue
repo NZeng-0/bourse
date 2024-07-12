@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRouter()
+const { t } = useI18n()
 
 const text = ref('09191278302wixnmhdgabisjng')
 
@@ -21,23 +22,23 @@ function back() {
     <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
       <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
       <div class="text-5.5" text-trading-title>
-        充值
+        {{ t('assets.recharge.title') }}
       </div>
       <RouterLink to="/menu/top-up">
         <div class="border-#4D58C0" flex="~" h6.5 w11.25 items-center justify-center border rounded-xl text-sm>
-          记录
+          {{ t('assets.head') }}
         </div>
       </RouterLink>
     </div>
     <div px6 pt5>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
-          请选择支付方式
+          {{ t('assets.recharge.method') }}
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <img src="../../assets/images/USDT.png" h4.25 w4.25>
           <div class="text-#121826" ml1.25 @click="go()">
-            USDT
+            {{ t('assets.recharge.usdt.use') }}
           </div>
           <div ml0.75>
             <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
@@ -59,18 +60,18 @@ function back() {
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>
           </div>
-          <input type="text" placeholder="转账金额" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
-          <input type="text" placeholder="转账附言" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
+          <input type="text" :placeholder="t('assets.recharge.transfer_amount')" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
+          <input type="text" :placeholder="t('assets.recharge.transfer_remarks')" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
           <button class="border border-#f4f4f4" flex="~" mt2.5 h11.25 wfull items-center justify-center rounded-xl>
             <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
-            上传凭证
+            {{ t('assets.recharge.upload_credentials') }}
           </button>
         </div>
       </div>
     </div>
     <div flex="~" mt5.25 w-full justify-center>
       <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
-        提交订单
+        {{ t('assets.recharge.submit') }}
       </button>
     </div>
   </div>

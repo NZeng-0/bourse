@@ -1,19 +1,19 @@
 <script setup lang="ts">
-
+const { t } = useI18n()
 </script>
 
 <template>
   <div flex="~ gap2 wrap" mt-8 items-center justify-between>
     <div text-lg font-normal>
-      股市交易
+      {{ t('index.stock_market') }}
     </div>
     <div text-sm text-all-list font-normal>
-      所有列表
+      {{ t('index.more') }}
     </div>
   </div>
   <ThePortfolioList />
   <div mt-5.5 text-left text-lg>
-    数据分析
+    {{ t('index.analysis') }}
   </div>
   <TheList />
 </template>

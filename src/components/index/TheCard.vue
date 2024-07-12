@@ -5,6 +5,8 @@ import { data as chartData } from '~/composables/cardChartData'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
 
+const { t } = useI18n()
+
 const url = new URL('~/assets/images/bg.png', import.meta.url).href
 const series = [
   {
@@ -95,7 +97,7 @@ const chartProps: Props = {
       </div>
       <div w="87px" h="36px" flex="~" mr-4 mt-4 items-center justify-around rounded-lg bg-white:12 p3>
         <div text-xs text-card font-normal>
-          较昨日
+          {{ t('index.with_yesterday') }}
         </div>
         <div i-carbon:chevron-down h-1.5rem w-1.5rem bg-white />
       </div>

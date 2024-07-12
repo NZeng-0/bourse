@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const key = useRoute('/menu/message/detail/[key]').params.key
 
 const list = [
@@ -25,7 +26,7 @@ function getBgStyle() {
 
 <template>
   <div class="font-['PingFang_SC']" bg-trading font-normal opacity70>
-    <TheMenuHead title="消息通知" />
+    <TheMenuHead :title="t('me.message.title')" />
     <div h-screen overflow-y-scroll px7.5>
       <div :class="getBgStyle()">
         <div class="font-['youshe']" text-lg>

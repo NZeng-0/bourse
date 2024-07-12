@@ -26,7 +26,7 @@ declare global {
   const createTemplatePromise: typeof import('@vueuse/core')['createTemplatePromise']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const customRef: typeof import('vue')['customRef']
-  const data: typeof import('./src/composables/footerData')['data']
+  const data: typeof import('./src/composables/cardChartData')['data']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
@@ -43,6 +43,7 @@ declare global {
   const getOption: typeof import('./src/composables/lineChartOption')['getOption']
   const getOptionFoo: typeof import('./src/composables/candlestickChart')['getOptionFoo']
   const getOptions: typeof import('./src/composables/candlestickChart')['getOptions']
+  const getState: typeof import('./src/composables/index')['getState']
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const index: typeof import('./src/composables/candlestickChart')['index']
@@ -105,7 +106,7 @@ declare global {
   const splitData: typeof import('./src/composables/utils')['splitData']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
-  const t: typeof import('./src/composables/candlestickData')['t']
+  const t: typeof import('./src/composables/index')['t']
   const templateRef: typeof import('@vueuse/core')['templateRef']
   const throttledRef: typeof import('@vueuse/core')['throttledRef']
   const throttledWatch: typeof import('@vueuse/core')['throttledWatch']
@@ -336,7 +337,7 @@ declare module 'vue' {
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly data: UnwrapRef<typeof import('./src/composables/footerData')['data']>
+    readonly data: UnwrapRef<typeof import('./src/composables/cardChartData')['data']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -628,7 +629,7 @@ declare module '@vue/runtime-core' {
     readonly createTemplatePromise: UnwrapRef<typeof import('@vueuse/core')['createTemplatePromise']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
-    readonly data: UnwrapRef<typeof import('./src/composables/footerData')['data']>
+    readonly data: UnwrapRef<typeof import('./src/composables/cardChartData')['data']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>

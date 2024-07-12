@@ -15,6 +15,7 @@ declare module 'vue' {
     TheContent: typeof import('./src/components/Trading/TheContent.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheDetail: typeof import('./src/components/Trading/TheDetail.vue')['default']
+    TheEmpty: typeof import('./src/components/TheEmpty.vue')['default']
     Thefluctuation: typeof import('./src/components/Trading/Thefluctuation.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheGrow: typeof import('./src/components/grow/TheGrow.vue')['default']

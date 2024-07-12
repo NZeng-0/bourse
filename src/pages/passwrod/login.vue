@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 function getClass() {
   return 'w-full border border-#F4F4F4 rounded-xl bg-#F4F4F4 px-3.25 border-box h13 items-center justify-between text-base'
 }
@@ -6,28 +7,28 @@ function getClass() {
 
 <template>
   <div class="font-['PingFang_SC']">
-    <TheMenuHead title="修改登录密码" />
+    <TheMenuHead :title="t('me.secure.change_login.title')" />
     <div px6 text-base>
       <div mt9>
-        原登录密码
+        {{ t('me.secure.change_login.old_password') }}
         <div>
           <input type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
-        确认原登录密码
+        {{ t('me.secure.change_login.confirm_old_password') }}
         <div>
           <input type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
-        新登录密码
+        {{ t('me.secure.change_login.new_password') }}
         <div>
           <input type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
-        确认新登录密码
+        {{ t('me.secure.change_login.confirm_new_password') }}
         <div>
           <input type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
@@ -35,7 +36,7 @@ function getClass() {
     </div>
     <div mt9.5 flex="~" justify-center>
       <button h10.5 w37.5 rounded-lg bg-btn-select text-white>
-        确认修改
+        {{ t('me.secure.confirm') }}
       </button>
     </div>
   </div>

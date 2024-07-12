@@ -1,11 +1,13 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const list = [
   {
-    title: '银行卡',
+    title: t('me.payment_method.type.1'),
     icon: '../../assets/images/me/menu/bank.png',
   },
   {
-    title: 'USDT',
+    title: t('me.payment_method.type.2'),
     icon: '../../assets/images/me/menu/usdt.png',
   },
 ]
@@ -20,8 +22,8 @@ function getBgStyle() {
 </script>
 
 <template>
-  <div class="font-['PingFang_SC']" bg-trading>
-    <TheMenuHead title="支付方式" />
+  <div bg-trading>
+    <TheMenuHead :title="t('me.payment_method.title')" />
     <div h-screen overflow-y-scroll px6.5>
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h18 rounded-2xl bg-white :class="getBgStyle()">
         <img :src="getFullUrl(item.icon)" h10 w14>
@@ -30,7 +32,7 @@ function getBgStyle() {
             {{ item.title }}
           </div>
           <div class="text-#9EA3AE" mt2 text-xs>
-            绑定{{ item.title }}
+            {{ t('me.payment_method.binding') }}{{ item.title }}
           </div>
         </div>
       </div>

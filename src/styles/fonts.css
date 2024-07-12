@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'Alibaba-PuHuiTi';
+  src: url('../assets/fonts/Alibaba-PuHuiTi-Heavy.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'YouShe';
   src: url('../assets/fonts/YouSheBiaoTiHei-2.ttf');
   font-weight: normal;

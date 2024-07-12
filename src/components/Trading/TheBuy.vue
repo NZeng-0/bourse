@@ -4,6 +4,8 @@ const props = defineProps<{
   selected: string
 }>()
 
+const { t } = useI18n()
+
 const route = useRouter()
 
 function go(uri: string) {
@@ -13,9 +15,9 @@ function go(uri: string) {
 
 <template>
   <button h10 w37.5 rounded-lg :class="props.selected" text-base text-white @click="go('up')">
-    买涨
+    {{ t('trading.buy_up') }}
   </button>
   <button h10 w37.5 rounded-lg bg-btn text-base text-btn @click="go('down')">
-    买跌
+    {{ t('trading.buy_to_fall') }}
   </button>
 </template>

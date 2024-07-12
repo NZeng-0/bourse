@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const route = useRouter()
 
 function getClass() {
@@ -11,12 +12,12 @@ function go(url: string) {
 </script>
 
 <template>
-  <div class="font-['PingFang_SC']">
-    <TheMenuHead title="账户与安全" />
+  <div>
+    <TheMenuHead :title="t('me.secure.title')" />
     <div mt4.125 px4 text-base>
       <div flex="~" :class="getClass()">
         <div w="1/2">
-          请选择提现方式
+          {{ t('me.secure.phone') }}
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <div ml1.25 opacity68>
@@ -29,7 +30,7 @@ function go(url: string) {
       </div>
       <div flex="~" :class="getClass()" mt4.75 @click="go('login')">
         <div w="1/2">
-          修改登录密码
+          {{ t('me.secure.change_login.title') }}
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <div ml0.75>
@@ -39,7 +40,7 @@ function go(url: string) {
       </div>
       <div flex="~" :class="getClass()" mt4.75 @click="go('payment')">
         <div w="1/2">
-          修改支付密码
+          {{ t('me.secure.change_payment.title') }}
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <div ml0.75>

@@ -41,12 +41,8 @@
     "avg": "平均",
     "max": "最高",
     "min": "最低",
-    "vloume": "Vloume",
-    "avg_vol": "Avg.Vol",
-    "market": "Market",
     "buy_up": "买涨",
     "buy_to_fall": "买跌",
-    "submit": "提交订单",
     "buy": {
       "settlement_time": "结算时间",
       "amount": "金额",
@@ -57,7 +53,8 @@
       "anticipated_yield": "预计收益",
       "amount_available": "可用金额",
       "service_charge": "手续费",
-      "earning_yield": "收益率"
+      "earning_yield": "收益率",
+      "submit": "提交订单"
     }
   },
   "order": {
@@ -83,23 +80,23 @@
   "assets": {
     "title": "我的钱包",
     "amount": "总余额",
-    "head": "记录",
     "recharge": {
       "title": "充值",
+      "head": "记录",
       "method": "请选择充值方式",
       "submit": "提交订单",
-      "transfer_amount": "转账金额",
-      "transfer_remarks": "转账附言",
-      "upload_credentials": "上传凭证",
       "usdt": {
-        "use": "USDT"
+        "transfer_amount": "转账金额",
+        "transfer_remarks": "转账附言",
+        "upload_credentials": "上传凭证"
       },
       "bank": {
-        "use": "银行卡",
         "bank_of_deposit": "开户银行",
         "account_opening_branch": "开户网点",
         "account": "收款账号",
-        "name": "收款姓名"
+        "name": "收款姓名",
+        "transfer_amount": "转账金额",
+        "transfer_remarks": "转账附言"
       }
     },
     "withdrawal": {
@@ -127,7 +124,7 @@
         "bank_card_number": "请输入银行卡号"
       },
       "usdt": {
-        "title": "绑定 USDT 账号",
+        "title": "绑定USDT账号",
         "wallet_account": "请输入钱包账号",
         "submit": "提交"
       }
@@ -135,22 +132,18 @@
   },
   "fortune": {
     "title": "理财",
-    "balance": "总余额",
-    "yesterdays_earnings": "昨日收益",
+    "balance": "余额",
+    "yesterday's_earnings": "昨日收益",
     "accumulated_earnings": "累计收益",
-    "yesterdays_balance": "昨日余额",
+    "yesterday's_balance": "昨日余额",
     "fixture_plan": "固定方案",
     "current_yield": "当前收益",
     "historical_yield": "历史收益",
     "product_name": "产品名称",
     "minimum_deposit": "最低存款",
     "annualized_income": "年化收益",
-    "projected_revenue": "预计收益",
+    "Projected Revenue": "预计收益",
     "state": "状态",
-    "state_type": {
-      "underway": "进行中",
-      "failed": "已到期"
-    },
     "termination": "终止",
     "renewal": "续期",
     "repurchase": "重新购买",
@@ -160,35 +153,30 @@
     "transfer_in": {
       "title": "转入",
       "plan": "方案名称",
-      "planA": "方案A",
       "annualized_income": "年化收益率",
-      "amount": "转入金额"
+      "transfer_int_amount": "转入金额"
     },
     "transfer_out": {
       "title": "转出",
       "transferable_balance": "可转出余额",
       "to": "到余额",
-      "amount": "转出金额"
+      "transfer_out_amount": "转出金额"
     }
   },
   "recommend": {
     "title": "推荐有礼",
     "content": "推荐赚礼金",
-    "reward": "10美元",
-    "first": "分享您的推荐码并获得 ",
-    "last": " 的免费股票",
+    "reward": "分享您的推荐码并获得 10 美元的免费股票",
     "copy": "复制推荐码",
     "share": "分享"
   },
   "me": {
-    "title": "个人中心",
     "log_out": "退出",
-    "member": "普通会员",
-    "balance": "账户余额",
+    "regular_member": "普通会员",
     "recharge": "转入",
     "withdrawal": "转出",
-    "yesterdays_earnings": "昨日收益",
-    "todays_earnings": "今日收益",
+    "yesterday's_earnings": "昨日收益",
+    "today's_earnings": "今日收益",
     "accumulated_earnings": "累计收益",
     "time": "时间",
     "amount": "金额",
@@ -197,29 +185,15 @@
     "withdrawal_record": {
       "title": "提现记录",
       "service_charge": "手续费",
-      "actual_receipt": "实际到账",
-      "successful": "申请成功",
-      "under_review": "审核中",
-      "failed": "审核失败",
-      "type": {
-        "1": "银行卡提现",
-        "2": "USDT钱包"
-      }
+      "actual_receipt": "实际到账"
     },
-    "recharge_record": {
-      "title": "充值记录",
-      "type": {
-        "1": "银行卡入款",
-        "2": "USDT钱包"
-      }
+    "recharge_Record": {
+      "title": "充值记录"
     },
     "payment_method": {
       "title": "支付方式",
-      "binding": "绑定",
-      "type": {
-        "1": "银行卡",
-        "2": "USDT"
-      }
+      "bank": "绑定银行卡",
+      "usdt": "绑定USDT"
     },
     "auth": {
       "title": "实名认证",
@@ -240,7 +214,6 @@
     "secure": {
       "title": "账号与安全",
       "phone": "手机号",
-      "confirm": "确认修改",
       "change_login": {
         "title": "修改登录密码",
         "old_password": "原登录密码",
@@ -256,12 +229,7 @@
         "confirm_new_password": "确认新支付密码"
       }
     },
-    "download": {
-      "title": "App下载"
-    },
-    "service": {
-      "1": "客服小易一直都在噢~",
-      "2": "有任何疑问与建议 欢迎来咨询！"
-    }
+    "download": "App下载",
+    "service": "客服小易一直都在噢~ 有任何疑问与建议 欢迎来咨询！"
   }
 }
