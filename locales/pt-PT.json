@@ -1,14 +1,268 @@
 {
-  "auth": {
-    "title": "Nome verdadeiro",
-    "name": "O nome",
-    "id_card": "Número de identificação",
-    "front_and_back": "Identificação frente e verso",
-    "front": "Clique para carregar fachadas",
-    "back": "Clique para carregar ao contrário",
-    "submit": "apresentação"
+  "assets": {
+    "amount": "balanço total",
+    "head": "Registro",
+    "recharge": {
+      "bank": {
+        "account": "Número da conta de pagamento",
+        "account_opening_branch": "Pontos de abertura de conta",
+        "bank_of_deposit": "Banco de depósito",
+        "name": "Nome do beneficiário",
+        "use": "cartão do banco"
+      },
+      "method": "Selecione um método de recarga",
+      "submit": "Enviar pedido",
+      "title": "completar",
+      "transfer_amount": "valor da transferência",
+      "transfer_remarks": "Transferir PS",
+      "upload_credentials": "carregar certificado",
+      "usdt": {
+        "use": "USDT"
+      }
+    },
+    "title": "Minha bolsa",
+    "withdrawal": {
+      "account": "conta",
+      "amount": "Quantidade retirada",
+      "balance": "Equilíbrio",
+      "bank": {
+        "bank_card_number": "Insira o número do cartão bancário",
+        "bank_name": "Por favor insira o nome do banco",
+        "bank_of_deposit": "Por favor insira o banco de abertura da conta",
+        "name": "Por favor digite seu nome",
+        "title": "Vincular cartão bancário"
+      },
+      "binding": "Nenhuma conta de retirada foi vinculada ainda",
+      "btn": "Vincular conta de retirada",
+      "confirm": "retirar",
+      "method": "Selecione um método de saque",
+      "password": "Retirar senha",
+      "service_charge": "taxa de manuseio",
+      "submit": "enviar",
+      "tips": {
+        "1": "Limite de valor de retirada",
+        "2": "Tempo de retirada",
+        "3": "Se você esquecer sua senha, entre em contato com o atendimento ao cliente"
+      },
+      "title": "retirar",
+      "usdt": {
+        "submit": "enviar",
+        "title": "Vincular conta USDT",
+        "wallet_account": "Por favor insira a conta da carteira"
+      }
+    }
   },
-  "language": {
-    "title": "Alterar o idioma"
+  "footer": {
+    "assets": "ativos",
+    "fortune": "gestão financeira",
+    "index": "primeira página",
+    "me": "meu"
+  },
+  "fortune": {
+    "accumulated_earnings": "Renda acumulada",
+    "all": "todos",
+    "annualized_income": "rendimento anualizado",
+    "balance": "balanço total",
+    "confirm": "Confirmar pedido",
+    "current_balance": "saldo atual",
+    "current_yield": "Lucro atual",
+    "fixture_plan": "Plano fixo",
+    "historical_yield": "retornos históricos",
+    "minimum_deposit": "Depósito mínimo",
+    "product_name": "Nome do Produto",
+    "projected_revenue": "Retorno esperado",
+    "renewal": "Renovar",
+    "repurchase": "recomprar",
+    "state": "estado",
+    "state_type": {
+      "failed": "estar expirado",
+      "underway": "em andamento"
+    },
+    "termination": "terminação",
+    "title": "gestão financeira",
+    "transfer_in": {
+      "amount": "Valor da transferência",
+      "annualized_income": "Taxa de retorno anualizada",
+      "plan": "Nome do esquema",
+      "planA": "Plano A",
+      "title": "transferência em"
+    },
+    "transfer_out": {
+      "amount": "Valor da transferência",
+      "title": "transferir",
+      "to": "equilibrar",
+      "transferable_balance": "O saldo pode ser transferido"
+    },
+    "yesterdays_balance": "O saldo de ontem",
+    "yesterdays_earnings": "Lucro de ontem"
+  },
+  "index": {
+    "analysis": "análise de dados",
+    "more": "Todas as listas",
+    "rise_range": "Aumentar",
+    "stock_market": "negociação no mercado de ações",
+    "with_yesterday": "Do que ontem"
+  },
+  "login": {
+    "account": "Conta",
+    "forget": "esqueça a senha",
+    "login": "Conecte-se",
+    "password": "senha",
+    "service": "Entre em contato com o atendimento ao cliente",
+    "sign_up": "Abra uma conta"
+  },
+  "me": {
+    "yesterdays_earnings": "Ganhos de ontem",
+    "accumulated_earnings": "Renda acumulada",
+    "amount": "Quantia",
+    "auth": {
+      "back": "Clique para fazer upload do verso",
+      "front": "Clique para fazer upload da frente",
+      "front_and_back": "Carteira de identidade frente e verso",
+      "id_card": "número de identificação",
+      "name": "Nome",
+      "submit": "Enviar certificação",
+      "title": "Verificado"
+    },
+    "balance": "Saldo da conta",
+    "download": {
+      "title": "Baixar aplicativo"
+    },
+    "language": {
+      "current": "Chinês simplificado",
+      "title": "Português"
+    },
+    "log_out": "desistir",
+    "member": "Membro comum",
+    "message": {
+      "details": "verifique os detalhes",
+      "title": "notificação"
+    },
+    "payment_method": {
+      "binding": "vinculativo",
+      "title": "Forma de pagamento",
+      "type": {
+        "1": "cartão do banco",
+        "2": "USDT"
+      }
+    },
+    "recharge": "transferência em",
+    "recharge_record": {
+      "title": "Registro de recarga",
+      "type": {
+        "1": "Depósito com cartão bancário",
+        "2": "Carteira USDT"
+      }
+    },
+    "secure": {
+      "change_login": {
+        "confirm_new_password": "Confirme a nova senha de login",
+        "confirm_old_password": "Confirme a senha de login original",
+        "new_password": "Nova senha de login",
+        "old_password": "Senha de login original",
+        "title": "Alterar senha de login"
+      },
+      "change_payment": {
+        "confirm_new_password": "Confirme a nova senha de pagamento",
+        "confirm_old_password": "Confirme a senha de pagamento original",
+        "new_password": "Nova senha de pagamento",
+        "old_password": "Senha de pagamento original",
+        "title": "Alterar senha de pagamento"
+      },
+      "confirm": "Confirme as alterações",
+      "phone": "Número de telefone",
+      "title": "Conta e segurança"
+    },
+    "service": {
+      "1": "O atendimento ao cliente Xiaoyi está sempre disponível ~",
+      "2": "Se você tiver alguma dúvida ou sugestão, não hesite em nos contatar!"
+    },
+    "state": "estado",
+    "time": "tempo",
+    "title": "Centro pessoal",
+    "todays_earnings": "Os ganhos de hoje",
+    "type": "tipo",
+    "withdrawal": "transferir",
+    "withdrawal_record": {
+      "title": "Registro de retirada",
+      "service_charge": "Taxas de processamento",
+      "actual_receipt": "Chegada real",
+      "successful": "Aplicação com sucesso",
+      "under_review": "Em revisão",
+      "failed": "Falha na auditoria",
+      "type": {
+        "1": "Levantamento de cartão",
+        "2": "Carteira para USDT"
+      }
+    }
+  },
+  "order": {
+    "buy_up": "Comprar rose",
+    "buy_of_fall": "comprar caiu",
+    "buying_price": "Preço de compra",
+    "buying_time": "Ganhando tempo",
+    "expected_income": "Receita estimada",
+    "history": "Detalhes históricos",
+    "hold_order": "Ordem de posição",
+    "order_time": "hora do pedido",
+    "profit_and_loss": "Relação de lucros e perdas",
+    "purchase_amount": "preço de compra",
+    "remaining_time": "tempo restante",
+    "settlement_time": "hora de liquidação",
+    "title": "ordem de negociação"
+  },
+  "popup": {
+    "confrim": "Claro",
+    "content": "Este site será atualizado e mantido às 20h da noite de 25 de agosto de 2023. Pedimos desculpas pelo inconveniente.",
+    "notice": "anúncio"
+  },
+  "recommend": {
+    "content": "Recomende e ganhe dinheiro de presente",
+    "copy": "Copiar código de referência",
+    "first": "Compartilhe seu código de referência e obtenha",
+    "last": "ações grátis",
+    "reward": "$ 10 dólares",
+    "share": "compartilhar",
+    "title": "Recomendado educadamente"
+  },
+  "register": {
+    "account": "nome de usuário",
+    "confirm_pay_pwd": "Confirme a senha de pagamento",
+    "confirm_pwd": "Confirme sua senha",
+    "email": "E-mail",
+    "id_card": "carteira de identidade",
+    "invitation_code": "Código de Convite",
+    "login": "Já tem uma conta?",
+    "name": "Nome",
+    "password": "senha",
+    "pay_pwd": "Senha de pagamento",
+    "phone": "número de telefone",
+    "sign_up": "Abra uma conta"
+  },
+  "trading": {
+    "avg": "média",
+    "avg_vol": "Vol médio",
+    "buy": {
+      "all": "todos os fundos",
+      "amount": "Quantia",
+      "amount_available": "Quantia disponível",
+      "anticipated_yield": "Receita estimada",
+      "breed": "Variedade",
+      "earning_yield": "taxa de retorno",
+      "other": "Outro montante",
+      "real_price": "preço em tempo real",
+      "service_charge": "taxa de manuseio",
+      "settlement_time": "hora de liquidação"
+    },
+    "buy_to_fall": "Comprar ou vender",
+    "buy_up": "Comprar",
+    "k_line": "linha k",
+    "market": "Mercado",
+    "max": "Altíssima",
+    "min": "mais baixo",
+    "real_time": "negociação em tempo real",
+    "submit": "Enviar pedido",
+    "undulate": "flutuação",
+    "vloume": "Volume"
   }
 }

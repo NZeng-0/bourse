@@ -1,14 +1,268 @@
 {
-  "auth": {
-    "title": "Kimlik doğrulama",
-    "name": "ad",
-    "id_card": "Kimlik numarası",
-    "front_and_back": "Kimlik kartının ön ve arka yüzü",
-    "front": "Önden yükle'ye tıklayın",
-    "back": "Geri yükle'yi tıklayın",
-    "submit": "için gönderin"
+  "assets": {
+    "amount": "toplam bakiye",
+    "head": "Kayıt",
+    "recharge": {
+      "bank": {
+        "account": "Ödeme hesap numarası",
+        "account_opening_branch": "Hesap açma noktaları",
+        "bank_of_deposit": "Mevduat bankası",
+        "name": "Alıcı adı",
+        "use": "banka kartı"
+      },
+      "method": "Lütfen bir yükleme yöntemi seçin",
+      "submit": "Siparişi Gönder",
+      "title": "tamamlamak",
+      "transfer_amount": "transfer miktarı",
+      "transfer_remarks": "PS'yi aktar",
+      "upload_credentials": "sertifika yükle",
+      "usdt": {
+        "use": "USDT"
+      }
+    },
+    "title": "Çantam",
+    "withdrawal": {
+      "account": "hesap",
+      "amount": "Para Çekme Tutarı",
+      "balance": "Denge",
+      "bank": {
+        "bank_card_number": "Lütfen banka kartı numarasını girin",
+        "bank_name": "Lütfen banka adını girin",
+        "bank_of_deposit": "Lütfen hesap açacağınız bankayı giriniz",
+        "name": "Lütfen adınızı yazın",
+        "title": "Banka kartını bağla"
+      },
+      "binding": "Henüz hiçbir para çekme hesabı bağlanmadı",
+      "btn": "Para çekme hesabını bağla",
+      "confirm": "geri çekilmek",
+      "method": "Lütfen bir para çekme yöntemi seçin",
+      "password": "Şifreyi geri çek",
+      "service_charge": "Hizmet bedeli",
+      "submit": "göndermek",
+      "tips": {
+        "1": "Para çekme tutarı limiti",
+        "2": "Para çekme süresi",
+        "3": "Şifrenizi unutursanız lütfen müşteri hizmetlerine başvurun."
+      },
+      "title": "geri çekilmek",
+      "usdt": {
+        "submit": "göndermek",
+        "title": "USDT hesabını bağla",
+        "wallet_account": "Lütfen cüzdan hesabını girin"
+      }
+    }
   },
-  "language": {
-    "title": "Dili değiştir"
+  "footer": {
+    "assets": "varlıklar",
+    "fortune": "finansal Yönetim",
+    "index": "ön Sayfa",
+    "me": "bana ait"
+  },
+  "fortune": {
+    "accumulated_earnings": "Kümülatif gelir",
+    "all": "Tümü",
+    "annualized_income": "yıllık gelir",
+    "balance": "toplam bakiye",
+    "confirm": "Sipariş onaylamak",
+    "current_balance": "cari bakiye",
+    "current_yield": "Mevcut kazançlar",
+    "fixture_plan": "Sabit plan",
+    "historical_yield": "tarihsel getiriler",
+    "minimum_deposit": "Minimum depozito",
+    "product_name": "Ürün adı",
+    "projected_revenue": "Beklenen getiri",
+    "renewal": "Yenile",
+    "repurchase": "yeniden satın alma",
+    "state": "durum",
+    "state_type": {
+      "failed": "süresi dolmuş",
+      "underway": "devam etmekte"
+    },
+    "termination": "sonlandırma",
+    "title": "finansal Yönetim",
+    "transfer_in": {
+      "amount": "Transfer miktarı",
+      "annualized_income": "Yıllık getiri oranı",
+      "plan": "Şema adı",
+      "planA": "A Planı",
+      "title": "içeriye transfer et"
+    },
+    "transfer_out": {
+      "amount": "Transfer miktarı",
+      "title": "dışarı aktarma",
+      "to": "dengelemek",
+      "transferable_balance": "Bakiye aktarılabilir"
+    },
+    "yesterdays_balance": "Dünkü bakiye",
+    "yesterdays_earnings": "Dünkü kazanç"
+  },
+  "index": {
+    "analysis": "veri analizi",
+    "more": "Tüm listeler",
+    "rise_range": "Arttırmak",
+    "stock_market": "borsa ticareti",
+    "with_yesterday": "Dünden"
+  },
+  "login": {
+    "account": "Hesap",
+    "forget": "şifreyi unut",
+    "login": "Giriş yapmak",
+    "password": "şifre",
+    "service": "Müşteri Hizmetleriyle İletişime Geçin",
+    "sign_up": "Hesap aç"
+  },
+  "me": {
+    "accumulated_earnings": "Kümülatif gelir",
+    "amount": "Miktar",
+    "auth": {
+      "back": "Arka tarafı yüklemek için tıklayın",
+      "front": "Ön tarafı yüklemek için tıklayın",
+      "front_and_back": "Kimlik kartının ön ve arka yüzü",
+      "id_card": "kimlik Numarası",
+      "name": "İsim",
+      "submit": "Sertifikayı gönder",
+      "title": "Doğrulandı"
+    },
+    "balance": "Hesap bakiyesi",
+    "download": {
+      "title": "Uygulama indirme"
+    },
+    "language": {
+      "current": "Basitleştirilmiş Çince",
+      "title": "Türkçe"
+    },
+    "log_out": "çıkış yapmak",
+    "member": "Sıradan üye",
+    "message": {
+      "details": "ayrıntıları kontrol et",
+      "title": "bildiri"
+    },
+    "payment_method": {
+      "binding": "bağlayıcı",
+      "title": "ödeme yöntemi",
+      "type": {
+        "1": "banka kartı",
+        "2": "USDT"
+      }
+    },
+    "recharge": "içeriye transfer et",
+    "recharge_record": {
+      "title": "Şarj kaydı",
+      "type": {
+        "1": "Banka kartıyla para yatırma",
+        "2": "USDT cüzdanı"
+      }
+    },
+    "secure": {
+      "change_login": {
+        "confirm_new_password": "Yeni oturum açma şifresini onaylayın",
+        "confirm_old_password": "Orijinal oturum açma parolasını onaylayın",
+        "new_password": "Yeni giriş şifresi",
+        "old_password": "Orijinal giriş şifresi",
+        "title": "Giriş şifresini değiştir"
+      },
+      "change_payment": {
+        "confirm_new_password": "Yeni ödeme şifresini onaylayın",
+        "confirm_old_password": "Orijinal ödeme şifresini onaylayın",
+        "new_password": "Yeni ödeme şifresi",
+        "old_password": "Orijinal ödeme şifresi",
+        "title": "Ödeme şifresini değiştir"
+      },
+      "confirm": "Değişiklikleri onaylayın",
+      "phone": "Telefon numarası",
+      "title": "Hesap ve güvenlik"
+    },
+    "service": {
+      "1": "Müşteri hizmetleri Xiaoyi her zaman orada~",
+      "2": "Herhangi bir sorunuz veya öneriniz varsa lütfen bizimle iletişime geçmekten çekinmeyin!"
+    },
+    "state": "durum",
+    "time": "zaman",
+    "title": "Kişisel merkez",
+    "todays_earnings": "Bugünkü kazanç",
+    "type": "tip",
+    "withdrawal": "dışarı aktarma",
+    "withdrawal_record": {
+      "actual_receipt": "Gerçek varış",
+      "failed": "Denetim hatası",
+      "service_charge": "Hizmet bedeli",
+      "successful": "Başvuru başarılı",
+      "title": "Para çekme kaydı",
+      "type": {
+        "1": "Banka kartından nakit çekme",
+        "2": "USDT cüzdanı"
+      },
+      "under_review": "inceleme altında"
+    },
+    "yesterdays_earnings": "Dünkü kazanç"
+  },
+  "order": {
+    "buy_of_fall": "Satın al veya sat",
+    "buy_up": "Hepsini satın al",
+    "buying_price": "Alış fiyatı",
+    "buying_time": "Zaman satın alma",
+    "expected_income": "Tahmini gelir",
+    "history": "Tarihsel ayrıntılar",
+    "hold_order": "Konum sırası",
+    "order_time": "sipariş zamanı",
+    "profit_and_loss": "Kâr ve zarar oranı",
+    "purchase_amount": "satın alma bedeli",
+    "remaining_time": "kalan zaman",
+    "settlement_time": "ödeme zamanı",
+    "title": "ticaret emri"
+  },
+  "popup": {
+    "confrim": "Elbette",
+    "content": "Bu site 25 Ağustos 2023 akşamı saat 20:00'da yenilenecek ve bakımı yapılacaktır. Verdiğimiz rahatsızlıktan dolayı özür dileriz.",
+    "notice": "duyuru"
+  },
+  "recommend": {
+    "content": "Tavsiye edin ve hediye parası kazanın",
+    "copy": "Yönlendirme kodunu kopyala",
+    "first": "Referans kodunuzu paylaşın ve kazanın",
+    "last": "ücretsiz stoklar",
+    "reward": "10 ABD Doları",
+    "share": "paylaşmak",
+    "title": "Kibarca tavsiye edildi"
+  },
+  "register": {
+    "account": "Kullanıcı adı",
+    "confirm_pay_pwd": "Ödeme şifresini onaylayın",
+    "confirm_pwd": "Şifreyi Onayla",
+    "email": "E-posta",
+    "id_card": "kimlik kartı",
+    "invitation_code": "Davet Kodu",
+    "login": "Zaten bir hesabın var mı? Giriş yap",
+    "name": "İsim",
+    "password": "şifre",
+    "pay_pwd": "Ödeme şifresi",
+    "phone": "telefon numarası",
+    "sign_up": "Hesap aç"
+  },
+  "trading": {
+    "avg": "ortalama",
+    "avg_vol": "Ort.Hacim",
+    "buy": {
+      "all": "tüm fonlar",
+      "amount": "Miktar",
+      "amount_available": "Mevcut miktar",
+      "anticipated_yield": "Tahmini gelir",
+      "breed": "Çeşitlilik",
+      "earning_yield": "getiri oranı",
+      "other": "Diğer miktar",
+      "real_price": "gerçek zamanlı fiyat",
+      "service_charge": "Hizmet bedeli",
+      "settlement_time": "ödeme zamanı"
+    },
+    "buy_to_fall": "Satın al veya sat",
+    "buy_up": "Hepsini satın al",
+    "k_line": "k çizgisi",
+    "market": "Pazar",
+    "max": "En yüksek",
+    "min": "en düşük",
+    "real_time": "gerçek zamanlı ticaret",
+    "submit": "Siparişi Gönder",
+    "undulate": "dalgalanma",
+    "vloume": "Hacim"
   }
 }

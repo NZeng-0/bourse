@@ -57,14 +57,3 @@ function getBgStyle() {
     <TheFooter :index="4" />
   </div>
 </template>
-
-<style scoped>
-p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  word-break: break-all;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-</style>

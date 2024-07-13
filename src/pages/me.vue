@@ -30,7 +30,7 @@ const menu = [
   {
     title: `${t('me.language.title')}`,
     icon: '../assets/images/me/menu/language.png',
-    right: '简体中文',
+    right: t('me.language.current'),
     to: 'language',
   },
   {

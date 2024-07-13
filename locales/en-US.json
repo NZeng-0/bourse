@@ -1,22 +1,268 @@
 {
   "login": {
     "account": "Account",
-    "password": "password",
-    "forget": "forget",
-    "login": "Log in",
-    "sign_up": "register",
-    "service": "customer service"
+    "password": "Password",
+    "forget": "Forgot Password",
+    "login": "Login",
+    "sign_up": "Sign Up",
+    "service": "Contact Customer Service"
   },
-  "auth": {
-    "title": "Verified",
+  "register": {
+    "account": "Username",
+    "password": "Password",
+    "confirm_pwd": "Confirm Password",
+    "pay_pwd": "Payment Password",
+    "confirm_pay_pwd": "Confirm Payment Password",
     "name": "Name",
-    "id_card": "identification number",
-    "front_and_back": "ID card front and back",
-    "front": "Click to upload the front",
-    "back": "Click to upload the reverse side",
-    "submit": "Submit certification"
+    "id_card": "ID Card",
+    "phone": "Phone Number",
+    "email": "Email",
+    "invitation_code": "Invitation Code",
+    "sign_up": "Sign Up",
+    "login": "Already have an account, login"
   },
-  "language": {
-    "title": "Change language"
+  "index": {
+    "with_yesterday": "Compared to Yesterday",
+    "stock_market": "Stock Market Trading",
+    "more": "All Lists",
+    "rise_range": "Rise Range",
+    "analysis": "Data Analysis"
+  },
+  "footer": {
+    "index": "Home",
+    "assets": "Assets",
+    "fortune": "Finance",
+    "me": "Me"
+  },
+  "trading": {
+    "k_line": "K-Line",
+    "undulate": "Fluctuation",
+    "real_time": "Real-Time Trading",
+    "avg": "Average",
+    "max": "Highest",
+    "min": "Lowest",
+    "vloume": "Volume",
+    "avg_vol": "Avg. Vol.",
+    "market": "Market",
+    "buy_up": "Buy to Rise",
+    "buy_to_fall": "Buy to Fall",
+    "submit": "Submit Order",
+    "buy": {
+      "settlement_time": "Settlement Time",
+      "amount": "Amount",
+      "all": "Total Funds",
+      "other": "Other Amount",
+      "breed": "Type",
+      "real_price": "Real-Time Price",
+      "anticipated_yield": "Anticipated Earnings",
+      "amount_available": "Available Amount",
+      "service_charge": "Service Charge",
+      "earning_yield": "Earnings Yield"
+    }
+  },
+  "order": {
+    "title": "Trading Order",
+    "hold_order": "Position Order",
+    "history": "Transaction History",
+    "buy_up": "Buy to Rise",
+    "buy_of_fall": "Buy to Fall",
+    "purchase_amount": "Purchase Amount",
+    "buying_price": "Buying Price",
+    "order_time": "Order Time",
+    "remaining_time": "Remaining Time",
+    "expected_income": "Expected Earnings",
+    "profit_and_loss": "Profit and Loss Ratio",
+    "buying_time": "Buying Time",
+    "settlement_time": "Settlement Time"
+  },
+  "popup": {
+    "notice": "Announcement",
+    "content": "Our website will be upgraded and maintained on August 25, 2023, at 20:00. We apologize for any inconvenience caused.",
+    "confrim": "Confirm"
+  },
+  "assets": {
+    "title": "My Wallet",
+    "amount": "Total Balance",
+    "head": "Record",
+    "recharge": {
+      "title": "Recharge",
+      "method": "Please choose a recharge method",
+      "submit": "Submit Order",
+      "transfer_amount": "Transfer Amount",
+      "transfer_remarks": "Transfer Remarks",
+      "upload_credentials": "Upload Credentials",
+      "usdt": {
+        "use": "USDT"
+      },
+      "bank": {
+        "use": "Bank Card",
+        "bank_of_deposit": "Deposit Bank",
+        "account_opening_branch": "Account Opening Branch",
+        "account": "Receiving Account",
+        "name": "Receiving Name"
+      }
+    },
+    "withdrawal": {
+      "title": "Withdrawal",
+      "balance": "Balance",
+      "amount": "Withdrawal Amount",
+      "password": "Withdrawal Password",
+      "service_charge": "Service Charge",
+      "binding": "Your withdrawal account is not bound yet",
+      "btn": "Bind Withdrawal Account",
+      "account": "Account",
+      "confirm": "Withdraw",
+      "submit": "Submit",
+      "method": "Please choose a withdrawal method",
+      "tips": {
+        "1": "Withdrawal Amount Limit",
+        "2": "Withdrawal Time",
+        "3": "If you forget your password, please contact customer service"
+      },
+      "bank": {
+        "title": "Bind Bank Card",
+        "name": "Please enter your name",
+        "bank_name": "Please enter the bank name",
+        "bank_of_deposit": "Please enter the deposit bank",
+        "bank_card_number": "Please enter the bank card number"
+      },
+      "usdt": {
+        "title": "Bind USDT Account",
+        "wallet_account": "Please enter your wallet account",
+        "submit": "Submit"
+      }
+    }
+  },
+  "fortune": {
+    "title": "Finance",
+    "balance": "Total Balance",
+    "yesterdays_earnings": "Earnings Yesterday",
+    "accumulated_earnings": "Accumulated Earnings",
+    "yesterdays_balance": "Balance Yesterday",
+    "fixture_plan": "Fixed Plan",
+    "current_yield": "Current Earnings",
+    "historical_yield": "Historical Earnings",
+    "product_name": "Product Name",
+    "minimum_deposit": "Minimum Deposit",
+    "annualized_income": "Annualized Income",
+    "projected_revenue": "Projected Revenue",
+    "state": "Status",
+    "state_type": {
+      "underway": "Ongoing",
+      "failed": "Expired"
+    },
+    "termination": "Termination",
+    "renewal": "Renewal",
+    "repurchase": "Repurchase",
+    "all": "All",
+    "confirm": "Confirm Order",
+    "current_balance": "Current Balance",
+    "transfer_in": {
+      "title": "Transfer In",
+      "plan": "Plan Name",
+      "planA": "Plan A",
+      "annualized_income": "Annualized Yield",
+      "amount": "Transfer Amount"
+    },
+    "transfer_out": {
+      "title": "Transfer Out",
+      "transferable_balance": "Transferable Balance",
+      "to": "To Balance",
+      "amount": "Transfer Amount"
+    }
+  },
+  "recommend": {
+    "title": "Recommendation Reward",
+    "content": "Earn rewards by recommending",
+    "reward": "$10",
+    "first": "Share your referral code and get ",
+    "last": " free stocks",
+    "copy": "Copy Referral Code",
+    "share": "Share"
+  },
+  "me": {
+    "title": "Personal Center",
+    "log_out": "Logout",
+    "member": "Regular Member",
+    "balance": "Account Balance",
+    "recharge": "Deposit",
+    "withdrawal": "Withdraw",
+    "yesterdays_earnings": "Earnings Yesterday",
+    "todays_earnings": "Earnings Today",
+    "accumulated_earnings": "Accumulated Earnings",
+    "time": "Time",
+    "amount": "Amount",
+    "type": "Type",
+    "state": "Status",
+    "withdrawal_record": {
+      "title": "Withdrawal Record",
+      "service_charge": "Service Charge",
+      "actual_receipt": "Actual Receipt",
+      "successful": "Application Successful",
+      "under_review": "Under Review",
+      "failed": "Application Failed",
+      "type": {
+        "1": "Bank Card Withdrawal",
+        "2": "USDT Wallet"
+      }
+    },
+    "recharge_record": {
+      "title": "Recharge Record",
+      "type": {
+        "1": "Bank Card Deposit",
+        "2": "USDT Wallet"
+      }
+    },
+    "payment_method": {
+      "title": "Payment Method",
+      "binding": "Binding",
+      "type": {
+        "1": "Bank Card",
+        "2": "USDT"
+      }
+    },
+    "auth": {
+      "title": "Real Name Authentication",
+      "name": "Name",
+      "id_card": "ID Card Number",
+      "front_and_back": "ID Card Front and Back",
+      "front": "Click to Upload Front",
+      "back": "Click to Upload Back",
+      "submit": "Submit Authentication"
+    },
+    "language": {
+      "title": "Change Language",
+      "current": "English"
+    },
+    "message": {
+      "title": "Message Notification",
+      "details": "View Details"
+    },
+    "secure": {
+      "title": "Account and Security",
+      "phone": "Phone Number",
+      "confirm": "Confirm Modification",
+      "change_login": {
+        "title": "Change Login Password",
+        "old_password": "Old Login Password",
+        "confirm_old_password": "Confirm Old Login Password",
+        "new_password": "New Login Password",
+        "confirm_new_password": "Confirm New Login Password"
+      },
+      "change_payment": {
+        "title": "Change Payment Password",
+        "old_password": "Old Payment Password",
+        "confirm_old_password": "Confirm Old Payment Password",
+        "new_password": "New Payment Password",
+        "confirm_new_password": "Confirm New Payment Password"
+      }
+    },
+    "download": {
+      "title": "App Download"
+    },
+    "service": {
+      "1": "Customer service is always here~",
+      "2": "If you have any questions or suggestions, please feel free to consult!"
+    }
   }
 }

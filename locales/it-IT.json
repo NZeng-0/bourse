@@ -1,14 +1,268 @@
 {
-  "auth": {
-    "title": "generalità",
-    "name": "nomi",
-    "id_card": "Numero d’identità",
-    "front_and_back": "Carta d’identità a testa alta",
-    "front": "Cliccare sull’immagine positiva",
-    "back": "Cliccare sul rovescio",
-    "submit": "presentazione"
+  "login": {
+    "account": "Conto",
+    "password": "Password",
+    "forget": "dimenticato password",
+    "login": "Login",
+    "sign_up": "Apertura account",
+    "service": "Contattare il servizio clienti"
   },
-  "language": {
-    "title": "Cambia la lingua"
+  "register": {
+    "account": "Username",
+    "password": "Password",
+    "confirm_pwd": "Conferma password",
+    "pay_pwd": "Password di pagamento",
+    "confirm_pay_pwd": "Confirm payment password",
+    "name": "Nome",
+    "id_card": "carta d'identità",
+    "phone": "numero di telefono",
+    "email": "Casella postale elettronica",
+    "invitation_code": "codice invito",
+    "sign_up": "Apertura account",
+    "login": "Ho già un account, accedi"
+  },
+  "index": {
+    "with_yesterday": "Rispetto a ieri",
+    "stock_market": "Stock market trading",
+    "more": "Tutte le liste",
+    "rise_range": "increase",
+    "analysis": "Analisi dati"
+  },
+  "footer": {
+    "index": "Homepage",
+    "assets": "Attivo",
+    "fortune": "Gestione finanziaria",
+    "me": "Mio"
+  },
+  "trading": {
+    "k_line": "k-line",
+    "undulate": "fluttuante",
+    "real_time": "Real time trading",
+    "avg": "Media",
+    "max": "Highest",
+    "min": "minimo",
+    "vloume": "Vloume",
+    "avg_vol": "Avg.Vol",
+    "market": "Market",
+    "buy_up": "Buy up",
+    "buy_to_fall": "Buy down",
+    "submit": "Invia ordine",
+    "buy": {
+      "settlement_time": "Settlement time",
+      "amount": "importo",
+      "all": "Tutti i fondi",
+      "other": "altri importi",
+      "breed": "Varietà",
+      "real_price": "Prezzo in tempo reale",
+      "anticipated_yield": "rendimento atteso",
+      "amount_available": "Importo disponibile",
+      "service_charge": "spese di gestione",
+      "earning_yield": "Rendimento"
+    }
+  },
+  "order": {
+    "title": "Transaction Order",
+    "hold_order": "Ordine di posizione",
+    "history": "Dettagli storici",
+    "buy_up": "Buy up",
+    "buy_of_fall": "Buy down",
+    "purchase_amount": "Purchase amount",
+    "buying_price": "Prezzo d'acquisto",
+    "order_time": "Tempo dell'ordine",
+    "remaining_time": "Resting time",
+    "expected_income": "Entrate previste",
+    "profit_and_loss": "Rapporto profitti e perdite",
+    "buying_time": "buying time",
+    "settlement_time": "Settlement time"
+  },
+  "popup": {
+    "notice": "Annuncio",
+    "content": "Il nostro sito web sarà aggiornato e mantenuto alle ore 20: 00 del 25 agosto 2023.",
+    "confrim": "Conferma"
+  },
+  "assets": {
+    "title": "Il mio portafoglio",
+    "amount": "saldo totale",
+    "head": "Record",
+    "recharge": {
+      "title": "Ricarica",
+      "method": "Si prega di scegliere un metodo di ricarica",
+      "submit": "Invia ordine",
+      "transfer_amount": "Transfer amount",
+      "transfer_remarks": "Note di trasferimento",
+      "upload_credentials": "Caricare credenziali",
+      "usdt": {
+        "use": "USDT"
+      },
+      "bank": {
+        "use": "carta di credito",
+        "bank_of_deposit": "Banca di apertura del conto",
+        "account_opening_branch": "Filiale di apertura del conto",
+        "account": "Conto ricevente",
+        "name": "Nome ricevente"
+      }
+    },
+    "withdrawal": {
+      "title": "Ritiro",
+      "balance": "Saldo",
+      "amount": "importo del prelievo",
+      "password": "Password di prelievo",
+      "service_charge": "spese di gestione",
+      "binding": "Il conto di prelievo non è stato ancora vincolato",
+      "btn": "Conto di prelievo vincolante",
+      "account": "Conto",
+      "confirm": "ritiro",
+      "submit": "submit",
+      "method": "Selezionare il metodo di prelievo",
+      "tips": {
+        "1": "Limite di prelievo",
+        "2": "Tempo di ritiro",
+        "3": "Se si dimentica la password, si prega di contattare il servizio clienti"
+      },
+      "bank": {
+        "title": "Bind Bank Card",
+        "name": "Inserisci il tuo nome",
+        "bank_name": "Inserire il nome della banca",
+        "bank_of_deposit": "Inserire la banca di deposito",
+        "bank_card_number": "Inserisci il numero della tua carta di credito"
+      },
+      "usdt": {
+        "title": "Bind USDT Account",
+        "wallet_account": "Inserisci il tuo account wallet",
+        "submit": "Invia"
+      }
+    }
+  },
+  "fortune": {
+    "title": "Gestione finanziaria",
+    "balance": "Saldo totale",
+    "yesterdays_earnings": "I guadagni di ieri",
+    "accumulated_earnings": "Accumulated earnings",
+    "yesterdays_balance": "Saldo di ieri",
+    "fixture_plan": "Piano fisso",
+    "current_yield": "Current yield",
+    "historical_yield": "Rendimento storico",
+    "product_name": "Nome prodotto",
+    "minimum_deposit": "Deposito minimo",
+    "annualized_income": "reddito annualizzato",
+    "projected_revenue": "Ritorno previsto",
+    "state": "stato",
+    "state_type": {
+      "underway": "In corso",
+      "failed": "scaduto"
+    },
+    "termination": "Termina",
+    "renewal": "rinnovare",
+    "repurchase": "riacquisto",
+    "all": "tutti",
+    "confirm": "conferma ordine",
+    "current_balance": "Saldo corrente",
+    "transfer_in": {
+      "title": "Trasferimento",
+      "plan": "Nome schema",
+      "planA": "Piano A",
+      "annualized_income": "tasso di rendimento annuo",
+      "amount": "Importo di trasferimento"
+    },
+    "transfer_out": {
+      "title": "Trasferimento",
+      "transferable_balance": "Saldo trasferibile",
+      "to": "To balance",
+      "amount": "Importo di trasferimento"
+    }
+  },
+  "recommend": {
+    "title": "Regali raccomandati",
+    "content": "Raccomanda di guadagnare denaro in regalo",
+    "reward": "10 dollari",
+    "first": "Condividi il tuo codice di riferimento e ottenelo",
+    "last": "Stock libero di",
+    "copy": "Copia codice raccomandazione",
+    "share": "Share"
+  },
+  "me": {
+    "title": "Centro personale",
+    "log_out": "Esci",
+    "member": "membro ordinario",
+    "balance": "Saldo del conto",
+    "recharge": "Trasferimento in",
+    "withdrawal": "trasferimento fuori",
+    "yesterdays_earnings": "I guadagni di ieri",
+    "todays_earnings": "Today's earnings",
+    "accumulated_earnings": "Accumulated earnings",
+    "time": "ora",
+    "amount": "importo",
+    "type": "Tipo",
+    "state": "stato",
+    "withdrawal_record": {
+      "title": "Resoconto dei prelievi",
+      "service_charge": "spese di gestione",
+      "actual_receipt": "Ricevuta effettiva",
+      "successful": "Domanda riuscita",
+      "under_review": "Sotto revisione",
+      "failed": "Audit fallito",
+      "type": {
+        "1": "Prelievo con carta bancaria",
+        "2": "USDT Wallet"
+      }
+    },
+    "recharge_record": {
+      "title": "Recharge Record",
+      "type": {
+        "1": "Deposito con carta di credito",
+        "2": "USDT Wallet"
+      }
+    },
+    "payment_method": {
+      "title": "Metodo di pagamento",
+      "binding": "Legatura",
+      "type": {
+        "1": "Carta bancaria",
+        "2": "USDT"
+      }
+    },
+    "auth": {
+      "title": "Autenticazione del nome reale",
+      "name": "Nome",
+      "id_card": "numero della carta d'identità",
+      "front_and_back": "Anteriore e posteriore della carta d'identità",
+      "front": "Click to upload the front",
+      "back": "Clicca per caricare il retro",
+      "submit": "Invia autenticazione"
+    },
+    "language": {
+      "title": "Cambia lingua",
+      "current": "Italiano"
+    },
+    "message": {
+      "title": "Notifica del messaggio",
+      "details": "Visualizza dettagli"
+    },
+    "secure": {
+      "title": "Conto e sicurezza",
+      "phone": "numero di telefono",
+      "confirm": "confermare le modifiche",
+      "change_login": {
+        "title": "Cambia password di accesso",
+        "old_password": "Password di accesso originale",
+        "confirm_old_password": "Confermare la password di accesso originale",
+        "new_password": "Nuova password di accesso",
+        "confirm_new_password": "Conferma la nuova password di accesso"
+      },
+      "change_payment": {
+        "title": "Cambia password di pagamento",
+        "old_password": "Password di pagamento originale",
+        "confirm_old_password": "Confermare la password di pagamento originale",
+        "new_password": "Nuova password di pagamento",
+        "confirm_new_password": "Confermare la nuova password di pagamento"
+      }
+    },
+    "download": {
+      "title": "App Download"
+    },
+    "service": {
+      "1": "Servizio clienti Xiaoyi è stato qui tutto il tempo ~",
+      "2": "Se avete domande o suggerimenti, non esitate a consultare"
+    }
   }
 }

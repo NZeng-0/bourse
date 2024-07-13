@@ -1,14 +1,268 @@
 {
-  "auth": {
-    "title": "実名認証",
-    "name": "名前",
-    "id_card": "住民登録番号",
-    "front_and_back": "身分証明書の表と裏",
-    "front": "アップロードの正面をクリックします",
-    "back": "アップロードの反面をクリックします",
-    "submit": "提出"
+  "login": {
+    "account": "アカウント",
+    "password": "パスワード",
+    "forget": "パスワードを忘れた",
+    "login": "ログイン",
+    "sign_up": "口座開設",
+    "service": "カスタマーサービスに連絡"
   },
-  "language": {
-    "title": "言語変更"
+  "register": {
+    "account": "ユーザー名",
+    "password": "パスワード",
+    "confirm_pwd": "パスワードの確認",
+    "pay_pwd": "支払いパスワード",
+    "confirm_pay_pwd": "支払いパスワードの確認",
+    "name": "氏名",
+    "id_card": "身分証明書",
+    "phone": "携帯番号",
+    "email": "メールアドレス",
+    "invitation_code": "招待コード",
+    "sign_up": "口座開設",
+    "login": "既にアカウントをお持ちの方は、ログインしてください"
+  },
+  "index": {
+    "with_yesterday": "昨日比",
+    "stock_market": "株式市場取引",
+    "more": "すべてのリスト",
+    "rise_range": "上昇幅",
+    "analysis": "データ分析"
+  },
+  "footer": {
+    "index": "ホーム",
+    "assets": "資産",
+    "fortune": "資産運用",
+    "me": "マイページ"
+  },
+  "trading": {
+    "k_line": "ロウソク足",
+    "undulate": "変動",
+    "real_time": "リアルタイム取引",
+    "avg": "平均",
+    "max": "最高",
+    "min": "最低",
+    "vloume": "出来高",
+    "avg_vol": "平均出来高",
+    "market": "市場",
+    "buy_up": "買い",
+    "buy_to_fall": "売り",
+    "submit": "注文を送信",
+    "buy": {
+      "settlement_time": "決済時間",
+      "amount": "金額",
+      "all": "全額",
+      "other": "その他の金額",
+      "breed": "銘柄",
+      "real_price": "実勢価格",
+      "anticipated_yield": "予想収益",
+      "amount_available": "利用可能額",
+      "service_charge": "手数料",
+      "earning_yield": "収益率"
+    }
+  },
+  "order": {
+    "title": "取引注文",
+    "hold_order": "保有注文",
+    "history": "取引履歴",
+    "buy_up": "買い注文",
+    "buy_of_fall": "売り注文",
+    "purchase_amount": "購入金額",
+    "buying_price": "購入価格",
+    "order_time": "注文時間",
+    "remaining_time": "残り時間",
+    "expected_income": "予想収益",
+    "profit_and_loss": "損益比率",
+    "buying_time": "購入時間",
+    "settlement_time": "決済時間"
+  },
+  "popup": {
+    "notice": "お知らせ",
+    "content": "当サイトは2023年8月25日20:00にアップグレードメンテナンスを行います。ご不便をおかけし、誠に申し訳ございません。",
+    "confrim": "確認"
+  },
+  "assets": {
+    "title": "私の財布",
+    "amount": "総残高",
+    "head": "記録",
+    "recharge": {
+      "title": "入金",
+      "method": "入金方法を選択してください",
+      "submit": "注文を送信",
+      "transfer_amount": "振込金額",
+      "transfer_remarks": "振込備考",
+      "upload_credentials": "証明書類をアップロード",
+      "usdt": {
+        "use": "USDT"
+      },
+      "bank": {
+        "use": "銀行カード",
+        "bank_of_deposit": "口座開設銀行",
+        "account_opening_branch": "口座開設支店",
+        "account": "受取口座",
+        "name": "受取人名"
+      }
+    },
+    "withdrawal": {
+      "title": "出金",
+      "balance": "残高",
+      "amount": "出金金額",
+      "password": "出金パスワード",
+      "service_charge": "手数料",
+      "binding": "まだ出金口座を登録していません",
+      "btn": "出金口座を登録",
+      "account": "口座",
+      "confirm": "出金",
+      "submit": "送信",
+      "method": "出金方法を選択してください",
+      "tips": {
+        "1": "出金金額の制限",
+        "2": "出金時間",
+        "3": "パスワードを忘れた場合はカスタマーサービスに連絡してください"
+      },
+      "bank": {
+        "title": "銀行カードを登録",
+        "name": "氏名を入力",
+        "bank_name": "銀行名を入力",
+        "bank_of_deposit": "口座開設銀行を入力",
+        "bank_card_number": "銀行カード番号を入力"
+      },
+      "usdt": {
+        "title": "USDT口座を登録",
+        "wallet_account": "ウォレットアカウントを入力",
+        "submit": "送信"
+      }
+    }
+  },
+  "fortune": {
+    "title": "資産運用",
+    "balance": "総残高",
+    "yesterdays_earnings": "昨日の収益",
+    "accumulated_earnings": "累計収益",
+    "yesterdays_balance": "昨日の残高",
+    "fixture_plan": "固定プラン",
+    "current_yield": "現在の収益",
+    "historical_yield": "過去の収益",
+    "product_name": "商品名",
+    "minimum_deposit": "最低預入額",
+    "annualized_income": "年間収益",
+    "projected_revenue": "予想収益",
+    "state": "ステータス",
+    "state_type": {
+      "underway": "進行中",
+      "failed": "期限切れ"
+    },
+    "termination": "終了",
+    "renewal": "更新",
+    "repurchase": "再購入",
+    "all": "すべて",
+    "confirm": "注文を確認",
+    "current_balance": "現在の残高",
+    "transfer_in": {
+      "title": "入金",
+      "plan": "プラン名",
+      "planA": "プランA",
+      "annualized_income": "年間収益率",
+      "amount": "入金額"
+    },
+    "transfer_out": {
+      "title": "出金",
+      "transferable_balance": "出金可能残高",
+      "to": "残高へ",
+      "amount": "出金額"
+    }
+  },
+  "recommend": {
+    "title": "紹介特典",
+    "content": "紹介で報酬を稼ぐ",
+    "reward": "10ドル",
+    "first": "あなたの紹介コードを共有して",
+    "last": "の無料株式を獲得",
+    "copy": "紹介コードをコピー",
+    "share": "共有"
+  },
+  "me": {
+    "title": "マイページ",
+    "log_out": "ログアウト",
+    "member": "一般会員",
+    "balance": "アカウント残高",
+    "recharge": "入金",
+    "withdrawal": "出金",
+    "yesterdays_earnings": "昨日の収益",
+    "todays_earnings": "今日の収益",
+    "accumulated_earnings": "累計収益",
+    "time": "時間",
+    "amount": "金額",
+    "type": "タイプ",
+    "state": "ステータス",
+    "withdrawal_record": {
+      "title": "出金履歴",
+      "service_charge": "手数料",
+      "actual_receipt": "実際の着金",
+      "successful": "申請成功",
+      "under_review": "審査中",
+      "failed": "申請失敗",
+      "type": {
+        "1": "銀行カード出金",
+        "2": "USDTウォレット"
+      }
+    },
+    "recharge_record": {
+      "title": "入金履歴",
+      "type": {
+        "1": "銀行カード入金",
+        "2": "USDTウォレット"
+      }
+    },
+    "payment_method": {
+      "title": "支払い方法",
+      "binding": "バインド",
+      "type": {
+        "1": "銀行カード",
+        "2": "USDT"
+      }
+    },
+    "auth": {
+      "title": "本人確認",
+      "name": "氏名",
+      "id_card": "身分証明書番号",
+      "front_and_back": "身分証明書の表裏",
+      "front": "表をクリックしてアップロード",
+      "back": "裏をクリックしてアップロード",
+      "submit": "認証を送信"
+    },
+    "language": {
+      "title": "言語を変更",
+      "current": "日本語"
+    },
+    "message": {
+      "title": "メッセージ通知",
+      "details": "詳細を表示"
+    },
+    "secure": {
+      "title": "アカウントとセキュリティ",
+      "phone": "電話番号",
+      "confirm": "変更を確認",
+      "change_login": {
+        "title": "ログインパスワードを変更",
+        "old_password": "古いログインパスワード",
+        "confirm_old_password": "古いログインパスワードを確認",
+        "new_password": "新しいログインパスワード",
+        "confirm_new_password": "新しいログインパスワードを確認"
+      },
+      "change_payment": {
+        "title": "支払いパスワードを変更",
+        "old_password": "古い支払いパスワード",
+        "confirm_old_password": "古い支払いパスワードを確認",
+        "new_password": "新しい支払いパスワード",
+        "confirm_new_password": "新しい支払いパスワードを確認"
+      }
+    },
+    "download": {
+      "title": "アプリをダウンロード"
+    },
+    "service": {
+      "1": "カスタマーサービスは常にここにいます~",
+      "2": "ご質問やご提案があれば、お気軽にご相談ください！"
+    }
   }
 }

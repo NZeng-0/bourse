@@ -23,13 +23,13 @@ function changeCurrent(current: number, to: string) {
       <TheInfo />
       <div mx8 wfull>
         <div mt5 flex="~" justify-between>
-          <b text-base class="text-#673BF6" @click="changeCurrent(0, 'grow/solution')">
-            {{ t('fortune.yesterdays_earnings') }}
+          <b class="text-#673BF6" text-center text-base @click="changeCurrent(0, 'grow/solution')">
+            {{ t('fortune.fixture_plan') }}
           </b>
-          <b text-base class="text-#121826" @click="changeCurrent(1, 'grow/current')">
+          <b class="text-#121826" text-center text-base @click="changeCurrent(1, 'grow/current')">
             {{ t('fortune.current_yield') }}
           </b>
-          <b text-base class="text-#121826" @click="changeCurrent(2, 'grow/histroy')">
+          <b class="text-#121826" text-center text-base @click="changeCurrent(2, 'grow/histroy')">
             {{ t('fortune.historical_yield') }}
           </b>
         </div>

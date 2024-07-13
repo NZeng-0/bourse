@@ -51,7 +51,7 @@
       "settlement_time": "结算时间",
       "amount": "金额",
       "all": "全部资金",
-      "orther": "其他金额",
+      "other": "其他金额",
       "breed": "品种",
       "real_price": "实时价格",
       "anticipated_yield": "预计收益",
@@ -145,7 +145,7 @@
     "product_name": "产品名称",
     "minimum_deposit": "最低存款",
     "annualized_income": "年化收益",
-    "projected_revenue": "预计收益",
+    "projected_revenue": "预期收益",
     "state": "状态",
     "state_type": {
       "underway": "进行中",
@@ -231,7 +231,8 @@
       "submit": "提交认证"
     },
     "language": {
-      "title": "更换语言"
+      "title": "更换语言",
+      "current": "简体中文"
     },
     "message": {
       "title": "消息通知",

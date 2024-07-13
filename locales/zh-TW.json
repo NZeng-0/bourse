@@ -1,22 +1,268 @@
 {
   "login": {
-    "account": "帳戶",
+    "account": "賬戶",
     "password": "密碼",
     "forget": "忘記密碼",
     "login": "登入",
-    "sign_up": "註冊",
-    "service": "客服"
+    "sign_up": "開戶",
+    "service": "聯繫客服"
   },
-  "auth": {
-    "title": "實名認證",
+  "register": {
+    "account": "用戶名",
+    "password": "密碼",
+    "confirm_pwd": "確認密碼",
+    "pay_pwd": "支付密碼",
+    "confirm_pay_pwd": "確認支付密碼",
     "name": "姓名",
-    "id_card": "身分證號碼",
-    "front_and_back": "身分證正反面",
-    "front": "點擊上傳正面",
-    "back": "點擊上傳反面",
-    "submit": "提交認證"
+    "id_card": "身份證",
+    "phone": "手機號碼",
+    "email": "電子郵件",
+    "invitation_code": "邀請碼",
+    "sign_up": "開戶",
+    "login": "已有賬戶，登入"
   },
-  "language": {
-    "title": "更換語言"
+  "index": {
+    "with_yesterday": "較昨日",
+    "stock_market": "股市交易",
+    "more": "所有列表",
+    "rise_range": "漲幅",
+    "analysis": "數據分析"
+  },
+  "footer": {
+    "index": "首頁",
+    "assets": "資產",
+    "fortune": "理財",
+    "me": "我的"
+  },
+  "trading": {
+    "k_line": "K線",
+    "undulate": "波動",
+    "real_time": "實時交易",
+    "avg": "平均",
+    "max": "最高",
+    "min": "最低",
+    "vloume": "Vloume",
+    "avg_vol": "Avg.Vol",
+    "market": "Market",
+    "buy_up": "買漲",
+    "buy_to_fall": "買跌",
+    "submit": "提交訂單",
+    "buy": {
+      "settlement_time": "結算時間",
+      "amount": "金額",
+      "all": "全部資金",
+      "other": "其他金額",
+      "breed": "品種",
+      "real_price": "實時價格",
+      "anticipated_yield": "預計收益",
+      "amount_available": "可用金額",
+      "service_charge": "手續費",
+      "earning_yield": "收益率"
+    }
+  },
+  "order": {
+    "title": "交易訂單",
+    "hold_order": "持倉訂單",
+    "history": "歷史明細",
+    "buy_up": "買漲",
+    "buy_of_fall": "買跌",
+    "purchase_amount": "購買金額",
+    "buying_price": "買入價格",
+    "order_time": "訂單時間",
+    "remaining_time": "剩餘時間",
+    "expected_income": "預計收益",
+    "profit_and_loss": "盈虧比例",
+    "buying_time": "買入時間",
+    "settlement_time": "結算時間"
+  },
+  "popup": {
+    "notice": "公告",
+    "content": "本站於2023年08月25日晚上20:00升級維護，帶來不便敬請諒解。",
+    "confrim": "確定"
+  },
+  "assets": {
+    "title": "我的錢包",
+    "amount": "總餘額",
+    "head": "記錄",
+    "recharge": {
+      "title": "充值",
+      "method": "請選擇充值方式",
+      "submit": "提交訂單",
+      "transfer_amount": "轉賬金額",
+      "transfer_remarks": "轉賬附言",
+      "upload_credentials": "上傳憑證",
+      "usdt": {
+        "use": "USDT"
+      },
+      "bank": {
+        "use": "銀行卡",
+        "bank_of_deposit": "開戶銀行",
+        "account_opening_branch": "開戶網點",
+        "account": "收款賬號",
+        "name": "收款姓名"
+      }
+    },
+    "withdrawal": {
+      "title": " 提現",
+      "balance": "餘額",
+      "amount": " 提現金額",
+      "password": " 提現密碼",
+      "service_charge": "手續費",
+      "binding": "還未綁定 提現賬號",
+      "btn": "綁定 提現賬號",
+      "account": "賬號",
+      "confirm": " 提現",
+      "submit": "提交",
+      "method": "請選擇 提現方式",
+      "tips": {
+        "1": " 提現金額限制",
+        "2": " 提現時間",
+        "3": "如忘記密碼請聯繫客服"
+      },
+      "bank": {
+        "title": "綁定銀行卡",
+        "name": "請輸入姓名",
+        "bank_name": "請輸入銀行名稱",
+        "bank_of_deposit": "請輸入開戶行",
+        "bank_card_number": "請輸入銀行卡號"
+      },
+      "usdt": {
+        "title": "綁定 USDT 賬號",
+        "wallet_account": "請輸入錢包賬號",
+        "submit": "提交"
+      }
+    }
+  },
+  "fortune": {
+    "title": "理財",
+    "balance": "總餘額",
+    "yesterdays_earnings": "昨日收益",
+    "accumulated_earnings": "累計收益",
+    "yesterdays_balance": "昨日餘額",
+    "fixture_plan": "固定方案",
+    "current_yield": "當前收益",
+    "historical_yield": "歷史收益",
+    "product_name": "產品名稱",
+    "minimum_deposit": "最低存款",
+    "annualized_income": "年化收益",
+    "projected_revenue": "預期收益",
+    "state": "狀態",
+    "state_type": {
+      "underway": "進行中",
+      "failed": "已到期"
+    },
+    "termination": "終止",
+    "renewal": "續期",
+    "repurchase": "重新購買",
+    "all": "所有",
+    "confirm": "確認下单",
+    "current_balance": "當前餘額",
+    "transfer_in": {
+      "title": "轉入",
+      "plan": "方案名稱",
+      "planA": "方案A",
+      "annualized_income": "年化收益率",
+      "amount": "轉入金額"
+    },
+    "transfer_out": {
+      "title": "轉出",
+      "transferable_balance": "可轉出餘額",
+      "to": "到餘額",
+      "amount": "轉出金額"
+    }
+  },
+  "recommend": {
+    "title": "推薦有禮",
+    "content": "推薦賺禮金",
+    "reward": "10美元",
+    "first": "分享您的推薦碼並獲得 ",
+    "last": " 的免費用戶",
+    "copy": "複製推薦碼",
+    "share": "分享"
+  },
+  "me": {
+    "title": "個人中心",
+    "log_out": "退出",
+    "member": "普通會員",
+    "balance": "賬戶餘額",
+    "recharge": "轉入",
+    "withdrawal": "轉出",
+    "yesterdays_earnings": "昨日收益",
+    "todays_earnings": "今日收益",
+    "accumulated_earnings": "累計收益",
+    "time": "時間",
+    "amount": "金額",
+    "type": "類型",
+    "state": "狀態",
+    "withdrawal_record": {
+      "title": " 提現記錄",
+      "service_charge": "手續費",
+      "actual_receipt": "實際到賬",
+      "successful": "申請成功",
+      "under_review": "審核中",
+      "failed": "審核失敗",
+      "type": {
+        "1": "銀行卡 提現",
+        "2": "USDT錢包"
+      }
+    },
+    "recharge_record": {
+      "title": "充值記錄",
+      "type": {
+        "1": "銀行卡入款",
+        "2": "USDT錢包"
+      }
+    },
+    "payment_method": {
+      "title": "支付方式",
+      "binding": "綁定",
+      "type": {
+        "1": "銀行卡",
+        "2": "USDT"
+      }
+    },
+    "auth": {
+      "title": "實名認證",
+      "name": "姓名",
+      "id_card": "身份證號碼",
+      "front_and_back": "身份證正反面",
+      "front": "點擊上傳正面",
+      "back": "點擊上傳反面",
+      "submit": "提交認證"
+    },
+    "language": {
+      "title": "更換語言",
+      "current": "繁體中文"
+    },
+    "message": {
+      "title": "消息通知",
+      "details": "查看詳情"
+    },
+    "secure": {
+      "title": "賬號與安全",
+      "phone": "手機號",
+      "confirm": "確認修改",
+      "change_login": {
+        "title": "修改登陸密碼",
+        "old_password": "原登陸密碼",
+        "confirm_old_password": "確認原登陸密碼",
+        "new_password": "新登陸密碼",
+        "confirm_new_password": "確認新登陸密碼"
+      },
+      "change_payment": {
+        "title": "修改支付密碼",
+        "old_password": "原支付密碼",
+        "confirm_old_password": "確認原支付密碼",
+        "new_password": "新支付密碼",
+        "confirm_new_password": "確認新支付密碼"
+      }
+    },
+    "download": {
+      "title": "App下載"
+    },
+    "service": {
+      "1": "客服小易一直都在噢~",
+      "2": "有任何疑問與建議 歡迎來諮詢！"
+    }
   }
 }

@@ -1,14 +1,268 @@
 {
-  "auth": {
-    "title": "Xác thực tên thật",
-    "name": "Tên",
-    "id_card": "Số nhận dạng",
-    "front_and_back": "Mặt trước và mặt sau của thẻ ID",
-    "front": "Tải lên mặt trước",
-    "back": "Tải lên mặt sau",
-    "submit": "trình"
+  "login": {
+    "account": "Tài khoản",
+    "password": "mật khẩu",
+    "forget": "Quên mật khẩu",
+    "login": "Đăng nhập",
+    "sign_up": "Mở tài khoản",
+    "service": "Liên hệ dịch vụ khách hàng"
   },
-  "language": {
-    "title": "Thay đổi ngôn ngữ"
+  "register": {
+    "account": "Tên người dùng",
+    "password": "mật khẩu",
+    "confirm_pwd": "Xác nhận mật khẩu",
+    "pay_pwd": "Mật khẩu thanh toán",
+    "confirm_pay_pwd": "Xác nhận mật khẩu thanh toán",
+    "name": "tên",
+    "id_card": "thẻ căn cước",
+    "phone": "Số điện thoại di động",
+    "email": "email",
+    "invitation_code": "Mã mời",
+    "sign_up": "Mở tài khoản",
+    "login": "Đã có tài khoản, đăng nhập"
+  },
+  "index": {
+    "with_yesterday": "hơn ngày hôm qua",
+    "stock_market": "Giao dịch trên thị trường chứng khoán",
+    "more": "Tất cả danh sách",
+    "rise_range": "Tăng trưởng",
+    "analysis": "Phân tích dữ liệu"
+  },
+  "footer": {
+    "index": "Trang đầu",
+    "assets": "tài sản",
+    "fortune": "Quản lý tiền bạc",
+    "me": "của tôi"
+  },
+  "trading": {
+    "k_line": "dòng K",
+    "undulate": "Biến động",
+    "real_time": "Giao dịch trực tiếp",
+    "avg": "Trung bình.",
+    "max": "cao nhất.",
+    "min": "thấp nhất",
+    "vloume": "Vloume",
+    "avg_vol": "Avg.Vol",
+    "market": "Market",
+    "buy_up": "mua tăng giá",
+    "buy_to_fall": "mua giảm giá",
+    "submit": "Gửi đơn đặt hàng",
+    "buy": {
+      "settlement_time": "Thời gian giải quyết",
+      "amount": "số tiền",
+      "all": "Tất cả tiền bạc",
+      "other": "Số tiền khác",
+      "breed": "đa dạng",
+      "real_price": "Giá theo thời gian thực",
+      "anticipated_yield": "Lợi nhuận dự kiến",
+      "amount_available": "Số tiền có sẵn",
+      "service_charge": "Phí xử lý",
+      "earning_yield": "tỷ lệ lợi nhuận"
+    }
+  },
+  "order": {
+    "title": "Lệnh giao dịch",
+    "hold_order": "Lệnh giữ vị trí",
+    "history": "Chi tiết lịch sử",
+    "buy_up": "mua tăng giá",
+    "buy_of_fall": "Mua hoặc giảm",
+    "purchase_amount": "Số tiền mua",
+    "buying_price": "giá mua",
+    "order_time": "thời gian đặt hàng",
+    "remaining_time": "Thời gian còn lại",
+    "expected_income": "Lợi nhuận dự kiến",
+    "profit_and_loss": "Tỷ lệ lợi nhuận và thua lỗ",
+    "buying_time": "Mua thời gian",
+    "settlement_time": "Thời gian giải quyết"
+  },
+  "popup": {
+    "notice": "Thông báo",
+    "content": "Trạm này được nâng cấp bảo trì lúc 20:00 tối ngày 25 tháng 8 năm 2023, nếu có bất tiện, vui lòng thông cảm",
+    "confrim": "chắc chắn"
+  },
+  "assets": {
+    "title": "Ví của tôi",
+    "amount": "Tổng số dư",
+    "head": "kỷ lục",
+    "recharge": {
+      "title": "nạp tiền",
+      "method": "Vui lòng chọn phương thức nạp tiền",
+      "submit": "Gửi đơn đặt hàng",
+      "transfer_amount": "Số tiền chuyển khoản",
+      "transfer_remarks": "Phụ lục chuyển khoản",
+      "upload_credentials": "Thông tin đăng nhập tải lên",
+      "usdt": {
+        "use": "USDT"
+      },
+      "bank": {
+        "use": "thẻ ngân hàng",
+        "bank_of_deposit": "Mở tài khoản ngân hàng",
+        "account_opening_branch": "Mở cửa hàng",
+        "account": "Số tài khoản nhận tiền",
+        "name": "Tên người nhận"
+      }
+    },
+    "withdrawal": {
+      "title": "rút tiền mặt",
+      "balance": "cân bằng",
+      "amount": "Số tiền rút ra",
+      "password": "Rút mật khẩu",
+      "service_charge": "Phí xử lý",
+      "binding": "Tài khoản rút tiền chưa được liên kết",
+      "btn": "Tài khoản rút tiền bị ràng buộc",
+      "account": "Số tài khoản",
+      "confirm": "rút tiền mặt",
+      "submit": "đệ trình",
+      "method": "Vui lòng chọn phương thức rút tiền",
+      "tips": {
+        "1": "Giới hạn số tiền rút ra",
+        "2": "Thời gian rút tiền",
+        "3": "Nếu quên mật khẩu, vui lòng liên hệ dịch vụ khách hàng"
+      },
+      "bank": {
+        "title": "Thẻ ngân hàng bị ràng buộc",
+        "name": "Vui lòng nhập tên",
+        "bank_name": "Vui lòng nhập tên ngân hàng",
+        "bank_of_deposit": "Vui lòng nhập dòng mở tài khoản",
+        "bank_card_number": "Vui lòng nhập số thẻ ngân hàng"
+      },
+      "usdt": {
+        "title": "Binding tài khoản USDT",
+        "wallet_account": "Vui lòng nhập số tài khoản ví",
+        "submit": "đệ trình"
+      }
+    }
+  },
+  "fortune": {
+    "title": "Quản lý tiền bạc",
+    "balance": "Tổng số dư",
+    "yesterdays_earnings": "Thu nhập ngày hôm qua",
+    "accumulated_earnings": "Thu nhập tích lũy",
+    "yesterdays_balance": "Số dư ngày hôm qua",
+    "fixture_plan": "sơ đồ cố định",
+    "current_yield": "Lợi nhuận hiện tại",
+    "historical_yield": "Lợi nhuận lịch sử",
+    "product_name": "Tên sản phẩm",
+    "minimum_deposit": "Tiền gửi tối thiểu",
+    "annualized_income": "lợi nhuận hàng năm",
+    "projected_revenue": "Lợi nhuận dự kiến",
+    "state": "trạng thái",
+    "state_type": {
+      "underway": "Đang tiến hành",
+      "failed": "Hết hạn"
+    },
+    "termination": "Kết thúc",
+    "renewal": "gia hạn",
+    "repurchase": "mua lại",
+    "all": "tất cả",
+    "confirm": "Xác nhận đặt hàng",
+    "current_balance": "Số dư hiện tại",
+    "transfer_in": {
+      "title": "Chuyển vào",
+      "plan": "Tên chương trình",
+      "planA": "Phương án A",
+      "annualized_income": "Lợi suất hàng năm",
+      "amount": "Chuyển số tiền"
+    },
+    "transfer_out": {
+      "title": "Chuyển ra ngoài",
+      "transferable_balance": "Số dư có thể chuyển ra",
+      "to": "đến số dư",
+      "amount": "Chuyển số tiền"
+    }
+  },
+  "recommend": {
+    "title": "Giới thiệu hữu lễ",
+    "content": "Giới thiệu kiếm tiền thưởng",
+    "reward": "$10 (bằng tiếng Anh).",
+    "first": "Chia sẻ mã giới thiệu của bạn và nhận được",
+    "last": "Cổ phiếu miễn phí",
+    "copy": "Sao chép mã giới thiệu",
+    "share": "Chia sẻ"
+  },
+  "me": {
+    "title": "Trung tâm cá nhân",
+    "log_out": "Thoát",
+    "member": "Thành viên bình thường",
+    "balance": "Số dư tài khoản",
+    "recharge": "chuyển vào",
+    "withdrawal": "chuyển ra ngoài",
+    "yesterdays_earnings": "Thu nhập ngày hôm qua",
+    "todays_earnings": "Thu nhập hôm nay",
+    "accumulated_earnings": "Thu nhập tích lũy",
+    "time": "thời gian",
+    "amount": "số tiền",
+    "type": "Loại",
+    "state": "trạng thái",
+    "withdrawal_record": {
+      "title": "Hồ sơ rút tiền",
+      "service_charge": "Phí xử lý",
+      "actual_receipt": "Tài khoản thực tế",
+      "successful": "Ứng dụng thành công",
+      "under_review": "Đang xem xét",
+      "failed": "Đánh giá thất bại",
+      "type": {
+        "1": "Rút tiền mặt bằng thẻ ngân hàng",
+        "2": "Ví USDT"
+      }
+    },
+    "recharge_record": {
+      "title": "Kỷ lục nạp tiền",
+      "type": {
+        "1": "Rút tiền bằng thẻ ngân hàng",
+        "2": "Ví USDT"
+      }
+    },
+    "payment_method": {
+      "title": "Phương thức thanh toán",
+      "binding": "ràng buộc",
+      "type": {
+        "1": "Thẻ ngân hàng",
+        "2": "USDT"
+      }
+    },
+    "auth": {
+      "title": "Xác thực bằng tên thật",
+      "name": "tên",
+      "id_card": "Số thẻ căn cước",
+      "front_and_back": "Trái ngược với thẻ căn cước",
+      "front": "Nhấp vào để tải lên phía trước",
+      "back": "click upload ngược lại",
+      "submit": "Gửi chứng nhận"
+    },
+    "language": {
+      "title": "Thay đổi ngôn ngữ",
+      "current": "Tiếng Việt"
+    },
+    "message": {
+      "title": "Thông báo tin nhắn",
+      "details": "Xem chi tiết"
+    },
+    "secure": {
+      "title": "Số tài khoản và bảo mật",
+      "phone": "Số điện thoại di động",
+      "confirm": "Xác nhận sửa đổi",
+      "change_login": {
+        "title": "Thay đổi mật khẩu đăng nhập",
+        "old_password": "Mật khẩu đăng nhập ban đầu",
+        "confirm_old_password": "Xác nhận mật khẩu đăng nhập ban đầu",
+        "new_password": "Mật khẩu đăng nhập mới",
+        "confirm_new_password": "Xác nhận mật khẩu đăng nhập mới"
+      },
+      "change_payment": {
+        "title": "Thay đổi mật khẩu thanh toán",
+        "old_password": "Mật khẩu thanh toán gốc",
+        "confirm_old_password": "Xác nhận mật khẩu thanh toán gốc",
+        "new_password": "Mật khẩu thanh toán mới",
+        "confirm_new_password": "Xác nhận mật khẩu thanh toán mới"
+      }
+    },
+    "download": {
+      "title": "Tải xuống ứng dụng"
+    },
+    "service": {
+      "1": "Tiểu Dịch vẫn luôn ở đây.",
+      "2": "Có bất kỳ nghi vấn cùng kiến nghị hoan nghênh đến tư vấn!"
+    }
   }
 }
