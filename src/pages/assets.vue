@@ -28,12 +28,12 @@ function getCommonStyle() {
           </div>
           <div flex="~" ml5 mt13 text-base>
             <RouterLink to="/top-up/usdt">
-              <div :class="getCommonStyle()" flex="~" h8.3 w18.3 items-center justify-center>
+              <div :class="getCommonStyle()" flex="~" h8.3 min-w18.3 items-center justify-center>
                 {{ t('assets.recharge.title') }}
               </div>
             </RouterLink>
             <RouterLink to="/withdraw/balance">
-              <div :class="getCommonStyle()" flex="~" h8.3 w18.3 items-center justify-center>
+              <div :class="getCommonStyle()" flex="~" h8.3 min-w18.3 items-center justify-center>
                 {{ t('assets.withdrawal.title') }}
               </div>
             </RouterLink>

@@ -47,7 +47,6 @@ function getOption() {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        show: false,
         type: 'cross',
       },
       extraCssText: 'display: none;',
@@ -90,6 +89,9 @@ function getOption() {
           z: 100,
         },
         axisTick: {
+          show: false,
+        },
+        axisPointer: {
           show: false,
         },
       },

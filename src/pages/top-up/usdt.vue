@@ -11,25 +11,11 @@ function getClass() {
 function go() {
   route.push(`/top-up/bank`)
 }
-
-function back() {
-  route.push('/assets')
-}
 </script>
 
 <template>
   <div h-screen bg-trading>
-    <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
-      <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
-      <div class="text-5.5" text-trading-title>
-        {{ t('assets.recharge.title') }}
-      </div>
-      <RouterLink to="/menu/top-up">
-        <div class="border-#4D58C0" flex="~" h6.5 w11.25 items-center justify-center border rounded-xl text-sm>
-          {{ t('assets.head') }}
-        </div>
-      </RouterLink>
-    </div>
+    <TheAssetsHead :title="t('assets.recharge.title')" back="/assets" to="/menu/top-up" />
     <div px6 pt5>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
@@ -60,8 +46,14 @@ function back() {
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>
           </div>
-          <input type="text" :placeholder="t('assets.recharge.transfer_amount')" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
-          <input type="text" :placeholder="t('assets.recharge.transfer_remarks')" class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75>
+          <input
+            type="text" :placeholder="t('assets.recharge.transfer_amount')" class="border border-#f4f4f4" mt2.5
+            h11.25 wfull rounded-xl pl4.75
+          >
+          <input
+            type="text" :placeholder="t('assets.recharge.transfer_remarks')" class="border border-#f4f4f4" mt2.5
+            h11.25 wfull rounded-xl pl4.75
+          >
           <button class="border border-#f4f4f4" flex="~" mt2.5 h11.25 wfull items-center justify-center rounded-xl>
             <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
             {{ t('assets.recharge.upload_credentials') }}

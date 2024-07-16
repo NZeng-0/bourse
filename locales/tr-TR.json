@@ -10,7 +10,7 @@
         "name": "Alıcı adı",
         "use": "banka kartı"
       },
-      "method": "Lütfen bir yükleme yöntemi seçin",
+      "method": "Yeniden yükle yöntemi",
       "submit": "Siparişi Gönder",
       "title": "tamamlamak",
       "transfer_amount": "transfer miktarı",
@@ -35,7 +35,7 @@
       "binding": "Henüz hiçbir para çekme hesabı bağlanmadı",
       "btn": "Para çekme hesabını bağla",
       "confirm": "geri çekilmek",
-      "method": "Lütfen bir para çekme yöntemi seçin",
+      "method": "Kaçırma yöntemi",
       "password": "Şifreyi geri çek",
       "service_charge": "Hizmet bedeli",
       "submit": "göndermek",
@@ -44,7 +44,7 @@
         "2": "Para çekme süresi",
         "3": "Şifrenizi unutursanız lütfen müşteri hizmetlerine başvurun."
       },
-      "title": "geri çekilmek",
+      "title": "Çıkarma",
       "usdt": {
         "submit": "göndermek",
         "title": "USDT hesabını bağla",

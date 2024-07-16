@@ -86,7 +86,7 @@
     "head": "kỷ lục",
     "recharge": {
       "title": "nạp tiền",
-      "method": "Vui lòng chọn phương thức nạp tiền",
+      "method": "Cách nạp tiền",
       "submit": "Gửi đơn đặt hàng",
       "transfer_amount": "Số tiền chuyển khoản",
       "transfer_remarks": "Phụ lục chuyển khoản",
@@ -103,7 +103,7 @@
       }
     },
     "withdrawal": {
-      "title": "rút tiền mặt",
+      "title": "Rút tiền",
       "balance": "cân bằng",
       "amount": "Số tiền rút ra",
       "password": "Rút mật khẩu",
@@ -113,7 +113,7 @@
       "account": "Số tài khoản",
       "confirm": "rút tiền mặt",
       "submit": "đệ trình",
-      "method": "Vui lòng chọn phương thức rút tiền",
+      "method": "Phương thức rút tiền",
       "tips": {
         "1": "Giới hạn số tiền rút ra",
         "2": "Thời gian rút tiền",

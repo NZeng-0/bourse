@@ -11,25 +11,11 @@ function getCommonStyle() {
 function go() {
   route.push(`/binding/usdt`)
 }
-
-function back() {
-  route.push('/assets')
-}
 </script>
 
 <template>
   <div h-screen bg-trading>
-    <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
-      <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
-      <div class="text-5.5" text-trading-title>
-        {{ t('assets.withdrawal.title') }}
-      </div>
-      <RouterLink to="/menu/withdraw">
-        <div class="border-#4D58C0" flex="~" h6.5 w11.25 items-center justify-center border rounded-xl text-sm>
-          {{ t('assets.head') }}
-        </div>
-      </RouterLink>
-    </div>
+    <TheAssetsHead :title="t('assets.withdrawal.title')" back="/assets" to="/menu/withdraw" />
     <div px7 pt5 class="text-#030319" text-base>
       <div flex="~" h20.5 items-center justify-between class="rounded-4.5" bg-white p4>
         <div>
@@ -63,22 +49,22 @@ function back() {
       </div>
     </div>
     <div flex="~" mt32.25 w-full justify-center>
-      <button v-if="!banding" h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="go()">
+      <button v-if="!banding" h10.5 min-w37.5 rounded-lg bg-btn-select px-1 text-lg text-white @click="go()">
         {{ t('assets.withdrawal.btn') }}
       </button>
       <button v-else h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
         {{ t('assets.withdrawal.title') }}
       </button>
     </div>
-    <div class="text-#030319" mt21.75 pl7 text-sm opacity52>
+    <div class="text-#030319" mt21.75 px7 text-sm opacity52>
       <div>
-        1.{{ t('assets.withdrawal.tips.1') }}: 100~500000000
+        1. {{ t('assets.withdrawal.tips.1') }}: 100~500000000
       </div>
       <div>
-        2.{{ t('assets.withdrawal.tips.2') }}: 09.30~21.30
+        2. {{ t('assets.withdrawal.tips.2') }}: 09.30~21.30
       </div>
       <div>
-        3.{{ t('assets.withdrawal.tips.3') }}
+        3. {{ t('assets.withdrawal.tips.3') }}
       </div>
     </div>
   </div>

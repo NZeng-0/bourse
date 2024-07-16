@@ -20,25 +20,11 @@ function getCommonStyle() {
 function go() {
   route.push(`/top-up/usdt`)
 }
-
-function back() {
-  route.push('/assets')
-}
 </script>
 
 <template>
   <div h-screen bg-trading>
-    <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
-      <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
-      <div class="text-5.5" text-trading-title>
-        {{ t('assets.recharge.title') }}
-      </div>
-      <RouterLink to="/menu/top-up">
-        <div class="border-#4D58C0" flex="~" h6.5 w11.25 items-center justify-center border rounded-xl text-sm>
-          {{ t('assets.head') }}
-        </div>
-      </RouterLink>
-    </div>
+    <TheAssetsHead :title="t('assets.recharge.title')" back="/assets" to="/menu/top-up" />
     <div px6 pt5>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
@@ -57,37 +43,25 @@ function back() {
       <div mt6 h-full rounded-2.5 bg-white pb4.25 pt3.75>
         <div mt7.5 pl3.5 pr5.75 text-base>
           <div class="border-#f4f4f4" flex="~" h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75>
-            <div>
-              {{ t('assets.recharge.bank.bank_of_deposit') }}
-            </div>
-            <input v-model="data.openingBank" type="text">
+            <input v-model="data.openingBank" :placeholder="t('assets.recharge.bank.bank_of_deposit')" type="text" w="4/5">
             <div class="bank" :data-clipboard-text="data.openingBank" @click="useClipboard('bank')">
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
-            <div>
-              {{ t('assets.recharge.bank.account_opening_branch') }}
-            </div>
-            <input v-model="data.address" type="text">
+            <input v-model="data.address" :placeholder="t('assets.recharge.bank.account_opening_branch')" type="text" w="4/5">
             <div class="address" :data-clipboard-text="data.address" @click="useClipboard('address')">
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
-            <div>
-              {{ t('assets.recharge.bank.account') }}
-            </div>
-            <input v-model="data.account" type="text">
+            <input v-model="data.account" :placeholder="t('assets.recharge.bank.account')" type="text" w="4/5">
             <div class="account" :data-clipboard-text="data.account" @click="useClipboard('account')">
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
-            <div>
-              {{ t('assets.recharge.bank.name') }}
-            </div>
-            <input v-model="data.name" type="text">
+            <input v-model="data.name" :placeholder="t('assets.recharge.bank.name')" type="text" w="4/5">
             <div class="name" :data-clipboard-text="data.name" @click="useClipboard('name')">
               <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
             </div>

@@ -7,7 +7,7 @@ const key = useRoute('/trading/day/[key]').params.key
 const data = list[Number.parseInt(key)]
 const { range, icon, presentValue, ud } = data
 
-const chartData = [10543.03, 539.25, 10073.85, 12639.03, 17666.88, 16676.96, 10665.7]
+const chartData = [113.67, 134.32, 125.85, 153.85, 139.03, 126.88, 176.96, 165.7]
 
 function getOption() {
   return {
@@ -51,9 +51,6 @@ function getOption() {
       splitLine: {
         show: false,
       },
-      axisLabel: {
-        margin: -3,
-      },
       position: 'right',
     },
     series: [
@@ -92,7 +89,7 @@ function getOption() {
         },
       },
       {
-        data: chartData.map(e => e + 1000),
+        data: chartData.map(e => e + 10),
         type: 'line',
         smooth: 0.5,
         tooltip: {

@@ -85,7 +85,7 @@
     "head": "Los registros",
     "amount": "Balance total",
     "recharge": {
-      "method": "Por favor seleccione un método de recarga",
+      "method": "Método de recarga",
       "submit": "Orden de envio",
       "title": "completar",
       "transfer_amount": "Cantidad a transferir",
@@ -117,7 +117,7 @@
       "binding": "Aún no se ha vinculado ninguna cuenta de retiro",
       "btn": "Vincular cuenta de retiro",
       "confirm": "retirar",
-      "method": "Por favor seleccione un método de retiro",
+      "method": "Método de retiro",
       "password": "Retirar contraseña",
       "service_charge": "tasa de tramitación",
       "submit": "entregar",

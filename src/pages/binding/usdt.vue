@@ -11,7 +11,7 @@ function go() {
 }
 
 function back() {
-  route.push('/assets')
+  route.push('/withdraw/balance')
 }
 </script>
 

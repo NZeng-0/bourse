@@ -4,13 +4,13 @@
     "head": "Registro",
     "recharge": {
       "bank": {
-        "account": "Número da conta de pagamento",
+        "account": "Conta para pagamento",
         "account_opening_branch": "Pontos de abertura de conta",
         "bank_of_deposit": "Banco de depósito",
         "name": "Nome do beneficiário",
         "use": "cartão do banco"
       },
-      "method": "Selecione um método de recarga",
+      "method": "Método de recarga",
       "submit": "Enviar pedido",
       "title": "completar",
       "transfer_amount": "valor da transferência",
@@ -35,7 +35,7 @@
       "binding": "Nenhuma conta de retirada foi vinculada ainda",
       "btn": "Vincular conta de retirada",
       "confirm": "retirar",
-      "method": "Selecione um método de saque",
+      "method": "Método de retirada",
       "password": "Retirar senha",
       "service_charge": "taxa de manuseio",
       "submit": "enviar",

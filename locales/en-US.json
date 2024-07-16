@@ -86,7 +86,7 @@
     "head": "Record",
     "recharge": {
       "title": "Recharge",
-      "method": "Please choose a recharge method",
+      "method": "Recharge method",
       "submit": "Submit Order",
       "transfer_amount": "Transfer Amount",
       "transfer_remarks": "Transfer Remarks",
@@ -113,7 +113,7 @@
       "account": "Account",
       "confirm": "Withdraw",
       "submit": "Submit",
-      "method": "Please choose a withdrawal method",
+      "method": "Withdrawal method",
       "tips": {
         "1": "Withdrawal Amount Limit",
         "2": "Withdrawal Time",

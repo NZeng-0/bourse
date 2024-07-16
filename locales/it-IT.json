@@ -86,7 +86,7 @@
     "head": "Record",
     "recharge": {
       "title": "Ricarica",
-      "method": "Si prega di scegliere un metodo di ricarica",
+      "method": "Metodo di ricarica",
       "submit": "Invia ordine",
       "transfer_amount": "Transfer amount",
       "transfer_remarks": "Note di trasferimento",
@@ -113,7 +113,7 @@
       "account": "Conto",
       "confirm": "ritiro",
       "submit": "submit",
-      "method": "Selezionare il metodo di prelievo",
+      "method": "Metodo di sospensione",
       "tips": {
         "1": "Limite di prelievo",
         "2": "Tempo di ritiro",

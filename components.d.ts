@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheAssetsHead: typeof import('./src/components/assets/TheAssetsHead.vue')['default']
     TheBuy: typeof import('./src/components/Trading/TheBuy.vue')['default']
     TheCandle: typeof import('./src/components/Trading/TheCandle.vue')['default']
     TheCard: typeof import('./src/components/index/TheCard.vue')['default']
@@ -29,6 +30,7 @@ declare module 'vue' {
     ThePopup: typeof import('./src/components/ThePopup.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
+    TheRechargeHead: typeof import('./src/components/assets/TheRechargeHead.vue')['default']
     TheSolution: typeof import('./src/components/grow/TheSolution.vue')['default']
     TheStatusBar: typeof import('./src/components/TheStatusBar.vue')['default']
     TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
