@@ -67,13 +67,16 @@
     "buy_up": "买涨",
     "buy_of_fall": "买跌",
     "purchase_amount": "购买金额",
-    "buying_price": "买入价格",
+    "buying_price": "买入价",
+    "current_price": "现价",
     "order_time": "订单时间",
     "remaining_time": "剩余时间",
     "expected_income": "预计收益",
     "profit_and_loss": "盈亏比例",
     "buying_time": "买入时间",
-    "settlement_time": "结算时间"
+    "settlement_time": "结算时间",
+    "product_1": "美元指数",
+    "product_2": "美元/欧元"
   },
   "popup": {
     "notice": "公告",

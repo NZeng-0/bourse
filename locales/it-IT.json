@@ -31,7 +31,7 @@
   "footer": {
     "index": "Homepage",
     "assets": "Attivo",
-    "fortune": "Gestione finanziaria",
+    "fortune": "Finanza",
     "me": "Mio"
   },
   "trading": {
@@ -68,12 +68,15 @@
     "buy_of_fall": "Buy down",
     "purchase_amount": "Purchase amount",
     "buying_price": "Prezzo d'acquisto",
+    "current_price": "Prezzo corrente",
     "order_time": "Tempo dell'ordine",
     "remaining_time": "Resting time",
     "expected_income": "Entrate previste",
     "profit_and_loss": "Rapporto profitti e perdite",
     "buying_time": "buying time",
-    "settlement_time": "Settlement time"
+    "settlement_time": "Settlement time",
+    "product_1": "Indice USD",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "notice": "Annuncio",
@@ -177,7 +180,7 @@
     "reward": "10 dollari",
     "first": "Condividi il tuo codice di riferimento e ottenelo",
     "last": "Stock libero di",
-    "copy": "Copia codice raccomandazione",
+    "copy": "copia",
     "share": "Share"
   },
   "me": {
@@ -222,7 +225,7 @@
       }
     },
     "auth": {
-      "title": "Autenticazione del nome reale",
+      "title": "Autenticazione",
       "name": "Nome",
       "id_card": "numero della carta d'identità",
       "front_and_back": "Anteriore e posteriore della carta d'identità",
@@ -243,7 +246,7 @@
       "phone": "numero di telefono",
       "confirm": "confermare le modifiche",
       "change_login": {
-        "title": "Cambia password di accesso",
+        "title": "Ripristina password",
         "old_password": "Password di accesso originale",
         "confirm_old_password": "Confermare la password di accesso originale",
         "new_password": "Nuova password di accesso",
@@ -261,8 +264,8 @@
       "title": "App Download"
     },
     "service": {
-      "1": "Servizio clienti Xiaoyi è stato qui tutto il tempo ~",
-      "2": "Se avete domande o suggerimenti, non esitate a consultare"
+      "1": "Servizio online",
+      "2": "Se avete domande, si prega di consultare!"
     }
   }
 }

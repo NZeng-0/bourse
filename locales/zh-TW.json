@@ -68,12 +68,15 @@
     "buy_of_fall": "買跌",
     "purchase_amount": "購買金額",
     "buying_price": "買入價格",
+    "current_price": "現價",
     "order_time": "訂單時間",
     "remaining_time": "剩餘時間",
     "expected_income": "預計收益",
     "profit_and_loss": "盈虧比例",
     "buying_time": "買入時間",
-    "settlement_time": "結算時間"
+    "settlement_time": "結算時間",
+    "product_1": "USD 指數",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "notice": "公告",

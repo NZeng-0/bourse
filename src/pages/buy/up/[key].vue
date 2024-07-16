@@ -20,7 +20,7 @@ function getMoneyStyle(index: number) {
 }
 
 function subClass() {
-  return 'text-#707070 ml-6.8 h8.5 w25 rounded-xl bg-white pl4 text-lg'
+  return 'text-#707070 ml-6.8 h8.5 min-w25 rounded-xl bg-white pl4 text-lg'
 }
 
 function back() {
@@ -89,10 +89,10 @@ function back() {
       </div>
     </div>
     <div mt4 pl5.8>
-      <button h8.5 w25 rounded-xl bg-white text-lg>
+      <button h8.5 min-w25 border rounded-xl bg-white px2 text-lg>
         {{ t('trading.buy.all') }}
       </button>
-      <input type="text" :placeholder="t('trading.buy.orther')" :class="subClass()">
+      <input type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>

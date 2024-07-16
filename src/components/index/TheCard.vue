@@ -95,7 +95,7 @@ const chartProps: Props = {
           +8.23%
         </div>
       </div>
-      <div w="87px" h="36px" flex="~" mr-4 mt-4 items-center justify-around rounded-lg bg-white:12 p3>
+      <div flex="~" mr-4 mt-4 h9 items-center justify-around rounded-lg bg-white:12 p3>
         <div text-xs text-card font-normal>
           {{ t('index.with_yesterday') }}
         </div>

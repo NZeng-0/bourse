@@ -99,7 +99,7 @@ function getStateStyle(state: number) {
 
 <template>
   <div class="font-['PingFang_SC']" bg-trading>
-    <TheMenuHead title="提现记录" />
+    <TheMenuHead :title="t('me.withdrawal_record.title')" />
     <div h-screen overflow-y-scroll px6.5>
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h41 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>

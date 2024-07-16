@@ -54,8 +54,8 @@
   },
   "footer": {
     "assets": "ativos",
-    "fortune": "gestão financeira",
-    "index": "primeira página",
+    "fortune": "Finanças",
+    "index": "Principal",
     "me": "meu"
   },
   "fortune": {
@@ -91,7 +91,7 @@
       "amount": "Valor da transferência",
       "title": "transferir",
       "to": "equilibrar",
-      "transferable_balance": "O saldo pode ser transferido"
+      "transferable_balance": "Saldo transferível"
     },
     "yesterdays_balance": "O saldo de ontem",
     "yesterdays_earnings": "Lucro de ontem"
@@ -100,7 +100,7 @@
     "analysis": "análise de dados",
     "more": "Todas as listas",
     "rise_range": "Aumentar",
-    "stock_market": "negociação no mercado de ações",
+    "stock_market": "mercado de acções",
     "with_yesterday": "Do que ontem"
   },
   "login": {
@@ -129,7 +129,7 @@
       "title": "Baixar aplicativo"
     },
     "language": {
-      "current": "Chinês simplificado",
+      "current": "Português",
       "title": "Português"
     },
     "log_out": "desistir",
@@ -175,7 +175,7 @@
     },
     "service": {
       "1": "O atendimento ao cliente Xiaoyi está sempre disponível ~",
-      "2": "Se você tiver alguma dúvida ou sugestão, não hesite em nos contatar!"
+      "2": "Se você tiver alguma dúvida, por favor consulte!"
     },
     "state": "estado",
     "time": "tempo",
@@ -200,6 +200,7 @@
     "buy_up": "Comprar rose",
     "buy_of_fall": "comprar caiu",
     "buying_price": "Preço de compra",
+    "current_price": "Preço actual",
     "buying_time": "Ganhando tempo",
     "expected_income": "Receita estimada",
     "history": "Detalhes históricos",
@@ -209,7 +210,9 @@
     "purchase_amount": "preço de compra",
     "remaining_time": "tempo restante",
     "settlement_time": "hora de liquidação",
-    "title": "ordem de negociação"
+    "title": "ordem de negociação",
+    "product_1": "O índice USD",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "confrim": "Claro",
@@ -218,7 +221,7 @@
   },
   "recommend": {
     "content": "Recomende e ganhe dinheiro de presente",
-    "copy": "Copiar código de referência",
+    "copy": "cópia",
     "first": "Compartilhe seu código de referência e obtenha",
     "last": "ações grátis",
     "reward": "$ 10 dólares",

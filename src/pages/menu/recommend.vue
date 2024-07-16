@@ -17,7 +17,7 @@ function back() {
   <div>
     <div flex="~" h30 items-center justify-between bg-white px6>
       <img src="../../assets/images/recommend/back.png" h10 w10 @click="back()">
-      <div class="text-5.5" text-trading-title>
+      <div class="text-5.5" text-center text-trading-title>
         {{ t('recommend.title') }}
       </div>
       <div h10 w10 />

@@ -66,17 +66,20 @@
     "history": "Transaction History",
     "buy_up": "Buy to Rise",
     "buy_of_fall": "Buy to Fall",
-    "purchase_amount": "Purchase Amount",
+    "purchase_amount": "Amount",
     "buying_price": "Buying Price",
+    "current_price": "Current Price",
     "order_time": "Order Time",
     "remaining_time": "Remaining Time",
     "expected_income": "Expected Earnings",
     "profit_and_loss": "Profit and Loss Ratio",
     "buying_time": "Buying Time",
-    "settlement_time": "Settlement Time"
+    "settlement_time": "Settlement Time",
+    "product_1": "USD index",
+    "product_2": "USD / EUR"
   },
   "popup": {
-    "notice": "Announcement",
+    "notice": "Notice",
     "content": "Our website will be upgraded and maintained on August 25, 2023, at 20:00. We apologize for any inconvenience caused.",
     "confrim": "Confirm"
   },
@@ -136,9 +139,9 @@
   "fortune": {
     "title": "Finance",
     "balance": "Total Balance",
-    "yesterdays_earnings": "Earnings Yesterday",
+    "yesterdays_earnings": "Yesterday' Earnings",
     "accumulated_earnings": "Accumulated Earnings",
-    "yesterdays_balance": "Balance Yesterday",
+    "yesterdays_balance": "Yesterday's Balance",
     "fixture_plan": "Fixed Plan",
     "current_yield": "Current Earnings",
     "historical_yield": "Historical Earnings",
@@ -177,7 +180,7 @@
     "reward": "$10",
     "first": "Share your referral code and get ",
     "last": " free stocks",
-    "copy": "Copy Referral Code",
+    "copy": "Copy",
     "share": "Share"
   },
   "me": {
@@ -222,7 +225,7 @@
       }
     },
     "auth": {
-      "title": "Real Name Authentication",
+      "title": "Authentication",
       "name": "Name",
       "id_card": "ID Card Number",
       "front_and_back": "ID Card Front and Back",
@@ -261,8 +264,8 @@
       "title": "App Download"
     },
     "service": {
-      "1": "Customer service is always here~",
-      "2": "If you have any questions or suggestions, please feel free to consult!"
+      "1": "Online Service ",
+      "2": "If you have any questions, please consult!"
     }
   }
 }

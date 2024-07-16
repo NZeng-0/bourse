@@ -1,6 +1,6 @@
 <script setup lang=ts>
 const route = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const menu = [
   {
@@ -61,8 +61,25 @@ function getFullUrl(url: string) {
   return new URL(url, import.meta.url).href
 }
 
+function width() {
+  switch (locale.value) {
+    case 'tr-TR':
+    case 'vi-VN':
+    case 'es-ES':
+    case 'it-IT':
+    case 'pt-PT':
+      return true
+    default:
+      return false
+  }
+}
+
 function go(to: string) {
   route.push(`/menu/${to}`)
+}
+
+function transfer(tar: string) {
+  route.push(`/YuEBao/transfer-${tar}`)
 }
 </script>
 
@@ -75,24 +92,28 @@ function go(to: string) {
     </div>
     <div flex="~" h19.7 wfull border-t bg-white px-6>
       <div w="1/2" flex="~" items-center>
-        <div relative>
-          <img src="../assets/images/me/avatar.jpg" h15 w15 rounded-full>
-          <img src="../assets/images/me/shot.png" absolute bottom-0 right--1 h6 w6>
+        <div w="1.2/3">
+          <div relative>
+            <img src="../assets/images/me/avatar.jpg" h15 w15 rounded-full>
+            <img src="../assets/images/me/shot.png" absolute bottom-0 right--1 h6 w6>
+          </div>
         </div>
-        <div ml4 class="font-['PingFang_SC']">
+        <div pl4 w="2/3">
           <div class="text-#121826" font-ps>
             HKEx01
           </div>
           <div class="text-#9EA3AE" text-sm>
-            {{ t('me.member') }}
+            <p>
+              {{ t('me.member') }}
+            </p>
           </div>
         </div>
       </div>
-      <div w="1/2" class="text-#673BF6 font-['PingFang_SC']" flex="~" items-center justify-end text-sm>
+      <div w="1/2" class="text-#673BF6" flex="~" items-center justify-end text-sm>
         {{ t('me.log_out') }}
       </div>
     </div>
-    <div class="font-['PingFang_SC']" h-screen overflow-y-scroll bg-trading px6 pt4.5>
+    <div h-screen overflow-y-scroll bg-trading px6 pt4.5>
       <div h50 rounded-5 bg-white px7.5 pt4>
         <div class="text-#9EA3AE" text-center>
           <div text-xs>
@@ -102,8 +123,8 @@ function go(to: string) {
             78963.00
           </div>
         </div>
-        <div flex="~" mt6 justify-between>
-          <div>
+        <div flex="~" h23 items-center justify-between>
+          <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
               0.00
             </div>
@@ -111,7 +132,7 @@ function go(to: string) {
               {{ t('me.yesterdays_earnings') }}
             </div>
           </div>
-          <div>
+          <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
               0.00
             </div>
@@ -119,7 +140,7 @@ function go(to: string) {
               {{ t('me.todays_earnings') }}
             </div>
           </div>
-          <div>
+          <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
               0.00
             </div>
@@ -128,11 +149,17 @@ function go(to: string) {
             </div>
           </div>
         </div>
-        <div flex="~" mt6.5 justify-between px4 text-white>
-          <button w="1/2" h8.8 w25.5 border rounded-lg bg-btn-select>
+        <div flex="~" justify-between px4 text-white>
+          <button
+            w="1/2" h8.8 :class="width() ? 'w=2/3 text-xs' : 'w25.5'" border rounded-lg bg-btn-select px2
+            @click="transfer('in')"
+          >
             {{ t('me.recharge') }}
           </button>
-          <button w="1/2" h8.8 w25.5 border rounded-lg bg-btn-select>
+          <button
+            w="1/2" h8.8 :class="width() ? 'w=2/3 text-xs' : 'w25.5'" border rounded-lg bg-btn-select px2
+            @click="transfer('out')"
+          >
             {{ t('me.withdrawal') }}
           </button>
         </div>
@@ -143,7 +170,9 @@ function go(to: string) {
             <img :src="getFullUrl(item.icon)" h10 w10>
           </div>
           <div w="2/5" text-base>
-            {{ item.title }}
+            <p>
+              {{ item.title }}
+            </p>
           </div>
           <div w="2/5" flex="~" justify-end>
             <div text-sm class="text-#9EA3AE">

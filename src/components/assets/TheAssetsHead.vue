@@ -27,7 +27,7 @@ function back() {
     </div>
     <div w="1/3" flex="~" justify-end>
       <RouterLink :to>
-        <div class="border-#4D58C0" flex="~" h6.5 items-center justify-center border rounded-xl p1 text-sm>
+        <div class="border-#4D58C0" flex="~" h6.5 min-w11.25 items-center justify-center border rounded-xl p1 text-sm>
           {{ t('assets.head') }}
         </div>
       </RouterLink>

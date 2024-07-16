@@ -35,7 +35,7 @@ function getClass() {
       </div>
     </div>
     <div mt9.5 flex="~" justify-center>
-      <button h10.5 w37.5 rounded-lg bg-btn-select text-white>
+      <button h10.5 min-w37.5 rounded-lg bg-btn-select px2 text-white>
         {{ t('me.secure.confirm') }}
       </button>
     </div>

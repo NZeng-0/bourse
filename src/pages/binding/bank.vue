@@ -9,21 +9,11 @@ function getClass() {
 function go() {
   route.push(`/binding/usdt`)
 }
-
-function back() {
-  route.push('/withdraw/balance')
-}
 </script>
 
 <template>
   <div h-screen bg-trading>
-    <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
-      <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
-      <div class="text-5.5" text-trading-title>
-        {{ t('assets.withdrawal.bank.title') }}
-      </div>
-      <div h6.5 w11.25 />
-    </div>
+    <TheBindHead :title="t('assets.withdrawal.bank.title')" back="/withdraw/balance" />
     <div px6 pt5 class="text-#121826">
       <div :class="getClass()" flex="~">
         <div w="1/2" opacity59>
@@ -32,7 +22,7 @@ function back() {
         <div w="1/2" flex="~" items-center justify-end>
           <img src="../../assets/images/assets/bank.png" h4.25 w4.25>
           <div ml1.25 @click="go()">
-            银行卡
+            {{ t('assets.recharge.bank.use') }}
           </div>
           <div ml0.75>
             <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>

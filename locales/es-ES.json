@@ -25,13 +25,13 @@
     "analysis": "análisis de los datos",
     "more": "Todas las listas",
     "rise_range": "Aumentar",
-    "stock_market": "negociación en el mercado de valores",
+    "stock_market": "Transacciones bursátiles",
     "with_yesterday": "que ayer"
   },
   "footer": {
     "assets": "activos",
-    "fortune": "gestión financiera",
-    "index": "página delantera",
+    "fortune": "Finanzas",
+    "index": "Principal",
     "me": "mío"
   },
   "trading": {
@@ -64,6 +64,7 @@
     "buy_of_fall": "comprar o vender",
     "buy_up": "Comprar",
     "buying_price": "precio de compra",
+    "current_price": "Precios actuales",
     "buying_time": "ganando tiempo",
     "expected_income": "Ingresos estimados",
     "history": "Detalles históricos",
@@ -73,7 +74,9 @@
     "purchase_amount": "precio de compra",
     "remaining_time": "tiempo restante",
     "settlement_time": "tiempo de liquidación",
-    "title": "orden comercial"
+    "title": "orden comercial",
+    "product_1": "El índice USD",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "confrim": "Seguro",
@@ -152,7 +155,7 @@
       "amount": "Monto de la transferencia",
       "title": "trasferencia",
       "to": "para equilibrar",
-      "transferable_balance": "El saldo se puede transferir"
+      "transferable_balance": "Saldo transferible"
     },
     "yesterdays_balance": "saldo de ayer",
     "yesterdays_earnings": "Ganancias de ayer",
@@ -173,7 +176,7 @@
   },
   "recommend": {
     "content": "Recomendar y ganar dinero de regalo",
-    "copy": "Copiar código de referencia",
+    "copy": "Copiar",
     "first": "Comparte tu código de referencia y obtén",
     "last": "acciones libres",
     "reward": "$10USD",
@@ -226,7 +229,7 @@
         "confirm_old_password": "Confirmar la contraseña de inicio de sesión original",
         "new_password": "Nueva contraseña de inicio de sesión",
         "old_password": "Contraseña de inicio de sesión original",
-        "title": "Cambiar contraseña de inicio de sesión"
+        "title": "Restablecer Contraseña"
       },
       "change_payment": {
         "confirm_new_password": "Confirmar nueva contraseña de pago",
@@ -240,8 +243,8 @@
       "title": "Cuenta y seguridad"
     },
     "service": {
-      "1": "El servicio de atención al cliente Xiaoyi siempre está ahí ~",
-      "2": "Si tiene alguna pregunta o sugerencia, ¡no dude en contactarnos!"
+      "1": "Servicio al cliente en línea",
+      "2": "¡Si tiene alguna pregunta, ¡ consulte!"
     },
     "state": "estado",
     "time": "tiempo",

@@ -32,7 +32,7 @@ function getBgStyle() {
             {{ item.title }}
           </div>
           <div class="text-#9EA3AE" mt2 text-xs>
-            {{ t('me.payment_method.binding') }}{{ item.title }}
+            {{ t('me.payment_method.binding') }} {{ item.title }}
           </div>
         </div>
       </div>

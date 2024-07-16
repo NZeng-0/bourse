@@ -68,12 +68,15 @@
     "buy_of_fall": "売り注文",
     "purchase_amount": "購入金額",
     "buying_price": "購入価格",
+    "current_price": "現在の価格",
     "order_time": "注文時間",
     "remaining_time": "残り時間",
     "expected_income": "予想収益",
     "profit_and_loss": "損益比率",
     "buying_time": "購入時間",
-    "settlement_time": "決済時間"
+    "settlement_time": "決済時間",
+    "product_1": "USD 指数です",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "notice": "お知らせ",
@@ -149,7 +152,7 @@
     "state": "ステータス",
     "state_type": {
       "underway": "進行中",
-      "failed": "期限切れ"
+      "failed": "期限切"
     },
     "termination": "終了",
     "renewal": "更新",
@@ -177,7 +180,7 @@
     "reward": "10ドル",
     "first": "あなたの紹介コードを共有して",
     "last": "の無料株式を獲得",
-    "copy": "紹介コードをコピー",
+    "copy": "レプリケーション",
     "share": "共有"
   },
   "me": {
@@ -243,7 +246,7 @@
       "phone": "電話番号",
       "confirm": "変更を確認",
       "change_login": {
-        "title": "ログインパスワードを変更",
+        "title": "パスワードのリセット",
         "old_password": "古いログインパスワード",
         "confirm_old_password": "古いログインパスワードを確認",
         "new_password": "新しいログインパスワード",
@@ -261,8 +264,8 @@
       "title": "アプリをダウンロード"
     },
     "service": {
-      "1": "カスタマーサービスは常にここにいます~",
-      "2": "ご質問やご提案があれば、お気軽にご相談ください！"
+      "1": "オンラインカスタマーサービス",
+      "2": "質問がありましたら、お問い合わせください！"
     }
   }
 }

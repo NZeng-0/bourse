@@ -1,7 +1,5 @@
 <script setup lang=ts>
-const { t } = useI18n()
-const route = useRouter()
-const index = ref(0)
+const { t, locale } = useI18n()
 
 const data = ref([
   { title: '余额宝365天', minimum: 10000, yield: 15, prospective: 1500 },
@@ -9,46 +7,38 @@ const data = ref([
   { title: '余额宝30天', minimum: 100, yield: 2.5, prospective: 0.2 },
 ])
 
-function changeCurrent(current: number, to: string) {
-  index.value = current
-  route.push({
-    path: `/${to}`,
-  })
+function margin() {
+  switch (locale.value) {
+    case 'zh-CN':
+    case 'zh-TW':
+    case 'ja-JP':
+    case 'tr-TR':
+      return 'mt4'
+    default:
+      return ''
+  }
 }
 </script>
 
 <template>
   <div>
     <div flex="~ wrap" justify-center pt11>
-      <TheInfo />
-      <div mx8 wfull>
-        <div mt5 flex="~" justify-between>
-          <b class="text-#673BF6" text-center text-base @click="changeCurrent(0, 'grow/solution')">
-            {{ t('fortune.fixture_plan') }}
-          </b>
-          <b class="text-#121826" text-center text-base @click="changeCurrent(1, 'grow/current')">
-            {{ t('fortune.current_yield') }}
-          </b>
-          <b class="text-#121826" text-center text-base @click="changeCurrent(2, 'grow/histroy')">
-            {{ t('fortune.historical_yield') }}
-          </b>
-        </div>
-      </div>
+      <TheInfo :current="0" />
       <div mx5 mt2 wfull text-sm>
-        <div v-for="(item, key) in data" :key mt4 h20 border rounded-lg pl2 pt4.5>
-          <div flex="~" justify-between>
+        <div v-for="(item, key) in data" :key flex="~ wrap" mt4 h20 border rounded-lg pl2>
+          <div flex="~ wrap" justify-between w="1/2" :class="margin()">
             <div>
               {{ t('fortune.product_name') }}: {{ item.title }}
             </div>
-            <div pl6 w="1/2">
-              {{ t('fortune.minimum_deposit') }}: {{ item.minimum }}.00
-            </div>
-          </div>
-          <div flex="~" mt2 justify-between>
             <div>
               {{ t('fortune.annualized_income') }}: {{ item.yield }}%
             </div>
-            <div pl6 w="1/2">
+          </div>
+          <div flex="~ wrap" justify-between w="1/2" :class="margin()">
+            <div pl6>
+              {{ t('fortune.minimum_deposit') }}: {{ item.minimum }}.00
+            </div>
+            <div pl6>
               {{ t('fortune.projected_revenue') }}: {{ item.prospective }}
             </div>
           </div>

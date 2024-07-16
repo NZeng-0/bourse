@@ -23,7 +23,7 @@
   },
   "index": {
     "with_yesterday": "hơn ngày hôm qua",
-    "stock_market": "Giao dịch trên thị trường chứng khoán",
+    "stock_market": "Thị trường chứng khoán",
     "more": "Tất cả danh sách",
     "rise_range": "Tăng trưởng",
     "analysis": "Phân tích dữ liệu"
@@ -31,7 +31,7 @@
   "footer": {
     "index": "Trang đầu",
     "assets": "tài sản",
-    "fortune": "Quản lý tiền bạc",
+    "fortune": "Tài chính",
     "me": "của tôi"
   },
   "trading": {
@@ -66,14 +66,17 @@
     "history": "Chi tiết lịch sử",
     "buy_up": "mua tăng giá",
     "buy_of_fall": "Mua hoặc giảm",
-    "purchase_amount": "Số tiền mua",
+    "purchase_amount": "Số lượng",
     "buying_price": "giá mua",
+    "current_price": "Giá hiện tại",
     "order_time": "thời gian đặt hàng",
     "remaining_time": "Thời gian còn lại",
     "expected_income": "Lợi nhuận dự kiến",
     "profit_and_loss": "Tỷ lệ lợi nhuận và thua lỗ",
     "buying_time": "Mua thời gian",
-    "settlement_time": "Thời gian giải quyết"
+    "settlement_time": "Thời gian giải quyết",
+    "product_1": "USD Chỉ số",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "notice": "Thông báo",
@@ -120,7 +123,7 @@
         "3": "Nếu quên mật khẩu, vui lòng liên hệ dịch vụ khách hàng"
       },
       "bank": {
-        "title": "Thẻ ngân hàng bị ràng buộc",
+        "title": "trói thẻ ngân hàng",
         "name": "Vui lòng nhập tên",
         "bank_name": "Vui lòng nhập tên ngân hàng",
         "bank_of_deposit": "Vui lòng nhập dòng mở tài khoản",
@@ -177,7 +180,7 @@
     "reward": "$10 (bằng tiếng Anh).",
     "first": "Chia sẻ mã giới thiệu của bạn và nhận được",
     "last": "Cổ phiếu miễn phí",
-    "copy": "Sao chép mã giới thiệu",
+    "copy": "Sao chép",
     "share": "Chia sẻ"
   },
   "me": {
@@ -243,7 +246,7 @@
       "phone": "Số điện thoại di động",
       "confirm": "Xác nhận sửa đổi",
       "change_login": {
-        "title": "Thay đổi mật khẩu đăng nhập",
+        "title": "Đặt lại mật khẩu",
         "old_password": "Mật khẩu đăng nhập ban đầu",
         "confirm_old_password": "Xác nhận mật khẩu đăng nhập ban đầu",
         "new_password": "Mật khẩu đăng nhập mới",
@@ -261,8 +264,8 @@
       "title": "Tải xuống ứng dụng"
     },
     "service": {
-      "1": "Tiểu Dịch vẫn luôn ở đây.",
-      "2": "Có bất kỳ nghi vấn cùng kiến nghị hoan nghênh đến tư vấn!"
+      "1": "Hỗ trợ trực tuyến",
+      "2": "Có nghi ngờ, xin mời tư vấn!"
     }
   }
 }

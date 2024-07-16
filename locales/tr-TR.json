@@ -54,7 +54,7 @@
   },
   "footer": {
     "assets": "varlıklar",
-    "fortune": "finansal Yönetim",
+    "fortune": "Finans",
     "index": "ön Sayfa",
     "me": "bana ait"
   },
@@ -85,11 +85,11 @@
       "annualized_income": "Yıllık getiri oranı",
       "plan": "Şema adı",
       "planA": "A Planı",
-      "title": "içeriye transfer et"
+      "title": "değiştirmek için"
     },
     "transfer_out": {
       "amount": "Transfer miktarı",
-      "title": "dışarı aktarma",
+      "title": "Transfer etmek",
       "to": "dengelemek",
       "transferable_balance": "Bakiye aktarılabilir"
     },
@@ -128,7 +128,7 @@
       "title": "Uygulama indirme"
     },
     "language": {
-      "current": "Basitleştirilmiş Çince",
+      "current": "Türkçe",
       "title": "Türkçe"
     },
     "log_out": "çıkış yapmak",
@@ -173,8 +173,8 @@
       "title": "Hesap ve güvenlik"
     },
     "service": {
-      "1": "Müşteri hizmetleri Xiaoyi her zaman orada~",
-      "2": "Herhangi bir sorunuz veya öneriniz varsa lütfen bizimle iletişime geçmekten çekinmeyin!"
+      "1": "Çevrimiçi Hizmeti",
+      "2": "Sorunuz varsa, lütfen danışın!"
     },
     "state": "durum",
     "time": "zaman",
@@ -200,16 +200,19 @@
     "buy_of_fall": "Satın al veya sat",
     "buy_up": "Hepsini satın al",
     "buying_price": "Alış fiyatı",
+    "current_price": "Şimdiki fiyat",
     "buying_time": "Zaman satın alma",
     "expected_income": "Tahmini gelir",
     "history": "Tarihsel ayrıntılar",
     "hold_order": "Konum sırası",
     "order_time": "sipariş zamanı",
     "profit_and_loss": "Kâr ve zarar oranı",
-    "purchase_amount": "satın alma bedeli",
+    "purchase_amount": "para miktarı",
     "remaining_time": "kalan zaman",
     "settlement_time": "ödeme zamanı",
-    "title": "ticaret emri"
+    "title": "ticaret emri",
+    "product_1": "USD indeks",
+    "product_2": "USD / EUR"
   },
   "popup": {
     "confrim": "Elbette",
@@ -218,7 +221,7 @@
   },
   "recommend": {
     "content": "Tavsiye edin ve hediye parası kazanın",
-    "copy": "Yönlendirme kodunu kopyala",
+    "copy": "kopyalama",
     "first": "Referans kodunuzu paylaşın ve kazanın",
     "last": "ücretsiz stoklar",
     "reward": "10 ABD Doları",

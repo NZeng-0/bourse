@@ -10,6 +10,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheAssetsHead: typeof import('./src/components/assets/TheAssetsHead.vue')['default']
+    TheBindHead: typeof import('./src/components/binding/TheBindHead.vue')['default']
     TheBuy: typeof import('./src/components/Trading/TheBuy.vue')['default']
     TheCandle: typeof import('./src/components/Trading/TheCandle.vue')['default']
     TheCard: typeof import('./src/components/index/TheCard.vue')['default']

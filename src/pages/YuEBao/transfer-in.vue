@@ -49,19 +49,15 @@ function back() {
             </div>
           </div>
           <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
-            <div w="1/2" opacity68>
-              {{ t('fortune.transfer_in.amount') }}
-            </div>
-            <div w="1/2" flex="~" items-center justify-end>
-              <input type="text" w="2/3" placeholder="" opacity68>
-              <div mr.5 border-l pl2.5 text-sm>
-                {{ t('fortune.all') }}
-              </div>
+            <input type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
+            <div w="1/3" mr.5 pl2.5 text-right text-sm>
+              <span h-full w-1 border-l pl3 opacity68 />
+              {{ t('fortune.all') }}
             </div>
           </div>
         </div>
         <div flex="~" mt8.75 items-center justify-center>
-          <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+          <button h10.5 min-w37.5 rounded-lg bg-btn-select px1 text-lg text-white>
             {{ t('fortune.confirm') }}
           </button>
         </div>
