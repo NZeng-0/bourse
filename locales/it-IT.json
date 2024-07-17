@@ -51,11 +51,11 @@
       "settlement_time": "Settlement time",
       "amount": "importo",
       "all": "Tutti i fondi",
-      "other": "altri importi",
+      "other": "a\nltro",
       "breed": "Varietà",
       "real_price": "Prezzo in tempo reale",
       "anticipated_yield": "rendimento atteso",
-      "amount_available": "Importo disponibile",
+      "amount_available": "Disponibile",
       "service_charge": "spese di gestione",
       "earning_yield": "Rendimento"
     }

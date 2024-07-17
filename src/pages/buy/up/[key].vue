@@ -20,7 +20,7 @@ function getMoneyStyle(index: number) {
 }
 
 function subClass() {
-  return 'text-#707070 ml-6.8 h8.5 min-w25 rounded-xl bg-white pl4 text-lg'
+  return 'text-#707070 ml-6.8 h8.5 w25 rounded-xl bg-white pl4 text-lg'
 }
 
 function back() {
@@ -116,16 +116,16 @@ function back() {
       <div mt6.5 flex="~" items-center justify-between>
         <div>
           {{ t('trading.buy.amount_available') }}
-          <span ml7 class="text-#5425EB">218</span>
+          <span class="text-#5425EB">218</span>
         </div>
         <div>
-          {{ t('trading.buy.service_charge') }} &nbsp;&nbsp;
+          {{ t('trading.buy.service_charge') }}
           <span class="text-#5425EB">0% </span>
         </div>
       </div>
     </div>
     <div flex="~" justify-center>
-      <button mt7.5 h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button mt7.5 h10.5 min-w37.5 rounded-lg bg-btn-select px2 text-lg text-white>
         {{ t('trading.submit') }}
       </button>
     </div>

@@ -244,15 +244,15 @@
   },
   "trading": {
     "avg": "média",
-    "avg_vol": "Vol médio",
+    "avg_vol": "Vol méd",
     "buy": {
       "all": "todos os fundos",
       "amount": "Quantia",
-      "amount_available": "Quantia disponível",
+      "amount_available": "Disponível",
       "anticipated_yield": "Receita estimada",
       "breed": "Variedade",
       "earning_yield": "taxa de retorno",
-      "other": "Outro montante",
+      "other": "Outros",
       "real_price": "preço em tempo real",
       "service_charge": "taxa de manuseio",
       "settlement_time": "hora de liquidação"
@@ -262,7 +262,7 @@
     "k_line": "linha k",
     "market": "Mercado",
     "max": "Altíssima",
-    "min": "mais baixo",
+    "min": "mínimo",
     "real_time": "negociação em tempo real",
     "submit": "Enviar pedido",
     "undulate": "flutuação",

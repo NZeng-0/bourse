@@ -88,10 +88,10 @@ function back() {
       </div>
     </div>
     <div mt4 pl5.8>
-      <button h8.5 w25 rounded-xl bg-white text-lg>
+      <button h8.5 min-w25 rounded-xl bg-white px2 text-lg>
         {{ t('trading.buy.all') }}
       </button>
-      <input type="text" :placeholder="t('trading.buy.orther')" :class="subClass()">
+      <input type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
@@ -115,10 +115,10 @@ function back() {
       <div mt6.5 flex="~" items-center justify-between>
         <div>
           {{ t('trading.buy.amount_available') }}
-          <span ml7 class="text-#5425EB">218</span>
+          <span class="text-#5425EB">218</span>
         </div>
         <div>
-          {{ t('trading.buy.service_charge') }} &nbsp;&nbsp;
+          {{ t('trading.buy.service_charge') }}
           <span class="text-#5425EB">0% </span>
         </div>
       </div>

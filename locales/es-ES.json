@@ -40,11 +40,11 @@
     "buy": {
       "all": "todos los fondos",
       "amount": "Cantidad",
-      "amount_available": "Cantidad disponible",
+      "amount_available": "Disponible",
       "anticipated_yield": "Ingresos estimados",
       "breed": "Variedad",
       "earning_yield": "tasa de retorno",
-      "other": "Otra cantidad",
+      "other": "Otros",
       "real_price": "precio en tiempo real",
       "service_charge": "tasa de tramitación",
       "settlement_time": "tiempo de liquidación"
