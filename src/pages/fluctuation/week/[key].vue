@@ -2,7 +2,7 @@
 import TheCharts from '~/components/TheCharts'
 import { list } from '~/composables/portfolioListData'
 
-const route = useRouter()
+// const route = useRouter()
 const key = useRoute('/trading/day/[key]').params.key
 const data = list[Number.parseInt(key)]
 const { range, icon, presentValue, ud } = data
@@ -13,9 +13,10 @@ function getOption() {
   return {
     animation: false,
     grid: {
-      left: '0%',
-      right: '15%',
-      height: '60%',
+      left: '0px',
+      right: '13%',
+      top: '12px',
+      height: '85%',
     },
     tooltip: {
       trigger: 'axis',
@@ -130,12 +131,20 @@ function getOption() {
   }
 }
 
-function go(custom: string) {
-  route.push(`/fluctuation/${custom}/${key}`)
-}
-
 function getRandom() {
   return `canlestick${Number.parseInt(`${Math.random() * 100}`)}`
+}
+
+const select = ref(1)
+function selected(current: number) {
+  return select.value === current ? 'bg-#7751f1' : 'bg-#CBBCFB'
+}
+
+function go(index: number) {
+  select.value = index
+
+  // routeing if required
+  // route.push(`/fluctuation/${custom}/${key}`)
 }
 </script>
 
@@ -163,19 +172,19 @@ function getRandom() {
             </div>
           </div>
           <div flex="~" mt3 justify-between px4 text-sm>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl>
+            <div :class="selected(0)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(0)">
               1D
             </div>
-            <div class="bg-#7751f1" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('week')">
+            <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(1)">
               1W
             </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl>
+            <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(2)">
               1M
             </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl>
+            <div :class="selected(3)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(3)">
               1Y
             </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl>
+            <div :class="selected(4)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(4)">
               5Y
             </div>
           </div>

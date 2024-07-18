@@ -4,7 +4,6 @@ import { list } from '~/composables/portfolioListData'
 import { downColor, upColor } from '~/composables/candlestickChart'
 import type { optionData } from '~/composables/candlestickChart'
 
-const route = useRouter()
 const key = useRoute('/trading/day/[key]').params.key
 const data = list[Number.parseInt(key)]
 const { range, icon, presentValue, ud } = data
@@ -63,9 +62,10 @@ function getOption() {
     },
     grid: [
       {
-        left: '0%',
-        right: '15%',
-        height: '60%',
+        top: '12px',
+        left: '12px',
+        right: '17%',
+        bottom: '12px',
       },
     ],
     xAxis: [
@@ -91,9 +91,6 @@ function getOption() {
         axisTick: {
           show: false,
         },
-        axisPointer: {
-          show: false,
-        },
       },
     ],
     yAxis: [
@@ -105,7 +102,7 @@ function getOption() {
           show: false,
         },
         axisLine: {
-          show: true,
+          show: false,
           lineStyle: {
             color: '#d4d3d6',
           },
@@ -138,10 +135,6 @@ function getOption() {
   }
 }
 
-function go(custom: string) {
-  route.push(`/trading/${custom}/${key}`)
-}
-
 function getRandom() {
   return `canlestick${Number.parseInt(`${Math.random() * 100}`)}`
 }
@@ -149,70 +142,8 @@ function getRandom() {
 
 <template>
   <div>
-    <div>
-      <div p="x-4">
-        <TheHead back="/" :title="data.nameEN" />
-      </div>
-      <div h170 overflow-y-scroll bg-trading>
-        <TheSwitched :k="true" :current="key" />
-        <section>
-          <div flex="~" mt5.5 wfull justify-between px-4>
-            <div>
-              <div text-3xl>
-                {{ presentValue }}
-              </div>
-              <div flex="~" text-xs :style="{ color: range > 0 ? '#19c09a' : '#fc6c6b' }">
-                <div :class="range > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'" h-1.2rem w-1.2rem />
-                <div>{{ ud }} ({{ range }}%)</div>
-              </div>
-            </div>
-            <div mr-2.5>
-              <img :src="icon" h12 w12>
-            </div>
-          </div>
-          <div flex="~" mt3 justify-between px4 text-sm>
-            <div class="bg-#7751f1" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('day')">
-              1D
-            </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('week')">
-              1W
-            </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('month')">
-              1M
-            </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('year')">
-              1Y
-            </div>
-            <div class="bg-#CBBCFB" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('five-year')">
-              5Y
-            </div>
-          </div>
-          <div mt3.2 h65 w-full>
-            <TheCharts :dom="getRandom()" :option="getOption()" />
-          </div>
-        </section>
-        <div flex="~" justify-around text-xs>
-          <span>
-            13:00
-          </span>
-          <span>
-            14:00
-          </span>
-          <span>
-            15:00
-          </span>
-          <span>
-            16:00
-          </span>
-        </div>
-        <div flex="~" justify-center>
-          <TheTradingCard />
-        </div>
-        <div flex="~" my4 justify-between px5.5>
-          <TheBuy :index="key" selected="bg-btn-select" />
-        </div>
-      </div>
-      <TheFooter :index="0" />
-    </div>
+    <TheTrading :index="key" :title="data.nameEN" :range :icon :present-value :ud :select="0">
+      <TheCharts :dom="getRandom()" :option="getOption()" />
+    </TheTrading>
   </div>
 </template>
