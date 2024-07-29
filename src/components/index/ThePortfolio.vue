@@ -3,7 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div flex="~ gap2 wrap" mt-8 items-center justify-between>
+  <div flex="~ gap2 wrap" items-center justify-between>
     <div text-lg font-normal>
       {{ t('index.stock_market') }}
     </div>

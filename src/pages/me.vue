@@ -46,6 +46,12 @@ const menu = [
     to: 'secure',
   },
   {
+    title: '公司简介',
+    icon: '../assets/images/me/menu/company.png',
+    right: '',
+    to: 'company',
+  },
+  {
     title: `${t('me.download.title')}`,
     icon: '../assets/images/me/menu/download.png',
     right: ' ',

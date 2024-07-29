@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Message: typeof import('./src/components/message/message.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheAssetsHead: typeof import('./src/components/assets/TheAssetsHead.vue')['default']
@@ -35,6 +36,7 @@ declare module 'vue' {
     TheSolution: typeof import('./src/components/grow/TheSolution.vue')['default']
     TheStatusBar: typeof import('./src/components/TheStatusBar.vue')['default']
     TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
+    TheTips: typeof import('./src/components/message/TheTips.vue')['default']
     TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
     TheYesterday: typeof import('./src/components/grow/TheYesterday.vue')['default']

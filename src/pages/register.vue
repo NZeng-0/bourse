@@ -1,5 +1,25 @@
 <script setup lang="ts">
+import { register } from '~/api'
+
 const { t } = useI18n()
+
+const user = ref({
+  account: 'string',
+  pwd: 'string',
+  verify_pwd: 'string',
+  nickname: 'string',
+  phone: 'string',
+  operation_pwd: 'string',
+  email: 'string',
+  idcard: 'string',
+  spread_code: 'string',
+})
+
+async function onRegister() {
+  const { data } = await register(user.value)
+  // eslint-disable-next-line no-console
+  console.log(data.value)
+}
 
 function getClass() {
   return 'border-#E7E7E7 h12 w70 border rounded-2xl p6 text-black'
@@ -39,7 +59,7 @@ function getClass() {
       <input type="text" :class="getClass()" :placeholder="t('register.invitation_code')">
     </div>
     <div mt8>
-      <button class="bg-#673DDA" h12 w70 border rounded-2xl text-black text-white>
+      <button class="bg-#673DDA" h12 w70 border rounded-2xl text-black text-white @click="onRegister()">
         {{ t('register.sign_up') }}
       </button>
     </div>
