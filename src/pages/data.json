@@ -1,0 +1,66 @@
+{
+  "success": "success",
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "lbt": [
+      {
+        "id": 12,
+        "key": "lbt",
+        "condition": null,
+        "value": "b.png",
+        "link": null,
+        "remark": "轮播图",
+        "status": 1,
+        "sort": 1,
+        "create_time": "2024-07-07 16:04:24"
+      },
+      {
+        "id": 11,
+        "key": "lbt",
+        "condition": null,
+        "value": "a.png",
+        "link": null,
+        "remark": "轮播图",
+        "status": 1,
+        "sort": 0,
+        "create_time": "2024-07-07 16:04:24"
+      },
+      {
+        "id": 13,
+        "key": "lbt",
+        "condition": null,
+        "value": "c.png",
+        "link": "www.baidu.com",
+        "remark": "轮播图",
+        "status": 1,
+        "sort": 0,
+        "create_time": "2024-07-07 16:04:24"
+      }
+    ],
+    "pop_window_message": [
+      {
+        "id": 27,
+        "key": "pop_window_message",
+        "condition": null,
+        "value": "这是弹窗内容",
+        "link": null,
+        "remark": "弹窗消息名称",
+        "status": 1,
+        "sort": 0,
+        "create_time": "2024-07-08 15:15:36"
+      },
+      {
+        "id": 28,
+        "key": "pop_window_message",
+        "condition": null,
+        "value": "这是弹窗内容2",
+        "link": null,
+        "remark": "弹窗消息名称2",
+        "status": 1,
+        "sort": 0,
+        "create_time": "2024-07-08 15:15:45"
+      }
+    ]
+  }
+}

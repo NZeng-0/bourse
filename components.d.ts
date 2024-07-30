@@ -29,7 +29,7 @@ declare module 'vue' {
     TheList: typeof import('./src/components/index/TheList.vue')['default']
     TheLoading: typeof import('./src/components/TheLoading.vue')['default']
     TheMenuHead: typeof import('./src/components/menu/TheMenuHead.vue')['default']
-    ThePopup: typeof import('./src/components/ThePopup.vue')['default']
+    ThePopup: typeof import('./src/components/popup/ThePopup.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
     TheRechargeHead: typeof import('./src/components/assets/TheRechargeHead.vue')['default']

@@ -1,20 +1,19 @@
-import { isFunction } from '@vue/shared'
-import { createVNode, isVNode, render } from 'vue'
-import messageComponent from './message.vue'
+import { createVNode, render } from 'vue'
+import popupComponent from './ThePopup.vue'
 import type { ButtonProps } from './type'
-import type { MessageContext } from './instance'
+import type { popupContext } from './instance'
 import { instances } from './instance'
 
 let seed = 1
 
-function message(option: Partial<ButtonProps>) {
-  const instance = createMessage(option)
+function pop(option: Partial<ButtonProps>) {
+  const instance = createPop(option)
 
   instances.push(instance)
   return instance.handler
 }
 
-function closeMessage(instance: MessageContext) {
+function closeMessage(instance: popupContext) {
   const idx = instances.indexOf(instance)
   if (idx === -1)
     return
@@ -24,7 +23,7 @@ function closeMessage(instance: MessageContext) {
   handler.close()
 }
 
-function createMessage(option: Partial<ButtonProps>) {
+function createPop(option: Partial<ButtonProps>) {
   const id = `message_${seed++}`
   const container = document.createElement('div')
 
@@ -42,15 +41,8 @@ function createMessage(option: Partial<ButtonProps>) {
   }
 
   const vnode = createVNode(
-    messageComponent,
+    popupComponent,
     props,
-    isFunction(props.message) || isVNode(props.message)
-      ? {
-          default: isFunction(props.message)
-            ? props.message
-            : () => props.message,
-        }
-      : null,
   )
 
   render(vnode, container)
@@ -60,7 +52,6 @@ function createMessage(option: Partial<ButtonProps>) {
   const vm = vnode.component!
   const handler = {
     close: () => {
-      vm.exposed!.visibled.value = false
       document.body.removeChild(node)
     },
   }
@@ -73,4 +64,4 @@ function createMessage(option: Partial<ButtonProps>) {
   return instance
 }
 
-export default message
+export default pop

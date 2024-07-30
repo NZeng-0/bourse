@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { login } from '~/api'
 import message from '~/components/message'
+import { useLocalCache } from '~/hook'
 
+const { setCache } = useLocalCache()
 const { t } = useI18n()
 const src = new URL('../assets/images/login/logo.png', import.meta.url).href
+const router = useRouter()
 
 const user = ref({
-  username: '',
-  password: '',
+  name: '',
+  pwd: '',
 })
 
 async function onLogin() {
@@ -17,6 +20,10 @@ async function onLogin() {
       message: data.value.msg,
       duration: 3000,
     })
+  }
+  else {
+    setCache('token', data.value.data.token)
+    router.push('/')
   }
 }
 </script>
@@ -29,13 +36,13 @@ async function onLogin() {
     <div flex="~ wrap" mt20 justify-center>
       <div>
         <input
-          type="text" :value="user.username" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
+          v-model="user.name" type="text" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
           :placeholder="t('login.account')"
         >
       </div>
       <div mt5>
         <input
-          type="passwrod" :value="user.password" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
+          v-model="user.pwd" type="passwrod" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
           :placeholder="t('login.password')"
         >
       </div>

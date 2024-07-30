@@ -1,7 +1,7 @@
 import Fetch from './fetch'
 import { useLocalCache } from '~/hook'
 
-const { getCache, clearCache } = useLocalCache()
+const { getCache } = useLocalCache()
 
 export const Request = new Fetch({
   baseUrl: 'http://47.109.206.211:82',
@@ -11,17 +11,13 @@ export const Request = new Fetch({
 
       options.headers = {
         ...options.headers,
-        Authorization: token,
+        token,
       }
       return { options }
     },
     afterFetch(ctx) {
       // 这里做统一错误处理
-      const { code } = ctx.data
-      if (code === 102) {
-        clearCache()
-        location.reload()
-      }
+      // const { code } = ctx.data
       return ctx
     },
     onFetchError(ctx: any) {
