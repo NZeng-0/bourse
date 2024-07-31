@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import pop from '~/components/popup'
-import { getIndexMsg, getIndexNoticeList } from '~/api'
+import { getIndexMsg } from '~/api'
 
 // const router = useRouter()
 const { t } = useI18n()
@@ -23,9 +23,6 @@ async function init() {
 
 onMounted(async () => {
   await init()
-  const { data } = await getIndexNoticeList()
-  // eslint-disable-next-line no-console
-  console.log(data.value)
 })
 </script>
 
@@ -48,21 +45,3 @@ onMounted(async () => {
     </div> -->
   </div>
 </template>
-
-<style scoped>
-/* 文字滚动 */
-@keyframes scrolltext {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.banner_textscroll>div {
-  white-space: nowrap;
-  animation: 10s scrolltext linear infinite;
-}
-</style>

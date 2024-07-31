@@ -41,3 +41,20 @@ p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+/* 文字滚动 */
+@keyframes scrolltext {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.banner_textscroll>div {
+  white-space: nowrap;
+  animation: 10s scrolltext linear infinite;
+  animation-iteration-count: 1;
+}

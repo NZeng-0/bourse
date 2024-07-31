@@ -3,64 +3,37 @@
   "code": 200,
   "msg": "成功",
   "data": {
-    "lbt": [
-      {
-        "id": 12,
-        "key": "lbt",
-        "condition": null,
-        "value": "b.png",
-        "link": null,
-        "remark": "轮播图",
-        "status": 1,
-        "sort": 1,
-        "create_time": "2024-07-07 16:04:24"
-      },
-      {
-        "id": 11,
-        "key": "lbt",
-        "condition": null,
-        "value": "a.png",
-        "link": null,
-        "remark": "轮播图",
-        "status": 1,
-        "sort": 0,
-        "create_time": "2024-07-07 16:04:24"
-      },
-      {
-        "id": 13,
-        "key": "lbt",
-        "condition": null,
-        "value": "c.png",
-        "link": "www.baidu.com",
-        "remark": "轮播图",
-        "status": 1,
-        "sort": 0,
-        "create_time": "2024-07-07 16:04:24"
-      }
-    ],
-    "pop_window_message": [
-      {
-        "id": 27,
-        "key": "pop_window_message",
-        "condition": null,
-        "value": "这是弹窗内容",
-        "link": null,
-        "remark": "弹窗消息名称",
-        "status": 1,
-        "sort": 0,
-        "create_time": "2024-07-08 15:15:36"
-      },
-      {
-        "id": 28,
-        "key": "pop_window_message",
-        "condition": null,
-        "value": "这是弹窗内容2",
-        "link": null,
-        "remark": "弹窗消息名称2",
-        "status": 1,
-        "sort": 0,
-        "create_time": "2024-07-08 15:15:45"
-      }
-    ]
+    "token": "71fc3f091eec4b9aba8336f6d814e126",
+    "userInfo": {
+      "uid": 8,
+      "account": "usery",
+      "phone": "12323321123",
+      "nickname": "test",
+      "email": "23123@162.com",
+      "avatar": "",
+      "last_ip": "",
+      "now_money": "0.00",
+      "withdraw_price": "0.00",
+      "recharge_price": "0.00",
+      "earnings_money": "0.00",
+      "investment_money": "0.00",
+      "status": 1,
+      "user_freeze_time": null,
+      "operation_pwd": "123qwe",
+      "deal_freeze_time": null,
+      "withdraw_status": 1,
+      "auth_status": 0,
+      "create_order_rate": "0.00",
+      "user_withdraw_rate": "0.00",
+      "level_id": 0,
+      "is_spread": 0,
+      "spread_code": "",
+      "spread_id": 0,
+      "sex": 1,
+      "idcard": "123455123221",
+      "idcard_img": null,
+      "create_time": "2024-07-30 09:12:04",
+      "last_login_time": null
+    }
   }
 }

@@ -41,6 +41,6 @@ export function getIndexSlideshowMessage() {
 
 export function getYuEBaoList() {
   return Request.get({
-    url: '/index/moneyInvestment/getMoneyInvestmentOrderList',
+    url: '/index/moneyInvestment/getMoneyInvestmentList',
   })
 }
