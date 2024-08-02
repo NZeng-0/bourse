@@ -1,4 +1,6 @@
 <script setup lang=ts>
+import { getUserInfo } from '~/api'
+
 const route = useRouter()
 const { t, locale } = useI18n()
 
@@ -87,6 +89,55 @@ function go(to: string) {
 function transfer(tar: string) {
   route.push(`/YuEBao/transfer-${tar}`)
 }
+
+interface userTypes {
+  uid: number
+  account: string
+  phone: string
+  nickname: string
+  email: string | null
+  avatar: string
+  last_ip: string
+  now_money: string
+  withdraw_price: string
+  recharge_price: string
+  earnings_money: string
+  investment_money: string
+  status: number
+  user_freeze_time: string
+  deal_freeze_time: string
+  withdraw_status: number
+  auth_status: number
+  create_order_rate: string
+  user_withdraw_rate: string
+  level_id: number
+  is_spread: number
+  spread_code: string
+  spread_id: number
+  sex: number
+  idcard: string | null
+  idcard_img: string | null
+  create_time: string
+  last_login_time: string
+  bank_info: {
+    id: number
+    uid: number
+    bank_name: string
+    bank_branch_name: string
+    bank_account: string
+    wallet_name: string
+    wallet_address: string
+    create_time: string
+  }
+  level_name: string
+  level: number
+}
+
+const user: Ref<userTypes | undefined> = ref()
+onMounted(async () => {
+  const { data } = await getUserInfo()
+  user.value = data.value.data as userTypes
+})
 </script>
 
 <template>
@@ -106,11 +157,11 @@ function transfer(tar: string) {
         </div>
         <div pl4 w="2/3">
           <div class="text-#121826" font-ps>
-            HKEx01
+            {{ user?.nickname }}
           </div>
           <div class="text-#9EA3AE" text-sm>
             <p>
-              {{ t('me.member') }}
+              {{ user?.level_name }}
             </p>
           </div>
         </div>
@@ -126,7 +177,7 @@ function transfer(tar: string) {
             {{ t('me.balance') }}:
           </div>
           <div text-2xl class="text-#3D3D3D">
-            78963.00
+            {{ user?.now_money }}
           </div>
         </div>
         <div flex="~" h23 items-center justify-between>

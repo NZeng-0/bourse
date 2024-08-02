@@ -1,44 +1,23 @@
 <script setup lang="ts">
+import { getRechargeList } from '~/api'
+
 const { t } = useI18n()
 
-const list = [
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.1'),
-    state: 1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.1'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.2'),
-    state: 1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.2'),
-    state: 0,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.1'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    type: t('me.recharge_record.type.1'),
-    state: 1,
-  },
-]
+const list: Ref<recordTyps[]> = ref([])
+
+interface recordTyps {
+  id: number
+  uid: number
+  order_sn: string
+  money: string
+  type: number
+  pay_storageImage: string
+  status: number
+  explain: string
+  type_info: string
+  pay_type: string | null
+  create_time: string
+}
 
 function getBgStyle() {
   return ' py2.5 pl2.5 text-sm text-#030319'
@@ -59,6 +38,11 @@ function getStateStyle(state: number) {
       ? 'text-#4400FF'
       : 'text-#DD4646'
 }
+
+onMounted(async () => {
+  const { data } = await getRechargeList()
+  list.value = data.value.data.data
+})
 </script>
 
 <template>
@@ -67,18 +51,18 @@ function getStateStyle(state: number) {
     <div h-screen overflow-y-scroll px6.5>
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h30 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
-          {{ t('me.time') }}: {{ item.time }}
+          {{ t('me.time') }}: {{ item.create_time }}
         </div>
         <div wfull>
-          {{ t('me.amount') }}: {{ item.amount }}
+          {{ t('me.amount') }}: {{ item.money }}
         </div>
         <div wfull>
-          {{ t('me.type') }}: <span>{{ item.type }}</span>
+          {{ t('me.type') }}: <span>{{ item.type === 1 ? '后台操作' : '前台充值' }}</span>
         </div>
         <div wfull>
           {{ t('me.state') }}:
-          <span :class="getStateStyle(item.state)">
-            {{ getState(item.state) }}
+          <span :class="getStateStyle(item.status)">
+            {{ getState(item.status) }}
           </span>
         </div>
       </div>

@@ -8,13 +8,22 @@ const { t } = useI18n()
 async function getPopMsg() {
   const { data } = await getIndexMsg()
   const temp = data.value.data.pop_window_message
-  for (const e of temp) {
-    pop({
-      message: e.value,
-      title: e.remark,
-      submit: t('popup.confrim'),
-    })
+
+  // 用于逐条显示消息
+  async function showNextMessage(index = 0) {
+    if (index < temp.length) {
+      const e = temp[index]
+      pop({
+        message: e.value,
+        title: e.remark,
+        submit: t('popup.confrim'),
+        onClose: () => showNextMessage(index + 1),
+      })
+    }
   }
+
+  // 开始显示第一条消息
+  showNextMessage()
 }
 
 async function init() {
@@ -39,9 +48,5 @@ onMounted(async () => {
     </div>
     <ThePortfolio />
     <TheFooter :index="0" />
-    <!-- 加载中组件 -->
-    <!-- <div v-if="loading">
-      <TheLoading :done />
-    </div> -->
   </div>
 </template>

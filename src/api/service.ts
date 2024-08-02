@@ -44,3 +44,21 @@ export function getYuEBaoList() {
     url: '/index/moneyInvestment/getMoneyInvestmentList',
   })
 }
+
+export function getNoticeList() {
+  return Request.get({
+    url: '/index/user/getUserNoticeList',
+  })
+}
+
+export function getUserInfo() {
+  return Request.get({
+    url: '/index/user/getUserInfo',
+  })
+}
+
+export function getRechargeList() {
+  return Request.get({
+    url: '/index/user/getRechargeList',
+  })
+}
