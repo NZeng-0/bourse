@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { login } from '~/api'
+import { getUserInfo, login } from '~/api'
 import message from '~/components/message'
 import { useLocalCache } from '~/hook'
+import { useUser } from '~/store/useUser'
+
+const userStore = useUser()
 
 const { setCache } = useLocalCache()
 const { t } = useI18n()
@@ -13,10 +16,13 @@ const user = ref({
   pwd: '123456',
 })
 
+async function onLoginSuccesful() {
+  const { data } = await getUserInfo()
+  return data.value.data
+}
+
 async function onLogin() {
   const { data } = await login(user.value)
-  // eslint-disable-next-line no-console
-  console.log(data.value.data)
   if (data.value.code === 5001) {
     message({
       message: data.value.msg,
@@ -25,8 +31,14 @@ async function onLogin() {
   }
   else {
     setCache('token', data.value.data.token)
+    const userInfo = await onLoginSuccesful()
+    userStore.data = userInfo
     router.push('/')
   }
+}
+
+function scoped() {
+  return 'h12 w70 border rounded-2xl text-black  border="#E7E7E7"'
 }
 </script>
 
@@ -37,16 +49,10 @@ async function onLogin() {
     </div>
     <div flex="~ wrap" mt20 justify-center>
       <div>
-        <input
-          v-model="user.name" type="text" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
-          :placeholder="t('login.account')"
-        >
+        <input v-model="user.name" type="text" :class="scoped()" p6 :placeholder="t('login.account')">
       </div>
       <div mt5>
-        <input
-          v-model="user.pwd" type="passwrod" class="border-#E7E7E7" h12 w70 border rounded-2xl p6 text-black
-          :placeholder="t('login.password')"
-        >
+        <input v-model="user.pwd" type="passwrod" :class="scoped()" p6 :placeholder="t('login.password')">
       </div>
       <div mt4>
         <div type="text" readonly h12 w70 rounded-2xl pl6 text-black>
@@ -54,14 +60,13 @@ async function onLogin() {
         </div>
       </div>
       <div mt3>
-        <input
-          type="button" class="bg-#673DDA" h12 w70 border rounded-2xl text-black text-white
-          :value="t('login.login')" @click="onLogin()"
-        >
+        <button class="bg-#673DDA" :class="scoped()" text-white @click="onLogin()">
+          {{ t('login.login') }}
+        </button>
       </div>
       <div mt5>
         <RouterLink to="/register">
-          <div type="button" class="text-#673DDA" readonly h12 w70 rounded-2xl text-center>
+          <div type="button" class="text-#673DDA" readonly h12 w70 rounded-2xl border-none text-center>
             {{ t('login.sign_up') }}
           </div>
         </RouterLink>

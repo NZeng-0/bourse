@@ -62,3 +62,9 @@ export function getRechargeList() {
     url: '/index/user/getRechargeList',
   })
 }
+
+export function getAccountBillList() {
+  return Request.get({
+    url: '/index/user/getAccountBillList',
+  })
+}

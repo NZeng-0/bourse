@@ -1,10 +1,12 @@
 <script setup lang=ts>
-import { getUserInfo } from '~/api'
+// import { getAccountBillList } from '~/api'
 import { useLocalCache } from '~/hook'
+import { useUser } from '~/store/useUser'
 
+const userStore = useUser()
 const { removeCache } = useLocalCache()
 
-const route = useRouter()
+const router = useRouter()
 const { t, locale } = useI18n()
 
 const menu = [
@@ -86,15 +88,16 @@ function width() {
 }
 
 function go(to: string) {
-  route.push(`/menu/${to}`)
+  router.push(`/menu/${to}`)
 }
 
 function transfer(tar: string) {
-  route.push(`/YuEBao/transfer-${tar}`)
+  router.push(`/YuEBao/transfer-${tar}`)
 }
 
 function signout() {
   removeCache('token')
+  router.push('/login')
 }
 
 interface userTypes {
@@ -140,21 +143,28 @@ interface userTypes {
   level: number
 }
 
-const user: Ref<userTypes | undefined> = ref()
+function scoped() {
+  return `border rounded-lg bg-btn-select px2 ${width() ? 'w=2/3 text-xs' : 'w25.5'}`
+}
+
+const user = shallowRef<userTypes>()
 onMounted(async () => {
-  const { data } = await getUserInfo()
-  user.value = data.value.data as userTypes
+  user.value = userStore.data
 })
 </script>
 
 <template>
   <div>
-    <div flex="~" h27 items-center justify-between rounded-b-2xl bg-white px4>
-      <div flex="~" wfull items-end justify-center text-xl text-trading-title>
+    <div flex="~" h27 items-center justify-between rounded-b-2xl bg-white px8>
+      <div w="1/3" />
+      <div flex="~" w="1/3" items-end justify-center text-xl text-trading-title>
         {{ t('me.title') }}
       </div>
+      <div flex="~" w="1/3" items-end justify-end>
+        <img src="../assets/images/me/infrom.png" h5 w5>
+      </div>
     </div>
-    <div flex="~" h19.7 wfull border-t bg-white px-6>
+    <div flex="~" h19.7 wfull border-t bg-white px6>
       <div w="1/2" flex="~" items-center>
         <div w="1.2/3">
           <div relative>
@@ -214,16 +224,10 @@ onMounted(async () => {
           </div>
         </div>
         <div flex="~" justify-between px4 text-white>
-          <button
-            w="1/2" h8.8 :class="width() ? 'w=2/3 text-xs' : 'w25.5'" border rounded-lg bg-btn-select px2
-            @click="transfer('in')"
-          >
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer('in')">
             {{ t('me.recharge') }}
           </button>
-          <button
-            w="1/2" h8.8 :class="width() ? 'w=2/3 text-xs' : 'w25.5'" border rounded-lg bg-btn-select px2
-            @click="transfer('out')"
-          >
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer('out')">
             {{ t('me.withdrawal') }}
           </button>
         </div>
