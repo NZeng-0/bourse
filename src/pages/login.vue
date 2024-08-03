@@ -9,12 +9,14 @@ const src = new URL('../assets/images/login/logo.png', import.meta.url).href
 const router = useRouter()
 
 const user = ref({
-  name: '',
-  pwd: '',
+  name: 'qwer',
+  pwd: '123456',
 })
 
 async function onLogin() {
   const { data } = await login(user.value)
+  // eslint-disable-next-line no-console
+  console.log(data.value.data)
   if (data.value.code === 5001) {
     message({
       message: data.value.msg,

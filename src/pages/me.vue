@@ -1,5 +1,8 @@
 <script setup lang=ts>
 import { getUserInfo } from '~/api'
+import { useLocalCache } from '~/hook'
+
+const { removeCache } = useLocalCache()
 
 const route = useRouter()
 const { t, locale } = useI18n()
@@ -90,6 +93,10 @@ function transfer(tar: string) {
   route.push(`/YuEBao/transfer-${tar}`)
 }
 
+function signout() {
+  removeCache('token')
+}
+
 interface userTypes {
   uid: number
   account: string
@@ -166,7 +173,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <div w="1/2" class="text-#673BF6" flex="~" items-center justify-end text-sm>
+      <div w="1/2" class="text-#673BF6" flex="~" items-center justify-end text-sm @click="signout()">
         {{ t('me.log_out') }}
       </div>
     </div>

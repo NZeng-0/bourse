@@ -31,8 +31,8 @@ defineExpose({
 
 <template>
   <Transition name="slide-fade">
-    <div v-show="visibled" flex="~" top="0" left="0" items-centr fixed z100 h-screen w-full justify-center pt7.5>
-      <div flex="~" text="lg #595959" h10 items-center justify-center rounded-md bg-white px2 shadow-black:15 shadow-xl>
+    <div v-show="visibled" flex="~" top="0" left="0" items-centr fixed z100 w-full justify-center pt7.5>
+      <div flex="~" text="lg #595959" h10 items-center justify-center rounded-md bg-white px2 shadow-gray:10 shadow-xl>
         {{ message }}
       </div>
     </div>
