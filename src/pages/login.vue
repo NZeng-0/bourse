@@ -2,6 +2,7 @@
 import { getUserInfo, login } from '~/api'
 import message from '~/components/message'
 import { useLocalCache } from '~/hook'
+import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 
 const userStore = useUser()
@@ -31,7 +32,7 @@ async function onLogin() {
   }
   else {
     setCache('token', data.value.data.token)
-    const userInfo = await onLoginSuccesful()
+    const userInfo = await onLoginSuccesful() as userTypes
     userStore.data = userInfo
     router.push('/')
   }
