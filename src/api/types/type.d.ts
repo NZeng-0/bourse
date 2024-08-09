@@ -30,4 +30,29 @@ export interface indexProduct {
   start_time: string
   end_time: string
   create_time: string
+  current: {
+    date: number
+    open: number
+    close: number
+    low: number
+    high: number
+    amount: number
+    vol: number
+    count: number
+  }
+  history_change_list: Array
+  history_list: Array<history>
+}
+
+export interface history {
+  id: number
+  product_code: string
+  date: number
+  amount: number
+  count: number
+  open: string
+  close: string
+  low: string
+  high: string
+  vol: string
 }

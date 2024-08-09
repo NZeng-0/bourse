@@ -49,6 +49,7 @@ declare global {
   const getOptions: typeof import('./src/composables/candlestickChart')['getOptions']
   const getState: typeof import('./src/composables/index')['getState']
   const h: typeof import('vue')['h']
+  const icon: typeof import('./src/composables/index')['icon']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const index: typeof import('./src/composables/candlestickChart')['index']
   const inject: typeof import('vue')['inject']
@@ -368,6 +369,7 @@ declare module 'vue' {
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly injectLocal: UnwrapRef<typeof import('@vueuse/core')['injectLocal']>
@@ -672,6 +674,7 @@ declare module '@vue/runtime-core' {
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly injectLocal: UnwrapRef<typeof import('@vueuse/core')['injectLocal']>

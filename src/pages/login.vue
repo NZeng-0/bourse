@@ -16,6 +16,7 @@ const user = ref({
   name: 'qwer',
   pwd: '123456',
 })
+const wait = ref(false)
 
 async function onLoginSuccesful() {
   const { data } = await getUserInfo()
@@ -23,6 +24,10 @@ async function onLoginSuccesful() {
 }
 
 async function onLogin() {
+  if (wait.value)
+    return
+
+  wait.value = true
   const { data } = await login(user.value)
   if (data.value.code === 5001) {
     message({
@@ -36,6 +41,7 @@ async function onLogin() {
     userStore.data = userInfo
     router.push('/')
   }
+  wait.value = false
 }
 
 function scoped() {
@@ -46,9 +52,9 @@ function scoped() {
 <template>
   <div>
     <div flex="~" justify-center>
-      <img mt20 h50 w50 :src>
+      <img mt10 h40 w40 :src>
     </div>
-    <div flex="~ wrap" mt20 justify-center>
+    <div flex="~ wrap" mt10 justify-center>
       <div>
         <input v-model="user.name" type="text" :class="scoped()" p6 :placeholder="t('login.account')">
       </div>
@@ -73,7 +79,7 @@ function scoped() {
         </RouterLink>
       </div>
     </div>
-    <div flex="~" mt23 justify-center>
+    <div flex="~" mt10 justify-center>
       <div type="button" readonly h12 w70 rounded-2xl text-center>
         {{ t('login.service') }}
       </div>

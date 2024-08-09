@@ -6,7 +6,6 @@ const { t } = useI18n()
 const router = useRouter()
 
 const loading = ref(false)
-const icon = new URL('../../assets/images/BTC.png', import.meta.url).href
 
 const list: Ref<indexProduct[]> = ref([])
 
@@ -24,11 +23,11 @@ onMounted(async () => {
 })
 
 function getIcon(range: number) {
-  return range > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
+  return range === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
 }
 
 function getColor(range: number) {
-  return range > 0 ? '#19c09a' : '#fc6c6b'
+  return range === 1 ? '#19c09a' : '#fc6c6b'
 }
 
 function go(key: number) {
@@ -41,16 +40,16 @@ function handleImageError(key: number) {
 </script>
 
 <template>
-  <div flex="~ gap2 nowrap" mt-4 w-full items-start overflow-x-scroll overflow-y-hidden scroll-smooth>
+  <div flex="~ gap2 nowrap" mt-4 w-full items-start overflow-y-hidden>
     <div v-if="loading" h37 w51 shrink-0 rounded-2xl bg-zinc-100 class="animate-pulse" />
     <div v-for="(e, key) in list" :key mr-4 h37 w51 shrink-0 rounded-2xl bg-zinc-100 p1 @click="go(key)">
       <div flex="~">
         <div ml-4.5 mt-4>
-          <img h-12 w-12 rounded-full :src="e.logo" @error="handleImageError(key)">
+          <img h12 w12 rounded-full :src="e.logo" @error="handleImageError(key)">
         </div>
         <div ml-2 mt-5 text-left>
           <div text-sm text-portolio-primary font-normal>
-            {{ e.product_name }}
+            {{ e.product_code }}
           </div>
           <div mt-2 text-xs text-portolio font-normal>
             {{ e.product_name }}
@@ -66,7 +65,7 @@ function handleImageError(key: number) {
         </div>
         <div flex="~" mb5 mr1 h-8 w19 items-center justify-center rounded-xl bg-white>
           <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h-1.2rem w-1.2rem />
-          <span text-xs :style="{ color: e.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
+          <span text-xs :style="{ color: e.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
             {{ e.profit_status }}%
           </span>
         </div>

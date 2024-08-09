@@ -40,7 +40,7 @@ const data = [
 </script>
 
 <template>
-  <div flex="~" absolute fixed inset-x-0 bottom-0 z10 h16.5 w-full items-center justify-around border-y bg-white>
+  <div flex="~" absolute fixed inset-x-0 bottom--1 z10 h16.5 w-full items-center justify-around border-y bg-white>
     <div v-for="(item, key) in data" :key>
       <RouterLink :to="item.pointTo">
         <div flex="~" items-center justify-center>

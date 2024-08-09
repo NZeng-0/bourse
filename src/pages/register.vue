@@ -28,7 +28,7 @@ function getClass() {
 </script>
 
 <template>
-  <div flex="~ wrap" mt13 justify-center>
+  <div flex="~ wrap" mt13 h-screen justify-center overflow-x-scroll>
     <div>
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
@@ -71,5 +71,6 @@ function getClass() {
         </div>
       </RouterLink>
     </div>
+    <div h60 />
   </div>
 </template>

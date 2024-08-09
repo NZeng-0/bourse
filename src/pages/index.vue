@@ -47,6 +47,7 @@ onMounted(async () => {
       </div>
     </div>
     <ThePortfolio />
-    <TheFooter :index="0" />
+    <div h30 />
   </div>
+  <TheFooter :index="0" />
 </template>

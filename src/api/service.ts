@@ -33,6 +33,10 @@ export function getIndexNoticeList() {
   })
 }
 
+/**
+ * api 返回 null
+ * @returns 获取首页轮播图信息
+ */
 export function getIndexSlideshowMessage() {
   return Request.get({
     url: '/index/getSlideshowMessage/getSlideshowMessage',
@@ -66,5 +70,11 @@ export function getRechargeList() {
 export function getAccountBillList() {
   return Request.get({
     url: '/index/user/getAccountBillList',
+  })
+}
+
+export function getProductDetail(id: number | string) {
+  return Request.get({
+    url: `/index/product/getProductDetail?id=${id}`,
   })
 }
