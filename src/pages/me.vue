@@ -1,14 +1,19 @@
 <script setup lang=ts>
-// import { getAccountBillList } from '~/api'
+import { getMoneyEarningsInfo } from '~/api'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 
 const userStore = useUser()
-const { removeCache } = useLocalCache()
-
 const router = useRouter()
+const { removeCache } = useLocalCache()
 const { t, locale } = useI18n()
+
+const user = shallowRef<userTypes>()
+const money = ref({
+  yesterday_money_earnings: 0,
+  total_money_earnings: 0,
+})
 
 const menu = [
   {
@@ -105,9 +110,14 @@ function scoped() {
   return `border rounded-lg bg-btn-select px2 ${width() ? 'w=2/3 text-xs' : 'w25.5'}`
 }
 
-const user = shallowRef<userTypes>()
+async function init() {
+  const { data } = await getMoneyEarningsInfo()
+  money.value = data.value.data
+}
+
 onMounted(async () => {
   user.value = userStore.data
+  await init()
 })
 </script>
 
@@ -158,7 +168,7 @@ onMounted(async () => {
         <div flex="~" h23 items-center justify-between>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              0.00
+              {{ money.yesterday_money_earnings }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.yesterdays_earnings') }}
@@ -174,7 +184,7 @@ onMounted(async () => {
           </div>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              0.00
+              {{ money.total_money_earnings }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.accumulated_earnings') }}

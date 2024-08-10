@@ -1,4 +1,7 @@
 <script setup lang=ts>
+import { getMoneyInvestmentOrderList } from '~/api'
+// import type { YuEBao } from '~/types'
+
 const { t, locale } = useI18n()
 
 const data = ref([
@@ -6,6 +9,20 @@ const data = ref([
   { title: '余额宝180天', state: t('fortune.state_type.failed'), total: 29.85, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 1000 },
   { title: '余额宝30天', state: t('fortune.state_type.failed'), total: 0.2, date: '2022-08-08 10:10/2023-08-08 10:10', savings: 100 },
 ])
+
+// const list: Ref<YuEBao[]> = ref([])
+
+async function init() {
+  const { data } = await getMoneyInvestmentOrderList(1)
+  // eslint-disable-next-line no-console
+  console.log(data.value)
+  // if (data.value.data)
+  //   list.value = data.value.data
+}
+
+onMounted(async () => {
+  await init()
+})
 
 function width() {
   switch (locale.value) {

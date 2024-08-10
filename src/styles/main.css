@@ -53,6 +53,10 @@ p {
   }
 }
 
+.banner_textscroll{
+  overflow: hidden;
+}
+
 .banner_textscroll>div {
   white-space: nowrap;
   animation: 10s scrolltext linear infinite;

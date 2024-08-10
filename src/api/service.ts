@@ -1,6 +1,11 @@
 import { Request } from './request'
 import type { loginTypes, registerTypes } from './types'
 
+/**
+ * @description 登录
+ * @param data 用户登录信息
+ * @returns Promise
+ */
 export function login(data: loginTypes) {
   return Request.post({
     url: '/index/login',
@@ -8,6 +13,11 @@ export function login(data: loginTypes) {
   })
 }
 
+/**
+ * 注册
+ * @param data 注册信息
+ * @returns Promise
+ */
 export function register(data: registerTypes) {
   return Request.post({
     url: '/index/register',
@@ -45,7 +55,13 @@ export function getIndexSlideshowMessage() {
 
 export function getYuEBaoList() {
   return Request.get({
-    url: '/index/moneyInvestment/getMoneyInvestmentList',
+    url: `/index/moneyInvestment/getMoneyInvestmentList`,
+  })
+}
+
+export function getMoneyInvestmentOrderList(status: number = 0) {
+  return Request.get({
+    url: `/index/moneyInvestment/getMoneyInvestmentOrderList?${status}`,
   })
 }
 
@@ -76,5 +92,17 @@ export function getAccountBillList() {
 export function getProductDetail(id: number | string) {
   return Request.get({
     url: `/index/product/getProductDetail?id=${id}`,
+  })
+}
+
+export function getMoneyEarningsInfo() {
+  return Request.get({
+    url: `/index/moneyInvestment/getMoneyEarningsInfo`,
+  })
+}
+
+export function getTotalMoneyAndYesterdayMoney() {
+  return Request.get({
+    url: `/index/moneyInvestment/getTotalMoneyAndYesterdayMoney`,
   })
 }

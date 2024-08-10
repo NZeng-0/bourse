@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getTotalMoneyAndYesterdayMoney } from '~/api'
+
 const props = defineProps<{
   current: number
 }>()
@@ -7,6 +9,10 @@ const route = useRouter()
 
 const index = ref(0)
 const bg = new URL('../../assets/images/grow/cardd.png', import.meta.url).href
+const money = ref({
+  total_money: 0,
+  yesterday_earnings_money: 0,
+})
 
 function selected(index: number) {
   return props.current === index ? 'text-#673BF6' : 'text-#121826'
@@ -18,6 +24,14 @@ function changeCurrent(current: number, to: string) {
     path: `/${to}`,
   })
 }
+
+async function init() {
+  const { data } = await getTotalMoneyAndYesterdayMoney()
+  money.value = data.value.data
+}
+onMounted(async () => {
+  await init()
+})
 </script>
 
 <template>
@@ -29,7 +43,7 @@ function changeCurrent(current: number, to: string) {
       {{ t('fortune.balance') }}
     </div>
     <div flex="~" ml6 mt2.8 items-center justify-between text-3xl>
-      54329.08
+      {{ money.total_money }}
       <div>
         <img :src="bg" mr6.5 h7>
       </div>
@@ -40,7 +54,7 @@ function changeCurrent(current: number, to: string) {
           {{ t('fortune.yesterdays_earnings') }}
         </div>
         <div mt3.5 text-center>
-          6500
+          {{ money.yesterday_earnings_money }}
         </div>
       </div>
       <div text-sm>
@@ -48,7 +62,7 @@ function changeCurrent(current: number, to: string) {
           {{ t('fortune.accumulated_earnings') }}
         </div>
         <div mt3.5 text-center>
-          6500
+          100
         </div>
       </div>
       <div mr7 text-sm>
