@@ -24,8 +24,13 @@ async function onLoginSuccesful() {
 }
 
 async function onLogin() {
-  if (wait.value)
+  if (wait.value) {
+    message({
+      message: '请勿重复提交',
+      duration: 1500,
+    })
     return
+  }
 
   wait.value = true
   const { data } = await login(user.value)

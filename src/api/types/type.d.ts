@@ -56,3 +56,17 @@ export interface history {
   high: string
   vol: string
 }
+
+export interface recharge {
+  money: string
+  type: number
+  pay_storageImage: string
+  pay_type: number
+  receive_name?: string
+  bank_name?: string
+  bank_branch_name?: string
+  bank_account?: string
+  wallet_name?: string
+  wallet_address?: string
+  remark?: string
+}

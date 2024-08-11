@@ -1,5 +1,5 @@
 import { Request } from './request'
-import type { loginTypes, registerTypes } from './types'
+import type { loginTypes, recharge, registerTypes } from './types'
 
 /**
  * @description 登录
@@ -162,5 +162,23 @@ export function outMoneyInvestment(money: number) {
     data: {
       money,
     },
+  })
+}
+
+export function submitAuthIdcard(data: {
+  idcard: string
+  idcard_front_image: string
+  idcard_side_image: string
+}) {
+  return Request.post({
+    url: `/index/user/submitAuthIdcard`,
+    data,
+  })
+}
+
+export function submitRecharge(data: recharge) {
+  return Request.post({
+    url: `/index/user/submitRecharge`,
+    data,
   })
 }

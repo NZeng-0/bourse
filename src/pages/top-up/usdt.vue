@@ -1,8 +1,22 @@
 <script setup lang="ts">
+import { submitRecharge } from '~/api'
+import type { recharge } from '~/api/types'
+import message from '~/components/message'
+
 const route = useRouter()
 const { t } = useI18n()
 
 const text = ref('09191278302wixnmhdgabisjng')
+const wait = ref(false)
+const infos = ref<recharge>({
+  money: '',
+  type: 2,
+  pay_storageImage: 'storageImage',
+  pay_type: 2,
+  wallet_name: text.value,
+  wallet_address: text.value,
+  remark: '',
+})
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
@@ -10,6 +24,32 @@ function getClass() {
 
 function go() {
   route.push(`/top-up/bank`)
+}
+
+async function onRecharge() {
+  if (wait.value) {
+    message({
+      message: '请勿重复提交',
+      duration: 1500,
+    })
+    return
+  }
+
+  wait.value = true
+
+  if (!/^\d+$/.test(infos.value.money)) {
+    message({
+      message: '请输入0以上的数字',
+      duration: 1500,
+    })
+    return
+  }
+  const { data } = await submitRecharge(infos.value)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  wait.value = false
 }
 </script>
 
@@ -47,12 +87,12 @@ function go() {
             </div>
           </div>
           <input
-            type="text" :placeholder="t('assets.recharge.transfer_amount')" class="border border-#f4f4f4" mt2.5
-            h11.25 wfull rounded-xl pl4.75
+            v-model="infos.money" type="text" :placeholder="t('assets.recharge.transfer_amount')"
+            class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
           >
           <input
-            type="text" :placeholder="t('assets.recharge.transfer_remarks')" class="border border-#f4f4f4" mt2.5
-            h11.25 wfull rounded-xl pl4.75
+            v-model="infos.remark" type="text" :placeholder="t('assets.recharge.transfer_remarks')"
+            class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
           >
           <button class="border border-#f4f4f4" flex="~" mt2.5 h11.25 wfull items-center justify-center rounded-xl>
             <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
@@ -62,7 +102,7 @@ function go() {
       </div>
     </div>
     <div flex="~" mt5.25 w-full justify-center>
-      <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="onRecharge()">
         {{ t('assets.recharge.submit') }}
       </button>
     </div>
