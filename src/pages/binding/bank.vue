@@ -1,6 +1,17 @@
 <script setup lang="ts">
+import { submitWithdrawAccount } from '~/api'
+import type { binding } from '~/api/types'
+import message from '~/components/message'
+
 const { t } = useI18n()
 const route = useRouter()
+
+const wait = ref(false)
+const infos = ref<binding>({
+  bank_name: '',
+  bank_branch_name: '',
+  bank_account: '',
+})
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
@@ -8,6 +19,24 @@ function getClass() {
 
 function go() {
   route.push(`/binding/usdt`)
+}
+
+async function submit() {
+  if (wait.value) {
+    message({
+      message: '请勿重复点击',
+      duration: 1500,
+    })
+    return
+  }
+
+  wait.value = true
+  const { data } = await submitWithdrawAccount(infos.value)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  wait.value = false
 }
 </script>
 
@@ -29,13 +58,25 @@ function go() {
           </div>
         </div>
       </div>
-      <input type="text" :placeholder="t('assets.withdrawal.bank.name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59>
-      <input type="text" :placeholder="t('assets.withdrawal.bank.bank_name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59>
-      <input type="text" :placeholder="t('assets.withdrawal.bank.bank_of_deposit')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59>
-      <input type="text" :placeholder="t('assets.withdrawal.bank.bank_card_number')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59>
+      <input
+        type="text" :placeholder="t('assets.withdrawal.bank.name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
+        opacity59
+      >
+      <input
+        v-model="infos.bank_name" type="text" :placeholder="t('assets.withdrawal.bank.bank_name')" mt3.25 h10.25
+        w-full rounded-xl px-3.25 text-sm opacity59
+      >
+      <input
+        v-model="infos.bank_branch_name" type="text" :placeholder="t('assets.withdrawal.bank.bank_of_deposit')"
+        mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
+      >
+      <input
+        v-model="infos.bank_account" type="text" :placeholder="t('assets.withdrawal.bank.bank_card_number')" mt3.25
+        h10.25 w-full rounded-xl px-3.25 text-sm opacity59
+      >
     </div>
     <div flex="~" mt17 w-full justify-center>
-      <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="submit()">
         {{ t('assets.withdrawal.submit') }}
       </button>
     </div>

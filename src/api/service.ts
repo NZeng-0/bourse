@@ -1,5 +1,5 @@
 import { Request } from './request'
-import type { loginTypes, recharge, registerTypes } from './types'
+import type { binding, loginTypes, recharge, registerTypes, withdraw } from './types'
 
 /**
  * @description 登录
@@ -179,6 +179,20 @@ export function submitAuthIdcard(data: {
 export function submitRecharge(data: recharge) {
   return Request.post({
     url: `/index/user/submitRecharge`,
+    data,
+  })
+}
+
+export function submitWithdraw(data: withdraw) {
+  return Request.post({
+    url: `/index/user/submitWithdraw`,
+    data,
+  })
+}
+
+export function submitWithdrawAccount(data: binding) {
+  return Request.post({
+    url: `/index/user/submitWithdrawAccount`,
     data,
   })
 }

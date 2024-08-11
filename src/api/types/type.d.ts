@@ -70,3 +70,21 @@ export interface recharge {
   wallet_address?: string
   remark?: string
 }
+
+export interface withdraw {
+  withdraw_money: number
+  type: number
+  bank_branch_name?: string
+  bank_name?: string
+  bank_account?: string
+  wallet_name?: string
+  wallet_address?: string
+}
+
+export interface binding {
+  bank_name?: string
+  bank_branch_name?: string
+  bank_account?: string
+  wallet_name?: string
+  wallet_address?: string
+}
