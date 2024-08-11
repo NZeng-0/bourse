@@ -1,37 +1,54 @@
 <script setup lang="ts">
 import pop from '~/components/popup'
 import { getIndexMsg } from '~/api'
+import loading from '~/components/loading'
+
+interface IndexMsg {
+  id: number
+  key: string
+  condition: string
+  value: string
+  link: string
+  remark: string
+  status: number
+  sort: number
+  start_time: string
+  end_time: string
+  create_time: string
+}
 
 // const router = useRouter()
 const { t } = useI18n()
 
+const messages = ref<IndexMsg[]>()
+
 async function getPopMsg() {
   const { data } = await getIndexMsg()
-  const temp = data.value.data.pop_window_message
-
-  // 用于逐条显示消息
-  async function showNextMessage(index = 0) {
-    if (index < temp.length) {
-      const e = temp[index]
-      pop({
-        message: e.value,
-        title: e.remark,
-        submit: t('popup.confrim'),
-        onClose: () => showNextMessage(index + 1),
-      })
-    }
-  }
-
-  // 开始显示第一条消息
-  showNextMessage()
+  messages.value = data.value.data.pop_window_message
 }
 
 async function init() {
   Promise.all([getPopMsg()])
 }
+function showNextMessage(index = 0) {
+  if (index < messages.value!.length) {
+    const e = messages.value![index]
+    pop({
+      message: e.value,
+      title: e.remark,
+      submit: t('popup.confrim'),
+      onClose: () => showNextMessage(index + 1),
+    })
+  }
+}
 
 onMounted(async () => {
+  loading.show()
   await init()
+  setTimeout(() => {
+    loading.close()
+    showNextMessage()
+  }, 1200)
 })
 </script>
 

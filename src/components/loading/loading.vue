@@ -1,16 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
-  done: boolean
-}>()
-
 const currentIndex = ref(2)
 const arr = [2, 0, 1, 3]
 const index = ref(0)
+const isShow = ref(false)
+
 const timer = setInterval(() => {
-  if (props.done) {
-    index.value = 0
-    clearInterval(timer)
-  }
   currentIndex.value = arr[index.value]
   index.value++
   if (index.value >= arr.length)
@@ -29,12 +23,16 @@ function getClass(current: number) {
 function getBg() {
   return 'h27.5 w27.5 items-center justify-center rounded-2xl bg-white'
 }
+
+defineExpose({
+  isShow,
+})
 </script>
 
 <template>
   <div top="0" left="0" flex="~" fixed z100 h-screen wfull items-center justify-center bg-black:70>
     <div flex="~" :class="getBg()">
-      <div v-if="!done" flex="~ wrap" h11.5 w11.5 p0.6>
+      <div v-if="isShow" flex="~ wrap" h11.5 w11.5 p0.6>
         <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(0)" />
         <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(1)" />
         <div m0.2 h4.5 w4.5 rounded-sm :class="getClass(2)" />
