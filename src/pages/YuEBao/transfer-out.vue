@@ -1,10 +1,66 @@
 <script setup lang="ts">
+import { outMoneyInvestment } from '~/api'
+import type { userTypes } from '~/store/useUser'
+import { useUser } from '~/store/useUser'
+import { useMoney } from '~/store/useMoney'
+import message from '~/components/message'
+
+const userStore = useUser()
+
 const route = useRouter()
 const { t } = useI18n()
+const user = shallowRef<userTypes>()
+const moneyStore = useMoney()
+const outMoney = ref('')
 
 function back() {
   route.back()
 }
+
+function all() {
+  outMoney.value = moneyStore.money.total_money
+}
+
+async function out() {
+  if (outMoney.value === '') {
+    message({
+      message: '请输入金额',
+      duration: 1500,
+    })
+    return
+  }
+
+  if (Number.parseInt(outMoney.value) < 1) {
+    message({
+      message: '金额不能小于1',
+      duration: 1500,
+    })
+    return
+  }
+
+  if (outMoney.value > moneyStore.money.total_money) {
+    message({
+      message: '金额不能大于当前余额',
+      duration: 1500,
+    })
+    return
+  }
+
+  const { data } = await outMoneyInvestment({
+    money: outMoney.value,
+  })
+  // eslint-disable-next-line no-console
+  console.log(data)
+}
+
+function init() {
+  user.value = userStore.data
+  // YuEBaoData.value = YuEBaoStore.data
+}
+
+onMounted(() => {
+  init()
+})
 </script>
 
 <template>
@@ -23,7 +79,7 @@ function back() {
             {{ t('fortune.current_balance') }}
           </div>
           <div>
-            54329.08
+            {{ moneyStore.money.total_money }}
           </div>
         </div>
         <div mt1.25 text-base class="text-#121826">
@@ -33,7 +89,7 @@ function back() {
             </div>
             <div flex="~" items-center justify-end>
               <div mr.5 text-sm>
-                25961.08
+                {{ moneyStore.money.total_money }}
               </div>
             </div>
           </div>
@@ -48,15 +104,15 @@ function back() {
             </div>
           </div>
           <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
-            <input type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
-            <div w="1/3" mr.5 pl2.5 text-right text-sm>
+            <input v-model="outMoney" type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
+            <div w="1/3" mr.5 pl2.5 text-right text-sm @click="all()">
               <span h-full w-1 border-l pl3 opacity68 />
               {{ t('fortune.all') }}
             </div>
           </div>
         </div>
         <div flex="~" mt8.75 items-center justify-center>
-          <button h10.5 min-w37.5 rounded-lg bg-btn-select px1 text-lg text-white>
+          <button h10.5 min-w37.5 rounded-lg bg-btn-select px1 text-lg text-white @click="out()">
             {{ t('fortune.confirm') }}
           </button>
         </div>

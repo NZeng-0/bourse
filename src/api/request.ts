@@ -20,12 +20,20 @@ export const Request = new Fetch({
     // 这里做统一错误处理
     afterFetch(ctx) {
       const { data } = ctx
-      if (data.code !== 200) {
+
+      // unlogin
+      if (data.code === 5001 && data.msg === '用户未登录') {
         message({
           message: data.msg,
           duration: 3000,
         })
         router.push('/login')
+      }
+      if (data.code === 500) {
+        message({
+          message: '网络错误',
+          duration: 3000,
+        })
       }
       return ctx
     },

@@ -59,6 +59,11 @@ export function getYuEBaoList() {
   })
 }
 
+/**
+ * @description 余额宝订单列表
+ * @param status 状态：0-未结算，1-已结算 当前收益传-0，历史传-1
+ * @returns 订单列表
+ */
 export function getMoneyInvestmentOrderList(status: number = 0) {
   return Request.get({
     url: `/index/moneyInvestment/getMoneyInvestmentOrderList?${status}`,
@@ -101,8 +106,61 @@ export function getMoneyEarningsInfo() {
   })
 }
 
+/**
+ * @description 获取余额宝总金额以及昨日收益
+ * @returns 余额宝总金额以及昨日收益
+ */
 export function getTotalMoneyAndYesterdayMoney() {
   return Request.get({
     url: `/index/moneyInvestment/getTotalMoneyAndYesterdayMoney`,
+  })
+}
+
+/**
+ * @description 购买余额宝
+ * @param data 购买金额 和 产品id
+ * @param {number} data.money 购买金额
+ * @param {string} data.id 产品 id
+ * @returns 购买结果
+ */
+export function buyMoneyInvestment(data: { money: number | string, id: number }) {
+  return Request.post({
+    url: `/index/moneyInvestment/buyMoneyInvestment`,
+    data,
+  })
+}
+
+/**
+ * @description 终止余额宝
+ * @param data 产品id
+ * @param {number} data.id 产品 id
+ * @returns 购买结果
+ */
+export function quitMoneyInvestment(data: { id: number }) {
+  return Request.post({
+    url: `/index/moneyInvestment/quitMoneyInvestment`,
+    data,
+  })
+}
+
+/**
+ * @description 续期余额宝
+ * @param data 产品id
+ * @param {number} data.id 产品 id
+ * @returns 续期结果
+ */
+export function prolongMoneyInvestment(data: { id: number }) {
+  return Request.post({
+    url: `/index/moneyInvestment/prolongMoneyInvestment`,
+    data,
+  })
+}
+
+export function outMoneyInvestment(money: number) {
+  return Request.post({
+    url: `/index/moneyInvestment/outMoneyInvestment`,
+    data: {
+      money,
+    },
   })
 }

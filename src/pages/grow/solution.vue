@@ -1,9 +1,13 @@
 <script setup lang=ts>
 import { getYuEBaoList } from '~/api'
 import type { YuEBao } from '~/types'
+import { useYuEBao } from '~/store/useYuEBao'
 
 const { t, locale } = useI18n()
+const router = useRouter()
+const YuEBaoStore = useYuEBao()
 
+const loading = ref(false)
 const list: Ref<YuEBao[]> = ref([])
 
 async function init() {
@@ -11,10 +15,6 @@ async function init() {
   if (data.value.data)
     list.value = data.value.data
 }
-
-onMounted(async () => {
-  await init()
-})
 
 function margin() {
   switch (locale.value) {
@@ -32,6 +32,19 @@ const e = ref(false)
 function animationEnd() {
   e.value = true
 }
+
+function go(product: YuEBao) {
+  YuEBaoStore.data = product
+  router.push(`/YuEBao/transfer-in`)
+}
+
+onMounted(async () => {
+  loading.value = true
+
+  await init()
+
+  loading.value = false
+})
 </script>
 
 <template>
@@ -39,7 +52,8 @@ function animationEnd() {
     <div flex="~ wrap" justify-center pt11>
       <TheInfo :current="0" />
       <div mx5 mt2 h-screen wfull overflow-x-scroll text-sm>
-        <div v-for="(item, key) in list" :key flex="~ wrap" mt4 h20 border rounded-lg pl2>
+        <TheEmpty v-if="loading" />
+        <div v-for="(item, key) in list" :key flex="~ wrap" mt4 h20 border rounded-lg pl2 @click="go(item)">
           <div flex="~ wrap" justify-between w="1/2" :class="margin()">
             <div flex="~" w-full items-start>
               <div w="1.2/3">

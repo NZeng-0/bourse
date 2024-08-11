@@ -1,11 +1,12 @@
 <script setup lang=ts>
+import type { order } from '~/types'
+import { getMoneyInvestmentOrderList, prolongMoneyInvestment, quitMoneyInvestment } from '~/api'
+import message from '~/components/message'
+
 const { t, locale } = useI18n()
 
-const data = ref([
-  { title: '余额宝365天', state: t('fortune.state_type.underway'), current: 0, prospective: 1500, date: '08-08 10:10', savings: 10000 },
-  { title: '余额宝180天', state: t('fortune.state_type.underway'), current: 0, prospective: 29.85, date: '08-08 10:10', savings: 1000 },
-  { title: '余额宝30天', state: t('fortune.state_type.underway'), current: 0, prospective: 0.2, date: '08-08 10:10', savings: 100 },
-])
+const isLoading = ref(false)
+const list = ref<order[]>([])
 
 function margin() {
   switch (locale.value) {
@@ -17,49 +18,82 @@ function margin() {
       return ''
   }
 }
+
+async function terminate(id: number) {
+  const { data } = await quitMoneyInvestment({ id })
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+
+  await init()
+}
+
+async function renew(id: number) {
+  const { data } = await prolongMoneyInvestment({ id })
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+
+  await init()
+}
+
+async function init() {
+  const { data } = await getMoneyInvestmentOrderList(0)
+  list.value = data.value.data.data
+}
+
+onMounted(async () => {
+  isLoading.value = true
+  await init()
+  isLoading.value = false
+})
 </script>
 
 <template>
   <div>
     <div flex="~ wrap" justify-center pt11>
       <TheInfo :current="1" />
-      <div mx5 mt2 wfull text-sm>
-        <div v-for="(item, key) in data" :key mt4 h20 border rounded-lg pl2>
+      <div mx5 mt2 h-screen wfull overflow-x-scroll text-sm>
+        <TheEmpty v-if="isLoading" />
+        <div v-for="(item, key) in list" :key mt4 h20 border rounded-lg pl2>
           <div flex="~" mt2 justify-between text-sm>
             <div w="1/3">
-              {{ item.title }}
+              {{ item.money_investment_name }}
             </div>
             <div w="1/3" />
             <div w="1/3">
-              {{ item.savings }}
+              {{ item.price }}
             </div>
           </div>
           <div flex="~" :class="margin()" items-center justify-between text-xs class="text-#707070">
             <div w="1/3">
-              {{ t('fortune.state') }}: {{ item.state }}
+              {{ t('fortune.state') }}: {{ t('fortune.state_type.underway') }}
             </div>
             <div w="1/3">
-              {{ t('fortune.current_yield') }}: {{ item.current }}
+              {{ t('fortune.current_yield') }}: {{ item.now_earnings_money }}
             </div>
             <div w="1/3">
-              {{ t('fortune.projected_revenue') }}: {{ item.prospective }}
+              {{ t('fortune.projected_revenue') }}: {{ item.rate_price }}
             </div>
           </div>
           <div flex="~" :class="margin()" justify-between text-xs>
             <div w="1/2" class="text-#707070">
-              {{ item.date }}
+              {{ item.over_time }}
             </div>
             <div w="1/2" text-center text-black>
-              <span class="text-#673BF6">
+              <span class="text-#673BF6" @click="terminate(item.id)">
                 {{ t('fortune.termination') }}
               </span>
               |
-              <span class="text-#673BF6">
+              <span class="text-#673BF6" @click="renew(item.id)">
                 {{ t('fortune.renewal') }}
               </span>
             </div>
           </div>
         </div>
+        <div h140 />
       </div>
     </div>
     <TheFooter :index="3" />

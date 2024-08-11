@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { getTotalMoneyAndYesterdayMoney } from '~/api'
+import type { userTypes } from '~/store/useUser'
+import { useUser } from '~/store/useUser'
+import { useMoney } from '~/store/useMoney'
 
 const props = defineProps<{
   current: number
 }>()
+
+const userStore = useUser()
+const user = shallowRef<userTypes>()
+const moneyStore = useMoney()
+
 const { t } = useI18n()
 const route = useRouter()
 
 const index = ref(0)
+
 const bg = new URL('../../assets/images/grow/cardd.png', import.meta.url).href
-const money = ref({
-  total_money: 0,
-  yesterday_earnings_money: 0,
-})
 
 function selected(index: number) {
   return props.current === index ? 'text-#673BF6' : 'text-#121826'
@@ -27,9 +32,11 @@ function changeCurrent(current: number, to: string) {
 
 async function init() {
   const { data } = await getTotalMoneyAndYesterdayMoney()
-  money.value = data.value.data
+  moneyStore.money = data.value.data
 }
+
 onMounted(async () => {
+  user.value = userStore.data
   await init()
 })
 </script>
@@ -43,7 +50,7 @@ onMounted(async () => {
       {{ t('fortune.balance') }}
     </div>
     <div flex="~" ml6 mt2.8 items-center justify-between text-3xl>
-      {{ money.total_money }}
+      {{ moneyStore.money?.total_money }}
       <div>
         <img :src="bg" mr6.5 h7>
       </div>
@@ -54,7 +61,7 @@ onMounted(async () => {
           {{ t('fortune.yesterdays_earnings') }}
         </div>
         <div mt3.5 text-center>
-          {{ money.yesterday_earnings_money }}
+          {{ moneyStore.money?.yesterday_earnings_money }}
         </div>
       </div>
       <div text-sm>
@@ -70,7 +77,7 @@ onMounted(async () => {
           {{ t('fortune.yesterdays_balance') }}
         </div>
         <div mt3.5 text-center>
-          6500
+          {{ user?.now_money }}
         </div>
       </div>
     </div>

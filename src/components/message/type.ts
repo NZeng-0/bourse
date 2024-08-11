@@ -21,7 +21,7 @@ export const messageProps = {
   },
   duration: {
     type: Number as PropType<number>,
-    default: 3000,
+    default: 1500,
   },
   showClose: {
     type: Boolean as PropType<boolean>,

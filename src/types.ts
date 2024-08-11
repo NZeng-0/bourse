@@ -20,3 +20,19 @@ export interface YuEBao {
   create_time: string
   rate_price: string
 }
+
+export interface order {
+  id: number
+  money_investment_id: number
+  money_investment_name: string
+  uid: number
+  price: string
+  day: number
+  rate_price: string
+  rate: string
+  status: number
+  over_time: string
+  over_type: number
+  create_time: string
+  now_earnings_money: number
+}

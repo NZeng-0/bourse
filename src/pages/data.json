@@ -1,44 +1,15 @@
 {
-  "id": 3,
-  "product_name": "测试产品1",
-  "product_code": "btc_usdt",
-  "type": 1,
-  "source": "百度",
-  "profit_status": 14,
-  "logo": "http://47.109.206.211:82/storageFile/20240728/1417c9e0918d97cafddf7f85ac0d0d52.jpg",
-  "remark": "",
-  "fkzxbdz": "20.0000",
-  "fkzdbdz": "29.0000",
-  "sjbdfw": "76.0000",
-  "mode_type": 1,
-  "start_time": "1990-09-25 15:44:54",
-  "end_time": "1977-06-09 22:52:48",
-  "create_time": "2024-07-28 23:14:24",
-  "history_list": [
-    {
-      "id": 1722585600,
-      "open": 64171.07,
-      "close": 64433.96,
-      "low": 64045,
-      "high": 64519.25,
-      "amount": 154.10751686205415,
-      "vol": 9902171.539891027,
-      "count": 7244,
-      "date": 1722585600
-    },
-    {
-      "id": 1722582000,
-      "open": 64466.93,
-      "close": 64181.62,
-      "low": 64140.99,
-      "high": 64513.16,
-      "amount": 162.40281361042562,
-      "vol": 10448392.328918824,
-      "count": 7640,
-      "date": 1722582000
-    }
-  ],
-  "money_rate_list": [],
-  "time_scheme_list": [],
-  "usable_money": "519.20"
+  "id": 12,
+  "money_investment_id": 1,
+  "money_investment_name": "余额宝7天",
+  "uid": 1,
+  "price": "100.00",
+  "day": 7,
+  "rate_price": "7.00",
+  "rate": "1.00",
+  "status": 0,
+  "over_time": "2024-08-18",
+  "over_type": 1,
+  "create_time": "2024-08-11 12:40:56",
+  "now_earnings_money": 0
 }
