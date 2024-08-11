@@ -72,7 +72,7 @@ export interface recharge {
 }
 
 export interface withdraw {
-  withdraw_money: number
+  withdraw_money: string
   type: number
   bank_branch_name?: string
   bank_name?: string

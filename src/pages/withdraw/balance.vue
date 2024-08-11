@@ -1,10 +1,21 @@
 <script setup lang="ts">
-// import submitWithdraw from '~/api'
+import { submitWithdraw } from '~/api'
+import { useUser } from '~/store/useUser'
+import message from '~/components/message'
+import type { withdraw } from '~/api/types'
 
 const route = useRouter()
 const { t } = useI18n()
-
-const banding = ref(false)
+const user = useUser()
+const infos = ref<withdraw>({
+  withdraw_money: '',
+  type: 1,
+  bank_branch_name: '',
+  bank_name: '',
+  bank_account: '',
+})
+const banding = ref(user.data.bank_info !== undefined)
+const wait = ref(false)
 
 function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
@@ -12,6 +23,48 @@ function getCommonStyle() {
 
 function go() {
   route.push(`/binding/usdt`)
+}
+
+async function submit() {
+  if (wait.value) {
+    message({
+      message: '请勿重复提交',
+      duration: 1500,
+    })
+    return
+  }
+
+  wait.value = true
+
+  if (!/^\d+$/.test(infos.value.withdraw_money)) {
+    message({
+      message: '请输入0以上的数字',
+      duration: 1500,
+    })
+    return
+  }
+
+  if (infos.value.withdraw_money > user.data.now_money) {
+    message({
+      message: '余额不足',
+      duration: 1500,
+    })
+    return
+  }
+
+  if (!banding.value) {
+    go()
+    return
+  }
+
+  await submitWithdraw(infos.value)
+
+  const { data } = await submitWithdraw(infos.value)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  wait.value = false
 }
 </script>
 
@@ -24,17 +77,17 @@ function go() {
           {{ t('assets.withdrawal.balance') }}
         </div>
         <div mr7.75>
-          199.98
+          {{ user.data.now_money }}
         </div>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
+        <input v-model="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
       </div>
       <div flex="~" :class="getCommonStyle()">
         <input type="passwrod" :placeholder="t('assets.withdrawal.password')" opacity69>
       </div>
       <div mt5.25 pl4.625 text-sm>
-        {{ t('assets.withdrawal.service_charge') }}: 0.99
+        {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
       </div>
       <div flex="~" :class="getCommonStyle()" mt3.25>
         <div v-if="!banding" flex="~" wfull items-center justify-center text-sm opacity69>
@@ -45,7 +98,7 @@ function go() {
             {{ t('assets.withdrawal.account') }}
           </div>
           <div w="2/3" text-left>
-            65558*****78962
+            {{ user.data.bank_info.bank_account }}
           </div>
         </div>
       </div>
@@ -54,7 +107,7 @@ function go() {
       <button v-if="!banding" h10.5 min-w37.5 rounded-lg bg-btn-select px-1 text-lg text-white @click="go()">
         {{ t('assets.withdrawal.btn') }}
       </button>
-      <button v-else h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button v-else h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="submit()">
         {{ t('assets.withdrawal.title') }}
       </button>
     </div>
