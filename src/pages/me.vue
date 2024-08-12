@@ -1,5 +1,5 @@
 <script setup lang=ts>
-import { getMoneyEarningsInfo } from '~/api'
+import { getMoneyEarningsInfo, getNoticeList } from '~/api'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
@@ -10,6 +10,7 @@ const { removeCache } = useLocalCache()
 const { t, locale } = useI18n()
 
 const user = shallowRef<userTypes>()
+const msgLength = ref(0)
 const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
@@ -118,6 +119,8 @@ async function init() {
 onMounted(async () => {
   user.value = userStore.data
   await init()
+  const { data } = await getNoticeList()
+  msgLength.value = data.value.data.length
 })
 </script>
 
@@ -128,14 +131,19 @@ onMounted(async () => {
       <div flex="~" w="1/3" items-end justify-center text-xl text-trading-title>
         {{ t('me.title') }}
       </div>
-      <div flex="~" w="1/3" items-end justify-end>
+      <div flex="~" w="1/3" relative items-end justify-end text-white>
         <img src="../assets/images/me/infrom.png" h5 w5>
+        <div v-if="msgLength > 0">
+          <div bg="#FE3636" flex="~" absolute right--5 top--2 h5 w6 items-center justify-center rounded-3xl>
+            {{ msgLength }}
+          </div>
+        </div>
       </div>
     </div>
     <div flex="~" h19.7 wfull border-t bg-white px6>
       <div w="1/2" flex="~" items-center>
         <div w="1.2/3">
-          <div relative>
+          <div relative @click="go('avator')">
             <img src="../assets/images/me/avatar.jpg" h15 w15 rounded-full>
             <img src="../assets/images/me/shot.png" absolute bottom-0 right--1 h6 w6>
           </div>

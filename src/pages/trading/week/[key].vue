@@ -9,6 +9,7 @@ import type { indexProduct } from '~/api/types'
 const key = useRoute('/trading/week/[key]').params.key
 // TODO data1 需要缓存，或者做一个加载中的组件
 const data1 = ref<indexProduct>()
+
 const data = list[Number.parseInt(key)]
 const { range, icon, presentValue, ud } = data
 
@@ -153,7 +154,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <TheTrading :index="key" :title="data1?.product_name" :range :icon :present-value :ud :select="1">
+    <TheTrading :index="key" :title="data.nameZH" :range :icon :present-value :ud :select="1">
       <TheCharts :dom="getRandom()" :option="getOption()" />
     </TheTrading>
   </div>

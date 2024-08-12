@@ -5,6 +5,7 @@ import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
 import { getIndexProduct } from '~/api'
 import type { history, indexProduct } from '~/api/types'
+import { useProduct } from '~/store/useProduct'
 
 const router = useRouter()
 
@@ -16,6 +17,7 @@ const grid = {
 
 const loading = shallowRef(false)
 const list: Ref<indexProduct[]> = ref([])
+const product = useProduct()
 
 function parseData(data: history[]) {
   const result: Array<string[]> = []
@@ -78,8 +80,9 @@ function getLineColor(state: number): string {
   return state === 1 ? '#19C09A' : '#FC6C6B'
 }
 
-function go(key: number) {
-  router.push(`/trading/week/${key}`)
+function go(key: any) {
+  product.data = key
+  router.push(`/trading/week/${key.id}`)
 }
 
 function handleImageError(key: number) {
@@ -104,7 +107,7 @@ onMounted(async () => {
 <template>
   <div mt4.5 h80 overflow-y-scroll>
     <div v-for="(item, key) in list" :key :class="key !== 0 ? key === (list.length - 1) ? 'mt8 mb42' : 'mt8' : ''">
-      <div flex="~ gap2" justify-between @click="go(item.id)">
+      <div flex="~ gap2" justify-between @click="go(item)">
         <div flex="~ gap2" w="2/4">
           <img h12 w12 rounded-full :src="item.logo" @error="handleImageError(key)">
           <div text-left>

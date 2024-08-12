@@ -16,7 +16,7 @@ function back() {
 <template>
   <div>
     <div flex="~" h30 items-center justify-between bg-white px6>
-      <img src="../../assets/images/recommend/back.png" h10 w10 @click="back()">
+      <img src="../../../assets/images/recommend/back.png" h10 w10 @click="back()">
       <div class="text-5.5" text-center text-trading-title>
         {{ t('recommend.title') }}
       </div>
@@ -25,7 +25,7 @@ function back() {
     <div mt8.75 px6 text-base>
       <div flex="~" justify-center>
         <div class="bg" flex="~" mt10 h50 w50 items-center justify-center>
-          <img src="../../assets/images/recommend/gift.png" h29 w24.975>
+          <img src="../../../assets/images/recommend/gift.png" h29 w24.975>
         </div>
       </div>
       <div mt10 class="text-5.5" text-center>
@@ -44,7 +44,7 @@ function back() {
             {{ code }}
           </div>
           <div :class="getCodeStyle()" flex="~" :data-clipboard-text="code" @click="useClipboard('code')">
-            <img src="../../assets/images/recommend/copy.png" mr2 h6 w6>
+            <img src="../../../assets/images/recommend/copy.png" mr2 h6 w6>
             {{ t('recommend.copy') }}
           </div>
         </div>
@@ -60,7 +60,7 @@ function back() {
 
 <style scoped>
 .bg {
-  background: url(../../assets/images/recommend/bg.png);
+  background: url(../../../assets/images/recommend/bg.png);
   background-size: cover;
 }
 </style>

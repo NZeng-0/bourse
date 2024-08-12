@@ -11,7 +11,9 @@ const route = useRouter()
 
 const selectTime = ref(1)
 function getTimeStyle(time: number) {
-  return selectTime.value === time ? 'bg-btn-select text-white' : 'bg-white'
+  return selectTime.value === time
+    ? 'bg-btn-select text-white rounded-lg'
+    : 'bg-white rounded-lg'
 }
 
 const selectMoney = ref(1)
@@ -29,42 +31,67 @@ function back() {
 </script>
 
 <template>
-  <div hscreen bg-trading>
-    <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px4>
-      <img :src="backUrl" h10 w10 @click="back()">
-      <div text-xl text-trading-title>
-        {{ t('trading.buy_up') }}
-      </div>
-      <div h10 w10 />
+  <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px4>
+    <img :src="backUrl" h10 w10 @click="back()">
+    <div text-xl text-trading-title>
+      {{ t('trading.buy_up') }}
     </div>
+    <div h10 w10 />
+  </div>
+  <div hscreen overflow-x-scroll bg-trading>
     <div mt5 px6.8>
       <div text-lg>
         {{ t('trading.buy.settlement_time') }}
       </div>
-      <div mt3.5 flex="~" justify-between>
-        <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(0)" @click="selectTime = 0">
-          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-            30
+      <div mt3.5 flex="~ wrap" justify-between>
+        <!-- h15 -->
+        <div w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(0)" @click="selectTime = 0">
+          <div wfull flex="~" justify-center>
+            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
+              30
+            </div>
+            <span self-end text-xl>s</span>
           </div>
-          <span self-end text-xl>s</span>
+          <div flex="~" mt1 wfull justify-center :text="selectTime === 0 ? 'white' : '#969696'">
+            <div>盈利: 5%</div>
+            <div>亏损: 5%</div>
+          </div>
         </div>
-        <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(1)" @click="selectTime = 1">
-          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-            60
+        <div w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(1)" @click="selectTime = 1">
+          <div wfull flex="~" justify-center>
+            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
+              60
+            </div>
+            <span self-end text-xl>s</span>
           </div>
-          <span self-end text-xl>s</span>
+          <div flex="~" mt1 wfull justify-center :text="selectTime === 1 ? 'white' : '#969696'">
+            <div>盈利: 5%</div>
+            <div>亏损: 5%</div>
+          </div>
         </div>
-        <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(2)" @click="selectTime = 2">
-          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-            90
+        <div mt4 w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(2)" @click="selectTime = 2">
+          <div wfull flex="~" justify-center>
+            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
+              90
+            </div>
+            <span self-end text-xl>s</span>
           </div>
-          <span self-end text-xl>s</span>
+          <div flex="~" mt1 wfull justify-center :text="selectTime === 2 ? 'white' : '#969696'">
+            <div>盈利: 5%</div>
+            <div>亏损: 5%</div>
+          </div>
         </div>
-        <div flex="~" h11.5 w16 items-center justify-center rounded-lg :class="getTimeStyle(3)" @click="selectTime = 3">
-          <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-            120
+        <div mt4 w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(3)" @click="selectTime = 3">
+          <div wfull flex="~" justify-center>
+            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
+              120
+            </div>
+            <span self-end text-xl>s</span>
           </div>
-          <span self-end text-xl>s</span>
+          <div flex="~" mt1 wfull justify-center :text="selectTime === 3 ? 'white' : '#969696'">
+            <div>盈利: 5%</div>
+            <div>亏损: 5%</div>
+          </div>
         </div>
       </div>
       <div mt5.5 text-lg>
@@ -129,6 +156,7 @@ function back() {
         {{ t('trading.submit') }}
       </button>
     </div>
+    <div h50 />
   </div>
   <TheFooter :index="0" />
 </template>
