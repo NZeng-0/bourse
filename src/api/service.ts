@@ -1,5 +1,5 @@
 import { Request } from './request'
-import type { binding, loginTypes, recharge, registerTypes, withdraw } from './types'
+import type { binding, loginPwd, loginTypes, operationPwd, recharge, registerTypes, withdraw } from './types'
 
 /**
  * @description 登录
@@ -193,6 +193,20 @@ export function submitWithdraw(data: withdraw) {
 export function submitWithdrawAccount(data: binding) {
   return Request.post({
     url: `/index/user/submitWithdrawAccount`,
+    data,
+  })
+}
+
+export function updatePassword(data: loginPwd) {
+  return Request.post({
+    url: `/index/user/updatePassword`,
+    data,
+  })
+}
+
+export function updateOperationPwd(data: operationPwd) {
+  return Request.post({
+    url: `/index/user/updateOperationPwd`,
     data,
   })
 }

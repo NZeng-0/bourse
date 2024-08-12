@@ -88,3 +88,17 @@ export interface binding {
   wallet_name?: string
   wallet_address?: string
 }
+
+export interface loginPwd {
+  pwd: string
+  pwd_confirm?: string
+  new_pwd: string
+  new_pwd_confirm: string
+}
+
+export interface operationPwd {
+  operation_pwd: string
+  operation_confirm?: string
+  new_operation_pwd: string
+  new_operation_pwd_confirm: string
+}

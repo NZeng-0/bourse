@@ -1,5 +1,51 @@
 <script setup lang="ts">
+import { updateOperationPwd } from '~/api'
+import message from '~/components/message'
+
 const { t } = useI18n()
+
+const infos = ref({
+  operation_pwd: '',
+  operation_confirm: '',
+  new_operation_pwd: '',
+  new_operation_pwd_confirm: '',
+})
+
+const wait = ref(false)
+
+async function submit() {
+  if (wait.value) {
+    message({
+      message: '请勿重复点击',
+      duration: 1500,
+    })
+    return
+  }
+  wait.value = true
+  if (infos.value.operation_pwd !== infos.value.operation_confirm) {
+    message({
+      message: '两次密码不一致',
+      duration: 1500,
+    })
+    return
+  }
+  if (infos.value.new_operation_pwd !== infos.value.new_operation_pwd_confirm) {
+    message({
+      message: '新密码不一致',
+      duration: 1500,
+    })
+    return
+  }
+  const { data } = await updateOperationPwd(infos.value)
+  // eslint-disable-next-line no-console
+  console.log(data.value)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  wait.value = false
+}
+
 function getClass() {
   return 'w-full border border-#F4F4F4 rounded-xl bg-#F4F4F4 px-3.25 border-box h13 items-center justify-between text-base'
 }
@@ -12,30 +58,30 @@ function getClass() {
       <div mt9>
         {{ t('me.secure.change_payment.old_password') }}
         <div>
-          <input type="password" mt3.75 :class="getClass()" placeholder="******">
+          <input v-model="infos.operation_pwd" type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
         {{ t('me.secure.change_payment.confirm_old_password') }}
         <div>
-          <input type="password" mt3.75 :class="getClass()" placeholder="******">
+          <input v-model="infos.operation_confirm" type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
         {{ t('me.secure.change_payment.new_password') }}
         <div>
-          <input type="password" mt3.75 :class="getClass()" placeholder="******">
+          <input v-model="infos.new_operation_pwd" type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
       <div mt6.25>
         {{ t('me.secure.change_payment.confirm_new_password') }}
         <div>
-          <input type="password" mt3.75 :class="getClass()" placeholder="******">
+          <input v-model="infos.new_operation_pwd_confirm" type="password" mt3.75 :class="getClass()" placeholder="******">
         </div>
       </div>
     </div>
     <div mt9.5 flex="~" justify-center>
-      <button h10.5 min-w37.5 rounded-lg bg-btn-select px2 text-white>
+      <button h10.5 min-w37.5 rounded-lg bg-btn-select px2 text-white @click="submit()">
         {{ t('me.secure.confirm') }}
       </button>
     </div>
