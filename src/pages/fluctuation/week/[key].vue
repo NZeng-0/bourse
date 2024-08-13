@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { getProductDetail } from '~/api'
 import TheCharts from '~/components/TheCharts'
-import { list } from '~/composables/portfolioListData'
+import { useProduct } from '~/store/useProduct'
+import type { historyType, productType } from '~/types'
 
-// const route = useRouter()
 const key = useRoute('/trading/day/[key]').params.key
-const data = list[Number.parseInt(key)]
-const { range, icon, presentValue, ud } = data
 
-const chartData = [113.67, 134.32, 125.85, 153.85, 139.03, 126.88, 176.96, 165.7]
+const productStore = useProduct()
+const product = ref<productType>()
+
+const chartData = ref<string[]>([])
+
+provide('currentKey', key)
 
 function getOption() {
   return {
@@ -56,7 +60,7 @@ function getOption() {
     },
     series: [
       {
-        data: chartData,
+        data: chartData.value,
         type: 'line',
         smooth: 0.3,
         lineStyle: {
@@ -90,7 +94,7 @@ function getOption() {
         },
       },
       {
-        data: chartData.map(e => e + 10),
+        data: chartData.value.map(e => e + 10),
         type: 'line',
         smooth: 0.5,
         tooltip: {
@@ -142,64 +146,87 @@ function selected(current: number) {
 
 function go(index: number) {
   select.value = index
-
-  // routeing if required
-  // route.push(`/fluctuation/${custom}/${key}`)
 }
+
+function parseData(data: historyType[]) {
+  const result: string[] = []
+  for (const h of data) {
+    const val = []
+    val.push(h.close)
+    result.push(...val)
+  }
+  return result
+}
+
+onMounted(async () => {
+  if (productStore.data) {
+    product.value = productStore.data
+  }
+  else {
+    const { data } = await getProductDetail(key, '1week')
+    productStore.data = data.value.data
+    product.value = data.value.data
+  }
+
+  const res = parseData(product.value!.history_list)
+  chartData.value = res
+})
 </script>
 
 <template>
-  <div>
-    <div>
-      <div p="x-4">
-        <TheHead back="/" :title="data.nameEN" />
-      </div>
-      <div h170 overflow-y-scroll bg-trading>
-        <TheSwitched :k="false" :current="key" />
-        <section mt5.5 rounded-bl-3xl rounded-br-3xl bg-white>
-          <div flex="~" wfull justify-between px-4 pt4.5>
-            <div>
-              <div text-3xl>
-                {{ presentValue }}
-              </div>
-              <div flex="~" text-xs :style="{ color: range > 0 ? '#19c09a' : '#fc6c6b' }">
-                <div :class="range > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'" h-1.2rem w-1.2rem />
-                <div>{{ ud }} ({{ range }}%)</div>
-              </div>
-            </div>
-            <div mr-2.5>
-              <img :src="icon" h12 w12>
-            </div>
-          </div>
-          <div flex="~" mt3 justify-between px4 text-sm>
-            <div :class="selected(0)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(0)">
-              1D
-            </div>
-            <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(1)">
-              1W
-            </div>
-            <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(2)">
-              1M
-            </div>
-            <div :class="selected(3)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(3)">
-              1Y
-            </div>
-            <div :class="selected(4)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(4)">
-              5Y
-            </div>
-          </div>
-          <div mt3.2 h65 w-full>
-            <TheCharts :dom="getRandom()" :option="getOption()" />
-          </div>
-        </section>
-        <div flex="~" justify-center>
-          <TheTradingCard />
-        </div>
-        <div flex="~" my4 justify-between px5.5>
-          <TheBuy :index="key" selected="bg-#9D82F4" />
-        </div>
-      </div>
-      <TheFooter :index="0" />
+  <div v-if="product">
+    <div p="x-4">
+      <TheHead back="/" :title="product?.product_name" />
     </div>
+    <div h170 overflow-y-scroll bg-trading>
+      <TheSwitched :k="false" :current="Number.parseInt(key)" />
+      <section mt5.5 rounded-bl-3xl rounded-br-3xl bg-white>
+        <div flex="~" wfull justify-between px-4 pt4.5>
+          <div>
+            <div text-3xl>
+              1111
+              <!-- {{ presentValue }} -->
+            </div>
+            <div flex="~" text-xs :style="{ color: product!.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
+              <div
+                :class="product!.profit_status > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'" h-1.2rem
+                w-1.2rem
+              />
+              <div>{{ product?.profit_status }} ({{ product?.profit_status }}%)</div>
+            </div>
+          </div>
+          <div mr-2.5>
+            <img :src="icon" h12 w12>
+          </div>
+        </div>
+        <div flex="~" mt3 justify-between px4 text-sm>
+          <div :class="selected(0)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(0)">
+            1D
+          </div>
+          <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(1)">
+            1W
+          </div>
+          <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(2)">
+            1M
+          </div>
+          <div :class="selected(3)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(3)">
+            1Y
+          </div>
+          <div :class="selected(4)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go(4)">
+            5Y
+          </div>
+        </div>
+        <div mt3.2 h65 w-full>
+          <TheCharts v-if="chartData.length > 0" :dom="getRandom()" :option="getOption()" />
+        </div>
+      </section>
+      <div flex="~" justify-center>
+        <TheTradingCard />
+      </div>
+      <div flex="~" my4 justify-between px5.5>
+        <TheBuy :index="Number.parseInt(key)" selected="bg-#9D82F4" />
+      </div>
+    </div>
+    <TheFooter :index="0" />
   </div>
 </template>

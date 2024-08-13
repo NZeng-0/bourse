@@ -13,7 +13,7 @@ const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).hre
       <img :src="backUrl" h10 w10>
     </RouterLink>
     <div text-xl text-trading-title>
-      {{ title === 'USDT' ? title : `${title}/USDT` }}
+      {{ title }}
     </div>
     <div h10 w10 />
   </div>

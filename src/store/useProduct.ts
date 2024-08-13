@@ -1,7 +1,7 @@
 import type { indexProduct } from '~/api/types'
 
 /**
- * @description: 存储余额宝产品数据
+ * @description: 存储首页列表产品数据
  */
 export const useProduct: any = defineStore('product', () => {
   const _data = ref<indexProduct>()

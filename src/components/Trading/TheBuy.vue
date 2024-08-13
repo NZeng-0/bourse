@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  index: string
+  index: number
   selected: string
 }>()
 

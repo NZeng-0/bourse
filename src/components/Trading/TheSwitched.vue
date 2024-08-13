@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  current: string
+  current: number
   k: boolean
 }>()
 
@@ -13,11 +13,11 @@ function style(isShow: boolean) {
   return isShow ? 'bg-menu-selected text-white' : ''
 }
 
-function toTrading(current: string) {
+function toTrading(current: number) {
   router.push(`/trading/week/${current}`)
 }
 
-function fluctuation(current: string) {
+function fluctuation(current: number) {
   router.push(`/fluctuation/week/${current}`)
 }
 </script>
