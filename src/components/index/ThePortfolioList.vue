@@ -1,21 +1,13 @@
 <script setup lang="ts">
 import type { indexProduct } from '~/api/types'
-import { getIndexProduct } from '~/api'
 
 const { t } = useI18n()
 const router = useRouter()
 
 const list: Ref<indexProduct[]> = ref([])
 
-async function getProduct() {
-  const { data } = await getIndexProduct()
-  if (data.value.code !== 200)
-    router.push('/login')
-  list.value = data.value.data
-}
-
 onMounted(async () => {
-  await getProduct()
+  list.value = await getProduct()
 })
 
 function getIcon(range: number) {
@@ -56,12 +48,12 @@ function handleImageError(key: number) {
       </div>
       <div flex="~ gap2" ml4 justify-between>
         <div text-left text-lg text-portolio-primary>
-          ￥{{ e.sjbdfw }}
+          ￥{{ e.price }}
         </div>
-        <div flex="~" mb5 mr1 h-8 w19 items-center justify-center rounded-xl bg-white>
-          <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h-1.2rem w-1.2rem />
+        <div flex="~" mb5 mr1 h8 w19 items-center justify-center rounded-xl bg-white>
+          <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h1.2rem w1.2rem />
           <span text-xs :style="{ color: e.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-            {{ e.profit_status }}%
+            {{ e.diff }}%
           </span>
         </div>
       </div>

@@ -30,6 +30,8 @@ export interface indexProduct {
   start_time: string
   end_time: string
   create_time: string
+  price?: number
+  diff?: number
   current: {
     date: number
     open: number

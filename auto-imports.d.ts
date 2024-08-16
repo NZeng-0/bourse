@@ -47,6 +47,7 @@ declare global {
   const getOption: typeof import('./src/composables/lineChartOption')['getOption']
   const getOptionFoo: typeof import('./src/composables/candlestickChart')['getOptionFoo']
   const getOptions: typeof import('./src/composables/candlestickChart')['getOptions']
+  const getProduct: typeof import('./src/composables/useProduct')['getProduct']
   const getState: typeof import('./src/composables/index')['getState']
   const h: typeof import('vue')['h']
   const icon: typeof import('./src/composables/index')['icon']
@@ -368,6 +369,7 @@ declare module 'vue' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
+    readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
@@ -673,6 +675,7 @@ declare module '@vue/runtime-core' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
+    readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>

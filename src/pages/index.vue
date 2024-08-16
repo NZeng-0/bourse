@@ -1,36 +1,40 @@
 <script setup lang="ts">
-import pop from '~/components/popup'
-import { getIndexMsg } from '~/api'
-import loading from '~/components/loading'
+// import pop from '~/components/popup'
+// import { getIndexMsg } from '~/api'
+// import loading from '~/components/loading'
 
-interface IndexMsg {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: string
-  remark: string
-  status: number
-  sort: number
-  start_time: string
-  end_time: string
-  create_time: string
-}
+// interface IndexMsg {
+//   id: number
+//   key: string
+//   condition: string
+//   value: string
+//   link: string
+//   remark: string
+//   status: number
+//   sort: number
+//   start_time: string
+//   end_time: string
+//   create_time: string
+// }
 
 // const router = useRouter()
-const { t } = useI18n()
+// const { t } = useI18n()
 
-const messages = ref<IndexMsg[]>()
+// const messages = ref<IndexMsg[]>()
 
-async function getPopMsg() {
+/* async function getPopMsg() {
   const { data } = await getIndexMsg()
   messages.value = data.value.data.pop_window_message
-}
+} */
 
+/*
 async function init() {
   Promise.all([getPopMsg()])
 }
+
 function showNextMessage(index = 0) {
+  if (messages.value === undefined)
+    router.push('/login')
   if (index < messages.value!.length) {
     const e = messages.value![index]
     pop({
@@ -41,14 +45,15 @@ function showNextMessage(index = 0) {
     })
   }
 }
+*/
 
 onMounted(async () => {
-  loading.show()
-  await init()
-  setTimeout(() => {
-    loading.close()
-    showNextMessage()
-  }, 1200)
+  // loading.show()
+  // await init()
+  // setTimeout(() => {
+  // loading.close()
+  // showNextMessage()
+  // }, 1200)
 })
 </script>
 

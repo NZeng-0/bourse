@@ -2,7 +2,6 @@
 import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
-import { getIndexProduct } from '~/api'
 import type { history, indexProduct } from '~/api/types'
 
 const router = useRouter()
@@ -13,7 +12,7 @@ const grid = {
   cursor: 'pointer',
 }
 
-const loading = shallowRef(false)
+const loading = ref(false)
 const list: Ref<indexProduct[]> = ref([])
 
 function parseData(data: history[]) {
@@ -77,7 +76,7 @@ function getLineColor(state: number): string {
   return state === 1 ? '#19C09A' : '#FC6C6B'
 }
 
-async function go(key: number) {
+function go(key: number) {
   router.push(`/trading/week/${key}`)
 }
 
@@ -85,18 +84,10 @@ function handleImageError(key: number) {
   list.value[key].logo = icon
 }
 
-async function getProduct() {
-  loading.value = true
-  const { data } = await getIndexProduct()
-  if (data.value.code !== 200)
-    router.push('/login')
-
-  list.value = data.value.data
-  loading.value = false
-}
-
 onMounted(async () => {
-  await getProduct()
+  loading.value = true
+  list.value = await getProduct()
+  loading.value = false
 })
 </script>
 
@@ -120,14 +111,14 @@ onMounted(async () => {
             <TheCharts :option="getSeries(item.history_list, item.range)" :dom="`list-${key}`" />
           </div>
           <div>
-            <div>￥{{ item.sjbdfw }}</div>
+            <div>￥{{ item.price }}</div>
             <div flex="~" w-full justify-between text-right text-xs>
               <div
                 :class="getIcon(item.profit_status)" :style="{ color: getColor(item.profit_status) }" ml h-1.2rem
                 w-1.2rem
               />
               <div :style="{ color: item.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-                {{ item.profit_status }}%
+                {{ item.diff }}%
               </div>
             </div>
           </div>

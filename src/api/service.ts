@@ -210,3 +210,15 @@ export function updateOperationPwd(data: operationPwd) {
     data,
   })
 }
+
+export function submitProductOrder(data: {
+  product_id: number
+  time: number
+  money: number
+  type: number
+}) {
+  return Request.post({
+    url: `/index/product/submitProductOrder`,
+    data,
+  })
+}
