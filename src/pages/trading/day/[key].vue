@@ -4,14 +4,20 @@ import { downColor, upColor } from '~/composables/candlestickChart'
 import { getProductDetail } from '~/api'
 import type { indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
-import type { historyType } from '~/types'
+import type { cardType, historyType } from '~/types'
 
 const key = useRoute('/trading/day/[key]').params.key
 const productStore = useProduct()
 const product = ref<indexProduct>()
 const rawData = ref<Array<Array<string>>>()
 
-provide('currentKey', key)
+const card = ref<cardType>({
+  count: '',
+  amount: '',
+  high: '',
+  low: '',
+  vol: '',
+})
 
 function getOption() {
   return {
@@ -126,23 +132,19 @@ function parseData(data: historyType[]) {
 }
 
 onMounted(async () => {
-  if (productStore.data) {
-    product.value = productStore.data
-  }
-  else {
-    const { data } = await getProductDetail(key, '1day')
-    productStore.data = data.value.data
-    product.value = data.value.data
-  }
+  const { data } = await getProductDetail(key, '1day')
+  productStore.data = data.value.data
+  product.value = data.value.data
+  const { count, amount, high, low, vol } = data.value.data
+  card.value = { count, amount, high, low, vol }
 
-  const res = parseData(product.value!.history_list)
-  rawData.value = res
+  rawData.value = parseData(product.value!.history_list)
 })
 </script>
 
 <template>
   <div>
-    <TheTrading :select="0">
+    <TheTrading :card :select="0">
       <TheCharts v-if="rawData?.length! > 0" :dom="getRandom()" :option="getOption()" />
     </TheTrading>
   </div>

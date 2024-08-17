@@ -2,7 +2,7 @@
 import { getProductDetail } from '~/api'
 import TheCharts from '~/components/TheCharts'
 import { useProduct } from '~/store/useProduct'
-import type { historyType, productType } from '~/types'
+import type { cardType, historyType, productType } from '~/types'
 
 const key = useRoute('/trading/day/[key]').params.key
 
@@ -11,7 +11,13 @@ const product = ref<productType>()
 
 const chartData = ref<string[]>([])
 
-provide('currentKey', key)
+const card = ref<cardType>({
+  count: '',
+  amount: '',
+  high: '',
+  low: '',
+  vol: '',
+})
 
 function getOption() {
   return {
@@ -159,17 +165,13 @@ function parseData(data: historyType[]) {
 }
 
 onMounted(async () => {
-  if (productStore.data) {
-    product.value = productStore.data
-  }
-  else {
-    const { data } = await getProductDetail(key, '1week')
-    productStore.data = data.value.data
-    product.value = data.value.data
-  }
+  const { data } = await getProductDetail(key, '1week')
+  productStore.data = data.value.data
+  product.value = data.value.data
+  const { count, amount, high, low, vol } = data.value.data
+  card.value = { count, amount, high, low, vol }
 
-  const res = parseData(product.value!.history_list)
-  chartData.value = res
+  chartData.value = parseData(product.value!.history_list)
 })
 </script>
 
@@ -221,7 +223,7 @@ onMounted(async () => {
         </div>
       </section>
       <div flex="~" justify-center>
-        <TheTradingCard />
+        <TheTradingCard :card />
       </div>
       <div flex="~" my4 justify-between px5.5>
         <TheBuy :index="Number.parseInt(key)" selected="bg-#9D82F4" />

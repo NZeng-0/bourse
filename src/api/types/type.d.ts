@@ -26,23 +26,8 @@ export interface indexProduct {
   fkzxbdz: string
   fkzdbdz: string
   sjbdfw: string
-  mode_type: number
-  start_time: string
-  end_time: string
-  create_time: string
-  price?: number
-  diff?: number
-  current: {
-    date: number
-    open: number
-    close: number
-    low: number
-    high: number
-    amount: number
-    vol: number
-    count: number
-  }
-  history_change_list: Array
+  price: number
+  diff: number
   history_list: Array<history>
 }
 

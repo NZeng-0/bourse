@@ -132,7 +132,7 @@ onMounted(async () => {
         {{ t('me.title') }}
       </div>
       <div flex="~" w="1/3" relative items-end justify-end text-white>
-        <img src="../assets/images/me/infrom.png" h5 w5>
+        <img src="../assets/images/me/infrom.png" h5 w5 @click="go('message/list')">
         <div v-if="msgLength > 0">
           <div bg="#FE3636" flex="~" absolute right--5 top--2 h5 w6 items-center justify-center rounded-3xl>
             {{ msgLength }}

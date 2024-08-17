@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
+import type { cardType } from '~/types'
 
-const { select } = defineProps<{
+const { card, select } = defineProps<{
+  card: cardType
   select: number
 }>()
 
@@ -82,7 +84,7 @@ function go(custom: string) {
         </span>
       </div>
       <div flex="~" justify-center>
-        <TheTradingCard />
+        <TheTradingCard :card />
       </div>
       <div flex="~" my4 justify-between px5.5>
         <TheBuy :index="product?.id" selected="bg-btn-select" />

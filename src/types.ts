@@ -101,3 +101,11 @@ export interface timeSchemeType {
   min_invest_money: string
   max_invest_money: string
 }
+
+export interface cardType {
+  count: string
+  amount: string
+  high: string
+  low: string
+  vol: string
+}

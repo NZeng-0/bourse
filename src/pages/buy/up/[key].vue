@@ -20,6 +20,9 @@ const submitData = ref({
   type: 1,
 })
 
+// eslint-disable-next-line no-console
+console.log(store.data)
+
 function selectTime(time: number, index: number) {
   submitData.value.time = time
   timeIndex.value = index
