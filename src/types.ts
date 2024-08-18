@@ -51,26 +51,6 @@ export interface currentType {
   ask: Array<number>
 }
 
-export interface productType {
-  id: number
-  product_name: string
-  product_code: string
-  source: string
-  profit_status: number
-  logo: string
-  remark: string
-  fkzxbdz: string
-  fkzdbdz: string
-  sjbdfw: string
-  mode_type: number
-  start_time: string
-  end_time: string
-  create_time: string
-  history_list: Array<historyType>
-  money_rate_list: Array<moneyRateType>
-  time_scheme_list: Array<timeSchemeType>
-}
-
 export interface historyType {
   id: number
   date: number

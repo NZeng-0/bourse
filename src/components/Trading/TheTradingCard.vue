@@ -19,7 +19,7 @@ const { t } = useI18n()
           {{ t('trading.avg') }}
         </div>
         <div style="color:#121826" text-lg class="text" w="4/5">
-          {{ Number.parseInt(card.count) / Number.parseInt(card.amount) }}
+          {{ Number.parseInt(card.count) / Number.parseInt(card.high) || 0 }}
         </div>
       </div>
       <div w="1/3" mt2.5>

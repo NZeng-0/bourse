@@ -34,7 +34,7 @@ function go(custom: string) {
           <div>
             <div text-3xl>
               <!-- 当前价格 -->
-              11111
+              {{ product.price }}
             </div>
             <div flex="~" text-xs :style="{ color: product?.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
               <div

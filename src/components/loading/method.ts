@@ -31,8 +31,6 @@ const { vnode, vm } = createLoading()
 
 const loading = {
   show() {
-    // eslint-disable-next-line no-console
-    console.log('show loading')
     vm.exposed!.isShow.value = true
   },
 

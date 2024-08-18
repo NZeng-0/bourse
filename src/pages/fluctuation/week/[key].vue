@@ -2,12 +2,14 @@
 import { getProductDetail } from '~/api'
 import TheCharts from '~/components/TheCharts'
 import { useProduct } from '~/store/useProduct'
-import type { cardType, historyType, productType } from '~/types'
+import type { cardType, historyType } from '~/types'
+import loading from '~/components/loading'
+import type { indexProduct } from '~/api/types'
 
 const key = useRoute('/trading/day/[key]').params.key
 
 const productStore = useProduct()
-const product = ref<productType>()
+const product = ref<indexProduct>()
 
 const chartData = ref<string[]>([])
 
@@ -165,6 +167,7 @@ function parseData(data: historyType[]) {
 }
 
 onMounted(async () => {
+  loading.show()
   const { data } = await getProductDetail(key, '1week')
   productStore.data = data.value.data
   product.value = data.value.data
@@ -172,6 +175,7 @@ onMounted(async () => {
   card.value = { count, amount, high, low, vol }
 
   chartData.value = parseData(product.value!.history_list)
+  loading.close()
 })
 </script>
 
@@ -186,8 +190,7 @@ onMounted(async () => {
         <div flex="~" wfull justify-between px-4 pt4.5>
           <div>
             <div text-3xl>
-              1111
-              <!-- {{ presentValue }} -->
+              {{ product.price }}
             </div>
             <div flex="~" text-xs :style="{ color: product!.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
               <div

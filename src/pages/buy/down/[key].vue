@@ -1,26 +1,49 @@
 <script setup lang="ts">
-import { list } from '~/composables/portfolioListData'
+import { submitProductOrder } from '~/api'
+import message from '~/components/message'
+import { useProduct } from '~/store/useProduct'
+import { useUser } from '~/store/useUser'
 
 const { t } = useI18n()
-const key = useRoute('/buy/up/[key]').params.key
-
-const data = list[Number.parseInt(key)]
-
-const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 const route = useRouter()
 
-const selectTime = ref(1)
+const store = useProduct()
+const user = useUser()
+const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
+const timeIndex = ref(-1)
+const moneyIndex = ref(-1)
+const timeList = store.data.time_scheme_list
+const moneyList = store.data.investment_money_list
+
+const { create_order_max_money, create_order_min_money } = store.data
+
+const submitData = ref({
+  product_id: store.data.id,
+  time: 0,
+  money: 0,
+  type: 1,
+})
+
 function getTimeStyle(time: number) {
-  return selectTime.value === time
-    ? 'bg-btn-select text-white rounded-lg'
-    : 'bg-white rounded-lg'
+  return timeIndex.value === time
+    ? 'bg-btn-select text-white rounded-lg mt4 p2.5'
+    : 'bg-white rounded-lg mt4 p2.5'
 }
 
-const selectMoney = ref(1)
 function getMoneyStyle(index: number) {
-  return selectMoney.value === index
-    ? 'bg-btn-select text-white rounded-xl'
-    : 'bg-white'
+  return moneyIndex.value === index
+    ? ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-btn-select text-white rounded-xl'
+    : ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-white rounded-xl'
+}
+
+function selectTime(time: number, index: number) {
+  submitData.value.time = time
+  timeIndex.value = index
+}
+
+function selectMoney(money: number, index: number) {
+  submitData.value.money = money
+  moneyIndex.value = index
 }
 
 function subClass() {
@@ -29,6 +52,36 @@ function subClass() {
 
 function back() {
   route.back()
+}
+
+function toNumber(value: any) {
+  return Number.parseInt(value)
+}
+
+function all() {
+  submitData.value.money = store.data.usable_money
+}
+
+async function submit() {
+  if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
+    return message({
+      message: `购买金额不能低于${create_order_min_money}`,
+      duration: 1500,
+    })
+  }
+
+  if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
+    return message({
+      message: `购买金额不能高于${create_order_max_money}`,
+      duration: 1500,
+    })
+  }
+
+  const { data } = await submitProductOrder(submitData.value)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
 }
 </script>
 
@@ -47,50 +100,17 @@ function back() {
       </div>
       <div mt3.5 flex="~ wrap" justify-between>
         <!-- h15 -->
-        <div w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(0)" @click="selectTime = 0">
+        <div
+          v-for="(e, key) in timeList" :key w="47.25%" flex="~ wrap" :class="getTimeStyle(key)"
+          @click="selectTime(e.time, key)"
+        >
           <div wfull flex="~" justify-center>
             <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-              30
+              {{ e.time }}
             </div>
             <span self-end text-xl>s</span>
           </div>
-          <div flex="~" mt1 wfull justify-center :text="selectTime === 0 ? 'white' : '#969696'">
-            <div>盈利: 5%</div>
-            <div>亏损: 5%</div>
-          </div>
-        </div>
-        <div w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(1)" @click="selectTime = 1">
-          <div wfull flex="~" justify-center>
-            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-              60
-            </div>
-            <span self-end text-xl>s</span>
-          </div>
-          <div flex="~" mt1 wfull justify-center :text="selectTime === 1 ? 'white' : '#969696'">
-            <div>盈利: 5%</div>
-            <div>亏损: 5%</div>
-          </div>
-        </div>
-        <div mt4 w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(2)" @click="selectTime = 2">
-          <div wfull flex="~" justify-center>
-            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-              90
-            </div>
-            <span self-end text-xl>s</span>
-          </div>
-          <div flex="~" mt1 wfull justify-center :text="selectTime === 2 ? 'white' : '#969696'">
-            <div>盈利: 5%</div>
-            <div>亏损: 5%</div>
-          </div>
-        </div>
-        <div mt4 w="47.25%" flex="~ wrap" p2.5 :class="getTimeStyle(3)" @click="selectTime = 3">
-          <div wfull flex="~" justify-center>
-            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-              120
-            </div>
-            <span self-end text-xl>s</span>
-          </div>
-          <div flex="~" mt1 wfull justify-center :text="selectTime === 3 ? 'white' : '#969696'">
+          <div flex="~" mt1 wfull justify-center :text="timeIndex === key ? 'white' : '#969696'">
             <div>盈利: 5%</div>
             <div>亏损: 5%</div>
           </div>
@@ -99,26 +119,14 @@ function back() {
       <div mt5.5 text-lg>
         {{ t('trading.buy.amount') }}
       </div>
-      <div mt3.5 flex="~" justify-between text-lg>
-        <div flex="~" h8.5 w12.5 items-center justify-center :class="getMoneyStyle(0)" @click="selectMoney = 0">
-          100
-        </div>
-        <div flex="~" h8.5 w12.5 items-center justify-center :class="getMoneyStyle(1)" @click="selectMoney = 1">
-          500
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(2)" @click="selectMoney = 2">
-          1000
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(3)" @click="selectMoney = 3">
-          2000
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(4)" @click="selectMoney = 4">
-          5000
+      <div mt3.5 flex="~" text-lg>
+        <div v-for="(e, key) in moneyList" :key flex="~" :class="getMoneyStyle(key)" @click="selectMoney(e, key)">
+          {{ e }}
         </div>
       </div>
     </div>
     <div mt4 pl5.8>
-      <button h8.5 min-w25 rounded-xl bg-white px2 text-lg>
+      <button h8.5 min-w25 rounded-xl bg-white px2 text-lg @click="all()">
         {{ t('trading.buy.all') }}
       </button>
       <input type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
@@ -126,35 +134,41 @@ function back() {
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div> {{ t('trading.buy.breed') }}</div>
-        <div>{{ data.nameEN }}</div>
+        <div>{{ store.data.product_name }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div> {{ t('trading.buy.real_price') }}</div>
-        <div>{{ data.presentValue }}</div>
+        <div>{{ store.data.price }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div> {{ t('trading.buy.amount') }}</div>
-        <div>200</div>
+        <div>
+          {{ submitData.money }}
+        </div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          168.00
+          {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>
         <div>
           {{ t('trading.buy.amount_available') }}
-          <span class="text-#5425EB">218</span>
+          <span class="text-#5425EB">
+            {{ store.data.usable_money }}
+          </span>
         </div>
         <div>
           {{ t('trading.buy.service_charge') }}
-          <span class="text-#5425EB">0% </span>
+          <span class="text-#5425EB">
+            {{ user.data.user_withdraw_rate }}%
+          </span>
         </div>
       </div>
     </div>
     <div flex="~" justify-center>
-      <button mt7.5 h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white>
+      <button mt7.5 h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="submit()">
         {{ t('trading.submit') }}
       </button>
     </div>

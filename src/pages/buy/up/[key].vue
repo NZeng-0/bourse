@@ -10,18 +10,19 @@ const route = useRouter()
 const store = useProduct()
 const user = useUser()
 const timeIndex = ref(-1)
-const moneyIndex = ref(0)
+const moneyIndex = ref(-1)
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 const timeList = store.data.time_scheme_list
+const moneyList = store.data.investment_money_list
+
+const { create_order_max_money, create_order_min_money } = store.data
+
 const submitData = ref({
   product_id: store.data.id,
   time: 0,
-  money: 100,
+  money: 0,
   type: 1,
 })
-
-// eslint-disable-next-line no-console
-console.log(store.data)
 
 function selectTime(time: number, index: number) {
   submitData.value.time = time
@@ -40,7 +41,9 @@ function selectMoney(money: number, index: number) {
 }
 
 function getMoneyStyle(index: number) {
-  return moneyIndex.value === index ? 'bg-btn-select text-white rounded-xl' : 'bg-white rounded-xl'
+  return moneyIndex.value === index
+    ? ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-btn-select text-white rounded-xl'
+    : ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-white rounded-xl'
 }
 
 function subClass() {
@@ -51,7 +54,29 @@ function back() {
   route.back()
 }
 
+function toNumber(value: any) {
+  return Number.parseInt(value)
+}
+
+function all() {
+  submitData.value.money = store.data.usable_money
+}
+
 async function submit() {
+  if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
+    return message({
+      message: `购买金额不能低于${create_order_min_money}`,
+      duration: 1500,
+    })
+  }
+
+  if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
+    return message({
+      message: `购买金额不能高于${create_order_max_money}`,
+      duration: 1500,
+    })
+  }
+
   const { data } = await submitProductOrder(submitData.value)
   message({
     message: data.value.msg,
@@ -94,29 +119,18 @@ async function submit() {
       <div mt5.5 text-lg>
         {{ t('trading.buy.amount') }}
       </div>
-      <div mt3.5 flex="~" justify-between text-lg>
-        <div flex="~" h8.5 w12.5 items-center justify-center :class="getMoneyStyle(0)" @click="selectMoney(100, 0)">
-          100
-        </div>
-        <div flex="~" h8.5 w12.5 items-center justify-center :class="getMoneyStyle(1)" @click="selectMoney(500, 1)">
-          500
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(2)" @click="selectMoney(1000, 2)">
-          1000
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(3)" @click="selectMoney(2000, 3)">
-          2000
-        </div>
-        <div flex="~" h8.5 w15 items-center justify-center :class="getMoneyStyle(4)" @click="selectMoney(5000, 4)">
-          5000
+      <div mt3.5 flex="~" text-lg>
+        <div v-for="(e, key) in moneyList" :key flex="~" :class="getMoneyStyle(key)" @click="selectMoney(e, key)">
+          {{ e }}
         </div>
       </div>
     </div>
     <div mt4 pl5.8>
-      <button h8.5 min-w25 border rounded-xl bg-white px2 text-lg>
+      <button h8.5 min-w25 border rounded-xl bg-white px2 text-lg @click="all()">
         {{ t('trading.buy.all') }}
       </button>
-      <input type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
+      <span v-if="!submitData.money" :class="subClass()">{{ t('trading.buy.other') }}</span>
+      <input v-else v-model="submitData.money" type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
@@ -125,20 +139,18 @@ async function submit() {
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.real_price') }}</div>
-        <div>123</div>
-        <!-- <div>{{ store.data.presentValue }}</div> -->
+        <div>{{ store.data.price }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.amount') }}</div>
         <div>
           {{ submitData.money }}
-          <!-- <input v-model="submitData.money" text-right type="text"> -->
         </div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          168.00
+          {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>

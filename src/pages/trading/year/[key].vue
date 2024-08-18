@@ -5,6 +5,7 @@ import type { indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
 import { getProductDetail } from '~/api'
 import type { cardType, historyType } from '~/types'
+import loading from '~/components/loading'
 
 const key = useRoute('/trading/year/[key]').params.key
 
@@ -133,6 +134,7 @@ function parseData(data: historyType[]) {
 }
 
 onMounted(async () => {
+  loading.show()
   const { data } = await getProductDetail(key, '1year')
   productStore.data = data.value.data
   product.value = data.value.data
@@ -140,6 +142,7 @@ onMounted(async () => {
   card.value = { count, amount, high, low, vol }
 
   rawData.value = parseData(product.value!.history_list)
+  loading.close()
 })
 </script>
 
