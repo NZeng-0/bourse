@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Loadding: typeof import('./src/components/loadding/loadding.vue')['default']
     Loading: typeof import('./src/components/loading/loading.vue')['default']
     Message: typeof import('./src/components/message/message.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -21,7 +20,6 @@ declare module 'vue' {
     TheHead: typeof import('./src/components/Trading/TheHead.vue')['default']
     TheInfo: typeof import('./src/components/grow/TheInfo.vue')['default']
     TheList: typeof import('./src/components/index/TheList.vue')['default']
-    TheLoading: typeof import('./src/components/loadding/TheLoading.vue')['default']
     TheMenuHead: typeof import('./src/components/menu/TheMenuHead.vue')['default']
     ThePopup: typeof import('./src/components/popup/ThePopup.vue')['default']
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']

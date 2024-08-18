@@ -69,6 +69,7 @@ declare global {
   const mapStores: typeof import('pinia')['mapStores']
   const mapWritableState: typeof import('pinia')['mapWritableState']
   const markRaw: typeof import('vue')['markRaw']
+  const menu: typeof import('./src/composables/useMe')['menu']
   const menuData: typeof import('./src/composables/portfolioListData')['menuData']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
@@ -368,7 +369,6 @@ declare module 'vue' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
-    readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
     readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
@@ -380,7 +380,6 @@ declare module 'vue' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
-    readonly list: UnwrapRef<typeof import('./src/composables/portfolioListData')['list']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly mapActions: UnwrapRef<typeof import('pinia')['mapActions']>
     readonly mapGetters: UnwrapRef<typeof import('pinia')['mapGetters']>
@@ -388,7 +387,7 @@ declare module 'vue' {
     readonly mapStores: UnwrapRef<typeof import('pinia')['mapStores']>
     readonly mapWritableState: UnwrapRef<typeof import('pinia')['mapWritableState']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
-    readonly menuData: UnwrapRef<typeof import('./src/composables/portfolioListData')['menuData']>
+    readonly menu: UnwrapRef<typeof import('./src/composables/useMe')['menu']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
@@ -674,7 +673,6 @@ declare module '@vue/runtime-core' {
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
-    readonly getOptionFoo: UnwrapRef<typeof import('./src/composables/candlestickChart')['getOptionFoo']>
     readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
@@ -686,7 +684,6 @@ declare module '@vue/runtime-core' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
-    readonly list: UnwrapRef<typeof import('./src/composables/portfolioListData')['list']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly mapActions: UnwrapRef<typeof import('pinia')['mapActions']>
     readonly mapGetters: UnwrapRef<typeof import('pinia')['mapGetters']>
@@ -694,7 +691,7 @@ declare module '@vue/runtime-core' {
     readonly mapStores: UnwrapRef<typeof import('pinia')['mapStores']>
     readonly mapWritableState: UnwrapRef<typeof import('pinia')['mapWritableState']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
-    readonly menuData: UnwrapRef<typeof import('./src/composables/portfolioListData')['menuData']>
+    readonly menu: UnwrapRef<typeof import('./src/composables/useMe')['menu']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>

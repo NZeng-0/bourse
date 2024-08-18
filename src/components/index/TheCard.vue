@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import * as echarts from 'echarts'
 import TheCharts from '~/components/TheCharts'
-import { data as chartData } from '~/composables/cardChartData'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
+import { data as chartData } from '~/composables/cardChartData'
 
 const { t } = useI18n()
 

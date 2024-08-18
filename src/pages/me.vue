@@ -3,6 +3,7 @@ import { getMoneyEarningsInfo, getNoticeList } from '~/api'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
+import { menu } from '~/composables/useMe'
 
 const userStore = useUser()
 const router = useRouter()
@@ -15,63 +16,6 @@ const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
 })
-
-const menu = [
-  {
-    title: `${t('me.withdrawal_record.title')}`,
-    icon: '../assets/images/me/menu/record.png',
-    right: ' ',
-    to: 'withdraw',
-  },
-  {
-    title: `${t('me.recharge_record.title')}`,
-    icon: '../assets/images/me/menu/top-up.png',
-    right: ' ',
-    to: 'top-up',
-  },
-  {
-    title: `${t('me.payment_method.title')}`,
-    icon: '../assets/images/me/menu/method.png',
-    right: ' ',
-    to: 'payment',
-  },
-  {
-    title: `${t('me.auth.title')}`,
-    icon: '../assets/images/me/menu/auth.png',
-    right: ' ',
-    to: 'auth',
-  },
-  {
-    title: `${t('me.language.title')}`,
-    icon: '../assets/images/me/menu/language.png',
-    right: t('me.language.current'),
-    to: 'language',
-  },
-  {
-    title: `${t('me.message.title')}`,
-    icon: '../assets/images/me/menu/message.png',
-    right: ' ',
-    to: 'message/list',
-  },
-  {
-    title: `${t('me.secure.title')}`,
-    icon: '../assets/images/me/menu/secure.png',
-    right: ' ',
-    to: 'secure',
-  },
-  {
-    title: '公司简介',
-    icon: '../assets/images/me/menu/company.png',
-    right: '',
-    to: 'company',
-  },
-  {
-    title: `${t('me.download.title')}`,
-    icon: '../assets/images/me/menu/download.png',
-    right: ' ',
-    to: 'recommend',
-  },
-]
 
 function getListStyle() {
   return 'mt3.75 h15 items-center rounded-2xl bg-white px4'
@@ -215,12 +159,12 @@ onMounted(async () => {
           </div>
           <div w="2/5" text-base>
             <p>
-              {{ item.title }}
+              {{ item.title !== '公司简介' ? t(item.title) : item.title }}
             </p>
           </div>
           <div w="2/5" flex="~" justify-end>
-            <div text-sm class="text-#9EA3AE">
-              {{ item.right }}
+            <div v-if="item.right !== ' ' " text-sm class="text-#9EA3AE">
+              {{ t(item.right) }}
             </div>
             <img src="../assets/images/me/menu/right.png" h5.5 w5.5>
           </div>
