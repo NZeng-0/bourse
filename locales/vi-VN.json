@@ -57,7 +57,9 @@
       "anticipated_yield": "Lợi nhuận dự kiến",
       "amount_available": "Số tiền có sẵn",
       "service_charge": "Phí xử lý",
-      "earning_yield": "tỷ lệ lợi nhuận"
+      "earning_yield": "tỷ lệ lợi nhuận",
+      "down": "Sự mất mát",
+      "up": "lợi nhuận"
     }
   },
   "order": {
@@ -134,7 +136,8 @@
         "wallet_account": "Vui lòng nhập số tài khoản ví",
         "submit": "đệ trình"
       }
-    }
+    },
+    "tips": "Đừng bấm liên tục"
   },
   "fortune": {
     "title": "Quản lý tiền bạc",
@@ -181,7 +184,15 @@
     "first": "Chia sẻ mã giới thiệu của bạn và nhận được",
     "last": "Cổ phiếu miễn phí",
     "copy": "Sao chép",
-    "share": "Chia sẻ"
+    "share": "Chia sẻ",
+    "history": {
+      "account": "Tài khoản",
+      "date": "Ngày đăng ký",
+      "record": "Kỷ lục thăng hạng",
+      "sub": "Đề xuất và kiếm tiền quà tặng",
+      "top-up": "Số tiền nạp",
+      "withdraw": "Số tiền rút"
+    }
   },
   "me": {
     "title": "Trung tâm cá nhân",
@@ -266,6 +277,34 @@
     "service": {
       "1": "Hỗ trợ trực tuyến",
       "2": "Có nghi ngờ, xin mời tư vấn!"
+    },
+    "tips": {
+      "new": "Mật khẩu mới không nhất quán",
+      "pwd": "Hai mật khẩu không nhất quán"
     }
+  },
+  "YuEBao": {
+    "grater": "Số tiền không được lớn hơn số dư hiện tại",
+    "input": "Vui lòng nhập số tiền",
+    "less": "Số lượng không thể nhỏ hơn 1"
+  },
+  "avator": {
+    "album": "Lựa chọn album",
+    "cancel": "Hủy bỏ",
+    "confirm": "Chắc chắn",
+    "shot": "bức ảnh",
+    "title": "Thay đổi hình đại diện"
+  },
+  "buy_tips": {
+    "max": "Số tiền mua không thể cao hơn",
+    "min": "Số tiền mua không thể ít hơn"
+  },
+  "company": {
+    "content": "Đây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày trôi qua, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản.",
+    "title": "Hồ sơ công ty"
+  },
+  "top-up": {
+    "no": "Số dư không đủ",
+    "tips": "Vui lòng nhập số trên 0"
   }
 }

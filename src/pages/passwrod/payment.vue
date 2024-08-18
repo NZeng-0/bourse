@@ -16,7 +16,7 @@ const wait = ref(false)
 async function submit() {
   if (wait.value) {
     message({
-      message: '请勿重复点击',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return
@@ -24,21 +24,19 @@ async function submit() {
   wait.value = true
   if (infos.value.operation_pwd !== infos.value.operation_confirm) {
     message({
-      message: '两次密码不一致',
+      message: t('me.tips.pwd'),
       duration: 1500,
     })
     return
   }
   if (infos.value.new_operation_pwd !== infos.value.new_operation_pwd_confirm) {
     message({
-      message: '新密码不一致',
+      message: t('me.tips.new'),
       duration: 1500,
     })
     return
   }
   const { data } = await updateOperationPwd(infos.value)
-  // eslint-disable-next-line no-console
-  console.log(data.value)
   message({
     message: data.value.msg,
     duration: 1500,

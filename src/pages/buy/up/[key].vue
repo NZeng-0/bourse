@@ -65,14 +65,14 @@ function all() {
 async function submit() {
   if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
     return message({
-      message: `购买金额不能低于${create_order_min_money}`,
+      message: `${t('buy_tips.min')}${create_order_min_money}`,
       duration: 1500,
     })
   }
 
   if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
     return message({
-      message: `购买金额不能高于${create_order_max_money}`,
+      message: `${t('buy_tips.max')}${create_order_max_money}`,
       duration: 1500,
     })
   }
@@ -111,8 +111,8 @@ async function submit() {
             <span self-end text-xl>s</span>
           </div>
           <div flex="~" mt1 wfull justify-center :text="timeIndex === key ? 'white' : '#969696'">
-            <div>盈利: 5%</div>
-            <div>亏损: 5%</div>
+            <div>{{ t('trading.buy.up') }}: 5%</div>
+            <div>{{ t('trading.buy.down') }}: 5%</div>
           </div>
         </div>
       </div>

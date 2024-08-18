@@ -24,7 +24,7 @@ function all() {
 async function out() {
   if (outMoney.value === '') {
     message({
-      message: '请输入金额',
+      message: t('YuEBao.input'),
       duration: 1500,
     })
     return
@@ -32,7 +32,7 @@ async function out() {
 
   if (Number.parseInt(outMoney.value) < 1) {
     message({
-      message: '金额不能小于1',
+      message: t('YuEBao.less'),
       duration: 1500,
     })
     return
@@ -40,7 +40,7 @@ async function out() {
 
   if (outMoney.value > moneyStore.money.total_money) {
     message({
-      message: '金额不能大于当前余额',
+      message: t('YuEBao.grater'),
       duration: 1500,
     })
     return
@@ -49,8 +49,13 @@ async function out() {
   const { data } = await outMoneyInvestment({
     money: outMoney.value,
   })
-  // eslint-disable-next-line no-console
-  console.log(data)
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+
+  // 成功后更新 store
+  await onRefresh()
 }
 
 function init() {

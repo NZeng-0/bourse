@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { register } from '~/api'
+import message from '~/components/message'
 
 const { t } = useI18n()
 const router = useRouter()
 
+const wait = ref(false)
 const user = ref({
   account: '',
   pwd: '',
@@ -17,9 +19,23 @@ const user = ref({
 })
 
 async function onRegister() {
+  if (wait.value) {
+    message({
+      message: t('assets.tips'),
+      duration: 1500,
+    })
+    return
+  }
+
+  wait.value = true
   const { data } = await register(user.value)
   if (data.value.code)
     router.push('/login')
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  wait.value = false
 }
 
 function getClass() {

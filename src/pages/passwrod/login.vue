@@ -16,7 +16,7 @@ const wait = ref(false)
 async function submit() {
   if (wait.value) {
     message({
-      message: '请勿重复点击',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return
@@ -24,14 +24,14 @@ async function submit() {
   wait.value = true
   if (infos.value.pwd !== infos.value.pwd_confirm) {
     message({
-      message: '两次密码不一致',
+      message: t('me.tips.pwd'),
       duration: 1500,
     })
     return
   }
   if (infos.value.new_pwd !== infos.value.new_pwd_confirm) {
     message({
-      message: '新密码不一致',
+      message: t('me.tips.new'),
       duration: 1500,
     })
     return

@@ -57,7 +57,9 @@
       "anticipated_yield": "rendimento atteso",
       "amount_available": "Disponibile",
       "service_charge": "spese di gestione",
-      "earning_yield": "Rendimento"
+      "earning_yield": "Rendimento",
+      "down": "Perdita",
+      "up": "profitto"
     }
   },
   "order": {
@@ -134,7 +136,8 @@
         "wallet_account": "Inserisci il tuo account wallet",
         "submit": "Invia"
       }
-    }
+    },
+    "tips": "Non fare clic ripetutamente"
   },
   "fortune": {
     "title": "Gestione finanziaria",
@@ -181,7 +184,15 @@
     "first": "Condividi il tuo codice di riferimento e ottenelo",
     "last": "Stock libero di",
     "copy": "copia",
-    "share": "Share"
+    "share": "Share",
+    "history": {
+      "account": "Account",
+      "date": "Data di registrazione",
+      "record": "Registro della promozione",
+      "sub": "Consiglia e guadagna denaro in regalo",
+      "top-up": "Importo della ricarica",
+      "withdraw": "Prelevare l'importo"
+    }
   },
   "me": {
     "title": "Centro personale",
@@ -266,6 +277,34 @@
     "service": {
       "1": "Servizio online",
       "2": "Se avete domande, si prega di consultare!"
+    },
+    "tips": {
+      "new": "La nuova password non è coerente",
+      "pwd": "Due password non sono coerenti"
     }
+  },
+  "YuEBao": {
+    "grater": "L'importo non può essere superiore al saldo attuale",
+    "input": "Inserisci l'importo",
+    "less": "L'importo non può essere inferiore a 1"
+  },
+  "avator": {
+    "album": "Selezione dell'album",
+    "cancel": "Cancellare",
+    "confirm": "Sicuro",
+    "shot": "Fotografia",
+    "title": "Cambia avatar"
+  },
+  "buy_tips": {
+    "max": "L'importo dell'acquisto non può essere superiore a",
+    "min": "L'importo dell'acquisto non può essere inferiore a"
+  },
+  "company": {
+    "content": "Questo è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice.",
+    "title": "Profilo Aziendale"
+  },
+  "top-up": {
+    "no": "Equilibrio insufficiente",
+    "tips": "Inserisci un numero superiore a 0"
   }
 }

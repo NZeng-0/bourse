@@ -34,7 +34,7 @@ function go() {
 async function onRecharge() {
   if (wait.value) {
     message({
-      message: '请勿重复提交',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return
@@ -44,7 +44,7 @@ async function onRecharge() {
 
   if (!/^\d+$/.test(infos.value.money)) {
     message({
-      message: '请输入0以上的数字',
+      message: t('top-up.tips'),
       duration: 1500,
     })
     return

@@ -50,7 +50,8 @@
         "title": "USDT hesabını bağla",
         "wallet_account": "Lütfen cüzdan hesabını girin"
       }
-    }
+    },
+    "tips": "Tekrar tekrar tıklamayın"
   },
   "footer": {
     "assets": "varlıklar",
@@ -194,7 +195,11 @@
       },
       "under_review": "inceleme altında"
     },
-    "yesterdays_earnings": "Dünkü kazanç"
+    "yesterdays_earnings": "Dünkü kazanç",
+    "tips": {
+      "new": "Yeni şifre tutarsız",
+      "pwd": "İki şifre tutarsız"
+    }
   },
   "order": {
     "buy_of_fall": "Satın al veya sat",
@@ -226,7 +231,15 @@
     "last": "ücretsiz stoklar",
     "reward": "10 ABD Doları",
     "share": "paylaşmak",
-    "title": "Kibarca tavsiye edildi"
+    "title": "Kibarca tavsiye edildi",
+    "history": {
+      "account": "Hesap",
+      "date": "Kayıt tarihi",
+      "record": "Promosyon kaydı",
+      "sub": "Tavsiye edin ve hediye parası kazanın",
+      "top-up": "Yeniden yükleme miktarı",
+      "withdraw": "Tutarın çekilmesi"
+    }
   },
   "register": {
     "account": "Kullanıcı adı",
@@ -255,7 +268,9 @@
       "other": "diğer",
       "real_price": "gerçek zamanlı fiyat",
       "service_charge": "Hizmet bedeli",
-      "settlement_time": "ödeme zamanı"
+      "settlement_time": "ödeme zamanı",
+      "down": "Kayıp",
+      "up": "kâr"
     },
     "buy_to_fall": "Satın al veya sat",
     "buy_up": "Hepsini satın al",
@@ -267,5 +282,29 @@
     "submit": "Siparişi Gönder",
     "undulate": "dalgalanma",
     "vloume": "Hacim"
+  },
+  "YuEBao": {
+    "grater": "Tutar mevcut bakiyeden fazla olamaz",
+    "input": "Lütfen tutarı girin",
+    "less": "Tutar 1'den az olamaz"
+  },
+  "avator": {
+    "album": "Albüm seçimi",
+    "cancel": "İptal etmek",
+    "confirm": "Elbette",
+    "shot": "Fotoğraf",
+    "title": "Avatarı değiştir"
+  },
+  "buy_tips": {
+    "max": "Satın alma tutarı bundan yüksek olamaz",
+    "min": "Satın alma tutarı daha az olamaz"
+  },
+  "company": {
+    "content": "Bu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin.",
+    "title": "Şirket Profili"
+  },
+  "top-up": {
+    "no": "Yetersiz bakiye",
+    "tips": "Lütfen 0'ın üzerinde bir sayı girin"
   }
 }

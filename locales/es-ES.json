@@ -47,7 +47,9 @@
       "other": "Otros",
       "real_price": "precio en tiempo real",
       "service_charge": "tasa de tramitación",
-      "settlement_time": "tiempo de liquidación"
+      "settlement_time": "tiempo de liquidación",
+      "down": "Pérdida",
+      "up": "ganancia"
     },
     "buy_to_fall": "comprar o vender",
     "buy_up": "Comprar",
@@ -134,7 +136,8 @@
         "title": "Vincular cuenta USDT",
         "wallet_account": "Por favor ingresa la cuenta de billetera"
       }
-    }
+    },
+    "tips": "No hagas clic repetidamente"
   },
   "fortune": {
     "state": "estado",
@@ -181,7 +184,15 @@
     "last": "acciones libres",
     "reward": "$10USD",
     "share": "compartir",
-    "title": "Recomendado cortésmente"
+    "title": "Recomendado cortésmente",
+    "history": {
+      "account": "Cuenta",
+      "date": "Fecha de registro",
+      "record": "Récord de promoción",
+      "sub": "Recomendar y ganar dinero de regalo",
+      "top-up": "Monto de recarga",
+      "withdraw": "Retirar cantidad"
+    }
   },
   "me": {
     "auth": {
@@ -266,6 +277,34 @@
     },
     "yesterdays_earnings": "Ganancias de ayer",
     "accumulated_earnings": "Ingresos acumulados",
-    "amount": "Cantidad"
+    "amount": "Cantidad",
+    "tips": {
+      "new": "La nueva contraseña es inconsistente",
+      "pwd": "Dos contraseñas son inconsistentes"
+    }
+  },
+  "YuEBao": {
+    "grater": "El monto no puede ser mayor que el saldo actual.",
+    "input": "Por favor ingrese la cantidad",
+    "less": "El importe no puede ser inferior a 1"
+  },
+  "avator": {
+    "album": "Selección de álbum",
+    "cancel": "Cancelar",
+    "confirm": "Seguro",
+    "shot": "Fotografía",
+    "title": "Cambiar avatar"
+  },
+  "buy_tips": {
+    "max": "El importe de la compra no puede ser superior a",
+    "min": "El importe de la compra no puede ser inferior a"
+  },
+  "company": {
+    "content": "Este es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc. \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla.",
+    "title": "Perfil de la empresa"
+  },
+  "top-up": {
+    "no": "Saldo insuficiente",
+    "tips": "Por favor introduce un número superior a 0"
   }
 }

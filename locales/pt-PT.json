@@ -50,7 +50,8 @@
         "title": "Vincular conta USDT",
         "wallet_account": "Por favor insira a conta da carteira"
       }
-    }
+    },
+    "tips": "Não clique repetidamente"
   },
   "footer": {
     "assets": "ativos",
@@ -194,6 +195,10 @@
         "1": "Levantamento de cartão",
         "2": "Carteira para USDT"
       }
+    },
+    "tips": {
+      "new": "A nova palavra-passe é inconsistente",
+      "pwd": "Duas palavras-passe são inconsistentes"
     }
   },
   "order": {
@@ -226,7 +231,15 @@
     "last": "ações grátis",
     "reward": "$ 10 dólares",
     "share": "compartilhar",
-    "title": "Recomendado educadamente"
+    "title": "Recomendado educadamente",
+    "history": {
+      "account": "Conta",
+      "date": "Data de registo",
+      "record": "Registo de promoção",
+      "sub": "Recomende e ganhe dinheiro de presente",
+      "top-up": "Valor de recarga",
+      "withdraw": "Retirar valor"
+    }
   },
   "register": {
     "account": "nome de usuário",
@@ -255,7 +268,9 @@
       "other": "Outros",
       "real_price": "preço em tempo real",
       "service_charge": "taxa de manuseio",
-      "settlement_time": "hora de liquidação"
+      "settlement_time": "hora de liquidação",
+      "down": "Perda",
+      "up": "lucro"
     },
     "buy_to_fall": "Comprar ou vender",
     "buy_up": "Comprar",
@@ -267,5 +282,29 @@
     "submit": "Enviar pedido",
     "undulate": "flutuação",
     "vloume": "Volume"
+  },
+  "YuEBao": {
+    "grater": "O valor não pode ser superior ao saldo atual",
+    "input": "Por favor insira o valor",
+    "less": "O valor não pode ser inferior a 1"
+  },
+  "avator": {
+    "album": "Seleção de álbum",
+    "cancel": "Cancelar",
+    "confirm": "Claro",
+    "shot": "Fotografia",
+    "title": "Alterar avatar"
+  },
+  "buy_tips": {
+    "max": "O valor da compra não pode ser superior",
+    "min": "O valor da compra não pode ser inferior a"
+  },
+  "company": {
+    "content": "Este é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples.",
+    "title": "perfil de companhia"
+  },
+  "top-up": {
+    "no": "Saldo insuficiente",
+    "tips": "Por favor introduza um número acima de 0"
   }
 }

@@ -22,7 +22,7 @@ function go() {
 async function submit() {
   if (wait.value) {
     message({
-      message: '请勿重复点击',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return

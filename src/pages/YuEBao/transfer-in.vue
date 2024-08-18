@@ -27,7 +27,7 @@ async function onPlace() {
 
   if (buy.value.money === '') {
     message({
-      message: '请输入金额',
+      message: t('YuEBao.input'),
       duration: 1500,
     })
     return
@@ -35,7 +35,7 @@ async function onPlace() {
 
   if (Number.parseInt(buy.value.money) < 1) {
     message({
-      message: '金额不能小于1',
+      message: t('YuEBao.less'),
       duration: 1500,
     })
     return
@@ -43,7 +43,7 @@ async function onPlace() {
 
   if (buy.value.money > user.value!.now_money) {
     message({
-      message: '金额不能大于当前余额',
+      message: t('YuEBao.grater'),
       duration: 1500,
     })
     return

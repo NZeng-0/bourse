@@ -28,7 +28,7 @@ function go() {
 async function submit() {
   if (wait.value) {
     message({
-      message: '请勿重复提交',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return
@@ -38,7 +38,7 @@ async function submit() {
 
   if (!/^\d+$/.test(infos.value.withdraw_money)) {
     message({
-      message: '请输入0以上的数字',
+      message: t('top-up.tips'),
       duration: 1500,
     })
     return
@@ -46,7 +46,7 @@ async function submit() {
 
   if (infos.value.withdraw_money > user.data.now_money) {
     message({
-      message: '余额不足',
+      message: t('top-up.no'),
       duration: 1500,
     })
     return

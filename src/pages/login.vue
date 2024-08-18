@@ -26,7 +26,7 @@ async function onLoginSuccesful() {
 async function onLogin() {
   if (wait.value) {
     message({
-      message: '请勿重复提交',
+      message: t('assets.tips'),
       duration: 1500,
     })
     return
