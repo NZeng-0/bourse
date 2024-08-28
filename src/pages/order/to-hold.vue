@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getProductOrderList } from '~/api'
+
 const route = useRouter()
 const { t } = useI18n()
 
@@ -6,104 +8,29 @@ const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).hre
 const down = new URL('~/assets/images/order/down.png', import.meta.url).href
 const up = new URL('~/assets/images/order/up.png', import.meta.url).href
 
-const data = ref([
-  {
-    title: t('order.product_1'),
-    method: t('order.buy_up'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.4688,
-    time: 300,
-    beLeft: 270,
-    prospective: 18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_2'),
-    method: t('order.buy_up'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.5782,
-    time: 600,
-    beLeft: 270,
-    prospective: -18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_1'),
-    method: t('order.buy_of_fall'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.4688,
-    time: 300,
-    beLeft: 270,
-    prospective: 18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_2'),
-    method: t('order.buy_up'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.5782,
-    time: 600,
-    beLeft: 270,
-    prospective: -18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_1'),
-    method: t('order.buy_of_fall'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.4688,
-    time: 300,
-    beLeft: 270,
-    prospective: 18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_2'),
-    method: t('order.buy_up'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.5782,
-    time: 600,
-    beLeft: 270,
-    prospective: -18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_1'),
-    method: t('order.buy_of_fall'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.4688,
-    time: 300,
-    beLeft: 270,
-    prospective: 18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-  {
-    title: t('order.product_2'),
-    method: t('order.buy_up'),
-    amount: 1000,
-    buy: 104.6288,
-    presentValue: 104.5782,
-    time: 600,
-    beLeft: 270,
-    prospective: -18.562,
-    buyTime: '2022-08-08 10:10',
-    expireTime: '2022-08-13 10:10',
-  },
-])
+interface dataType {
+  id: number
+  order_sn: string
+  product_id: number
+  uid: number
+  status: number
+  type: number
+  jcdw: string
+  pcdw: string | null
+  time: string
+  wtye: string
+  wxwtye: string
+  yxwtye: string
+  earnings_money: string
+  predict_earnings_money: string
+  profit_loss_rate: string
+  settle_time: string | null
+  create_time: string
+  product_name: string
+  price: string
+}
+
+const list = ref<dataType[]>()
 
 function getMinute(time: number) {
   const minute = Math.floor(time / 60)
@@ -112,7 +39,7 @@ function getMinute(time: number) {
 }
 
 function getCurrent(current: number) {
-  return current < 0 ? 'text-#DF2040' : 'text-#38B781'
+  return current === 1 ? 'text-#DF2040' : 'text-#38B781'
 }
 
 function prospectiveStyle(prospective: number) {
@@ -125,6 +52,11 @@ function go(uri: string) {
 function back() {
   route.back()
 }
+
+onMounted(async () => {
+  const { data } = await getProductOrderList(1)
+  list.value = data.value.data
+})
 </script>
 
 <template>
@@ -147,16 +79,16 @@ function back() {
       </div>
     </div>
     <div h-screen overflow-y-scroll px2>
-      <div v-for="(item, key) in data" :key mt2.8 min-h50 rounded-lg bg-white px2 py2.3>
+      <div v-for="(item, key) in list" :key mt2.8 min-h50 rounded-lg bg-white px2 py2.3>
         <div flex="~">
           <div text-lg leading-5>
-            {{ item.title }}
+            {{ item.product_name }}
           </div>
           <div ml2>
-            <img :src="item.method === t('order.buy_up') ? up : down" mt1.05 h4.5 w4.5>
+            <img :src="item.type === 1 ? up : down" mt1.05 h4.5 w4.5>
           </div>
           <div ml1.1 mt0.35 text-sm font-normal class="text-#030319">
-            {{ item.method }}
+            {{ item.type === 1 ? '买涨' : '买跌' }}
           </div>
         </div>
         <div flex="~" mt2.5 justify-between>
@@ -168,7 +100,7 @@ function back() {
                 </p>
               </div>
               <div>
-                {{ item.amount }}
+                {{ item.wtye }}
               </div>
             </div>
             <div h="1/2" mt2>
@@ -192,7 +124,7 @@ function back() {
                 </div>
               </div>
               <div flex="~" justify-center>
-                {{ item.buy }}
+                {{ item.yxwtye }}
               </div>
             </div>
             <div h="1/2" mt2>
@@ -204,7 +136,7 @@ function back() {
                 </div>
               </div>
               <div flex="~" justify-center>
-                {{ getMinute(item.beLeft) }}
+                {{ getMinute(Number.parseInt(item.time)) }}
               </div>
             </div>
           </div>
@@ -217,8 +149,8 @@ function back() {
                   </p>
                 </div>
               </div>
-              <div flex="~" justify-center :class="getCurrent(item.prospective)">
-                {{ item.presentValue }}
+              <div flex="~" justify-center :class="getCurrent(item.type)">
+                {{ item.price }}
               </div>
             </div>
             <div h="1/2" mt2>
@@ -229,18 +161,18 @@ function back() {
                   </p>
                 </div>
               </div>
-              <div flex="~" justify-center :class="prospectiveStyle(item.prospective)">
-                {{ item.prospective > 0 ? `+${item.prospective}` : `${item.prospective}` }}
+              <div flex="~" justify-center :class="prospectiveStyle(Number.parseInt(item.predict_earnings_money))">
+                {{ item.predict_earnings_money }}
               </div>
             </div>
           </div>
         </div>
         <div mt2.5 border border-white text-sm font-normal>
           <div>
-            {{ t('order.buying_time') }}: {{ item.buyTime }}
+            {{ t('order.buying_time') }}: {{ item.create_time }}
           </div>
           <div>
-            {{ t('order.settlement_time') }}: {{ item.expireTime }}
+            {{ t('order.settlement_time') }}: {{ item.settle_time }}
           </div>
         </div>
       </div>

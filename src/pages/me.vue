@@ -120,7 +120,7 @@ onMounted(async () => {
         <div flex="~" h23 items-center justify-between>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              {{ money.yesterday_money_earnings }}
+              {{ user?.yesterday_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.yesterdays_earnings') }}
@@ -128,7 +128,7 @@ onMounted(async () => {
           </div>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              0.00
+              {{ user?.today_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.todays_earnings') }}
@@ -136,7 +136,7 @@ onMounted(async () => {
           </div>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              {{ money.total_money_earnings }}
+              {{ user?.total_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.accumulated_earnings') }}

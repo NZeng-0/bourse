@@ -22,11 +22,16 @@ const submitData = ref({
   time: 0,
   money: 0,
   type: 1,
+  scheme_id: -1,
 })
 
-function selectTime(time: number, index: number) {
+const product_profit = ref(0)
+
+function selectTime(time: number, index: number, profit: string, id: number) {
   submitData.value.time = time
+  submitData.value.scheme_id = id
   timeIndex.value = index
+  product_profit.value = parseProfit(profit)
 }
 
 function getTimeStyle(time: number) {
@@ -83,6 +88,25 @@ async function submit() {
     duration: 1500,
   })
 }
+
+function parseProfit(value: string): number {
+  // 判断value中是否有 - 这个字符
+  if (value.includes('-')) {
+    // 按照 - 分割字符
+    const arr = value.split('-')
+    // 将第一个字符转换为数字
+    const first = Number(arr[0])
+    // 将第二个字符转换为数字
+    const last = Number(arr[1])
+    // 生成一个随机数 范围在 first 和 last 之间
+    return Number.parseInt((first + Math.random() * (last - first)).toFixed(2))
+  }
+  else {
+    // 将value转换为数字
+    const num = Number(value)
+    return num
+  }
+}
 </script>
 
 <template>
@@ -94,27 +118,26 @@ async function submit() {
     <div h10 w10 />
   </div>
   <div hscreen overflow-x-scroll bg-trading>
-    <div mt5 px6.8>
+    <div mt5 px3>
       <div text-lg>
         {{ t('trading.buy.settlement_time') }}
       </div>
       <div flex="~ wrap" justify-between>
         <!-- h15 -->
-        <div
-          v-for="(e, key) in timeList" :key w="47.25%" flex="~ wrap" :class="getTimeStyle(key)"
-          @click="selectTime(e.time, key)"
-        >
-          <div wfull flex="~" justify-center>
-            <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-              {{ e.time }}
+        <template v-for="(e, key) in timeList" :key>
+          <div w="48%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(e.time, key, e.profit_rate, e.id)">
+            <div wfull flex="~" justify-center>
+              <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
+                {{ e.time }}
+              </div>
+              <span self-end text-xl>s</span>
             </div>
-            <span self-end text-xl>s</span>
+            <div flex="~" mt4 wfull justify-between text-sm :text="timeIndex === key ? 'white' : '#969696'">
+              <div>{{ t('trading.buy.up') }}: {{ parseProfit(e.profit_rate) }}%</div>
+              <div>{{ t('trading.buy.down') }}: {{ parseProfit(e.loss_rate) }}%</div>
+            </div>
           </div>
-          <div flex="~" mt1 wfull justify-center :text="timeIndex === key ? 'white' : '#969696'">
-            <div>{{ t('trading.buy.up') }}: 5%</div>
-            <div>{{ t('trading.buy.down') }}: 5%</div>
-          </div>
-        </div>
+        </template>
       </div>
       <div mt5.5 text-lg>
         {{ t('trading.buy.amount') }}
@@ -150,7 +173,7 @@ async function submit() {
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }}
+          {{ toNumber(submitData.money) + toNumber(submitData.money * product_profit / 100) }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>

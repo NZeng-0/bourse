@@ -39,6 +39,9 @@ export interface userTypes {
   }
   level_name: string
   level: number
+  yesterday_earnings_money: number
+  today_earnings_money: number
+  total_earnings_money: number
 }
 
 export const useUser: any = defineStore('user', () => {

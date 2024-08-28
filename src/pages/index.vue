@@ -17,7 +17,6 @@ interface IndexMsg {
   create_time: string
 }
 
-const router = useRouter()
 const { t } = useI18n()
 
 const messages = ref<IndexMsg[]>()
@@ -33,7 +32,7 @@ async function init() {
 
 function showNextMessage(index = 0) {
   if (messages.value === undefined)
-    router.push('/login')
+    return
   if (index < messages.value!.length) {
     const e = messages.value![index]
     pop({
@@ -46,6 +45,16 @@ function showNextMessage(index = 0) {
 }
 
 onMounted(async () => {
+  if (window.name === '') {
+    window.name = 'refresh'
+  }
+  else if (window.name === 'refresh') {
+    loading.show()
+    return setTimeout(() => {
+      loading.close()
+    }, 1200)
+  }
+
   loading.show()
   await init()
   setTimeout(() => {
