@@ -9,7 +9,11 @@ import type { indexProduct } from '~/api/types'
 const key = useRoute('/trading/day/[key]').params.key
 
 const productStore = useProduct()
-const product = ref<indexProduct>()
+
+const store = useProduct()
+const { data } = storeToRefs(store) as { data: Ref<indexProduct | null> }
+
+const product: Ref<indexProduct | null> = ref(data)
 
 const chartData = ref<string[]>([])
 
@@ -166,6 +170,10 @@ function parseData(data: historyType[]) {
   return result
 }
 
+function loadImg() {
+  product.value!.logo = icon
+}
+
 onMounted(async () => {
   loading.show()
   const { data } = await getProductDetail(key, '1week')
@@ -201,7 +209,7 @@ onMounted(async () => {
             </div>
           </div>
           <div mr-2.5>
-            <img :src="icon" h12 w12>
+            <img :src="product!.logo" h12 w12 rounded-full @error="loadImg">
           </div>
         </div>
         <div flex="~" mt3 justify-between px4 text-sm>

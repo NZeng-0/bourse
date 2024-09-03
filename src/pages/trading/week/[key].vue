@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import TheCharts from '~/components/TheCharts'
 import { downColor, upColor } from '~/composables/candlestickChart'
-import { getProductDetail } from '~/api'
 import { useProduct } from '~/store/useProduct'
 import type { cardType, historyType } from '~/types'
 import loading from '~/components/loading'
 import type { indexProduct } from '~/api/types'
 
-const key = useRoute('/trading/week/[key]').params.key
+// const key = useRoute('/trading/week/[key]').params.key
 const productStore = useProduct()
 
-const product = ref<indexProduct>()
+const { data } = storeToRefs(productStore) as { data: indexProduct }
+
+const product = ref(data)
 
 const rawData = ref<Array<Array<string>>>()
 
@@ -134,14 +135,16 @@ function parseData(data: historyType[]) {
 
 onMounted(async () => {
   loading.show()
-  const { data } = await getProductDetail(key, '1week')
-  productStore.data = data.value.data
-  product.value = data.value.data
 
-  const { count, amount, high, low, vol } = data.value.data
-  card.value = { count, amount, high, low, vol }
+  card.value = {
+    count: product.value.count,
+    amount: product.value.amount,
+    high: product.value.high,
+    low: product.value.low,
+    vol: product.value.vol,
+  }
 
-  rawData.value = parseData(product.value!.history_list)
+  rawData.value = parseData(product.value.history_list)
   loading.close()
 })
 </script>

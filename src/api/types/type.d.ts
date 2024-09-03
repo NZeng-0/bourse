@@ -29,6 +29,13 @@ export interface indexProduct {
   price: number
   diff: number
   history_list: Array<history>
+  count: number
+  open: string
+  close: string
+  low: string
+  high: string
+  vol: string
+  amount: number
 }
 
 export interface history {

@@ -9,9 +9,9 @@ const { card, select } = defineProps<{
 }>()
 
 const store = useProduct()
-const { data } = storeToRefs(store) as { data: Ref<indexProduct | undefined> }
+const { data } = storeToRefs(store) as { data: Ref<indexProduct | null> }
 
-const product: Ref<indexProduct | undefined> = ref(data)
+const product: Ref<indexProduct | null> = ref(data)
 
 const route = useRouter()
 
@@ -21,6 +21,10 @@ function selected(current: number) {
 
 function go(custom: string) {
   route.push(`/trading/${custom}/${product.value?.id}`)
+}
+
+function loadImg() {
+  product.value!.logo = icon
 }
 </script>
 
@@ -36,7 +40,7 @@ function go(custom: string) {
           <div>
             <div text-3xl>
               <!-- 当前价格 -->
-              {{ product?.price }}
+              {{ product!.price }}
             </div>
             <div flex="~" text-xs :style="{ color: product!.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
               <div
@@ -47,7 +51,7 @@ function go(custom: string) {
             </div>
           </div>
           <div mr-2.5>
-            <img :src="product?.logo" h12 w12 rounded-full>
+            <img :src="product!.logo" h12 w12 rounded-full @error="loadImg">
           </div>
         </div>
         <div flex="~" mt3 justify-between px4 text-sm>

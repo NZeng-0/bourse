@@ -3,8 +3,11 @@ import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
 import type { history, indexProduct } from '~/api/types'
+import { useProduct } from '~/store/useProduct'
+import { getProductDetail } from '~/api'
 
 const router = useRouter()
+const productStore = useProduct()
 
 const grid = {
   height: '80%',
@@ -76,7 +79,9 @@ function getLineColor(state: number): string {
   return state === 1 ? '#19C09A' : '#FC6C6B'
 }
 
-function go(key: number) {
+async function go(key: number) {
+  const { data } = await getProductDetail(key, '1week')
+  productStore.data = data.value.data
   router.push(`/trading/week/${key}`)
 }
 
@@ -108,7 +113,7 @@ onMounted(async () => {
         </div>
         <div flex="~" justify-between w="2/4">
           <div h-full w-19>
-            <TheCharts :option="getSeries(item.history_list, item.range)" :dom="`list-${key}`" />
+            <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
           </div>
           <div>
             <div>￥{{ item.price }}</div>

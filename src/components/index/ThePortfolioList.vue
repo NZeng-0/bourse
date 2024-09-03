@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { getProductDetail } from '~/api'
 import type { indexProduct } from '~/api/types'
+import { useProduct } from '~/store/useProduct'
 
 const { t } = useI18n()
 const router = useRouter()
+const productStore = useProduct()
 
 const list: Ref<indexProduct[]> = ref([])
 
@@ -18,7 +21,9 @@ function getColor(range: number) {
   return range === 1 ? '#19c09a' : '#fc6c6b'
 }
 
-function go(key: number) {
+async function go(key: number) {
+  const { data } = await getProductDetail(key, '1week')
+  productStore.data = data.value.data
   router.push(`/trading/week/${key}`)
 }
 
