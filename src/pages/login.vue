@@ -70,7 +70,7 @@ function scoped() {
         </div>
       </div>
       <div mt3>
-        <button class="bg-#673DDA" :class="scoped()" text-white @click="onLogin()">
+        <button class="border='#E7E7E7' h12 w70 border rounded-2xl bg-#673DDA text-black text-white" @click="onLogin()">
           {{ t('login.login') }}
         </button>
       </div>

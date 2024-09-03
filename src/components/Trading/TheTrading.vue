@@ -9,7 +9,9 @@ const { card, select } = defineProps<{
 }>()
 
 const store = useProduct()
-const product = ref<indexProduct>(store.data)
+const { data } = storeToRefs(store) as { data: Ref<indexProduct | undefined> }
+
+const product: Ref<indexProduct | undefined> = ref(data)
 
 const route = useRouter()
 
@@ -34,18 +36,18 @@ function go(custom: string) {
           <div>
             <div text-3xl>
               <!-- 当前价格 -->
-              {{ product.price }}
+              {{ product?.price }}
             </div>
-            <div flex="~" text-xs :style="{ color: product?.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
+            <div flex="~" text-xs :style="{ color: product!.profit_status > 0 ? '#19c09a' : '#fc6c6b' }">
               <div
-                :class="product?.profit_status > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'" h-1.2rem
+                :class="product!.profit_status > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'" h-1.2rem
                 w-1.2rem
               />
               <div>{{ product?.profit_status }} ({{ product?.fkzdbdz }}%)</div>
             </div>
           </div>
           <div mr-2.5>
-            <img :src="icon" h12 w12>
+            <img :src="product?.logo" h12 w12 rounded-full>
           </div>
         </div>
         <div flex="~" mt3 justify-between px4 text-sm>
