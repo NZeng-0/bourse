@@ -34,13 +34,11 @@ async function onLogin() {
 
   wait.value = true
   const { data } = await login(user.value)
-  if (data.value.code === 5001) {
-    message({
-      message: data.value.msg,
-      duration: 3000,
-    })
-  }
-  else {
+  message({
+    message: data.value.msg,
+    duration: 1500,
+  })
+  if (data.value.code === 200) {
     setCache('token', data.value.data.token)
     const userInfo = await onLoginSuccesful() as userTypes
     userStore.data = userInfo

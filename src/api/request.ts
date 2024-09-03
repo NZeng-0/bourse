@@ -5,15 +5,20 @@ import router from '~/router'
 
 const { getCache } = useLocalCache()
 
+const _lang = useStorage('lang', 'zh-CN')
+
 export const Request = new Fetch({
   baseUrl: 'http://47.109.206.211:82',
   options: {
     beforeFetch({ options }) {
       const token = getCache('token')
 
+      const ThinkLang = _lang.value.toLocaleLowerCase()
+
       options.headers = {
         ...options.headers,
         token,
+        ThinkLang,
       }
       return { options }
     },

@@ -124,7 +124,7 @@ onMounted(async () => {
                 </div>
               </div>
               <div flex="~" justify-center>
-                {{ item.yxwtye }}
+                {{ item.jcdw }}
               </div>
             </div>
             <div h="1/2" mt2>

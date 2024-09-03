@@ -2,11 +2,25 @@
 import { register } from '~/api'
 import message from '~/components/message'
 
+interface userType {
+  account: string
+  pwd: string
+  verify_pwd: string
+  nickname: string
+  phone: string
+  operation_pwd: string
+  email: string
+  idcard: string
+  spread_code: string
+  [Key: string]: string
+}
+
 const { t } = useI18n()
 const router = useRouter()
 
 const wait = ref(false)
-const user = ref({
+
+const user = ref<userType>({
   account: '',
   pwd: '',
   verify_pwd: '',
@@ -18,7 +32,34 @@ const user = ref({
   spread_code: '',
 })
 
+function isUserFilled(user: userType) {
+  // 获取对象的所有键
+  const keys = Object.keys(user)
+  // 遍历每个键，检查对应的值是否为空
+  for (const key of keys) {
+    // 对于字符串类型的字段，检查是否为空字符串
+    // 对于其他类型（如数字），可以根据需要调整检查逻辑
+    if (typeof user[key] === 'string' && user[key].trim() === '') {
+      if (key === 'spread_code')
+        continue
+      return false
+    }
+  }
+  // 如果所有字段都非空，返回true
+  return true
+}
+
 async function onRegister() {
+  const allFilled = isUserFilled(user.value)
+  if (!allFilled) {
+    message({
+      // TODO i18n
+      message: '请检查填写',
+      duration: 1500,
+    })
+    return
+  }
+
   if (wait.value) {
     message({
       message: t('assets.tips'),
@@ -29,13 +70,14 @@ async function onRegister() {
 
   wait.value = true
   const { data } = await register(user.value)
-  if (data.value.code)
-    router.push('/login')
   message({
     message: data.value.msg,
     duration: 1500,
   })
   wait.value = false
+
+  if (data.value.code === 200)
+    router.push('/login')
 }
 
 function getClass() {
@@ -76,7 +118,7 @@ function getClass() {
       <input v-model="user.spread_code" type="text" :class="getClass()" :placeholder="t('register.invitation_code')">
     </div>
     <div mt8>
-      <button class="bg-#673DDA" h12 w70 border rounded-2xl text-black text-white @click="onRegister()">
+      <button class="bg-#673DDA" h12 w70 border rounded-2xl text-white @click="onRegister()">
         {{ t('register.sign_up') }}
       </button>
     </div>
