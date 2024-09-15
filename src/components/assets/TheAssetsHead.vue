@@ -1,7 +1,6 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title: string
-  back: string
   to: string
 }>()
 
@@ -11,7 +10,7 @@ const route = useRouter()
 const back_url = new URL('../../assets/images/trading/back.png', import.meta.url).href
 
 function back() {
-  route.push(props.back)
+  route.back()
 }
 </script>
 

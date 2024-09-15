@@ -89,3 +89,45 @@ export interface cardType {
   low: string
   vol: string
 }
+
+export interface dataType {
+  id: number
+  order_sn: string
+  product_id: number
+  uid: number
+  status: number
+  type: number
+  jcdw: string
+  pcdw: string | null
+  time: string
+  wtye: string
+  wxwtye: string
+  yxwtye: string
+  earnings_money: string
+  predict_earnings_money: string
+  profit_loss_rate: string
+  settle_time: string | null
+  create_time: string
+  product_name: string
+  price: string
+}
+
+export interface withdrawType {
+  id: number
+  uid: number
+  order_sn: string
+  withdraw_money: string
+  deduct_money: string
+  reality_money: string
+  review_status: number
+  explain: string
+  bank_name: string | null
+  bank_branch_name: string | null
+  bank_account: string
+  wallet_name: string | null
+  wallet_address: string | null
+  create_time: string
+  account: string
+  nickname: string
+
+}

@@ -28,6 +28,7 @@ export interface indexProduct {
   sjbdfw: string
   price: number
   diff: number
+  diff_rate: string
   history_list: Array<history>
   count: number
   open: string

@@ -43,7 +43,7 @@ function go(to: string) {
 }
 
 function transfer(tar: string) {
-  router.push(`/YuEBao/transfer-${tar}`)
+  router.push(tar)
 }
 
 function signout() {
@@ -70,7 +70,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div flex="~" h27 items-center justify-between rounded-b-2xl bg-white px8>
+    <div flex="~" h27 items-center justify-between bg-white px8>
       <div w="1/3" />
       <div flex="~" w="1/3" items-end justify-center text-xl text-trading-title>
         {{ t('me.title') }}
@@ -144,10 +144,10 @@ onMounted(async () => {
           </div>
         </div>
         <div flex="~" justify-between px4 text-white>
-          <button w="1/2" h8.8 :class="scoped()" @click="transfer('in')">
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer('/top-up/usdt')">
             {{ t('me.recharge') }}
           </button>
-          <button w="1/2" h8.8 :class="scoped()" @click="transfer('out')">
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer('/withdraw/balance')">
             {{ t('me.withdrawal') }}
           </button>
         </div>

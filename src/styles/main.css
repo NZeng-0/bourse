@@ -62,3 +62,14 @@ p {
   animation: 10s scrolltext linear infinite;
   animation-iteration-count: 1;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}

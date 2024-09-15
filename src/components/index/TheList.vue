@@ -115,7 +115,7 @@ onMounted(async () => {
           <div h-full w-19>
             <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
           </div>
-          <div>
+          <div text-right>
             <div>￥{{ item.price }}</div>
             <div flex="~" w-full justify-between text-right text-xs>
               <div
@@ -123,7 +123,7 @@ onMounted(async () => {
                 w-1.2rem
               />
               <div :style="{ color: item.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-                {{ item.diff }}%
+                {{ item.diff_rate }}%
               </div>
             </div>
           </div>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useUser } from '~/store/useUser'
+
 const { t } = useI18n()
 const route = useRouter()
+
+const userStore = useUser()
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h13 items-center justify-between text-base'
@@ -21,7 +25,7 @@ function go(url: string) {
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <div ml1.25 opacity68>
-            123****8901
+            {{ userStore.data.phone }}
           </div>
           <div ml0.75>
             <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>

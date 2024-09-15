@@ -228,3 +228,9 @@ export function getProductOrderList(status: number) {
     url: `/index/product/getProductOrderList?status=${status}`,
   })
 }
+
+export function getWithdrawList() {
+  return Request.get({
+    url: '/index/user/getWithdrawList',
+  })
+}

@@ -15,7 +15,7 @@ const data = [
   {
     icon: new URL('~/assets/images/footer/assets.png', import.meta.url).href,
     name: t('footer.assets'),
-    pointTo: '/assets',
+    pointTo: '/order/to-hold',
     onlyIcon: false,
   },
   {

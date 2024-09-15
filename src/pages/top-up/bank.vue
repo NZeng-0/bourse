@@ -23,10 +23,6 @@ function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
 }
 
-function getCommonStyle() {
-  return 'border-#f4f4f4 mt6.25 h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75'
-}
-
 function go() {
   route.push(`/top-up/usdt`)
 }
@@ -60,7 +56,7 @@ async function onRecharge() {
 
 <template>
   <div h-screen bg-trading>
-    <TheAssetsHead :title="t('assets.recharge.title')" back="/assets" to="/menu/top-up" />
+    <TheAssetsHead :title="t('assets.recharge.title')" to="/menu/top-up" />
     <div px6 pt5>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
@@ -77,37 +73,7 @@ async function onRecharge() {
         </div>
       </div>
       <div mt6 h-full rounded-2.5 bg-white pb4.25 pt3.75>
-        <div mt7.5 pl3.5 pr5.75 text-base>
-          <div class="border-#f4f4f4" flex="~" h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75>
-            <input
-              v-model="infos.bank_name" :placeholder="t('assets.recharge.bank.bank_of_deposit')" type="text"
-              w="4/5"
-            >
-            <div class="bank" :data-clipboard-text="infos.bank_name" @click="useClipboard('bank')">
-              <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
-            </div>
-          </div>
-          <div :class="getCommonStyle()" flex="~">
-            <input
-              v-model="infos.bank_branch_name" :placeholder="t('assets.recharge.bank.account_opening_branch')" type="text"
-              w="4/5"
-            >
-            <div class="address" :data-clipboard-text="infos.bank_branch_name" @click="useClipboard('address')">
-              <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
-            </div>
-          </div>
-          <div :class="getCommonStyle()" flex="~">
-            <input v-model="infos.bank_account" :placeholder="t('assets.recharge.bank.account')" type="text" w="4/5">
-            <div class="account" :data-clipboard-text="infos.bank_account" @click="useClipboard('account')">
-              <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
-            </div>
-          </div>
-          <div :class="getCommonStyle()" flex="~">
-            <input v-model="infos.receive_name" :placeholder="t('assets.recharge.bank.name')" type="text" w="4/5">
-            <div class="name" :data-clipboard-text="infos.receive_name" @click="useClipboard('name')">
-              <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
-            </div>
-          </div>
+        <div pl3.5 pr5.75 text-base>
           <input
             v-model="infos.money"
             type="text" :placeholder="t('assets.recharge.transfer_amount')" class="border border-#f4f4f4" mt2.5
@@ -124,11 +90,19 @@ async function onRecharge() {
           </button>
         </div>
       </div>
+      <Serve />
     </div>
-    <div flex="~" mt5.25 w-full justify-center>
+    <div class="custom-fixed" flex="~" mt2.25 w-full justify-center>
       <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="onRecharge()">
         {{ t('assets.recharge.submit') }}
       </button>
     </div>
   </div>
 </template>
+
+<style scoped>
+.custom-fixed {
+  position: fixed;
+  bottom: 113px
+}
+</style>

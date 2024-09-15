@@ -19,6 +19,8 @@ interface IndexMsg {
 
 const { t } = useI18n()
 
+const left_icon = new URL('../assets/images/inform.png', import.meta.url).href
+
 const messages = ref<IndexMsg[]>()
 
 async function getPopMsg() {
@@ -67,14 +69,10 @@ onMounted(async () => {
 <template>
   <div p="x-4 y-10">
     <TheCard />
-    <div flex="~" mt1 items-center>
-      <img src="../assets/images/inform.png" h8 w8>
-      <div class="banner_textscroll" ml4 overflow-hidden text-sm>
-        <div>
-          英伟达将推出其最新人工智能芯片的中国特...
-        </div>
-      </div>
-    </div>
+    <van-notice-bar
+      :left-icon="left_icon" scrollable color="#000000" background="white"
+      text="英伟达将推出其最新人工智能芯片的中国特..."
+    />
     <ThePortfolio />
     <div h30 />
   </div>

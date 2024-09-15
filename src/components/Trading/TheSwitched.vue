@@ -23,14 +23,14 @@ function fluctuation(current: number) {
 </script>
 
 <template>
-  <div flex="~" wfull justify-center>
-    <div flex="~" mt5 h6.5 w40 rounded-full bg-menu text-sm>
-      <div :class="style(k)" flex="~" w="1/2" items-center justify-center rounded-full @click="toTrading(current)">
-        {{ t('trading.k_line') }}
-      </div>
-      <div :class="style(!k)" w="1/2" flex="~" items-center justify-center rounded-full @click="fluctuation(current)">
-        {{ t('trading.undulate') }}
-      </div>
+  <!-- <div flex="~" justify-center> -->
+  <div flex="~" h6.5 rounded-full bg-menu text-sm>
+    <div :class="style(k)" flex="~" w10 items-center justify-center rounded-full @click="toTrading(current)">
+      {{ t('trading.k_line') }}
+    </div>
+    <div :class="style(!k)" w10 flex="~" items-center justify-center rounded-full @click="fluctuation(current)">
+      {{ t('trading.undulate') }}
     </div>
   </div>
+  <!-- </div> -->
 </template>

@@ -22,7 +22,7 @@ async function submit() {
 
   wait.value = true
 
-  const { data } = await submitAuthIdcard(infos)
+  const { data } = await submitAuthIdcard(infos.value)
   message({
     message: data.value.msg,
     duration: 1500,
@@ -40,7 +40,7 @@ async function submit() {
       </div>
       <div mt5.25>
         <input
-          v-model="infos.id_card" type="text" h13 wfull border rounded-2xl pl5.4
+          v-model="infos.idcard" type="text" h13 wfull border rounded-2xl pl5.4
           :placeholder="t('me.auth.id_card')"
         >
       </div>

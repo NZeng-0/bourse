@@ -1,4 +1,10 @@
 {
+  "seconds": "秒",
+  "serve": {
+    "contact": "联系客服",
+    "online": "客服在线为您答疑解惑",
+    "content": "真诚服务献给每一位用户"
+  },
   "login": {
     "account": "账户",
     "password": "密码",
@@ -64,7 +70,7 @@
   },
   "order": {
     "title": "交易订单",
-    "hold_order": "持仓订单",
+    "hold_order": "交易订单",
     "history": "历史明细",
     "buy_up": "买涨",
     "buy_of_fall": "买跌",

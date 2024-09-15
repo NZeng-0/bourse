@@ -6,7 +6,6 @@ import type { cardType, historyType } from '~/types'
 import loading from '~/components/loading'
 import type { indexProduct } from '~/api/types'
 
-// const key = useRoute('/trading/week/[key]').params.key
 const productStore = useProduct()
 
 const { data } = storeToRefs(productStore) as { data: indexProduct }

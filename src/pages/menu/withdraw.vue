@@ -1,80 +1,10 @@
 <script setup lang="ts">
+import { getWithdrawList } from '~/api'
+import type { withdrawType } from '~/types'
+
 const { t } = useI18n()
 
-const list = [
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: 1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: 0,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.2'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.2'),
-    state: 0,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: -1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: 1,
-  },
-  {
-    time: '2023-06-06 22:22:03',
-    amount: 992265,
-    serviceCharge: 2,
-    actual: '',
-    type: t('me.withdrawal_record.type.1'),
-    state: -1,
-  },
-]
+const list = ref<withdrawType[]>()
 
 function getBgStyle() {
   return ' py2.5 pl2.5 text-sm text-#030319'
@@ -95,6 +25,14 @@ function getStateStyle(state: number) {
       ? 'text-#4400FF'
       : 'text-#DD4646'
 }
+
+onMounted(async () => {
+  const { data } = await getWithdrawList()
+  showToast({ message: data.value.msg })
+  list.value = data.value.data.data
+  // eslint-disable-next-line no-console
+  console.log(list.value)
+})
 </script>
 
 <template>
@@ -103,24 +41,24 @@ function getStateStyle(state: number) {
     <div h-screen overflow-y-scroll px6.5>
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h41 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
-          {{ t('me.time') }}: {{ item.time }}
+          {{ t('me.time') }}: {{ item.create_time }}
         </div>
         <div wfull>
-          {{ t('me.amount') }}: {{ item.amount }}
+          {{ t('me.amount') }}: {{ item.withdraw_money }}
         </div>
         <div wfull>
-          {{ t('me.withdrawal_record.service_charge') }}: {{ item.serviceCharge }}%
+          {{ t('me.withdrawal_record.service_charge') }}: {{ item.deduct_money }}
         </div>
         <div wfull>
-          {{ t('me.withdrawal_record.actual_receipt') }}: {{ item.actual }}
+          {{ t('me.withdrawal_record.actual_receipt') }}: {{ item.reality_money }}
         </div>
         <div wfull>
-          {{ t('me.type') }}: <span>{{ item.type }}</span>
+          {{ t('me.type') }}: <span>{{ item.bank_name === null ? t('me.withdrawal_record.type.2') : t('me.withdrawal_record.type.1') }}</span>
         </div>
         <div wfull>
           {{ t('me.state') }}:
-          <span :class="getStateStyle(item.state)">
-            {{ getState(item.state) }}
+          <span :class="getStateStyle(item.review_status)">
+            {{ getState(item.review_status) }}
           </span>
         </div>
       </div>

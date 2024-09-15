@@ -55,7 +55,7 @@ async function onRecharge() {
 
 <template>
   <div h-screen bg-trading>
-    <TheAssetsHead :title="t('assets.recharge.title')" back="/assets" to="/menu/top-up" />
+    <TheAssetsHead :title="t('assets.recharge.title')" to="/menu/top-up" />
     <div px6 pt5>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
@@ -72,26 +72,9 @@ async function onRecharge() {
         </div>
       </div>
       <div mt6 h-full rounded-2.5 bg-white pb4.25 pt3.75>
-        <div flex="~" align-center wfull justify-center>
-          <div class="bg" h57.25 w57.35 flex="~" items-center justify-center>
-            <img src="../../assets/images/assets/qr-code.png" h47.5 w47.5>
-          </div>
-        </div>
-        <div mt7.5 pl3.5 pr5.75 text-base>
-          <div class="border-#f4f4f4" flex="~" h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75>
-            <div>
-              {{ text }}
-            </div>
-            <div class="copy" :data-clipboard-text="text" @click="useClipboard('copy')">
-              <img src="../../assets/images/assets/copy.png" h4.25 w4.25>
-            </div>
-          </div>
+        <div pl3.5 pr5.75 text-base>
           <input
             v-model="infos.money" type="text" :placeholder="t('assets.recharge.transfer_amount')"
-            class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
-          >
-          <input
-            v-model="infos.remark" type="text" :placeholder="t('assets.recharge.transfer_remarks')"
             class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
           >
           <button class="border border-#f4f4f4" flex="~" mt2.5 h11.25 wfull items-center justify-center rounded-xl>
@@ -100,8 +83,10 @@ async function onRecharge() {
           </button>
         </div>
       </div>
+      <Serve />
     </div>
-    <div flex="~" mt5.25 w-full justify-center>
+
+    <div class="custom-fixed" flex="~" mt5.25 w-full justify-center>
       <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="onRecharge()">
         {{ t('assets.recharge.submit') }}
       </button>
@@ -113,5 +98,10 @@ async function onRecharge() {
 .bg {
   background: url(../../assets/images/assets/qr-bg.png);
   background-size: cover;
+}
+
+.custom-fixed {
+  position: fixed;
+  bottom: 113px
 }
 </style>

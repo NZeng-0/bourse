@@ -71,7 +71,7 @@ const chartProps: Props = {
       type: 'image',
       id: 'bg',
       right: 'center',
-      top: '0%',
+      top: '-10%',
       z: 0,
       bounding: 'all',
       style: {
@@ -95,7 +95,7 @@ const chartProps: Props = {
           +8.23%
         </div>
       </div>
-      <div flex="~" mr-4 mt-4 h9 items-center justify-around rounded-lg bg-white:12 p3>
+      <div flex="~" mt-4 h9 items-center justify-around rounded-lg bg-white:12 p3>
         <div text-xs text-card font-normal>
           {{ t('index.with_yesterday') }}
         </div>

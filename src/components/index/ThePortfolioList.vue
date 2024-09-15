@@ -58,7 +58,7 @@ function handleImageError(key: number) {
         <div flex="~" mb5 mr1 h8 w19 items-center justify-center rounded-xl bg-white>
           <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h1.2rem w1.2rem />
           <span text-xs :style="{ color: e.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-            {{ e.diff }}%
+            {{ e.diff_rate }}%
           </span>
         </div>
       </div>
