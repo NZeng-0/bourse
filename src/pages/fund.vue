@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import type { indexProduct } from '~/api/types'
+import type { history, indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
-import type { cardType, historyType } from '~/types'
+import type { cardType } from '~/types'
 import TheCharts from '~/components/TheCharts'
+import { getProductDetail } from '~/api'
 
 const store = useProduct()
 const { data } = storeToRefs(store) as { data: Ref<indexProduct> }
 
 const product = ref(data)
-const rawData = ref<Array<Array<string>>>()
+const rawData = ref<Array<Array<number>>>([])
+const dataTime = ref<Array<string>>([])
+const barData = ref<Array<string>>([])
+const treadLine = ref<Array<string>>([])
 
 const select = ref(0)
 function selected(current: number) {
@@ -27,21 +31,23 @@ function loadImg() {
   product.value!.logo = icon
 }
 
-function choose(index: number) {
+async function choose(index: number, type: string) {
   select.value = index
+  await loadData(type)
 }
 
-function calculateMA(dayCount: number, data: Array<Array<string>>) {
+function calculateMA(dayCount: number, data: Array<Array<number>>) {
   const result = []
-  for (const f1 of data) {
-    if (f1.length < dayCount) {
+  for (let i = 0, len = data.length; i < len; i++) {
+    if (i < dayCount) {
       result.push('-')
       continue
     }
     let sum = 0
-    for (const item of f1)
-      sum += Number.parseInt(item)
-    result.push(+(sum / dayCount).toFixed(3))
+    for (let j = 0; j < dayCount; j++)
+      sum += +data[i - j][1]
+
+    result.push(sum / dayCount)
   }
   return result
 }
@@ -74,10 +80,18 @@ function getOption() {
         left: '12px',
         right: '17%',
         bottom: '12px',
+        height: '65%',
+      },
+      {
+        left: '12px',
+        right: '17%',
+        bottom: '10px',
+        height: '20%',
       },
     ],
     xAxis: [
       {
+        data: dataTime,
         show: false,
         type: 'category',
         boundaryGap: true,
@@ -98,6 +112,20 @@ function getOption() {
         axisTick: {
           show: false,
         },
+      },
+      {
+        type: 'category',
+        gridIndex: 1,
+        data: dataTime,
+        scale: true,
+        show: false,
+        axisLine: { onZero: false },
+        axisTick: { show: false },
+        splitLine: { show: false },
+        axisLabel: { show: false },
+        splitNumber: 20,
+        min: 'dataMin',
+        max: 'dataMax',
       },
     ],
     yAxis: [
@@ -122,6 +150,25 @@ function getOption() {
         },
         position: 'right',
       },
+      {
+        type: 'value',
+        scale: true,
+        splitNumber: 2,
+        alignTicks: true,
+        gridIndex: 1,
+        axisLabel: {
+          formatter: '$' + '{value}',
+          color: '#121826',
+        },
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: {
+          lineStyle: {
+            color: '#d4d3d6 ',
+          },
+        },
+        position: 'right',
+      },
     ],
     series: [
       {
@@ -138,11 +185,42 @@ function getOption() {
       {
         name: 'MA5',
         type: 'line',
-        data: calculateMA(rawData.value!.length, rawData.value!),
-        smooth: true,
+        data: calculateMA(5, rawData.value!),
+        smooth: false,
         showSymbol: false,
         lineStyle: {
-          width: 1,
+          width: 1.5,
+          color: '#0033FF',
+        },
+      },
+      {
+        name: 'Volume',
+        type: 'bar',
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        data: barData.value,
+        width: 5,
+        itemStyle: {
+          color(params: any) {
+            const index = params.dataIndex
+            const kData = rawData.value?.[index]
+            const open = kData![0]
+            const close = kData![1]
+            return close > open ? upColor : downColor
+          },
+        },
+      },
+      {
+        name: 'name',
+        type: 'line',
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        data: treadLine.value,
+        smooth: false,
+        showSymbol: false,
+        lineStyle: {
+          width: 1.5,
+          color: '#00D3FD',
         },
       },
     ],
@@ -153,17 +231,44 @@ function getRandom() {
   return `canlestick${Number.parseInt(`${Math.random() * 100}`)}`
 }
 
-function parseData(data: historyType[]) {
+function parseData(data: history[]) {
   const result: Array<string[]> = []
   for (const h of data) {
-    const val = []
-    val.push(h.open)
-    val.push(h.close)
-    val.push(h.low)
-    val.push(h.high)
+    const val: Array<string> = []
+    dataTime.value?.push(parseDate(h.date))
+    val.push(h.open.toString())
+    val.push(h.close.toString())
+    val.push(h.low.toString())
+    val.push(h.high.toString())
+    barData.value.push(parseVolume(h.amount, h.vol, h.count))
     result.push(val)
   }
-  return result
+  const res = result.map((item) => {
+    return [+item[0], +item[1], +item[2], +item[3]]
+  })
+  return res
+}
+
+function parseVolume(amount: number, vol: number, count: number) {
+  treadLine.value?.push((((amount + vol) / count).toFixed(2)))
+  return ((amount + vol) / count).toFixed(2)
+}
+
+function parseDate(unixTimestamp: number) {
+  // 将时间戳转换为毫秒
+  const date = new Date(unixTimestamp * 1000)
+
+  // 获取北京时间
+  const beijingTime = new Date(date.getTime() + 8 * 60 * 60 * 1000)
+
+  // 格式化输出日期部分
+  return beijingTime.toISOString().split('T')[0]
+}
+
+async function loadData(type: string) {
+  const { data } = await getProductDetail(product.value.id, type)
+  store.data = data.value.data
+  product.value = data.value.data
 }
 
 onMounted(async () => {
@@ -199,20 +304,20 @@ onMounted(async () => {
       </div>
     </div>
     <div flex="~" mt3 justify-between px4 text-sm>
-      <TheSwitched :k="true" :current="product?.id" />
-      <div :class="selected(0)" flex="~" w13 items-center justify-center rounded-xl @click="choose(0)">
+      <TheSwitched :k="true" />
+      <div :class="selected(0)" flex="~" w13 items-center justify-center rounded-xl @click="choose(0, '1day')">
         1D
       </div>
-      <div :class="selected(1)" flex="~" w13 items-center justify-center rounded-xl @click="choose(1)">
+      <div :class="selected(1)" flex="~" w13 items-center justify-center rounded-xl @click="choose(1, '1day')">
         1W
       </div>
-      <div :class="selected(2)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(2)">
+      <div :class="selected(2)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(2, '1mon')">
         1M
       </div>
-      <div :class="selected(3)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(3)">
+      <div :class="selected(3)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(3, '1week')">
         1Y
       </div>
-      <div :class="selected(4)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(4)">
+      <div :class="selected(4)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(4, '1year')">
         5Y
       </div>
     </div>

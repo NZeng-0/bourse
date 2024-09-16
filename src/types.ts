@@ -52,15 +52,15 @@ export interface currentType {
 }
 
 export interface historyType {
-  id: number
+  id: number | string
   date: number
   amount: number
   count: number
-  open: string
-  close: string
-  low: string
-  high: string
-  vol: string
+  open: string | number
+  close: string | number
+  low: string | number
+  high: string | number
+  vol: number
 }
 
 export interface moneyRateType {

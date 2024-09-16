@@ -24,7 +24,7 @@ function getColor(range: number) {
 async function go(key: number) {
   const { data } = await getProductDetail(key, '1week')
   productStore.data = data.value.data
-  router.push(`/trading/week/${key}`)
+  router.push('fund')
 }
 
 function handleImageError(key: number) {

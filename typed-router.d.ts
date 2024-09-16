@@ -19,12 +19,13 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/__fluctuation/week/[key]': RouteRecordInfo<'/__fluctuation/week/[key]', '/__fluctuation/week/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/assets': RouteRecordInfo<'/assets', '/assets', Record<never, never>, Record<never, never>>,
     '/binding/bank': RouteRecordInfo<'/binding/bank', '/binding/bank', Record<never, never>, Record<never, never>>,
     '/binding/usdt': RouteRecordInfo<'/binding/usdt', '/binding/usdt', Record<never, never>, Record<never, never>>,
     '/buy/down/[key]': RouteRecordInfo<'/buy/down/[key]', '/buy/down/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/buy/up/[key]': RouteRecordInfo<'/buy/up/[key]', '/buy/up/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
-    '/fluctuation/week/[key]': RouteRecordInfo<'/fluctuation/week/[key]', '/fluctuation/week/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
+    '/fluctuation': RouteRecordInfo<'/fluctuation', '/fluctuation', Record<never, never>, Record<never, never>>,
     '/fund': RouteRecordInfo<'/fund', '/fund', Record<never, never>, Record<never, never>>,
     '/grow/current': RouteRecordInfo<'/grow/current', '/grow/current', Record<never, never>, Record<never, never>>,
     '/grow/histroy': RouteRecordInfo<'/grow/histroy', '/grow/histroy', Record<never, never>, Record<never, never>>,

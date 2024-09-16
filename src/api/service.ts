@@ -96,7 +96,7 @@ export function getAccountBillList() {
 
 export function getProductDetail(id: number | string, latitude_time: string) {
   return Request.get({
-    url: `/index/product/getProductDetail?id=${id}&${latitude_time}`,
+    url: `/index/product/getProductDetail?id=${id}&latitude_time=${latitude_time}`,
   })
 }
 

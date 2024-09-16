@@ -49,7 +49,7 @@ export interface history {
   close: string
   low: string
   high: string
-  vol: string
+  vol: number
 }
 
 export interface recharge {
