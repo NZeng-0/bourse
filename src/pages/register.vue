@@ -52,8 +52,7 @@ async function onRegister() {
   const allFilled = isUserFilled(user.value)
   if (!allFilled) {
     showToast({
-      // TODO i18n
-      message: '请检查填写',
+      message: t('check'),
     })
     return
   }

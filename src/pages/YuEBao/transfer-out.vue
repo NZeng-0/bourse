@@ -51,7 +51,7 @@ async function out() {
 
   // 成功后更新 store
   // TODO 转出更改后更新
-  await onRefresh()
+  // await onRefresh()
 }
 
 function init() {

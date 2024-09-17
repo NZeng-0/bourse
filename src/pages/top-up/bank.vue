@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { submitRecharge } from '~/api'
 import type { recharge } from '~/api/types'
-import message from '~/components/message'
 
 const route = useRouter()
 const { t } = useI18n()

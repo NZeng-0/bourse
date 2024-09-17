@@ -1,4 +1,7 @@
 {
+  "order_trading": "交易订单",
+  "order_history": "历史订单",
+  "check": "请检查填写",
   "seconds": "秒",
   "serve": {
     "contact": "联系客服",
@@ -36,7 +39,7 @@
   },
   "footer": {
     "index": "首页",
-    "assets": "资产",
+    "assets": "持仓",
     "fortune": "理财",
     "me": "我的"
   },

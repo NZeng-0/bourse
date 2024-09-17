@@ -22,6 +22,18 @@ export const menu = [
     to: 'top-up',
   },
   {
+    title: 'order_trading',
+    icon: title,
+    right: ' ',
+    to: 'order/to-hold',
+  },
+  {
+    title: 'order_history',
+    icon: top_up,
+    right: ' ',
+    to: 'order/history',
+  },
+  {
     title: 'me.payment_method.title',
     icon: method,
     right: ' ',

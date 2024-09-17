@@ -306,5 +306,14 @@
   "top-up": {
     "no": "Saldo insuficiente",
     "tips": "Por favor introduza um número acima de 0"
-  }
+  },
+  "check": "Por favor verifique e preencha",
+  "seconds": "Segundo",
+  "serve": {
+    "contact": "Entre em contacto com o serviço de apoio ao cliente",
+    "content": "Serviço sincero dedicado a cada utilizador",
+    "online": "O serviço de apoio ao cliente está online para responder às suas perguntas"
+  },
+  "order_history": "Ordens históricas",
+  "order_trading": "ordem de negociação"
 }

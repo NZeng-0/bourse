@@ -306,5 +306,14 @@
   "top-up": {
     "no": "Yetersiz bakiye",
     "tips": "Lütfen 0'ın üzerinde bir sayı girin"
-  }
+  },
+  "check": "Lütfen kontrol edin ve doldurun",
+  "seconds": "Saniye",
+  "serve": {
+    "contact": "Müşteri hizmetlerine başvurun",
+    "content": "Her kullanıcıya adanmış samimi hizmet",
+    "online": "Müşteri hizmetleri sorularınızı yanıtlamak için çevrimiçi"
+  },
+  "order_history": "Tarihsel siparişler",
+  "order_trading": "ticaret emri"
 }

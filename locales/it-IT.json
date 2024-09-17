@@ -306,5 +306,14 @@
   "top-up": {
     "no": "Equilibrio insufficiente",
     "tips": "Inserisci un numero superiore a 0"
-  }
+  },
+  "check": "Si prega di controllare e compilare",
+  "seconds": "Secondo",
+  "serve": {
+    "contact": "Contatta il servizio clienti",
+    "content": "Servizio sincero dedicato a ogni utente",
+    "online": "Il servizio clienti è online per rispondere alle tue domande"
+  },
+  "order_history": "Ordini storici",
+  "order_trading": "ordine di negoziazione"
 }

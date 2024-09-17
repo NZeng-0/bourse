@@ -306,5 +306,14 @@
   "top-up": {
     "no": "餘額不足",
     "tips": "請輸入0以上的數字"
-  }
+  },
+  "check": "請檢查填寫",
+  "seconds": "秒",
+  "serve": {
+    "contact": "聯絡客服",
+    "content": "真誠服務獻給每一位用戶",
+    "online": "客服在線為您答疑解惑"
+  },
+  "order_history": "歷史訂單",
+  "order_trading": "交易訂單"
 }

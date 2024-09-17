@@ -306,5 +306,14 @@
   "top-up": {
     "no": "Số dư không đủ",
     "tips": "Vui lòng nhập số trên 0"
-  }
+  },
+  "check": "Vui lòng kiểm tra và điền vào",
+  "seconds": "Thứ hai",
+  "serve": {
+    "contact": "Liên hệ với dịch vụ khách hàng",
+    "content": "Dịch vụ chân thành dành riêng cho mọi người dùng",
+    "online": "Dịch vụ khách hàng trực tuyến để trả lời câu hỏi của bạn"
+  },
+  "order_history": "Lệnh lịch sử",
+  "order_trading": "lệnh giao dịch"
 }

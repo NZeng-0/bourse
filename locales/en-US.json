@@ -306,5 +306,14 @@
   "top-up": {
     "no": "Insufficient balance",
     "tips": "Please enter a number above 0"
-  }
+  },
+  "check": "Please check and fill in",
+  "seconds": "Second",
+  "serve": {
+    "contact": "Contact customer service",
+    "content": "Sincere service dedicated to every user",
+    "online": "Customer service is online to answer your questions"
+  },
+  "order_history": "Historical orders",
+  "order_trading": "trading order"
 }

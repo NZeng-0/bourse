@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Loading: typeof import('./src/components/loading/loading.vue')['default']
-    Message: typeof import('./src/components/message/message.vue')['default']
     OrderItem: typeof import('./src/components/order/OrderItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -29,9 +28,6 @@ declare module 'vue' {
     TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
     TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
-    VanButton: typeof import('vant/es')['Button']
-    VanCard: typeof import('vant/es')['Card']
     VanNoticeBar: typeof import('vant/es')['NoticeBar']
-    VanTag: typeof import('vant/es')['Tag']
   }
 }

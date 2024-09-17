@@ -10,7 +10,7 @@ const route = useRouter()
 const back_url = new URL('../../assets/images/trading/back.png', import.meta.url).href
 
 function back() {
-  route.back()
+  route.push('/me')
 }
 </script>
 
