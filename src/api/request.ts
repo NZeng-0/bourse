@@ -1,5 +1,4 @@
 import Fetch from './fetch'
-import message from '~/components/message'
 import { useLocalCache } from '~/hook'
 import router from '~/router'
 
@@ -28,16 +27,14 @@ export const Request = new Fetch({
 
       // unlogin
       if (data.code === 5001 && data.msg === '用户未登录') {
-        message({
+        showToast({
           message: data.msg,
-          duration: 3000,
         })
         router.push('/login')
       }
       if (data.code === 500) {
-        message({
+        showToast({
           message: '网络错误',
-          duration: 3000,
         })
       }
       return ctx

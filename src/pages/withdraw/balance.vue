@@ -27,9 +27,8 @@ function go() {
 
 async function submit() {
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
@@ -37,17 +36,15 @@ async function submit() {
   wait.value = true
 
   if (!/^\d+$/.test(infos.value.withdraw_money)) {
-    message({
+    showToast({
       message: t('top-up.tips'),
-      duration: 1500,
     })
     return
   }
 
   if (infos.value.withdraw_money > user.data.now_money) {
-    message({
+    showToast({
       message: t('top-up.no'),
-      duration: 1500,
     })
     return
   }
@@ -60,9 +57,8 @@ async function submit() {
   await submitWithdraw(infos.value)
 
   const { data } = await submitWithdraw(infos.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 }

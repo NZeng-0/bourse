@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { submitWithdrawAccount } from '~/api'
 import type { binding } from '~/api/types'
-import message from '~/components/message'
 
 const { t } = useI18n()
 const route = useRouter()
@@ -21,18 +20,16 @@ function go() {
 
 async function submit() {
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
 
   wait.value = true
   const { data } = await submitWithdrawAccount(infos.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 }

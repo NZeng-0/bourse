@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getUserInfo, login } from '~/api'
-import message from '~/components/message'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
+import 'vant/es/notify/style'
 
 const userStore = useUser()
 
@@ -18,30 +18,24 @@ const user = ref({
 })
 const wait = ref(false)
 
-async function onLoginSuccesful() {
+async function onLoginSuccessful() {
   const { data } = await getUserInfo()
   return data.value.data
 }
 
 async function onLogin() {
   if (wait.value) {
-    message({
-      message: t('assets.tips'),
-      duration: 1500,
-    })
+    showToast(t('assets.tips'))
     return
   }
 
   wait.value = true
   const { data } = await login(user.value)
-  message({
-    message: data.value.msg,
-    duration: 1500,
-  })
+  showToast(data.value.msg)
+
   if (data.value.code === 200) {
     setCache('token', data.value.data.token)
-    const userInfo = await onLoginSuccesful() as userTypes
-    userStore.data = userInfo
+    userStore.data = await onLoginSuccessful() as userTypes
     router.push('/')
   }
   wait.value = false
@@ -62,7 +56,7 @@ function scoped() {
         <input v-model="user.name" type="text" :class="scoped()" p6 :placeholder="t('login.account')">
       </div>
       <div mt5>
-        <input v-model="user.pwd" type="passwrod" :class="scoped()" p6 :placeholder="t('login.password')">
+        <input v-model="user.pwd" type="password" :class="scoped()" p6 :placeholder="t('login.password')">
       </div>
       <div mt4>
         <div type="text" readonly h12 w70 rounded-2xl pl6 text-black>
@@ -70,7 +64,7 @@ function scoped() {
         </div>
       </div>
       <div mt3>
-        <button class="border='#E7E7E7' h12 w70 border rounded-2xl bg-#673DDA text-white" @click="onLogin()">
+        <button class="border='#E7E7E7' h12 w70 border rounded-2xl bg-#673DDA text-white" @click="onLogin">
           {{ t('login.login') }}
         </button>
       </div>

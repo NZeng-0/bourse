@@ -156,7 +156,7 @@ export function prolongMoneyInvestment(data: { id: number }) {
   })
 }
 
-export function outMoneyInvestment(money: number) {
+export function outMoneyInvestment(money: { money: string }) {
   return Request.post({
     url: `/index/moneyInvestment/outMoneyInvestment`,
     data: {

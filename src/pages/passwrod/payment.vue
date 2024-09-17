@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { updateOperationPwd } from '~/api'
-import message from '~/components/message'
 
 const { t } = useI18n()
 
@@ -15,31 +14,27 @@ const wait = ref(false)
 
 async function submit() {
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
   wait.value = true
   if (infos.value.operation_pwd !== infos.value.operation_confirm) {
-    message({
+    showToast({
       message: t('me.tips.pwd'),
-      duration: 1500,
     })
     return
   }
   if (infos.value.new_operation_pwd !== infos.value.new_operation_pwd_confirm) {
-    message({
+    showToast({
       message: t('me.tips.new'),
-      duration: 1500,
     })
     return
   }
   const { data } = await updateOperationPwd(infos.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 }

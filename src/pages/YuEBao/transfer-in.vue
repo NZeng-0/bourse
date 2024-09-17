@@ -4,7 +4,6 @@ import type { userTypes } from '~/store/useUser'
 import type { YuEBao } from '~/types'
 import { useUser } from '~/store/useUser'
 import { useYuEBao } from '~/store/useYuEBao'
-import message from '~/components/message'
 
 const { t } = useI18n()
 const route = useRouter()
@@ -26,33 +25,29 @@ async function onPlace() {
   buy.value.id = YuEBaoData.value!.id
 
   if (buy.value.money === '') {
-    message({
+    showToast({
       message: t('YuEBao.input'),
-      duration: 1500,
     })
     return
   }
 
   if (Number.parseInt(buy.value.money) < 1) {
-    message({
+    showToast({
       message: t('YuEBao.less'),
-      duration: 1500,
     })
     return
   }
 
   if (buy.value.money > user.value!.now_money) {
-    message({
+    showToast({
       message: t('YuEBao.grater'),
-      duration: 1500,
     })
     return
   }
 
   const { data } = await buyMoneyInvestment(buy.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
 
   // 成功后更新 store

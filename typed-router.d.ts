@@ -19,7 +19,6 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
-    '/__fluctuation/week/[key]': RouteRecordInfo<'/__fluctuation/week/[key]', '/__fluctuation/week/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/assets': RouteRecordInfo<'/assets', '/assets', Record<never, never>, Record<never, never>>,
     '/binding/bank': RouteRecordInfo<'/binding/bank', '/binding/bank', Record<never, never>, Record<never, never>>,
     '/binding/usdt': RouteRecordInfo<'/binding/usdt', '/binding/usdt', Record<never, never>, Record<never, never>>,

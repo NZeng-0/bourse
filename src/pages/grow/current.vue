@@ -1,7 +1,6 @@
 <script setup lang=ts>
 import type { order } from '~/types'
 import { getMoneyInvestmentOrderList, prolongMoneyInvestment, quitMoneyInvestment } from '~/api'
-import message from '~/components/message'
 
 const { t, locale } = useI18n()
 
@@ -21,7 +20,7 @@ function margin() {
 
 async function terminate(id: number) {
   const { data } = await quitMoneyInvestment({ id })
-  message({
+  showToast({
     message: data.value.msg,
     duration: 1500,
   })
@@ -31,9 +30,8 @@ async function terminate(id: number) {
 
 async function renew(id: number) {
   const { data } = await prolongMoneyInvestment({ id })
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
 
   await init()

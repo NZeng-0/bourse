@@ -30,8 +30,6 @@ onMounted(async () => {
   const { data } = await getWithdrawList()
   showToast({ message: data.value.msg })
   list.value = data.value.data.data
-  // eslint-disable-next-line no-console
-  console.log(list.value)
 })
 </script>
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { submitProductOrder } from '~/api'
-import message from '~/components/message'
 import { useProduct } from '~/store/useProduct'
 import { useUser } from '~/store/useUser'
 
@@ -64,23 +63,20 @@ function all() {
 
 async function submit() {
   if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
-    return message({
+    return showToast({
       message: `${t('buy_tips.min')}${create_order_min_money}`,
-      duration: 1500,
     })
   }
 
   if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
-    return message({
+    return showToast({
       message: `${t('buy_tips.max')}${create_order_max_money}`,
-      duration: 1500,
     })
   }
 
   const { data } = await submitProductOrder(submitData.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
 }
 </script>

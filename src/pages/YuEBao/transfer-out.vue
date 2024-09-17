@@ -3,7 +3,6 @@ import { outMoneyInvestment } from '~/api'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { useMoney } from '~/store/useMoney'
-import message from '~/components/message'
 
 const userStore = useUser()
 
@@ -23,25 +22,22 @@ function all() {
 
 async function out() {
   if (outMoney.value === '') {
-    message({
+    showToast({
       message: t('YuEBao.input'),
-      duration: 1500,
     })
     return
   }
 
   if (Number.parseInt(outMoney.value) < 1) {
-    message({
+    showToast({
       message: t('YuEBao.less'),
-      duration: 1500,
     })
     return
   }
 
   if (outMoney.value > moneyStore.money.total_money) {
-    message({
+    showToast({
       message: t('YuEBao.grater'),
-      duration: 1500,
     })
     return
   }
@@ -49,12 +45,12 @@ async function out() {
   const { data } = await outMoneyInvestment({
     money: outMoney.value,
   })
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
 
   // 成功后更新 store
+  // TODO 转出更改后更新
   await onRefresh()
 }
 

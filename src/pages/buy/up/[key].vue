@@ -2,7 +2,6 @@
 import { submitProductOrder } from '~/api'
 import { useProduct } from '~/store/useProduct'
 import { useUser } from '~/store/useUser'
-import message from '~/components/message'
 
 const { t } = useI18n()
 const route = useRouter()
@@ -69,23 +68,20 @@ function all() {
 
 async function submit() {
   if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
-    return message({
+    return showToast({
       message: `${t('buy_tips.min')}${create_order_min_money}`,
-      duration: 1500,
     })
   }
 
   if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
-    return message({
+    return showToast({
       message: `${t('buy_tips.max')}${create_order_max_money}`,
-      duration: 1500,
     })
   }
 
   const { data } = await submitProductOrder(submitData.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
 }
 
@@ -103,8 +99,7 @@ function parseProfit(value: string): number {
   }
   else {
     // 将value转换为数字
-    const num = Number(value)
-    return num
+    return Number(value)
   }
 }
 </script>

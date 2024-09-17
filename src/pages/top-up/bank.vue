@@ -29,9 +29,8 @@ function go() {
 
 async function onRecharge() {
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
@@ -39,16 +38,14 @@ async function onRecharge() {
   wait.value = true
 
   if (!/^\d+$/.test(infos.value.money)) {
-    message({
+    showToast({
       message: t('top-up.tips'),
-      duration: 1500,
     })
     return
   }
   const { data } = await submitRecharge(infos.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 }

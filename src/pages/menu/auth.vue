@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { submitAuthIdcard } from '~/api'
-import message from '~/components/message'
 
 const { t } = useI18n()
 
@@ -13,9 +12,8 @@ const infos = ref({
 
 async function submit() {
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
@@ -23,9 +21,8 @@ async function submit() {
   wait.value = true
 
   const { data } = await submitAuthIdcard(infos.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 }

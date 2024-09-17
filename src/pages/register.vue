@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { register } from '~/api'
-import message from '~/components/message'
 
 interface userType {
   account: string
@@ -52,27 +51,24 @@ function isUserFilled(user: userType) {
 async function onRegister() {
   const allFilled = isUserFilled(user.value)
   if (!allFilled) {
-    message({
+    showToast({
       // TODO i18n
       message: '请检查填写',
-      duration: 1500,
     })
     return
   }
 
   if (wait.value) {
-    message({
+    showToast({
       message: t('assets.tips'),
-      duration: 1500,
     })
     return
   }
 
   wait.value = true
   const { data } = await register(user.value)
-  message({
+  showToast({
     message: data.value.msg,
-    duration: 1500,
   })
   wait.value = false
 
@@ -91,16 +87,16 @@ function getClass() {
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
     <div mt3>
-      <input v-model="user.pwd" type="passwrod" :class="getClass()" :placeholder="t('register.password')">
+      <input v-model="user.pwd" type="password" :class="getClass()" :placeholder="t('register.password')">
     </div>
     <div mt3>
-      <input v-model="user.verify_pwd" type="passwrod" :class="getClass()" :placeholder="t('register.confirm_pwd')">
+      <input v-model="user.verify_pwd" type="password" :class="getClass()" :placeholder="t('register.confirm_pwd')">
     </div>
     <div mt3>
-      <input v-model="user.operation_pwd" type="passwrod" :class="getClass()" :placeholder="t('register.pay_pwd')">
+      <input v-model="user.operation_pwd" type="password" :class="getClass()" :placeholder="t('register.pay_pwd')">
     </div>
     <div mt3>
-      <input type="passwrod" :class="getClass()" :placeholder="t('register.confirm_pay_pwd')">
+      <input type="password" :class="getClass()" :placeholder="t('register.confirm_pay_pwd')">
     </div>
     <div mt3>
       <input v-model="user.nickname" type="text" :class="getClass()" :placeholder="t('register.name')">
