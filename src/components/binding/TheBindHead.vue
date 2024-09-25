@@ -1,13 +1,12 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title: string
-  back: string
 }>()
 
 const route = useRouter()
 
 function back() {
-  route.push(props.back)
+  route.back()
 }
 </script>
 

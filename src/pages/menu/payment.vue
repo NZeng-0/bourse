@@ -7,12 +7,12 @@ const list = [
   {
     title: t('me.payment_method.type.1'),
     icon: '../../assets/images/me/menu/bank.png',
-    to: '/top-up/bank',
+    to: '/binding/bank',
   },
   {
     title: t('me.payment_method.type.2'),
     icon: '../../assets/images/me/menu/usdt.png',
-    to: '/top-up/usdt',
+    to: '/binding/usdt',
   },
 ]
 

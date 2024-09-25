@@ -37,7 +37,7 @@ async function submit() {
 
 <template>
   <div h-screen bg-trading>
-    <TheBindHead :title="t('assets.withdrawal.usdt.title')" back="/withdraw/balance" />
+    <TheBindHead :title="t('assets.withdrawal.usdt.title')" />
     <div px6 pt5 class="text-#121826">
       <div :class="getClass()" flex="~">
         <div w="1/2" opacity59>

@@ -28,7 +28,6 @@ function getStateStyle(state: number) {
 
 onMounted(async () => {
   const { data } = await getWithdrawList()
-  showToast({ message: data.value.msg })
   list.value = data.value.data.data
 })
 </script>

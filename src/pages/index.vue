@@ -29,15 +29,10 @@ async function getPopMsg() {
 }
 
 async function init() {
-  // eslint-disable-next-line no-console
-  console.log('test')
   Promise.all([getPopMsg()])
 }
 
 function showNextMessage(index = 0) {
-  // eslint-disable-next-line no-console
-  console.log(messages.value)
-
   if (messages.value === undefined)
     return
   if (index < messages.value!.length) {
