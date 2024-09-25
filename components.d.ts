@@ -29,5 +29,6 @@ declare module 'vue' {
     TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
     VanNoticeBar: typeof import('vant/es')['NoticeBar']
+    VanUploader: typeof import('vant/es')['Uploader']
   }
 }

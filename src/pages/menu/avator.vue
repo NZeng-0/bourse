@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const select = ref(false)
+
+const { t } = useI18n()
 </script>
 
 <template>

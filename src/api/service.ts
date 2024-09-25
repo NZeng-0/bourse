@@ -234,3 +234,9 @@ export function getWithdrawList() {
     url: '/index/user/getWithdrawList',
   })
 }
+
+export function getAuthIdcard() {
+  return Request.get({
+    url: '/index/user/getAuthIdcard',
+  })
+}

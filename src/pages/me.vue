@@ -4,6 +4,10 @@ import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
+import { useMessage } from '~/store/useMessage'
+
+const msgStore = useMessage()
+const msgLength = ref(msgStore.msg.length)
 
 const userStore = useUser()
 const router = useRouter()
@@ -11,7 +15,6 @@ const { removeCache } = useLocalCache()
 const { t, locale } = useI18n()
 
 const user = shallowRef<userTypes>()
-const msgLength = ref(0)
 const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
@@ -64,7 +67,8 @@ onMounted(async () => {
   user.value = userStore.data
   await init()
   const { data } = await getNoticeList()
-  msgLength.value = data.value.data.length
+  msgLength.value = data.value.data.total
+  msgStore.msg = data.value.data.data
 })
 </script>
 
@@ -76,7 +80,7 @@ onMounted(async () => {
         {{ t('me.title') }}
       </div>
       <div flex="~" w="1/3" relative items-end justify-end text-white>
-        <img src="../assets/images/me/infrom.png" h5 w5 @click="go('message/list')">
+        <img src="../assets/images/me/infrom.png" h5 w5 @click="go('message/full')">
         <div v-if="msgLength > 0">
           <div bg="#FE3636" flex="~" absolute right--5 top--2 h5 w6 items-center justify-center rounded-3xl>
             {{ msgLength }}

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { submitWithdraw } from '~/api'
 import { useUser } from '~/store/useUser'
-import message from '~/components/message'
 import type { withdraw } from '~/api/types'
 
 const route = useRouter()
@@ -19,6 +18,10 @@ const wait = ref(false)
 
 function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
+}
+
+function getClass() {
+  return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10.25 items-center justify-between text-sm'
 }
 
 function go() {
@@ -82,8 +85,22 @@ async function submit() {
       <div flex="~" :class="getCommonStyle()">
         <input type="passwrod" :placeholder="t('assets.withdrawal.password')" opacity69>
       </div>
-      <div mt5.25 pl4.625 text-sm>
+      <div mt5.25 pl1 text-sm>
         {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
+      </div>
+      <div mt5 :class="getClass()" flex="~">
+        <div w="1/2" opacity59>
+          {{ t('assets.withdrawal.method') }}
+        </div>
+        <div w="1/2" flex="~" items-center justify-end>
+          <img src="../../assets/images/assets/USDT.png" h4.25 w4.25>
+          <div ml1.25>
+            USDT
+          </div>
+          <div ml0.75>
+            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+          </div>
+        </div>
       </div>
       <div flex="~" :class="getCommonStyle()" mt3.25>
         <div v-if="!banding" flex="~" wfull items-center justify-center text-sm opacity69>

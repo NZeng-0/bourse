@@ -129,5 +129,15 @@ export interface withdrawType {
   create_time: string
   account: string
   nickname: string
+}
 
+export interface msgTypes {
+  id: number
+  uid: number
+  content_id: number
+  type: number
+  is_read: number
+  title: string
+  message: string
+  create_time: string
 }

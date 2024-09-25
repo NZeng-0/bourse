@@ -1,16 +1,47 @@
 <script setup lang="ts">
-import { submitAuthIdcard } from '~/api'
+import { submitAuthIdcard, upload } from '~/api'
 
 const { t } = useI18n()
 
+const id_front = ref([])
+const id_back = ref([])
+
 const wait = ref(false)
 const infos = ref({
+  name: '',
   idcard: '',
   idcard_front_image: '',
   idcard_side_image: '',
 })
 
+// 创建FormData对象。上传图片需要转换二进制，这里要用到FormData
+const frontForms = new FormData()
+const backForms = new FormData()
+
+function readFront(file: any) {
+  // "file"表示给后台传的属性名字
+  frontForms.append('file', file.file)
+}
+
+function readBack(file: any) {
+  // "file"表示给后台传的属性名字
+  backForms.append('file', file.file)
+}
+
+async function beforeSubmit(forms: FormData) {
+  const { data } = await upload(forms)
+  return data.value.data.file
+}
+
+async function afterSubmit() {
+  // const { data } = await getAuthIdcard()
+}
+
 async function submit() {
+  // 先获取正面，在获取反面
+  infos.value.idcard_front_image = await beforeSubmit(frontForms)
+  infos.value.idcard_side_image = await beforeSubmit(backForms)
+
   if (wait.value) {
     showToast({
       message: t('assets.tips'),
@@ -25,6 +56,7 @@ async function submit() {
     message: data.value.msg,
   })
   wait.value = false
+  await afterSubmit()
 }
 </script>
 
@@ -33,7 +65,7 @@ async function submit() {
     <TheMenuHead :title="t('me.auth.title')" />
     <div mt8.75 px4 text-base>
       <div>
-        <input type="text" h13 wfull border rounded-2xl pl5.4 :placeholder="t('me.auth.name')">
+        <input v-model="infos.name" type="text" h13 wfull border rounded-2xl pl5.4 :placeholder="t('me.auth.name')">
       </div>
       <div mt5.25>
         <input
@@ -46,12 +78,18 @@ async function submit() {
           {{ t('me.auth.front_and_back') }}
         </div>
         <div h47.55 flex="~" text-base class="text-#999999">
-          <div w="1/2" flex="~" items-center justify-center border-r px5>
+          <van-uploader
+            v-model="id_front" w="1/2" multiple :after-read="readFront"
+            class="flex-level h-full items-center justify-center border-r px5" :max-count="1" preview-size="100%"
+          >
             {{ t('me.auth.front') }}
-          </div>
-          <div w="1/2" flex="~" items-center justify-center px5>
+          </van-uploader>
+          <van-uploader
+            v-model="id_back" w="1/2" class="flex-level h-full items-center justify-center px5" multiple
+            :after-read="readBack" :max-count="1" preview-size="100%"
+          >
             {{ t('me.auth.back') }}
-          </div>
+          </van-uploader>
         </div>
       </div>
       <div mt12.5 flex="~" justify-center>

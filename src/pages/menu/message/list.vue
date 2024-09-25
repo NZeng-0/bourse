@@ -1,27 +1,17 @@
 <script setup lang="ts">
 import { getNoticeList } from '~/api'
+import type { msgTypes } from '~/types'
+import { useMessage } from '~/store/useMessage'
 
 const { t } = useI18n()
+const msgStore = useMessage()
 
-interface msgTypes {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: string | null
-  remark: string
-  status: number
-  sort: number
-  start_time: string
-  end_time: string | null
-  create_time: string
-}
-
-const list: Ref<msgTypes[]> = ref([])
+const list: Ref<msgTypes[]> = ref(msgStore.msg)
 
 onMounted(async () => {
   const { data } = await getNoticeList()
-  list.value = data.value.data
+  msgStore.msg = data.value.data.data
+  list.value = data.value.data.data
 })
 
 function getBgStyle() {
@@ -37,15 +27,15 @@ function getBgStyle() {
       <div v-for="(item, key) in list" :key flex="~ wrap" :class="getBgStyle()">
         <div wfull flex="~" items-center justify-between>
           <div flex="~" items-center text-lg>
-            {{ item.remark }}
+            {{ item.title }}
             <div ml2 h2 w2 rounded-full bg-btn-select />
           </div>
           <div>
-            {{ item.start_time }}
+            {{ item.create_time }}
           </div>
         </div>
         <div mt2 text-sm opacity60>
-          {{ item.value }}
+          {{ item.message }}
         </div>
       </div>
       <div h50 />
