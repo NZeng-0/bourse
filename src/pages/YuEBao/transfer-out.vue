@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { outMoneyInvestment } from '~/api'
+import { getTotalMoneyAndYesterdayMoney, getUserInfo, outMoneyInvestment } from '~/api'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { useMoney } from '~/store/useMoney'
@@ -35,28 +35,38 @@ async function out() {
     return
   }
 
-  if (outMoney.value > moneyStore.money.total_money) {
+  if (useToNumber(outMoney.value).value > useToNumber(moneyStore.money.total_money).value) {
     showToast({
       message: t('YuEBao.grater'),
     })
     return
   }
 
-  const { data } = await outMoneyInvestment({
-    money: outMoney.value,
-  })
+  const { data } = await outMoneyInvestment(outMoney.value)
   showToast({
     message: data.value.msg,
   })
 
-  // 成功后更新 store
-  // TODO 转出更改后更新
-  // await onRefresh()
+  // 金额置空
+  outMoney.value = ''
+  // 转出成功后更新
+  await onRefresh()
+}
+
+async function onRefresh() {
+  const { data } = await getUserInfo()
+  userStore.data = data.value.data
+  await updateMoney()
+  init()
+}
+
+async function updateMoney() {
+  const { data } = await getTotalMoneyAndYesterdayMoney()
+  moneyStore.money = data.value.data
 }
 
 function init() {
   user.value = userStore.data
-  // YuEBaoData.value = YuEBaoStore.data
 }
 
 onMounted(() => {
@@ -80,7 +90,7 @@ onMounted(() => {
             {{ t('fortune.current_balance') }}
           </div>
           <div>
-            {{ moneyStore.money.total_money }}
+            {{ user?.now_money }}
           </div>
         </div>
         <div mt1.25 text-base class="text-#121826">
@@ -105,7 +115,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
-            <input v-model="outMoney" type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
+            <input v-model="outMoney" type="text" w="2/3" :placeholder="t('fortune.transfer_out.amount')" opacity68>
             <div w="1/3" mr.5 pl2.5 text-right text-sm @click="all()">
               <span h-full w-1 border-l pl3 opacity68 />
               {{ t('fortune.all') }}

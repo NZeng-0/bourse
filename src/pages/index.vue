@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { CountTo } from 'vue3-count-to'
 import pop from '~/components/popup'
 import { getIndexMsg } from '~/api'
 import loading from '~/components/loading'
@@ -20,6 +21,7 @@ interface IndexMsg {
 const { t } = useI18n()
 
 const left_icon = new URL('../assets/images/inform.png', import.meta.url).href
+const broad = new URL('../assets/images/broadcast.png', import.meta.url).href
 
 const messages = ref<IndexMsg[]>()
 
@@ -73,8 +75,44 @@ onMounted(async () => {
       :left-icon="left_icon" scrollable color="#000000" background="white"
       text="英伟达将推出其最新人工智能芯片的中国特..."
     />
+    <div class="person-num">
+      <img :src="broad" alt="broad" class="broad">
+      <div class="b-text">
+        当前在线人数：
+        <CountTo :start-val="0" :end-val="1567" :decimals="0" :duration="5000" :use-easing="true" />
+      </div>
+    </div>
     <ThePortfolio />
     <div h30 />
   </div>
   <TheFooter :index="0" />
 </template>
+
+<style scoped>
+.person-num {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  opacity: 1;
+  background: rgba(119, 81, 241, 0.14);
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  padding-left: 13px;
+}
+
+.b-text {
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  color: #6945DC;
+}
+
+.broad {
+  width: 27px;
+  height: 27px;
+}
+</style>

@@ -4,7 +4,6 @@ import App from './App.vue'
 import type { UserModule } from './types'
 import router from './router'
 import pinia from './store'
-// import loading from './components/loading'
 
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
@@ -18,5 +17,4 @@ Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eage
 app.config.globalProperties.$echarts = echarts
 app.use(router)
 app.use(pinia)
-// app.use(loading)
 app.mount('#app')

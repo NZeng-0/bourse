@@ -156,9 +156,9 @@ export function prolongMoneyInvestment(data: { id: number }) {
   })
 }
 
-export function outMoneyInvestment(money: { money: string }) {
+export function outMoneyInvestment(money: string) {
   return Request.post({
-    url: `/index/moneyInvestment/outMoneyInvestment`,
+    url: `/index/user/investmentPushMoney`,
     data: {
       money,
     },
@@ -237,5 +237,14 @@ export function getWithdrawList() {
 export function getAuthIdcard() {
   return Request.get({
     url: '/index/user/getAuthIdcard',
+  })
+}
+
+export function transferIn(money: string) {
+  return Request.post({
+    url: '/index/user/moneyPushInvestment',
+    data: {
+      money,
+    },
   })
 }

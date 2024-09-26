@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { submitWithdrawAccount } from '~/api'
+import { getUserInfo, submitWithdrawAccount } from '~/api'
 import type { binding } from '~/api/types'
+import { useUser } from '~/store/useUser'
+
+const userStore = useUser()
 
 const { t } = useI18n()
 const route = useRouter()
@@ -20,6 +23,11 @@ function go() {
   route.push(`/binding/usdt`)
 }
 
+async function after() {
+  const { data } = await getUserInfo()
+  userStore.data = data.value.data
+}
+
 async function submit() {
   if (wait.value) {
     showToast({
@@ -33,6 +41,7 @@ async function submit() {
   showToast({
     message: data.value.msg,
   })
+  await after()
   wait.value = false
 }
 </script>

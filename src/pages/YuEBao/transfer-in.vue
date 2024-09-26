@@ -1,55 +1,55 @@
 <script setup lang="ts">
-import { buyMoneyInvestment, getUserInfo } from '~/api'
+import { getTotalMoneyAndYesterdayMoney, getUserInfo, transferIn } from '~/api'
 import type { userTypes } from '~/store/useUser'
 import type { YuEBao } from '~/types'
 import { useUser } from '~/store/useUser'
 import { useYuEBao } from '~/store/useYuEBao'
+import { useMoney } from '~/store/useMoney'
 
 const { t } = useI18n()
 const route = useRouter()
 
+const moneyStore = useMoney()
 const userStore = useUser()
 const YuEBaoStore = useYuEBao()
 const user = shallowRef<userTypes>()
 const YuEBaoData = shallowRef<YuEBao>()
-const buy = ref({
-  money: '',
-  id: 0,
-})
+
+const inMoney = ref('')
 
 function back() {
   route.back()
 }
 
 async function onPlace() {
-  buy.value.id = YuEBaoData.value!.id
-
-  if (buy.value.money === '') {
+  if (inMoney.value === '') {
     showToast({
       message: t('YuEBao.input'),
     })
     return
   }
 
-  if (Number.parseInt(buy.value.money) < 1) {
+  if (Number.parseInt(inMoney.value) < 1) {
     showToast({
       message: t('YuEBao.less'),
     })
     return
   }
 
-  if (buy.value.money > user.value!.now_money) {
+  if (inMoney.value > user.value!.now_money) {
     showToast({
       message: t('YuEBao.grater'),
     })
     return
   }
 
-  const { data } = await buyMoneyInvestment(buy.value)
+  const { data } = await transferIn(inMoney.value)
   showToast({
     message: data.value.msg,
   })
 
+  // 金额置空
+  inMoney.value = ''
   // 成功后更新 store
   await onRefresh()
 }
@@ -57,7 +57,13 @@ async function onPlace() {
 async function onRefresh() {
   const { data } = await getUserInfo()
   userStore.data = data.value.data
+  await updateMoney()
   init()
+}
+
+async function updateMoney() {
+  const { data } = await getTotalMoneyAndYesterdayMoney()
+  moneyStore.money = data.value.data
 }
 
 function init() {
@@ -86,41 +92,27 @@ onMounted(() => {
             {{ t('fortune.current_balance') }}
           </div>
           <div>
-            {{ user?.investment_money }}
+            {{ user?.now_money }}
           </div>
         </div>
         <div mt1.25 text-base class="text-#121826">
           <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
             <div opacity68>
-              {{ t('fortune.transfer_in.plan') }}
+              {{ t('yuEBao') }}
             </div>
             <div flex="~" items-center justify-end>
               <div mr.5 text-sm>
-                {{ YuEBaoData?.name }}
-              </div>
-              <img src="../../assets/images/me/menu/right.png" h3.5 w2>
-            </div>
-          </div>
-          <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
-            <div opacity68>
-              {{ t('fortune.annualized_income') }}
-            </div>
-            <div flex="~" items-center justify-end>
-              <div mr.5 text-sm>
-                {{ YuEBaoData?.rate }}%
+                {{ moneyStore.money.total_money }}
               </div>
             </div>
           </div>
           <div class="border-#EEEEEE rounded-3.5" flex="~" mt3.5 h9.5 items-center justify-between border px3.75 py2>
-            <input v-model="buy.money" type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
-            <div w="1/3" mr.5 pl2.5 text-right text-sm @click="() => buy.money = user!.now_money">
-              <span h-full w-1 border-l pl3 opacity68 />
-              {{ t('fortune.all') }}
-            </div>
+            <input v-model="inMoney" type="text" w="2/3" :placeholder="t('fortune.transfer_in.amount')" opacity68>
           </div>
+          <div mt3.5 h9.5 />
         </div>
         <div flex="~" mt8.75 items-center justify-center>
-          <button h10.5 min-w37.5 rounded-lg bg-btn-select px1 text-lg text-white @click="onPlace()">
+          <button h10.5 min-w37.5 rounded-lg bg-btn-select px1 text-lg text-white @click="onPlace">
             {{ t('fortune.confirm') }}
           </button>
         </div>
