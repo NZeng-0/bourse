@@ -4,8 +4,10 @@ import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import 'vant/es/notify/style'
+import { useConf } from '~/store/useConf'
 
 const userStore = useUser()
+const conf = useConf()
 
 const { setCache } = useLocalCache()
 const { t } = useI18n()
@@ -36,6 +38,7 @@ async function onLogin() {
   if (data.value.code === 200) {
     setCache('token', data.value.data.token)
     userStore.data = await onLoginSuccessful() as userTypes
+    conf.data = data.value.data.config_list
     router.push('/')
   }
   wait.value = false

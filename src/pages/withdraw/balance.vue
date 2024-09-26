@@ -6,6 +6,9 @@ import type { withdraw } from '~/api/types'
 const route = useRouter()
 const { t } = useI18n()
 const user = useUser()
+
+const isBank = ref(true)
+
 const infos = ref<withdraw>({
   withdraw_money: '',
   type: 1,
@@ -13,7 +16,8 @@ const infos = ref<withdraw>({
   bank_name: '',
   bank_account: '',
 })
-const banding = ref(user.data.bank_info !== undefined)
+
+const banding = ref(user.data.auth_status !== 0)
 const wait = ref(false)
 
 function getCommonStyle() {
@@ -88,14 +92,15 @@ async function submit() {
       <div mt5.25 pl1 text-sm>
         {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
       </div>
-      <div mt5 :class="getClass()" flex="~">
+      <div v-if="banding" mt5 :class="getClass()" flex="~">
         <div w="1/2" opacity59>
           {{ t('assets.withdrawal.method') }}
         </div>
-        <div w="1/2" flex="~" items-center justify-end>
-          <img src="../../assets/images/assets/USDT.png" h4.25 w4.25>
+        <div w="1/2" flex="~" items-center justify-end @click=" isBank = !isBank">
+          <img v-if="isBank" src="../../assets/images/assets/bank.png" h4.25 w4.25>
+          <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
           <div ml1.25>
-            USDT
+            {{ isBank ? t('assets.recharge.bank.use') : 'USDT' }}
           </div>
           <div ml0.75>
             <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>

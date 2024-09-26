@@ -213,7 +213,6 @@ export function updateOperationPwd(data: operationPwd) {
 
 export function submitProductOrder(data: {
   product_id: number
-  time: number
   money: number
   type: number
 }) {

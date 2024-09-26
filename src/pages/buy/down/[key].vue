@@ -2,11 +2,14 @@
 import { submitProductOrder } from '~/api'
 import { useProduct } from '~/store/useProduct'
 import { useUser } from '~/store/useUser'
+import { useConf } from '~/store/useConf'
+import type { configlist } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 
 const store = useProduct()
+const conf = useConf()
 const user = useUser()
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 const timeIndex = ref(-1)
@@ -18,10 +21,14 @@ const { create_order_max_money, create_order_min_money } = store.data
 
 const submitData = ref({
   product_id: store.data.id,
-  time: 0,
   money: 0,
   type: 1,
+  scheme_id: -1,
 })
+
+const auth = conf.data.find((item: configlist) => {
+  return item.key === 'auth_open'
+}).value === '1'
 
 function getTimeStyle(time: number) {
   return timeIndex.value === time
@@ -35,9 +42,9 @@ function getMoneyStyle(index: number) {
     : ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-white rounded-xl'
 }
 
-function selectTime(time: number, index: number) {
-  submitData.value.time = time
+function selectTime(index: number, id: number) {
   timeIndex.value = index
+  submitData.value.scheme_id = id
 }
 
 function selectMoney(money: number, index: number) {
@@ -62,6 +69,12 @@ function all() {
 }
 
 async function submit() {
+  if (submitData.value.scheme_id === -1) {
+    return showToast({
+      message: `${t('buy_tips.time')}`,
+    })
+  }
+
   if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
     return showToast({
       message: `${t('buy_tips.min')}${create_order_min_money}`,
@@ -71,6 +84,12 @@ async function submit() {
   if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
     return showToast({
       message: `${t('buy_tips.max')}${create_order_max_money}`,
+    })
+  }
+
+  if (auth && user.data.auth_status !== 1) {
+    return showToast({
+      message: `${t('buy_tips.auth')}`,
     })
   }
 
@@ -98,7 +117,7 @@ async function submit() {
         <!-- h15 -->
         <div
           v-for="(e, key) in timeList" :key w="47.25%" flex="~ wrap" :class="getTimeStyle(key)"
-          @click="selectTime(e.time, key)"
+          @click="selectTime(key, e.id)"
         >
           <div wfull flex="~" justify-center>
             <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">

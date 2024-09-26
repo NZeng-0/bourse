@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { submitRecharge } from '~/api'
+import { submitRecharge, upload } from '~/api'
 import type { recharge } from '~/api/types'
+import { useUser } from '~/store/useUser'
 
+const userStore = useUser()
 const route = useRouter()
 const { t } = useI18n()
 
-const text = ref('09191278302wixnmhdgabisjng')
+const proof = ref([])
+
+// const text = ref('09191278302wixnmhdgabisjng')
 const wait = ref(false)
+
+const bank = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
   type: 2,
-  pay_storageImage: 'storageImage',
+  pay_storageImage: '',
   pay_type: 2,
-  wallet_name: text.value,
-  wallet_address: text.value,
+  wallet_name: bank.wallet_name,
+  wallet_address: bank.wallet_address,
   remark: '',
 })
 
@@ -23,6 +29,21 @@ function getClass() {
 
 function go() {
   route.push(`/top-up/bank`)
+}
+
+const froms = new FormData()
+
+function read(file: any) {
+  // "file"表示给后台传的属性名字
+  froms.append('file', file.file)
+}
+
+async function onUpload() {
+  const { data, error } = await upload(froms)
+  if (error.value)
+    return null
+  else
+    return data.value.data.file
 }
 
 async function onRecharge() {
@@ -39,6 +60,15 @@ async function onRecharge() {
     showToast({
       message: t('top-up.tips'),
     })
+    return
+  }
+
+  infos.value.pay_storageImage = await onUpload()
+  if (infos.value.pay_storageImage === null) {
+    showToast({
+      message: t('top-up.img'),
+    })
+    wait.value = false
     return
   }
   const { data } = await submitRecharge(infos.value)
@@ -73,10 +103,12 @@ async function onRecharge() {
             v-model="infos.money" type="text" :placeholder="t('assets.recharge.transfer_amount')"
             class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
           >
-          <button class="border border-#f4f4f4" flex="~" mt2.5 h11.25 wfull items-center justify-center rounded-xl>
-            <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
-            {{ t('assets.recharge.upload_credentials') }}
-          </button>
+          <van-uploader v-model="proof" wfull :after-read="read">
+            <div class="border border-#f4f4f4" flex="~" mt6.25 h11.25 wfull items-center justify-center rounded-xl>
+              <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
+              {{ t('assets.recharge.upload_credentials') }}
+            </div>
+          </van-uploader>
         </div>
       </div>
       <Serve />
@@ -90,7 +122,7 @@ async function onRecharge() {
   </div>
 </template>
 
-<style scoped>
+<style>
 .bg {
   background: url(../../assets/images/assets/qr-bg.png);
   background-size: cover;
@@ -99,5 +131,25 @@ async function onRecharge() {
 .custom-fixed {
   position: fixed;
   bottom: 113px
+}
+
+.van-uploader__wrapper {
+  width: 100% !important;
+}
+
+.van-uploader__input {
+  width: 100% !important;
+}
+
+.van-uploader__input-wrapper {
+  width: 100%;
+}
+
+.van-uploader__preview-delete {
+  margin-top: 10px
+}
+
+.van-image__img {
+  margin-top: 10px;
 }
 </style>
