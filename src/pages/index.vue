@@ -1,22 +1,12 @@
 <script setup lang="ts">
 import { CountTo } from 'vue3-count-to'
 import pop from '~/components/popup'
-import { getIndexMsg } from '~/api'
+import { getIndexMsg, getIndexSlideshowMessage } from '~/api'
 import loading from '~/components/loading'
+import { useCompnay } from '~/store/useCompany'
+import type { IndexMsg, messageTypes } from '~/types'
 
-interface IndexMsg {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: string
-  remark: string
-  status: number
-  sort: number
-  start_time: string
-  end_time: string
-  create_time: string
-}
+const company = useCompnay()
 
 const { t } = useI18n()
 
@@ -24,14 +14,21 @@ const left_icon = new URL('../assets/images/inform.png', import.meta.url).href
 const broad = new URL('../assets/images/broadcast.png', import.meta.url).href
 
 const messages = ref<IndexMsg[]>()
+const slide = ref<messageTypes[]>()
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()
   messages.value = data.value.data.pop_window_message
+  company.data = data.value.data.company_explain
+}
+
+async function getSlide() {
+  const { data } = await getIndexSlideshowMessage()
+  slide.value = data.value.data
 }
 
 async function init() {
-  Promise.all([getPopMsg()])
+  Promise.all([getPopMsg(), getSlide()])
 }
 
 function showNextMessage(index = 0) {
@@ -54,7 +51,7 @@ onMounted(async () => {
   }
   else if (window.name === 'refresh') {
     loading.show()
-    return setTimeout(() => {
+    setTimeout(() => {
       loading.close()
     }, 1200)
   }
@@ -71,10 +68,9 @@ onMounted(async () => {
 <template>
   <div p="x-4 y-10">
     <TheCard />
-    <van-notice-bar
-      :left-icon="left_icon" scrollable color="#000000" background="white"
-      text="英伟达将推出其最新人工智能芯片的中国特..."
-    />
+    <van-notice-bar :left-icon="left_icon" scrollable color="#000000" background="white">
+      <div v-for="(item, key) in slide" :key v-html="item?.value" />
+    </van-notice-bar>
     <div class="person-num">
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">

@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "L'importo dell'acquisto non può essere superiore a",
-    "min": "L'importo dell'acquisto non può essere inferiore a"
+    "min": "L'importo dell'acquisto non può essere inferiore a",
+    "auth": "Esegui prima l'autenticazione del nome reale",
+    "time": "Seleziona l'orario di liquidazione"
   },
   "company": {
     "content": "Questo è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice. \nQuesto è un plug-in che migliora le capacità di sicurezza dei dati e l'efficienza di ChatGPT. \nE condivide gratuitamente un gran numero di funzioni innovative, come: aggiornamento automatico, rimani attivo, sicurezza dei dati, annulla audit, clona conversazione, parla all'infinito, purifica la pagina, visualizza schermo grande, intercetta il tracciamento, cambia ogni giorno che passa, comprendi ogni dettaglio, ecc. \nRendi la nostra esperienza IA estremamente sicura, fluida, fluida, efficiente e semplice.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Equilibrio insufficiente",
-    "tips": "Inserisci un numero superiore a 0"
+    "tips": "Inserisci un numero superiore a 0",
+    "img": "Si prega di caricare il certificato"
   },
   "check": "Si prega di controllare e compilare",
   "seconds": "Secondo",
@@ -315,5 +318,6 @@
     "online": "Il servizio clienti è online per rispondere alle tue domande"
   },
   "order_history": "Ordini storici",
-  "order_trading": "ordine di negoziazione"
+  "order_trading": "ordine di negoziazione",
+  "yuEBao": "Equilibrio Yu'ebao"
 }

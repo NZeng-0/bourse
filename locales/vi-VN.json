@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "Số tiền mua không thể cao hơn",
-    "min": "Số tiền mua không thể ít hơn"
+    "min": "Số tiền mua không thể ít hơn",
+    "auth": "Vui lòng thực hiện xác thực tên thật trước",
+    "time": "Vui lòng chọn thời gian giải quyết"
   },
   "company": {
     "content": "Đây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản. \nĐây là plug-in giúp cải thiện khả năng và hiệu quả bảo mật dữ liệu của ChatGPT. \nVà nó chia sẻ miễn phí một số lượng lớn các chức năng cải tiến, chẳng hạn như: tự động làm mới, duy trì hoạt động, bảo mật dữ liệu, hủy kiểm tra, sao chép cuộc trò chuyện, nói chuyện không ngừng, thanh lọc trang, hiển thị màn hình lớn, theo dõi chặn, thay đổi mỗi ngày trôi qua, hiểu rõ mọi chi tiết, v.v. \nLàm cho trải nghiệm AI của chúng tôi cực kỳ an toàn, mượt mà, mượt mà, hiệu quả và đơn giản.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Số dư không đủ",
-    "tips": "Vui lòng nhập số trên 0"
+    "tips": "Vui lòng nhập số trên 0",
+    "img": "Vui lòng tải lên chứng chỉ"
   },
   "check": "Vui lòng kiểm tra và điền vào",
   "seconds": "Thứ hai",
@@ -315,5 +318,6 @@
     "online": "Dịch vụ khách hàng trực tuyến để trả lời câu hỏi của bạn"
   },
   "order_history": "Lệnh lịch sử",
-  "order_trading": "lệnh giao dịch"
+  "order_trading": "lệnh giao dịch",
+  "yuEBao": "Số dư Yu'ebao"
 }

@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "El importe de la compra no puede ser superior a",
-    "min": "El importe de la compra no puede ser inferior a"
+    "min": "El importe de la compra no puede ser inferior a",
+    "auth": "Realice primero la autenticación de nombre real",
+    "time": "Por favor seleccione el tiempo de liquidación"
   },
   "company": {
     "content": "Este es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc. \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla. \nEste es un complemento que mejora las capacidades de seguridad de los datos y la eficiencia de ChatGPT. \nY comparte una gran cantidad de funciones innovadoras de forma gratuita, como: actualización automática, permanecer activo, seguridad de datos, cancelar auditoría, clonar conversación, hablar sin cesar, purificar página, mostrar pantalla grande, interceptar seguimiento, cambiar cada día que pasa, comprender cada detalle, etc \nHaga que nuestra experiencia de IA sea extremadamente segura, fluida, sedosa, eficiente y sencilla.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Saldo insuficiente",
-    "tips": "Por favor introduce un número superior a 0"
+    "tips": "Por favor introduce un número superior a 0",
+    "img": "Por favor cargue el certificado"
   },
   "check": "Por favor verifique y complete",
   "seconds": "Segundo",
@@ -315,5 +318,6 @@
     "online": "El servicio de atención al cliente está en línea para responder a sus preguntas."
   },
   "order_history": "Órdenes históricas",
-  "order_trading": "orden comercial"
+  "order_trading": "orden comercial",
+  "yuEBao": "equilibrio de yuebao"
 }

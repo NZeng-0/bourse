@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "Satın alma tutarı bundan yüksek olamaz",
-    "min": "Satın alma tutarı daha az olamaz"
+    "min": "Satın alma tutarı daha az olamaz",
+    "auth": "Lütfen önce gerçek ad kimlik doğrulamasını gerçekleştirin",
+    "time": "Lütfen ödeme zamanını seçin"
   },
   "company": {
     "content": "Bu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, sohbeti klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değişiklik yapma, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin. \nBu, ChatGPT'nin veri güvenliği yeteneklerini ve verimliliğini artıran bir eklentidir. \nOtomatik yenileme, aktif kalma, veri güvenliği, denetimi iptal etme, konuşmayı klonlama, sonsuz konuşma, sayfayı temizleme, geniş ekran görüntüleme, izlemeyi durdurma, her geçen gün değiştirme, anlama gibi çok sayıda yenilikçi işlevi ücretsiz olarak paylaşır. her ayrıntı vb. \nYapay zeka deneyimimizi son derece güvenli, sorunsuz, ipeksi, verimli ve basit hale getirin.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Yetersiz bakiye",
-    "tips": "Lütfen 0'ın üzerinde bir sayı girin"
+    "tips": "Lütfen 0'ın üzerinde bir sayı girin",
+    "img": "Lütfen sertifikayı yükleyin"
   },
   "check": "Lütfen kontrol edin ve doldurun",
   "seconds": "Saniye",
@@ -315,5 +318,6 @@
     "online": "Müşteri hizmetleri sorularınızı yanıtlamak için çevrimiçi"
   },
   "order_history": "Tarihsel siparişler",
-  "order_trading": "ticaret emri"
+  "order_trading": "ticaret emri",
+  "yuEBao": "Yu'ebao dengesi"
 }

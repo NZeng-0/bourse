@@ -156,3 +156,32 @@ export interface configlist {
   end_time: null | string
   create_time: string
 }
+
+export interface messageTypes {
+  id: number
+  key: string
+  condition: null | string
+  value: string
+  link: null | string
+  remark: string
+  status: number
+  sort: number
+  type: number
+  start_time: string
+  end_time: null | string
+  create_time: string
+}
+
+export interface IndexMsg {
+  id: number
+  key: string
+  condition: string
+  value: string
+  link: string
+  remark: string
+  status: number
+  sort: number
+  start_time: string
+  end_time: string
+  create_time: string
+}

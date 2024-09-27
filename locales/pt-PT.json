@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "O valor da compra não pode ser superior",
-    "min": "O valor da compra não pode ser inferior a"
+    "min": "O valor da compra não pode ser inferior a",
+    "auth": "Por favor, execute primeiro a autenticação com nome real",
+    "time": "Selecione o horário de liquidação"
   },
   "company": {
     "content": "Este é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples. \nEste é um plug-in que melhora as capacidades de segurança de dados e a eficiência do ChatGPT. \nE partilha um grande número de funções inovadoras gratuitamente, tais como: atualização automática, manter-se ativo, segurança de dados, cancelar auditoria, clonar conversa, falar sem parar, purificar página, exibir ecrã grande, intercetar rastreio, mudar a cada dia que passa, compreender cada detalhe, etc. \nTorne a nossa experiência de IA extremamente segura, suave, sedosa, eficiente e simples.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Saldo insuficiente",
-    "tips": "Por favor introduza um número acima de 0"
+    "tips": "Por favor introduza um número acima de 0",
+    "img": "Por favor carregue o certificado"
   },
   "check": "Por favor verifique e preencha",
   "seconds": "Segundo",
@@ -315,5 +318,6 @@
     "online": "O serviço de apoio ao cliente está online para responder às suas perguntas"
   },
   "order_history": "Ordens históricas",
-  "order_trading": "ordem de negociação"
+  "order_trading": "ordem de negociação",
+  "yuEBao": "Equilíbrio Yu'ebao"
 }

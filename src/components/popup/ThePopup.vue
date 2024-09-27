@@ -29,9 +29,7 @@ defineExpose({
           <img src="../../assets/images/close.png" h6 w6>
         </div>
       </div>
-      <div mt9.25 text="center lg">
-        {{ props.message }}
-      </div>
+      <div mt9.25 text="center lg" v-html="props.message" />
       <div mt10 wfull flex="~" justify-center>
         <button h7.5 w25 rounded-lg bg-btn-select text-white @click="close()">
           {{ props.submit }}

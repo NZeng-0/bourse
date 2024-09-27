@@ -49,7 +49,7 @@ export function getIndexNoticeList() {
  */
 export function getIndexSlideshowMessage() {
   return Request.get({
-    url: '/index/getSlideshowMessage/getSlideshowMessage',
+    url: '/index/user/getSlideshowMessage',
   })
 }
 

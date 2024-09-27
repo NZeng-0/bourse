@@ -36,7 +36,7 @@ async function onPlace() {
     return
   }
 
-  if (inMoney.value > user.value!.now_money) {
+  if (useToNumber(inMoney.value).value > useToNumber(user.value!.now_money).value) {
     showToast({
       message: t('YuEBao.grater'),
     })

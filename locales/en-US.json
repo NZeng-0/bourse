@@ -297,7 +297,9 @@
   },
   "buy_tips": {
     "max": "The purchase amount cannot be higher than",
-    "min": "The purchase amount cannot be less than"
+    "min": "The purchase amount cannot be less than",
+    "auth": "Please perform real-name authentication first",
+    "time": "Please select settlement time"
   },
   "company": {
     "content": "This is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple. \nThis is a plug-in that improves the data security capabilities and efficiency of ChatGPT. \nAnd it shares a large number of innovative functions for free, such as: automatic refresh, stay active, data security, cancel audit, clone conversation, talk endlessly, purify page, display large screen, intercept tracking, change with each passing day, understand every detail, etc. \nMake our AI experience extremely safe, smooth, silky, efficient and simple.",
@@ -305,7 +307,8 @@
   },
   "top-up": {
     "no": "Insufficient balance",
-    "tips": "Please enter a number above 0"
+    "tips": "Please enter a number above 0",
+    "img": "Please upload the certificate"
   },
   "check": "Please check and fill in",
   "seconds": "Second",
@@ -315,5 +318,6 @@
     "online": "Customer service is online to answer your questions"
   },
   "order_history": "Historical orders",
-  "order_trading": "trading order"
+  "order_trading": "trading order",
+  "yuEBao": "Yu'ebao balance"
 }
