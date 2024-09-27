@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { withdrawMethodType } from '~/types'
 import { getConfigList, register } from '~/api'
+import { useConf } from '~/store/useConf'
 
 interface userType {
   account: string
@@ -18,9 +19,11 @@ interface userType {
 const { t } = useI18n()
 const router = useRouter()
 
-const useIdCard = ref(true)
-const usePhone = ref(true)
-const useEmail = ref(true)
+const conf = useConf()
+
+const useIdCard = ref(false)
+const usePhone = ref(false)
+const useEmail = ref(false)
 const wait = ref(false)
 
 const user = ref<userType>({
@@ -83,22 +86,35 @@ function getClass() {
   return 'border-#E7E7E7 h12 w70 border rounded-2xl p6 text-black'
 }
 
-onMounted(async () => {
-  const { data } = await getConfigList()
-  data.value.data!.forEach((e: withdrawMethodType) => {
+function eachConf() {
+  if (conf.data === undefined)
+    return
+  conf.data!.forEach((e: withdrawMethodType) => {
     if (e.key === 'register_idcard') {
-      if (e.status !== 1)
-        useIdCard.value = false
+      if (e.status === 1)
+        useIdCard.value = true
     }
     if (e.key === 'register_phone') {
-      if (e.status !== 1)
-        usePhone.value = false
+      if (e.status === 1)
+        usePhone.value = true
     }
     if (e.key === 'register_email') {
-      if (e.status !== 1)
-        useEmail.value = false
+      if (e.status === 1)
+        useEmail.value = true
     }
   })
+}
+
+onMounted(async () => {
+  if (conf.data === undefined) {
+    const { data } = await getConfigList()
+    conf.data = data.value.data
+
+    eachConf()
+  }
+  else {
+    eachConf()
+  }
 })
 </script>
 

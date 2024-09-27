@@ -9,10 +9,6 @@ const productStore = useProduct()
 
 const list: Ref<indexProduct[]> = ref([])
 
-onMounted(async () => {
-  list.value = await getProduct()
-})
-
 function getIcon(range: number) {
   return range === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
 }
@@ -30,6 +26,10 @@ async function go(key: number) {
 function handleImageError(key: number) {
   list.value[key].logo = icon
 }
+
+onMounted(async () => {
+  list.value = await getProduct()
+})
 </script>
 
 <template>

@@ -8,11 +8,13 @@ const userStore = useUser()
 const { t } = useI18n()
 const route = useRouter()
 
+const bank_info = reactive(userStore.data.bank_info)
+
 const wait = ref(false)
 const infos = ref<binding>({
-  bank_name: '',
-  bank_branch_name: '',
-  bank_account: '',
+  bank_name: bank_info?.bank_name || '',
+  bank_branch_name: bank_info?.bank_branch_name || '',
+  bank_account: bank_info?.bank_account || '',
 })
 
 function getClass() {
@@ -65,20 +67,22 @@ async function submit() {
         </div>
       </div>
       <input
-        type="text" :placeholder="t('assets.withdrawal.bank.name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
+        type="text" :value="bank_info.bank_user_name" :readonly="bank_info.bank_user_name !== ''"
+        :placeholder="t('assets.withdrawal.bank.name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
+      >
+      <input
+        v-model="infos.bank_name" :readonly="bank_info.bank_name !== ''" type="text"
+        :placeholder="t('assets.withdrawal.bank.bank_name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
+      >
+      <input
+        v-model="infos.bank_branch_name" :readonly="bank_info.bank_branch_name !== ''" type="text"
+        :placeholder="t('assets.withdrawal.bank.bank_of_deposit')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
         opacity59
       >
       <input
-        v-model="infos.bank_name" type="text" :placeholder="t('assets.withdrawal.bank.bank_name')" mt3.25 h10.25
-        w-full rounded-xl px-3.25 text-sm opacity59
-      >
-      <input
-        v-model="infos.bank_branch_name" type="text" :placeholder="t('assets.withdrawal.bank.bank_of_deposit')"
-        mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
-      >
-      <input
-        v-model="infos.bank_account" type="text" :placeholder="t('assets.withdrawal.bank.bank_card_number')" mt3.25
-        h10.25 w-full rounded-xl px-3.25 text-sm opacity59
+        v-model="infos.bank_account" :readonly="bank_info.bank_account !== ''" type="text"
+        :placeholder="t('assets.withdrawal.bank.bank_card_number')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
+        opacity59
       >
     </div>
     <div flex="~" mt17 w-full justify-center>

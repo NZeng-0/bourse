@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { CountTo } from 'vue3-count-to'
 import pop from '~/components/popup'
-import { getIndexMsg, getIndexSlideshowMessage } from '~/api'
+import { getConfigList, getIndexMsg, getIndexSlideshowMessage } from '~/api'
 import loading from '~/components/loading'
 import { useCompnay } from '~/store/useCompany'
-import type { IndexMsg, messageTypes } from '~/types'
+import type { IndexMsg, messageTypes, withdrawMethodType } from '~/types'
+import { useConf } from '~/store/useConf'
 
 const company = useCompnay()
 
+// persion_number_section
+
 const { t } = useI18n()
+const conf = useConf()
 
 const left_icon = new URL('../assets/images/inform.png', import.meta.url).href
 const broad = new URL('../assets/images/broadcast.png', import.meta.url).href
 
 const messages = ref<IndexMsg[]>()
 const slide = ref<messageTypes[]>()
+const people = ref<number>(0)
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()
@@ -45,6 +50,17 @@ function showNextMessage(index = 0) {
   }
 }
 
+function getNum() {
+  if (conf.data === undefined)
+    return
+  conf.data!.forEach((e: withdrawMethodType) => {
+    if (e.key === 'persion_number_section') {
+      if (e.status === 1)
+        people.value = useToNumber(e.value.replace(/,/g, '').trim()).value
+    }
+  })
+}
+
 onMounted(async () => {
   if (window.name === '') {
     window.name = 'refresh'
@@ -58,6 +74,16 @@ onMounted(async () => {
 
   loading.show()
   await init()
+  if (conf.data === undefined) {
+    const { data } = await getConfigList()
+    conf.data = data.value.data
+
+    getNum()
+  }
+  else {
+    getNum()
+  }
+
   setTimeout(() => {
     loading.close()
     showNextMessage()
@@ -75,7 +101,7 @@ onMounted(async () => {
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">
         当前在线人数：
-        <CountTo :start-val="0" :end-val="1567" :decimals="0" :duration="5000" :use-easing="true" />
+        <CountTo :start-val="0" :end-val="people" :decimals="0" :duration="10000" :use-easing="true" />
       </div>
     </div>
     <ThePortfolio />
