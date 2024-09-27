@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { submitWithdraw } from '~/api'
+import { getConfigList, submitWithdraw } from '~/api'
 import { useUser } from '~/store/useUser'
 import type { withdraw } from '~/api/types'
+import type { withdrawMethodType } from '~/types'
 
 const route = useRouter()
 const { t } = useI18n()
@@ -19,6 +20,11 @@ const infos = ref<withdraw>({
 
 const banding = ref(user.data.auth_status !== 0)
 const wait = ref(false)
+
+const method = ref<withdrawMethodType[]>()
+
+const all = ref(true)
+const type = ref<withdrawMethodType>()
 
 function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
@@ -69,6 +75,22 @@ async function submit() {
   })
   wait.value = false
 }
+
+onMounted(async () => {
+  const { data } = await getConfigList()
+  method.value = data.value.data
+  method.value!.forEach((e: withdrawMethodType) => {
+    if (e.value === 'RMB' || e.value === 'USDT') {
+      if (e.status !== 1) {
+        // 两次都是 1 时 all 为 true，否则为 false
+        all.value = false
+      }
+      if (e.status === 1)
+        type.value = e
+    }
+  })
+})
+// find((item: withdrawMethodType) => item.key === 'withdraw_money_type')
 </script>
 
 <template>
@@ -93,19 +115,36 @@ async function submit() {
         {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
       </div>
       <div v-if="banding" mt5 :class="getClass()" flex="~">
-        <div w="1/2" opacity59>
-          {{ t('assets.withdrawal.method') }}
-        </div>
-        <div w="1/2" flex="~" items-center justify-end @click=" isBank = !isBank">
-          <img v-if="isBank" src="../../assets/images/assets/bank.png" h4.25 w4.25>
-          <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
-          <div ml1.25>
-            {{ isBank ? t('assets.recharge.bank.use') : 'USDT' }}
+        <template v-if="all">
+          <div w="1/2" opacity59>
+            {{ t('assets.withdrawal.method') }}
           </div>
-          <div ml0.75>
-            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+          <div w="1/2" flex="~" items-center justify-end @click=" isBank = !isBank">
+            <img v-if="isBank" src="../../assets/images/assets/bank.png" h4.25 w4.25>
+            <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
+            <div ml1.25>
+              {{ isBank ? t('assets.recharge.bank.use') : 'USDT' }}
+            </div>
+            <div ml0.75>
+              <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+            </div>
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <div w="1/2" opacity59>
+            {{ t('assets.withdrawal.method') }}
+          </div>
+          <div w="1/2" flex="~" items-center justify-end>
+            <img v-if="type!.value === 'RMB'" src="../../assets/images/assets/bank.png" h4.25 w4.25>
+            <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
+            <div ml1.25>
+              {{ type!.value === 'RMB' ? t('assets.recharge.bank.use') : 'USDT' }}
+            </div>
+            <div ml0.75>
+              <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+            </div>
+          </div>
+        </template>
       </div>
       <div flex="~" :class="getCommonStyle()" mt3.25>
         <div v-if="!banding" flex="~" wfull items-center justify-center text-sm opacity69>

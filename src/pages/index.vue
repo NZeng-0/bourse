@@ -68,7 +68,7 @@ onMounted(async () => {
 <template>
   <div p="x-4 y-10">
     <TheCard />
-    <van-notice-bar :left-icon="left_icon" scrollable color="#000000" background="white">
+    <van-notice-bar :scrollable="true" :left-icon="left_icon" color="#000000" background="white">
       <div v-for="(item, key) in slide" :key v-html="item?.value" />
     </van-notice-bar>
     <div class="person-num">

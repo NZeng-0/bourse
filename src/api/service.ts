@@ -1,5 +1,13 @@
 import { Request } from './request'
-import type { binding, loginPwd, loginTypes, operationPwd, recharge, registerTypes, withdraw } from './types'
+import type {
+  binding,
+  loginPwd,
+  loginTypes,
+  operationPwd,
+  recharge,
+  registerTypes,
+  withdraw,
+} from './types'
 
 /**
  * @description 登录
@@ -246,5 +254,11 @@ export function transferIn(money: string) {
     data: {
       money,
     },
+  })
+}
+
+export function getConfigList() {
+  return Request.get({
+    url: '/index/getSystemConfig',
   })
 }

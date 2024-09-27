@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { register } from '~/api'
+import type { withdrawMethodType } from '~/types'
+import { getConfigList, register } from '~/api'
 
 interface userType {
   account: string
@@ -17,6 +18,9 @@ interface userType {
 const { t } = useI18n()
 const router = useRouter()
 
+const useIdCard = ref(true)
+const usePhone = ref(true)
+const useEmail = ref(true)
 const wait = ref(false)
 
 const user = ref<userType>({
@@ -78,6 +82,24 @@ async function onRegister() {
 function getClass() {
   return 'border-#E7E7E7 h12 w70 border rounded-2xl p6 text-black'
 }
+
+onMounted(async () => {
+  const { data } = await getConfigList()
+  data.value.data!.forEach((e: withdrawMethodType) => {
+    if (e.key === 'register_idcard') {
+      if (e.status !== 1)
+        useIdCard.value = false
+    }
+    if (e.key === 'register_phone') {
+      if (e.status !== 1)
+        usePhone.value = false
+    }
+    if (e.key === 'register_email') {
+      if (e.status !== 1)
+        useEmail.value = false
+    }
+  })
+})
 </script>
 
 <template>
@@ -100,13 +122,13 @@ function getClass() {
     <div mt3>
       <input v-model="user.nickname" type="text" :class="getClass()" :placeholder="t('register.name')">
     </div>
-    <div mt3>
+    <div v-if="useIdCard" mt3>
       <input v-model="user.idcard" type="text" :class="getClass()" :placeholder="t('register.id_card')">
     </div>
-    <div mt3>
+    <div v-if="usePhone" mt3>
       <input v-model="user.phone" type="text" :class="getClass()" :placeholder="t('register.phone')">
     </div>
-    <div mt3>
+    <div v-if="useEmail" mt3>
       <input v-model="user.email" type="email" :class="getClass()" :placeholder="t('register.email')">
     </div>
     <div mt3>

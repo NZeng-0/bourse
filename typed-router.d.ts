@@ -50,6 +50,8 @@ declare module 'vue-router/auto-routes' {
     '/passwrod/payment': RouteRecordInfo<'/passwrod/payment', '/passwrod/payment', Record<never, never>, Record<never, never>>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,
     '/top-up/bank': RouteRecordInfo<'/top-up/bank', '/top-up/bank', Record<never, never>, Record<never, never>>,
+    '/top-up/old-bank': RouteRecordInfo<'/top-up/old-bank', '/top-up/old-bank', Record<never, never>, Record<never, never>>,
+    '/top-up/old-usdt': RouteRecordInfo<'/top-up/old-usdt', '/top-up/old-usdt', Record<never, never>, Record<never, never>>,
     '/top-up/usdt': RouteRecordInfo<'/top-up/usdt', '/top-up/usdt', Record<never, never>, Record<never, never>>,
     '/trading/day/[key]': RouteRecordInfo<'/trading/day/[key]', '/trading/day/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/trading/five-year/[key]': RouteRecordInfo<'/trading/five-year/[key]', '/trading/five-year/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
