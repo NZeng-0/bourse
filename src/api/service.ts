@@ -262,3 +262,9 @@ export function getConfigList() {
     url: '/index/getSystemConfig',
   })
 }
+
+export function getSpreadUserList() {
+  return Request.get({
+    url: '/index/user/getSpreadUserList',
+  })
+}

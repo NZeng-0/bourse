@@ -1,10 +1,20 @@
 <script setup lang="ts">
+import { getSpreadUserList } from '~/api'
+import type { inviteType } from '~/types'
+
 const router = useRouter()
 const { t } = useI18n()
+
+const list = ref<inviteType[]>()
 
 function back() {
   router.back()
 }
+
+onMounted(async () => {
+  const { data } = await getSpreadUserList()
+  list.value = data.value.data.data
+})
 </script>
 
 <template>
@@ -36,18 +46,26 @@ function back() {
         <th>{{ t('recommend.history.top-up') }}</th>
         <th>{{ t('recommend.history.withdraw') }}</th>
       </tr>
-      <tr v-for="(e, key) in 5" :key border-b="1px #F7F7F7" h9 text="center black">
+      <tr v-for="(e, key) in list" :key border-b="1px #F7F7F7" h9 text="center black">
+        <!-- {
+  "uid": 31,
+  "nickname": "ll",
+  "account": "admiin888",
+  "create_time": "2024-09-26 20:09:45",
+  "recharge_price": "0.00",
+  "withdraw_price": "0.00"
+} -->
         <td>
-          {{ e }}23456789@qq.com
+          {{ e.account }}
         </td>
         <td>
-          2024/05/30
+          {{ e.create_time.split(' ')[0] }}
         </td>
         <td>
-          ￥1000
+          {{ e.recharge_price }}
         </td>
         <td>
-          ￥1000
+          {{ e.withdraw_price }}
         </td>
       </tr>
     </table>

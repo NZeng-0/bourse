@@ -16,6 +16,12 @@ const infos = ref<withdraw>({
   bank_branch_name: '',
   bank_name: '',
   bank_account: '',
+  wallet_name: '',
+  wallet_address: '',
+})
+
+watch(() => isBank.value, (value) => {
+  value ? infos.value.type = 1 : infos.value.type = 2
 })
 
 const banding = ref(user.data.auth_status !== 0)
@@ -43,6 +49,7 @@ async function submit() {
     showToast({
       message: t('assets.tips'),
     })
+    wait.value = false
     return
   }
 
@@ -52,13 +59,15 @@ async function submit() {
     showToast({
       message: t('top-up.tips'),
     })
+    wait.value = false
     return
   }
 
-  if (infos.value.withdraw_money > user.data.now_money) {
+  if (useToNumber(infos.value.withdraw_money).value > useToNumber(user.data.now_money).value) {
     showToast({
       message: t('top-up.no'),
     })
+    wait.value = false
     return
   }
 
@@ -66,8 +75,6 @@ async function submit() {
     go()
     return
   }
-
-  await submitWithdraw(infos.value)
 
   const { data } = await submitWithdraw(infos.value)
   showToast({
@@ -89,8 +96,13 @@ onMounted(async () => {
         type.value = e
     }
   })
+  const bank = user.data.bank_info
+  infos.value.bank_name = bank.bank_name
+  infos.value.bank_branch_name = bank.bank_branch_name
+  infos.value.bank_account = bank.bank_account
+  infos.value.wallet_name = bank.wallet_name
+  infos.value.wallet_address = bank.wallet_address
 })
-// find((item: withdrawMethodType) => item.key === 'withdraw_money_type')
 </script>
 
 <template>
@@ -109,7 +121,7 @@ onMounted(async () => {
         <input v-model="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input type="passwrod" :placeholder="t('assets.withdrawal.password')" opacity69>
+        <input type="password" :placeholder="t('assets.withdrawal.password')" opacity69>
       </div>
       <div mt5.25 pl1 text-sm>
         {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
@@ -155,7 +167,7 @@ onMounted(async () => {
             {{ t('assets.withdrawal.account') }}
           </div>
           <div w="2/3" text-left>
-            {{ user.data.bank_info.bank_account }}
+            {{ isBank ? infos.bank_account : infos.wallet_address }}
           </div>
         </div>
       </div>

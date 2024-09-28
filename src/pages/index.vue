@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { CountTo } from 'vue3-count-to'
 import pop from '~/components/popup'
 import { getConfigList, getIndexMsg, getIndexSlideshowMessage } from '~/api'
 import loading from '~/components/loading'
@@ -19,7 +18,8 @@ const broad = new URL('../assets/images/broadcast.png', import.meta.url).href
 
 const messages = ref<IndexMsg[]>()
 const slide = ref<messageTypes[]>()
-const people = ref<number>(0)
+const min = ref<number>(0)
+const max = ref<number>(1)
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()
@@ -55,10 +55,25 @@ function getNum() {
     return
   conf.data!.forEach((e: withdrawMethodType) => {
     if (e.key === 'persion_number_section') {
-      if (e.status === 1)
-        people.value = useToNumber(e.value.replace(/,/g, '').trim()).value
+      if (e.status === 1) {
+        min.value = useToNumber(e.value.split(',')[0]).value
+        max.value = useToNumber(e.value.split(',')[1]).value
+      }
     }
   })
+}
+
+function animateNumber() {
+  const interval = setInterval(() => {
+    min.value += 1
+    if (min.value >= max.value) {
+      min.value = max.value
+      clearInterval(interval) // 当达到目标值时清除定时器
+      setTimeout(() => {
+        animateNumber() // 一段时间后重新开始动画
+      }, 2000) // 例如，这里设置2秒后重新开始动画
+    }
+  }, 1000)
 }
 
 onMounted(async () => {
@@ -88,6 +103,7 @@ onMounted(async () => {
     loading.close()
     showNextMessage()
   }, 1200)
+  animateNumber()
 })
 </script>
 
@@ -101,7 +117,7 @@ onMounted(async () => {
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">
         当前在线人数：
-        <CountTo :start-val="0" :end-val="people" :decimals="0" :duration="10000" :use-easing="true" />
+        {{ min }}
       </div>
     </div>
     <ThePortfolio />

@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import type { withdrawMethodType } from '~/types'
-import { getConfigList, register } from '~/api'
+import { getConfigList, getUserInfo, login, register } from '~/api'
 import { useConf } from '~/store/useConf'
+import { useLocalCache } from '~/hook'
+import type { userTypes } from '~/store/useUser'
+import { useUser } from '~/store/useUser'
+
+const userStore = useUser()
+const { setCache } = useLocalCache()
+const router = useRouter()
 
 interface userType {
   account: string
@@ -17,7 +24,6 @@ interface userType {
 }
 
 const { t } = useI18n()
-const router = useRouter()
 
 const conf = useConf()
 
@@ -78,8 +84,21 @@ async function onRegister() {
   })
   wait.value = false
 
-  if (data.value.code === 200)
-    router.push('/login')
+  if (data.value.code === 200) {
+    const { data } = await login({
+      name: user.value.account,
+      pwd: user.value.pwd,
+    })
+    showToast(data.value.msg)
+    setCache('token', data.value.data.token)
+    userStore.data = await onLoginSuccessful() as userTypes
+    router.push('/')
+  }
+}
+
+async function onLoginSuccessful() {
+  const { data } = await getUserInfo()
+  return data.value.data
 }
 
 function getClass() {

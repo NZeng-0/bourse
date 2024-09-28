@@ -28,6 +28,7 @@ declare module 'vue' {
     TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
     TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
+    VanDialog: typeof import('vant/es')['Dialog']
     VanNoticeBar: typeof import('vant/es')['NoticeBar']
     VanUploader: typeof import('vant/es')['Uploader']
   }

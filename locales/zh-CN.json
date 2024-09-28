@@ -146,6 +146,10 @@
         "title": "绑定 USDT 账号",
         "wallet_account": "请输入钱包账号",
         "submit": "提交"
+      },
+      "new": {
+        "bank": "新增银行卡",
+        "usdt": "新增USDT"
       }
     }
   },

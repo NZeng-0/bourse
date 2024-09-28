@@ -1,18 +1,24 @@
 <script setup lang="ts">
+import { useUser } from '~/store/useUser'
+
+const userStore = useUser()
+
 const { t } = useI18n()
 
 const router = useRouter()
 
+const auth = userStore.data.auth_status === 1
+
 const list = [
   {
     title: t('me.payment_method.type.1'),
-    icon: '../../assets/images/me/menu/bank.png',
-    to: '/binding/bank',
+    icon: new URL('~/assets/images/me/menu/bank.png', import.meta.url).href,
+    to: auth ? '/binding/bank' : '/unBinding/bank',
   },
   {
     title: t('me.payment_method.type.2'),
-    icon: '../../assets/images/me/menu/usdt.png',
-    to: '/binding/usdt',
+    icon: new URL('~/assets/images/me/menu/usdt.png', import.meta.url).href,
+    to: auth ? '/binding/usdt' : '/unBinding/usdt',
   },
 ]
 

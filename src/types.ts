@@ -200,3 +200,12 @@ export interface withdrawMethodType {
   end_time: null | string
   create_time: string
 }
+
+export interface inviteType {
+  nickname: string
+  account: string
+  create_time: string
+  recharge_price: string
+  withdraw_price: string
+  uid: number
+}

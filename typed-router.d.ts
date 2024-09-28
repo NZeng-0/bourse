@@ -53,6 +53,8 @@ declare module 'vue-router/auto-routes' {
     '/top-up/old-bank': RouteRecordInfo<'/top-up/old-bank', '/top-up/old-bank', Record<never, never>, Record<never, never>>,
     '/top-up/old-usdt': RouteRecordInfo<'/top-up/old-usdt', '/top-up/old-usdt', Record<never, never>, Record<never, never>>,
     '/top-up/usdt': RouteRecordInfo<'/top-up/usdt', '/top-up/usdt', Record<never, never>, Record<never, never>>,
+    '/unBinding/bank': RouteRecordInfo<'/unBinding/bank', '/unBinding/bank', Record<never, never>, Record<never, never>>,
+    '/unBinding/usdt': RouteRecordInfo<'/unBinding/usdt', '/unBinding/usdt', Record<never, never>, Record<never, never>>,
     '/withdraw/balance': RouteRecordInfo<'/withdraw/balance', '/withdraw/balance', Record<never, never>, Record<never, never>>,
     '/YuEBao/transfer-in': RouteRecordInfo<'/YuEBao/transfer-in', '/YuEBao/transfer-in', Record<never, never>, Record<never, never>>,
     '/YuEBao/transfer-out': RouteRecordInfo<'/YuEBao/transfer-out', '/YuEBao/transfer-out', Record<never, never>, Record<never, never>>,
