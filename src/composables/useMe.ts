@@ -64,7 +64,7 @@ export const menu = [
     to: 'secure',
   },
   {
-    title: '公司简介',
+    title: 'company.title',
     icon: company,
     right: ' ',
     to: 'company',

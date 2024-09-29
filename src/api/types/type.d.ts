@@ -67,13 +67,14 @@ export interface recharge {
 }
 
 export interface withdraw {
-  withdraw_money: string
+  withdraw_money: number
   type: number
   bank_branch_name?: string
   bank_name?: string
   bank_account?: string
   wallet_name?: string
   wallet_address?: string
+  operation_pwd?: string
 }
 
 export interface binding {

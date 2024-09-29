@@ -135,6 +135,10 @@
         "title": "Binding tài khoản USDT",
         "wallet_account": "Vui lòng nhập số tài khoản ví",
         "submit": "đệ trình"
+      },
+      "new": {
+        "bank": "Thêm thẻ ngân hàng mới",
+        "usdt": "Thêm USDT"
       }
     },
     "tips": "Đừng bấm liên tục"
@@ -319,5 +323,6 @@
   },
   "order_history": "Lệnh lịch sử",
   "order_trading": "lệnh giao dịch",
-  "yuEBao": "Số dư Yu'ebao"
+  "yuEBao": "Số dư Yu'ebao",
+  "current_online": "Số người hiện đang trực tuyến"
 }

@@ -135,6 +135,10 @@
         "title": "綁定 USDT 賬號",
         "wallet_account": "請輸入錢包賬號",
         "submit": "提交"
+      },
+      "new": {
+        "bank": "新增銀行卡",
+        "usdt": "新增USDT"
       }
     },
     "tips": "請勿重複點擊"
@@ -319,5 +323,6 @@
   },
   "order_history": "歷史訂單",
   "order_trading": "交易訂單",
-  "yuEBao": "餘額寶餘額"
+  "yuEBao": "餘額寶餘額",
+  "current_online": "目前線上人數"
 }

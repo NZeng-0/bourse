@@ -135,6 +135,10 @@
         "title": "Bind USDT Account",
         "wallet_account": "Please enter your wallet account",
         "submit": "Submit"
+      },
+      "new": {
+        "bank": "Add new bank card",
+        "usdt": "Add USDT"
       }
     },
     "tips": "Do not click repeatedly"
@@ -319,5 +323,6 @@
   },
   "order_history": "Historical orders",
   "order_trading": "trading order",
-  "yuEBao": "Yu'ebao balance"
+  "yuEBao": "Yu'ebao balance",
+  "current_online": "Number of people currently online"
 }

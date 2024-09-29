@@ -135,6 +135,10 @@
         "title": "USDT口座を登録",
         "wallet_account": "ウォレットアカウントを入力",
         "submit": "送信"
+      },
+      "new": {
+        "bank": "新しい銀行カードを追加する",
+        "usdt": "USDTの追加"
       }
     },
     "tips": "繰り返しクリックしないでください"
@@ -319,5 +323,6 @@
   },
   "order_history": "歴史的な注文",
   "order_trading": "取引注文",
-  "yuEBao": "余額宝バランス"
+  "yuEBao": "余額宝バランス",
+  "current_online": "現在オンラインになっている人の数"
 }

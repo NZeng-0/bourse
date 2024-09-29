@@ -135,6 +135,10 @@
         "submit": "entregar",
         "title": "Vincular cuenta USDT",
         "wallet_account": "Por favor ingresa la cuenta de billetera"
+      },
+      "new": {
+        "bank": "Agregar nueva tarjeta bancaria",
+        "usdt": "Añadir USDT"
       }
     },
     "tips": "No hagas clic repetidamente"
@@ -319,5 +323,6 @@
   },
   "order_history": "Órdenes históricas",
   "order_trading": "orden comercial",
-  "yuEBao": "equilibrio de yuebao"
+  "yuEBao": "equilibrio de yuebao",
+  "current_online": "Número de personas actualmente en línea"
 }

@@ -123,8 +123,7 @@ onMounted(async () => {
     <div class="person-num">
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">
-        当前在线人数：
-        {{ min }}
+        {{ t('current_online') }}：{{ min }}
       </div>
     </div>
     <ThePortfolio />

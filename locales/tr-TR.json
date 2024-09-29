@@ -49,6 +49,10 @@
         "submit": "göndermek",
         "title": "USDT hesabını bağla",
         "wallet_account": "Lütfen cüzdan hesabını girin"
+      },
+      "new": {
+        "bank": "Yeni banka kartı ekle",
+        "usdt": "USDT'yi ekle"
       }
     },
     "tips": "Tekrar tekrar tıklamayın"
@@ -319,5 +323,6 @@
   },
   "order_history": "Tarihsel siparişler",
   "order_trading": "ticaret emri",
-  "yuEBao": "Yu'ebao dengesi"
+  "yuEBao": "Yu'ebao dengesi",
+  "current_online": "Şu anda çevrimiçi olan kişi sayısı"
 }

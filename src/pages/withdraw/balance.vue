@@ -11,13 +11,14 @@ const user = useUser()
 const isBank = ref(true)
 
 const infos = ref<withdraw>({
-  withdraw_money: '',
+  withdraw_money: 0,
   type: 1,
   bank_branch_name: '',
   bank_name: '',
   bank_account: '',
   wallet_name: '',
   wallet_address: '',
+  operation_pwd: '',
 })
 
 watch(() => isBank.value, (value) => {
@@ -55,7 +56,7 @@ async function submit() {
 
   wait.value = true
 
-  if (!/^\d+$/.test(infos.value.withdraw_money)) {
+  if (!/^\d+$/.test(infos.value.withdraw_money.toString())) {
     showToast({
       message: t('top-up.tips'),
     })
@@ -118,10 +119,10 @@ onMounted(async () => {
         </div>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input v-model="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
+        <input v-model.number="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input type="password" :placeholder="t('assets.withdrawal.password')" opacity69>
+        <input v-model="infos.operation_pwd" type="password" :placeholder="t('assets.withdrawal.password')" opacity69>
       </div>
       <div mt5.25 pl1 text-sm>
         {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
