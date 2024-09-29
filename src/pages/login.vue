@@ -77,8 +77,10 @@ function scoped() {
       </div>
     </div>
     <div flex="~" mt10 justify-center>
-      <div type="button" readonly h12 w70 rounded-2xl text-center>
-        {{ t('login.service') }}
+      <div h12 w70 rounded-2xl text-center>
+        <RouterLink to="/menu/serve">
+          {{ t('login.service') }}
+        </RouterLink>
       </div>
     </div>
   </div>

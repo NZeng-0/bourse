@@ -5,6 +5,13 @@ import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
+import { useConf } from '~/store/useConf'
+import type { configlist } from '~/types'
+
+const conf = useConf()
+const type = conf.data.find((e: configlist) => {
+  return e.key === 'pay_show_type'
+}).value
 
 const msgStore = useMessage()
 
@@ -151,7 +158,7 @@ onMounted(async () => {
           </div>
         </div>
         <div flex="~" justify-between px4 text-white>
-          <button w="1/2" h8.8 :class="scoped()" @click="transfer('/top-up/usdt')">
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer(type === '1' ? '/top-up/info/usdt' : '/top-up/usdt')">
             {{ t('me.recharge') }}
           </button>
           <button w="1/2" h8.8 :class="scoped()" @click="transfer('/withdraw/balance')">
@@ -170,13 +177,13 @@ onMounted(async () => {
             </p>
           </div>
           <div w="2/5" flex="~" justify-end>
-            <div v-if="item.right !== ' ' " text-sm class="text-#9EA3AE">
+            <div v-if="item.right !== ' '" text-sm class="text-#9EA3AE">
               {{ t(item.right) }}
             </div>
             <img src="../assets/images/me/menu/right.png" h5.5 w5.5>
           </div>
         </div>
-        <div flex="~" mt3.5 h16 items-center rounded-2xl bg-btn-select px4>
+        <div flex="~" mt3.5 h16 items-center rounded-2xl bg-btn-select px4 @click="go('serve')">
           <div w="1/5">
             <img src="../assets/images/me/menu/servers.png" h10 w10>
           </div>

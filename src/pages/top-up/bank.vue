@@ -48,12 +48,19 @@ async function onUpload() {
     return data.value.data.file
 }
 
+function successAfter() {
+  proof.value = []
+  froms.append('file', ' ')
+  infos.value.money = ''
+  infos.value.remark = ''
+}
+
 async function onRecharge() {
   if (wait.value) {
     showToast({
       message: t('assets.tips'),
     })
-    return
+    return wait.value = false
   }
 
   wait.value = true
@@ -62,21 +69,21 @@ async function onRecharge() {
     showToast({
       message: t('top-up.tips'),
     })
-    return
+    return wait.value = false
   }
   infos.value.pay_storageImage = await onUpload()
   if (infos.value.pay_storageImage === null) {
     showToast({
       message: t('top-up.img'),
     })
-    wait.value = false
-    return
+    return wait.value = false
   }
   const { data } = await submitRecharge(infos.value)
   showToast({
     message: data.value.msg,
   })
   wait.value = false
+  successAfter()
 }
 </script>
 

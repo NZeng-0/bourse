@@ -1,7 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const router = useRouter()
 
 const serve = new URL('../../assets/images/top-up/serve.svg', import.meta.url).href
+
+function go() {
+  router.push('/menu/serve')
+}
 </script>
 
 <template>
@@ -17,7 +22,7 @@ const serve = new URL('../../assets/images/top-up/serve.svg', import.meta.url).h
         </p>
       </div>
     </div>
-    <button class="serve">
+    <button class="serve" @click="go()">
       {{ t('serve.contact') }}
     </button>
   </div>
