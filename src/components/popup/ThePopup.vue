@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import { popupProps } from './type'
+import { useLocalCache } from '~/hook'
 
 const props = defineProps(popupProps)
+
+const { setCache } = useLocalCache()
 
 const isShow = ref(true)
 
 function close() {
   props.onClose!()
+}
+
+function toDayUnDisplay() {
+  setCache('popups', new Date(Date.now()).toISOString().split('T')[0])
+  close()
 }
 
 onMounted(() => {
@@ -30,11 +38,30 @@ defineExpose({
         </div>
       </div>
       <div mt9.25 text="center lg" v-html="props.message" />
-      <div mt10 wfull flex="~" justify-center>
+      <div mt10 wfull flex="~" justify-around>
         <button h7.5 w25 rounded-lg bg-btn-select text-white @click="close()">
           {{ props.submit }}
+        </button>
+        <button class="unDisplay" @click="toDayUnDisplay">
+          不再显示
         </button>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.unDisplay {
+  width: 100px;
+  height: 30px;
+  border-radius: 8px;
+  opacity: 1;
+  border: 1px solid #7751F1;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0em;
+  color: #7751F1;
+  -webkit-text-stroke: rgba(0, 0, 0, 0) 1px;
+}
+</style>

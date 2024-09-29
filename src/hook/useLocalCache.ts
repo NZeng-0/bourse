@@ -5,6 +5,7 @@ const defCache = {
   token: '',
   userInfo: { username: '', avatar: '' },
   theme: 'default' as 'default' | 'custom',
+  popups: '',
 }
 
 type LocalCacheValueType = typeof defCache

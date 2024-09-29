@@ -5,10 +5,10 @@ import loading from '~/components/loading'
 import { useCompnay } from '~/store/useCompany'
 import type { IndexMsg, messageTypes, withdrawMethodType } from '~/types'
 import { useConf } from '~/store/useConf'
+import { useLocalCache } from '~/hook'
 
+const { getCache } = useLocalCache()
 const company = useCompnay()
-
-// persion_number_section
 
 const { t } = useI18n()
 const conf = useConf()
@@ -20,6 +20,7 @@ const messages = ref<IndexMsg[]>()
 const slide = ref<messageTypes[]>()
 const min = ref<number>(0)
 const max = ref<number>(1)
+const store = ref<number>(0)
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()
@@ -37,9 +38,14 @@ async function init() {
 }
 
 function showNextMessage(index = 0) {
+  const storeDate = getCache('popups')
+  const now = new Date(Date.now()).toISOString().split('T')[0]
+
   if (messages.value === undefined)
     return
   if (index < messages.value!.length) {
+    if (now <= storeDate)
+      return
     const e = messages.value![index]
     pop({
       message: e.value,
@@ -58,20 +64,21 @@ function getNum() {
       if (e.status === 1) {
         min.value = useToNumber(e.value.split(',')[0]).value
         max.value = useToNumber(e.value.split(',')[1]).value
+        store.value = useToNumber(e.value.split(',')[0]).value
       }
     }
   })
 }
 
 function animateNumber() {
-  const interval = setInterval(() => {
+  setInterval(() => {
     min.value += 1
     if (min.value >= max.value) {
       min.value = max.value
-      clearInterval(interval) // 当达到目标值时清除定时器
-      setTimeout(() => {
-        animateNumber() // 一段时间后重新开始动画
-      }, 2000) // 例如，这里设置2秒后重新开始动画
+      const timer = setTimeout(() => {
+        min.value = store.value
+        clearTimeout(timer)
+      }, 1000)
     }
   }, 1000)
 }
