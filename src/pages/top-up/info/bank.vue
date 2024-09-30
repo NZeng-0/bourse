@@ -25,12 +25,6 @@ function go() {
 }
 
 const proof = ref([])
-const froms = new FormData()
-
-function read(file: any) {
-  // "file"表示给后台传的属性名字
-  froms.append('file', file.file)
-}
 
 const wait = ref(false)
 
@@ -46,6 +40,14 @@ const infos = ref<recharge>({
   bank_account: bankStore.bank_account,
   remark: '',
 })
+
+const froms = new FormData()
+
+async function read(file: any) {
+  // "file"表示给后台传的属性名字
+  froms.append('file', file.file)
+  infos.value.pay_storageImage = await onUpload()
+}
 
 async function onUpload() {
   const { data, error } = await upload(froms)
@@ -78,7 +80,7 @@ async function onRecharge() {
     })
     return wait.value = false
   }
-  infos.value.pay_storageImage = await onUpload()
+
   if (infos.value.pay_storageImage === null) {
     showToast({
       message: t('top-up.img'),

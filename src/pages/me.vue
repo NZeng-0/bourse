@@ -6,7 +6,7 @@ import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
 import { useConf } from '~/store/useConf'
-import type { configlist } from '~/types'
+import type { configlist, msgTypes } from '~/types'
 
 const conf = useConf()
 const type = conf.data.find((e: configlist) => {
@@ -15,9 +15,7 @@ const type = conf.data.find((e: configlist) => {
 
 const msgStore = useMessage()
 
-const val = msgStore.msg ?? 0
-
-const msgLength = ref(val)
+const unReadList = shallowReactive<msgTypes[]>([])
 
 const userStore = useUser()
 const router = useRouter()
@@ -73,11 +71,18 @@ async function init() {
   money.value = data.value.data
 }
 
+function fetchTotal(arr: msgTypes[]) {
+  arr.forEach((item: msgTypes) => {
+    if (item.is_read === 0)
+      unReadList.push(item)
+  }, 0)
+}
+
 onMounted(async () => {
   user.value = userStore.data
   await init()
   const { data } = await getNoticeList()
-  msgLength.value = data.value.data.total
+  fetchTotal(data.value.data.data)
   msgStore.msg = data.value.data.data
 })
 </script>
@@ -91,9 +96,9 @@ onMounted(async () => {
       </div>
       <div flex="~" w="1/3" relative items-end justify-end text-white transition delay-150 ease-in-out>
         <img src="../assets/images/me/infrom.png" h5 w5 cursor-pointer @click="go('message/full')">
-        <div v-if="msgLength > 0">
+        <div v-if="unReadList.length > 0">
           <div bg="#FE3636" flex="~" absolute right--5 top--2 h5 w6 items-center justify-center rounded-3xl>
-            {{ msgLength }}
+            {{ unReadList.length }}
           </div>
         </div>
       </div>

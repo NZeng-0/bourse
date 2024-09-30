@@ -1,45 +1,42 @@
 <script setup lang="ts">
+import { getCustomerService } from '~/api'
+import type { serveType } from '~/types'
+
 const { t } = useI18n()
+
+const whats = new URL('../../assets/images/me/serve/whats.png', import.meta.url).href
+const online = new URL('../../assets/images/me/serve/online.png', import.meta.url).href
+const tel = new URL('../../assets/images/me/serve/tel.png', import.meta.url).href
+const line = new URL('../../assets/images/me/serve/line.png', import.meta.url).href
+const list = ref<serveType[]>([])
+
+function go(url: string) {
+  window.open(`http://${url}`)
+}
+
+onMounted(async () => {
+  const { data } = await getCustomerService()
+  list.value = data.value.data
+})
 </script>
 
 <template>
   <TheMenuHead :title="t('serve.contact')" />
   <div class="method-list" px6>
-    <div class="item">
-      <div flex="~" items-center>
-        <img src="../../assets/images/me/serve/online.png" class="icon">
-        <div class="text">
-          在线客服
+    <div v-for="(item, key) in list" :key class="item" @click="go(item.link)">
+      <template v-if="item.value === '1'">
+        <div flex="~" items-center>
+          <img v-if="item.key === 'zxkf'" :src="online" class="icon">
+          <img v-if="item.key === 'whatsapp'" :src="whats" class="icon">
+          <img v-if="item.key === 'telegram'" :src="tel" class="icon">
+          <img v-if="item.key === 'line'" :src="line" class="icon">
+
+          <div class="text">
+            {{ item.remark }}
+          </div>
         </div>
-      </div>
-      <img src="../../assets/images/me/serve/to.png" class="to">
-    </div>
-    <div class="item">
-      <div flex="~" items-center>
-        <img src="../../assets/images/me/serve/whats.png" class="icon">
-        <div class="text">
-          whatsapp
-        </div>
-      </div>
-      <img src="../../assets/images/me/serve/to.png" class="to">
-    </div>
-    <div class="item">
-      <div flex="~" items-center>
-        <img src="../../assets/images/me/serve/tel.png" class="icon">
-        <div class="text">
-          Telegram
-        </div>
-      </div>
-      <img src="../../assets/images/me/serve/to.png" class="to">
-    </div>
-    <div class="item">
-      <div flex="~" items-center>
-        <img src="../../assets/images/me/serve/line.png" class="icon">
-        <div class="text">
-          line
-        </div>
-      </div>
-      <img src="../../assets/images/me/serve/to.png" class="to">
+        <img src="../../assets/images/me/serve/to.png" class="to">
+      </template>
     </div>
   </div>
 </template>

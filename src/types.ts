@@ -209,3 +209,18 @@ export interface inviteType {
   withdraw_price: string
   uid: number
 }
+
+export interface serveType {
+  id: number
+  key: string
+  condition: null | string
+  value: string
+  link: string
+  remark: string
+  status: number
+  sort: number
+  type: number
+  start_time: null | string
+  end_time: null | string
+  create_time: string
+}

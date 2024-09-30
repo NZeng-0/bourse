@@ -12,8 +12,8 @@ const list: Ref<msgTypes[]> = ref(msgStore.msg)
 
 onMounted(async () => {
   const { data } = await getNoticeList()
-  msgStore.msg = data.value.data.data
-  list.value = data.value.data.data
+  msgStore.msg = data.value.data.data.filter((e: msgTypes) => e.is_read !== 1)
+  list.value = msgStore.msg
 })
 
 function go(key: number) {
@@ -31,13 +31,9 @@ function getBgStyle() {
     <div h-screen overflow-y-scroll px7.5>
       <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative>
         <div class="font-['youshe']" text-lg>
-          <!-- {{ t('me.message.title') }}: -->
           {{ item.title }}:
         </div>
         <div wfull>
-          <!-- <div> -->
-          <!-- {{  }} -->
-          <!-- </div> -->
           <div>
             {{ item.create_time }}
           </div>
@@ -47,7 +43,7 @@ function getBgStyle() {
             {{ item.message }}
           </p>
         </div>
-        <div wfull class="msg-display text-#4AADF0" @click="go(key)">
+        <div wfull class="msg-display text-#4AADF0" @click="go(item.id)">
           {{ t('me.message.details') }}
         </div>
       </div>

@@ -18,14 +18,17 @@ const infos = ref({
 const frontForms = new FormData()
 const backForms = new FormData()
 
-function readFront(file: any) {
+// in read request
+async function readFront(file: any) {
   // "file"表示给后台传的属性名字
   frontForms.append('file', file.file)
+  infos.value.idcard_front_image = await beforeSubmit(frontForms)
 }
 
-function readBack(file: any) {
+async function readBack(file: any) {
   // "file"表示给后台传的属性名字
   backForms.append('file', file.file)
+  infos.value.idcard_side_image = await beforeSubmit(backForms)
 }
 
 async function beforeSubmit(forms: FormData) {
@@ -39,9 +42,6 @@ async function afterSubmit() {
 
 async function submit() {
   // 先获取正面，在获取反面
-  infos.value.idcard_front_image = await beforeSubmit(frontForms)
-  infos.value.idcard_side_image = await beforeSubmit(backForms)
-
   if (wait.value) {
     showToast({
       message: t('assets.tips'),

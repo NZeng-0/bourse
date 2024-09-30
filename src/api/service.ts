@@ -268,3 +268,16 @@ export function getSpreadUserList() {
     url: '/index/user/getSpreadUserList',
   })
 }
+
+export function getCustomerService() {
+  return Request.get({
+    url: '/index/getCustomerService',
+  })
+}
+
+export function readUserNotice(id: number) {
+  return Request.post({
+    url: `/index/user/readUserNotice`,
+    data: { id },
+  })
+}
