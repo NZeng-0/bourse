@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { popupProps } from './type'
-import { useLocalCache } from '~/hook'
+import { usePopup } from '~/store/usePopupDay'
 
-const props = defineProps(popupProps)
+const { title, submit, message, onClose } = defineProps(popupProps)
 
-const { setCache } = useLocalCache()
+const proup = usePopup()
 
 const isShow = ref(true)
 
 function close() {
-  props.onClose!()
+  onClose!()
 }
-
 function toDayUnDisplay() {
-  setCache('popups', new Date(Date.now()).toISOString().split('T')[0])
+  proup.day = new Date(Date.now()).toISOString().split('T')[0]
   close()
 }
 
@@ -31,16 +30,16 @@ defineExpose({
     <div w-full rounded-2xl bg-white px3 pb7.5>
       <div flex="~" relative mt4.5 w-full justify-center text-center>
         <div text-center class="text-5.5 font-['youshe']" font-normal>
-          {{ props.title }}
+          {{ title }}
         </div>
         <div absolute right="0" flex="~" items-center justify-end @click="close()">
           <img src="../../assets/images/close.png" h6 w6>
         </div>
       </div>
-      <div mt9.25 text="center lg" v-html="props.message" />
+      <div mt9.25 text="center lg" v-html="message" />
       <div mt10 wfull flex="~" justify-around>
         <button h7.5 w25 rounded-lg bg-btn-select text-white @click="close()">
-          {{ props.submit }}
+          {{ submit }}
         </button>
         <button class="unDisplay" @click="toDayUnDisplay">
           不再显示

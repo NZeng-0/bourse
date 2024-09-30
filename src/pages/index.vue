@@ -5,10 +5,10 @@ import loading from '~/components/loading'
 import { useCompnay } from '~/store/useCompany'
 import type { IndexMsg, messageTypes, withdrawMethodType } from '~/types'
 import { useConf } from '~/store/useConf'
-import { useLocalCache } from '~/hook'
+import { usePopup } from '~/store/usePopupDay'
 
-const { getCache } = useLocalCache()
 const company = useCompnay()
+const proup = usePopup()
 
 const { t } = useI18n()
 const conf = useConf()
@@ -38,14 +38,15 @@ async function init() {
 }
 
 function showNextMessage(index = 0) {
-  const storeDate = getCache('popups')
+  const storeDate = proup.day
   const now = new Date(Date.now()).toISOString().split('T')[0]
+
+  if (now <= storeDate)
+    return
 
   if (messages.value === undefined)
     return
   if (index < messages.value!.length) {
-    if (now <= storeDate)
-      return
     const e = messages.value![index]
     pop({
       message: e.value,
