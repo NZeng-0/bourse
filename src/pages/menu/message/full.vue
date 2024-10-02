@@ -12,7 +12,7 @@ const list: Ref<msgTypes[]> = ref(msgStore.msg)
 
 onMounted(async () => {
   const { data } = await getNoticeList()
-  msgStore.msg = data.value.data.data.filter((e: msgTypes) => e.is_read !== 1)
+  msgStore.msg = data.value.data.data
   list.value = msgStore.msg
 })
 

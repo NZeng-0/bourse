@@ -246,7 +246,9 @@
       "front_and_back": "ID Card Front and Back",
       "front": "Click to Upload Front",
       "back": "Click to Upload Back",
-      "submit": "Submit Authentication"
+      "submit": "Submit Authentication",
+      "card_true": "ID number:",
+      "name_true": "Name:"
     },
     "language": {
       "title": "Change Language",
@@ -324,5 +326,6 @@
   "order_history": "Historical orders",
   "order_trading": "trading order",
   "yuEBao": "Yu'ebao balance",
-  "current_online": "Number of people currently online"
+  "current_online": "Number of people currently online",
+  "isEmpty": "No data yet"
 }

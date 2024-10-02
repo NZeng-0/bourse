@@ -23,8 +23,8 @@ onMounted(async () => {
 <template>
   <TheMenuHead :title="t('serve.contact')" />
   <div class="method-list" px6>
-    <div v-for="(item, key) in list" :key class="item" @click="go(item.link)">
-      <template v-if="item.value === '1'">
+    <template v-for="(item, key) in list" :key>
+      <div v-if="item.value === '1'" class="item" @click="go(item.link)">
         <div flex="~" items-center>
           <img v-if="item.key === 'zxkf'" :src="online" class="icon">
           <img v-if="item.key === 'whatsapp'" :src="whats" class="icon">
@@ -36,8 +36,8 @@ onMounted(async () => {
           </div>
         </div>
         <img src="../../assets/images/me/serve/to.png" class="to">
-      </template>
-    </div>
+      </div>
+    </template>
   </div>
 </template>
 

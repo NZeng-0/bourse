@@ -30,17 +30,17 @@ input::placeholder {
 .empty {
   border: 1px solid transparent;
   background: linear-gradient(#F9FAFB, #F9FAFB) padding-box,
-    repeating-linear-gradient(-45deg, #ccc 0, #ccc 0.5em, white 0, white 0.75em);
+  repeating-linear-gradient(-45deg, #ccc 0, #ccc 0.5em, white 0, white 0.75em);
 }
 
-p {
+/* p {
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
   word-break: break-all;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-}
+} */
 
 /* 文字滚动 */
 @keyframes scrolltext {

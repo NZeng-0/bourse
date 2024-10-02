@@ -13,6 +13,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { VantResolver } from '@vant/auto-import-resolver'
 
 export default defineConfig({
+  base: '/web/',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -35,7 +36,7 @@ export default defineConfig({
     // https://github.com/posva/unplugin-vue-router
     VueRouter(),
 
-    // https://github.com/antfu/unplugin-auto-import
+    // https://github.com/an tfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',

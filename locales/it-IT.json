@@ -246,7 +246,9 @@
       "front_and_back": "Anteriore e posteriore della carta d'identità",
       "front": "Click to upload the front",
       "back": "Clicca per caricare il retro",
-      "submit": "Invia autenticazione"
+      "submit": "Invia autenticazione",
+      "card_true": "Numero identificativo:",
+      "name_true": "Nome:"
     },
     "language": {
       "title": "Cambia lingua",
@@ -324,5 +326,6 @@
   "order_history": "Ordini storici",
   "order_trading": "ordine di negoziazione",
   "yuEBao": "Equilibrio Yu'ebao",
-  "current_online": "Numero di persone attualmente online"
+  "current_online": "Numero di persone attualmente online",
+  "isEmpty": "Nessun dato ancora"
 }

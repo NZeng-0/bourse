@@ -4,7 +4,7 @@ import type { dataType } from '~/types'
 
 const route = useRouter()
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
-
+const loading = ref(false)
 const { t } = useI18n()
 
 const list = ref<dataType[]>()
@@ -17,8 +17,10 @@ function back() {
 }
 
 onMounted(async () => {
+  loading.value = true
   const { data } = await getProductOrderList(2)
   list.value = data.value.data
+  loading.value = false
 })
 </script>
 
@@ -42,6 +44,7 @@ onMounted(async () => {
       </div>
     </div>
     <div h-screen overflow-y-scroll px2>
+      <TheEmpty v-if="loading" />
       <OrderItem v-for="(data, key) in list" :key :data :history="true" />
       <div h60 />
     </div>

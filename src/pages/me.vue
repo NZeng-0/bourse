@@ -54,6 +54,8 @@ function go(to: string) {
 }
 
 function transfer(tar: string) {
+  // eslint-disable-next-line no-console
+  console.log(type)
   router.push(tar)
 }
 

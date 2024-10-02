@@ -127,7 +127,9 @@
       "id_card": "número de identificação",
       "name": "Nome",
       "submit": "Enviar certificação",
-      "title": "Verificado"
+      "title": "Verificado",
+      "card_true": "Número de identificação:",
+      "name_true": "Nome:"
     },
     "balance": "Saldo da conta",
     "download": {
@@ -324,5 +326,6 @@
   "order_history": "Ordens históricas",
   "order_trading": "ordem de negociação",
   "yuEBao": "Equilíbrio Yu'ebao",
-  "current_online": "Número de pessoas atualmente online"
+  "current_online": "Número de pessoas atualmente online",
+  "isEmpty": "Ainda não há dados"
 }

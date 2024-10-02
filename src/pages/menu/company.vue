@@ -10,9 +10,18 @@ const company = useCompnay()
   <div bg-trading>
     <TheMenuHead :title="t('company.title')" />
     <div h-screen overflow-x-scroll px5>
-      <div v-html="company.data.value" />
+      <div mt-1 class="break-word">
+        <div v-html="company.data.value" />
+      </div>
       <div h50 />
     </div>
     <TheFooter :index="4" />
   </div>
 </template>
+
+<style scoped>
+.break-word {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+</style>

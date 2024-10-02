@@ -126,7 +126,9 @@
       "id_card": "kimlik Numarası",
       "name": "İsim",
       "submit": "Sertifikayı gönder",
-      "title": "Doğrulandı"
+      "title": "Doğrulandı",
+      "card_true": "Kimlik numarası:",
+      "name_true": "İsim:"
     },
     "balance": "Hesap bakiyesi",
     "download": {
@@ -324,5 +326,6 @@
   "order_history": "Tarihsel siparişler",
   "order_trading": "ticaret emri",
   "yuEBao": "Yu'ebao dengesi",
-  "current_online": "Şu anda çevrimiçi olan kişi sayısı"
+  "current_online": "Şu anda çevrimiçi olan kişi sayısı",
+  "isEmpty": "Henüz veri yok"
 }

@@ -1,4 +1,5 @@
 {
+  "isEmpty": "暂无数据",
   "current_online": "当前在线人数",
   "yuEBao": "余额宝余额",
   "order_trading": "交易订单",
@@ -257,7 +258,9 @@
     "auth": {
       "title": "实名认证",
       "name": "姓名",
+      "name_true": "姓名：",
       "id_card": "身份证号码",
+      "card_true": "证件号码：",
       "front_and_back": "身份证正反面",
       "front": "点击上传正面",
       "back": "点击上传反面",

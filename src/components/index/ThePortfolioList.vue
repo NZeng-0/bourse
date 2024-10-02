@@ -41,10 +41,10 @@ onMounted(async () => {
         </div>
         <div ml-2 mt-5 text-left>
           <div text-sm text-portolio-primary font-normal>
-            {{ e.product_code }}
+            {{ e.product_name }}
           </div>
           <div mt-2 text-xs text-portolio font-normal>
-            {{ e.product_name }}
+            STOSX
           </div>
         </div>
       </div>

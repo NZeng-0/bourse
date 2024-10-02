@@ -84,6 +84,7 @@ async function onRecharge() {
   })
   wait.value = false
   successAfter()
+  route.push('/menu/top-up')
 }
 </script>
 

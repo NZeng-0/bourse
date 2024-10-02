@@ -246,7 +246,9 @@
       "front_and_back": "身份證正反面",
       "front": "點擊上傳正面",
       "back": "點擊上傳反面",
-      "submit": "提交認證"
+      "submit": "提交認證",
+      "card_true": "證件號碼：",
+      "name_true": "姓名："
     },
     "language": {
       "title": "更換語言",
@@ -324,5 +326,6 @@
   "order_history": "歷史訂單",
   "order_trading": "交易訂單",
   "yuEBao": "餘額寶餘額",
-  "current_online": "目前線上人數"
+  "current_online": "目前線上人數",
+  "isEmpty": "暫無數據"
 }

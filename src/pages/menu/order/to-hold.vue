@@ -4,7 +4,7 @@ import { getProductOrderList } from '~/api'
 
 const route = useRouter()
 const { t } = useI18n()
-
+const loading = ref(false)
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 
 const list = ref<dataType[]>()
@@ -17,8 +17,10 @@ function back() {
 }
 
 onMounted(async () => {
+  loading.value = true
   const { data } = await getProductOrderList(1)
   list.value = data.value.data
+  loading.value = false
 })
 </script>
 
@@ -42,6 +44,7 @@ onMounted(async () => {
       </div>
     </div>
     <div h-screen overflow-y-scroll px2>
+      <TheEmpty v-if="loading" />
       <OrderItem v-for="(data, key) in list" :key :data :history="false" />
       <div h60 />
     </div>

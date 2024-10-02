@@ -104,10 +104,10 @@ onMounted(async () => {
           <img h12 w12 rounded-full :src="item.logo" @error="handleImageError(key)">
           <div text-left>
             <div>
-              {{ item.product_code }}
-            </div>
-            <div text-list-cn>
               {{ item.product_name }}
+            </div>
+            <div class="stosx">
+              STOSX
             </div>
           </div>
         </div>
@@ -132,3 +132,13 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.stosx {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 12px;
+  letter-spacing: 0em;
+  color: #8F92A1;
+}
+</style>

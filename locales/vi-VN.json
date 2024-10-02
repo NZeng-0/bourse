@@ -246,7 +246,9 @@
       "front_and_back": "Trái ngược với thẻ căn cước",
       "front": "Nhấp vào để tải lên phía trước",
       "back": "click upload ngược lại",
-      "submit": "Gửi chứng nhận"
+      "submit": "Gửi chứng nhận",
+      "card_true": "Số ID:",
+      "name_true": "Tên:"
     },
     "language": {
       "title": "Thay đổi ngôn ngữ",
@@ -324,5 +326,6 @@
   "order_history": "Lệnh lịch sử",
   "order_trading": "lệnh giao dịch",
   "yuEBao": "Số dư Yu'ebao",
-  "current_online": "Số người hiện đang trực tuyến"
+  "current_online": "Số người hiện đang trực tuyến",
+  "isEmpty": "Chưa có dữ liệu"
 }

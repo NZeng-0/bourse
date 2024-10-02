@@ -246,7 +246,9 @@
       "front_and_back": "身分証明書の表裏",
       "front": "表をクリックしてアップロード",
       "back": "裏をクリックしてアップロード",
-      "submit": "認証を送信"
+      "submit": "認証を送信",
+      "card_true": "ID番号:",
+      "name_true": "名前："
     },
     "language": {
       "title": "言語を変更",
@@ -324,5 +326,6 @@
   "order_history": "歴史的な注文",
   "order_trading": "取引注文",
   "yuEBao": "余額宝バランス",
-  "current_online": "現在オンラインになっている人の数"
+  "current_online": "現在オンラインになっている人の数",
+  "isEmpty": "まだデータがありません"
 }
