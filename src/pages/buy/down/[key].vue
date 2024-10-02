@@ -101,8 +101,8 @@ async function submit() {
 </script>
 
 <template>
-  <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px4>
-    <img :src="backUrl" h10 w10 @click="back()">
+  <div flex="~" h16 items-center justify-between rounded-b-2xl bg-white px4>
+    <img :src="backUrl" h6.25 w6.25 @click="back()">
     <div text-xl text-trading-title>
       {{ t('trading.buy_to_fall') }}
     </div>
@@ -125,9 +125,9 @@ async function submit() {
             </div>
             <span self-end text-xl>s</span>
           </div>
-          <div flex="~" mt1 wfull justify-center :text="timeIndex === key ? 'white' : '#969696'">
-            <div>{{ t('trading.buy.up') }}: 5%</div>
-            <div>{{ t('trading.buy.down') }}: 5%</div>
+          <div flex="~" mt4 wfull justify-center text-sm :text="timeIndex === key ? 'white' : '#969696'">
+            <div>{{ t('trading.buy.up') }}: {{ e.profit_rate }}%</div>
+            <div>{{ t('trading.buy.down') }}: {{ e.loss_rate }}%</div>
           </div>
         </div>
       </div>

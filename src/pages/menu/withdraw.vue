@@ -5,6 +5,7 @@ import type { withdrawType } from '~/types'
 const { t } = useI18n()
 
 const list = ref<withdrawType[]>()
+const loading = ref(false)
 
 function getBgStyle() {
   return ' py2.5 pl2.5 text-sm text-#030319'
@@ -27,8 +28,10 @@ function getStateStyle(state: number) {
 }
 
 onMounted(async () => {
+  loading.value = true
   const { data } = await getWithdrawList()
   list.value = data.value.data.data
+  loading.value = false
 })
 </script>
 
@@ -36,6 +39,7 @@ onMounted(async () => {
   <div class="font-['PingFang_SC']" bg-trading>
     <TheMenuHead :title="t('me.withdrawal_record.title')" />
     <div h-screen overflow-y-scroll px6.5>
+      <TheEmpty v-if="loading" />
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h41 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
           {{ t('me.time') }}: {{ item.create_time }}

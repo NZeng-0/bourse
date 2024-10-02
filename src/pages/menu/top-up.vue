@@ -4,6 +4,7 @@ import { getRechargeList } from '~/api'
 const { t } = useI18n()
 
 const list: Ref<recordTyps[]> = ref([])
+const loading = ref(false)
 
 interface recordTyps {
   id: number
@@ -40,8 +41,10 @@ function getStateStyle(state: number) {
 }
 
 onMounted(async () => {
+  loading.value = true
   const { data } = await getRechargeList()
   list.value = data.value.data.data
+  loading.value = false
 })
 </script>
 
@@ -49,6 +52,7 @@ onMounted(async () => {
   <div bg-trading>
     <TheMenuHead :title="t('me.recharge_record.title')" />
     <div h-screen overflow-y-scroll px6.5>
+      <TheEmpty v-if="loading" />
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h30 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
           {{ t('me.time') }}: {{ item.create_time }}

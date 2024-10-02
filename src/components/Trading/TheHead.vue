@@ -8,9 +8,9 @@ const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).hre
 </script>
 
 <template>
-  <div h25 flex="~" items-center justify-between>
+  <div h16 flex="~" items-center justify-between>
     <RouterLink :to="back">
-      <img :src="backUrl" h10 w10>
+      <img :src="backUrl" h6.25 w6.25>
     </RouterLink>
     <div text-xl text-trading-title>
       {{ title }}

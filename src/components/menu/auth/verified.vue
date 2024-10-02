@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { getAuthIdcard } from '~/api'
+
 const { t } = useI18n()
 
-const name = t('me.auth.name_true')
-const card = t('me.auth.card_true')
+const name = ref('')
+const card = ref('')
+
+onMounted(async () => {
+  const { data } = await getAuthIdcard()
+  name.value = t('me.auth.name_true') + (data.value.data.name || '')
+  card.value = t('me.auth.card_true') + data.value.data.idcard || ''
+})
 </script>
 
 <template>
@@ -10,16 +18,22 @@ const card = t('me.auth.card_true')
     <TheMenuHead :title="t('me.auth.title')" />
     <div mt8.75 px4 text-base>
       <div text-center>
-        <img src="../../assets/images/me/menu/verified.png" alt="verified" class="verified">
+        <img src="../../../assets/images/me/menu/verified.png" alt="verified" class="verified">
         <div class="text">
-          实名认证成功！
+          {{ t('authSuccess') }}!
         </div>
       </div>
       <div mt6>
-        <input type="text" :value="name" readonly h13 wfull border rounded-2xl pl5.4>
+        <input
+          v-model="name" type="text" readonly h13 wfull border rounded-2xl pl5.4
+          :placeholder="t('me.auth.name_true')"
+        >
       </div>
       <div mt6>
-        <input type="text" :value="card" readonly h13 wfull border rounded-2xl pl5.4>
+        <input
+          v-model="card" type="text" readonly h13 wfull border rounded-2xl pl5.4
+          :placeholder="t('me.auth.card_true')"
+        >
       </div>
     </div>
   </div>

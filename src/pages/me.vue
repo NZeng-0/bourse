@@ -54,8 +54,6 @@ function go(to: string) {
 }
 
 function transfer(tar: string) {
-  // eslint-disable-next-line no-console
-  console.log(type)
   router.push(tar)
 }
 
@@ -91,7 +89,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div flex="~" h27 items-center justify-between bg-white px8>
+    <div flex="~" h16 items-center justify-between bg-white px8>
       <div w="1/3" />
       <div flex="~" w="1/3" items-end justify-center text-xl text-trading-title>
         {{ t('me.title') }}
@@ -180,7 +178,7 @@ onMounted(async () => {
           </div>
           <div w="2/5" text-base>
             <p>
-              {{ item.title !== '公司简介' ? t(item.title) : item.title }}
+              {{ t(item.title) }}
             </p>
           </div>
           <div w="2/5" flex="~" justify-end>

@@ -242,12 +242,6 @@ export function getWithdrawList() {
   })
 }
 
-export function getAuthIdcard() {
-  return Request.get({
-    url: '/index/user/getAuthIdcard',
-  })
-}
-
 export function transferIn(money: string) {
   return Request.post({
     url: '/index/user/moneyPushInvestment',
@@ -279,5 +273,11 @@ export function readUserNotice(id: number) {
   return Request.post({
     url: `/index/user/readUserNotice`,
     data: { id },
+  })
+}
+
+export function getAuthIdcard() {
+  return Request.get({
+    url: '/index/user/getAuthIdcard',
   })
 }

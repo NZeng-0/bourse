@@ -7,9 +7,6 @@ const { data, history } = defineProps<{
 }>()
 
 const { t } = useI18n()
-
-const down_svg = new URL('~/assets/images/order/down.svg', import.meta.url).href
-const up_svg = new URL('~/assets/images/order/up.svg', import.meta.url).href
 </script>
 
 <template>
@@ -19,8 +16,18 @@ const up_svg = new URL('~/assets/images/order/up.svg', import.meta.url).href
         {{ data.product_name }}
       </div>
       <div ml-4>
-        <img v-if="Number.parseInt(data.earnings_money) > 0" :src="up_svg" alt="svg">
-        <img v-else :src="down_svg" alt="svg">
+        <div v-if="data.type === 2" class="tips bg-38B781">
+          <img src="../../assets/images/order/down.png" alt="png" class="icon">
+          <div class="text">
+            {{ t('trading.buy_to_fall') }}
+          </div>
+        </div>
+        <div v-else class="tips bg-DF2040">
+          <img src="../../assets/images/order/up.png" alt="png" class="icon">
+          <div class="text">
+            {{ t('trading.buy_up') }}
+          </div>
+        </div>
       </div>
     </div>
     <div flex="~" my-2 justify-between>
@@ -144,5 +151,39 @@ const up_svg = new URL('~/assets/images/order/up.svg', import.meta.url).href
 
 .color-38B781 {
   color: #38B781;
+}
+
+.bg-DF2040 {
+  background: #DF2040;
+}
+
+.bg-38B781 {
+  background: #38B781;
+}
+
+.tips {
+  width: 59px;
+  height: 21px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 6px;
+  gap: 4px;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0px;
+  color: #FFFFFF;
 }
 </style>

@@ -5,15 +5,11 @@ import { getProductOrderList } from '~/api'
 const route = useRouter()
 const { t } = useI18n()
 const loading = ref(false)
-const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 
 const list = ref<dataType[]>()
 
 function go(uri: string) {
   route.push(`/menu/order/${uri}`)
-}
-function back() {
-  route.back()
 }
 
 onMounted(async () => {
@@ -26,13 +22,7 @@ onMounted(async () => {
 
 <template>
   <div bg-trading>
-    <div flex="~" h27 items-center justify-between rounded-b-2xl bg-white px4>
-      <img :src="backUrl" h10 w10 @click="back()">
-      <div text-xl text-trading-title>
-        {{ t('order.title') }}
-      </div>
-      <div h10 w10 />
-    </div>
+    <TheMenuHead :title="t('order.newTitle')" />
     <div flex="~" mt2.8 justify-center px6>
       <div flex="~" h12 wfull items-center rounded-2xl bg-white p1.3 text-base>
         <button w="1/2" class="rounded-14" hfull bg-btn-select text-white leading-4 @click="go('to-hold')">

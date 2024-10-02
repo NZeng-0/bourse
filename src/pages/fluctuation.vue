@@ -6,9 +6,6 @@ import loading from '~/components/loading'
 import type { history, indexProduct } from '~/api/types'
 import { getProductDetail } from '~/api'
 
-const { t } = useI18n()
-const router = useRouter()
-
 const store = useProduct()
 const { data } = storeToRefs(store) as { data: Ref<indexProduct> }
 
@@ -172,21 +169,24 @@ onMounted(async () => {
   loading.close()
 })
 
-const idx = ref(0)
+const select = ref(0)
 function selected(current: number) {
-  return current === idx.value ? 'bg-#7751f1' : 'bg-#CBBCFB'
+  return select.value === current ? 'color-6A3BF6' : 'color-999999'
 }
 
 function loadImg() {
   product.value!.logo = icon
 }
 
-function style(isShow: boolean) {
-  return isShow ? 'bg-menu-selected text-white' : ''
+async function choose(index: number, type: string) {
+  select.value = index
+  await loadData(type)
 }
 
-function go(url: string) {
-  router.push(url)
+async function loadData(type: string) {
+  const { data } = await getProductDetail(product.value.id, type)
+  store.data = data.value.data
+  product.value = data.value.data
 }
 </script>
 
@@ -195,16 +195,6 @@ function go(url: string) {
     <TheHead back="/" :title="product?.product_name" />
   </div>
   <div h170 overflow-y-scroll bg-trading>
-    <div flex="~" wfull justify-center>
-      <div flex="~" mt5 h6.5 w40 rounded-full bg-menu text-sm>
-        <div :class="style(false)" flex="~" w="1/2" items-center justify-center rounded-full @click="go('fund')">
-          {{ t('trading.k_line') }}
-        </div>
-        <div :class="style(true)" w="1/2" flex="~" items-center justify-center rounded-full @click="go('fluctuation')">
-          {{ t('trading.undulate') }}
-        </div>
-      </div>
-    </div>
     <section>
       <div flex="~" mt5.5 wfull justify-between px-4>
         <div>
@@ -222,19 +212,20 @@ function go(url: string) {
         </div>
       </div>
       <div flex="~" mt3 justify-between px4 text-sm>
-        <div :class="selected(0)" flex="~" h8 w13 items-center justify-center rounded-xl @click="idx = 0">
+        <TheSwitched :k="false" />
+        <div :class="selected(0)" flex="~" w13 items-center justify-center rounded-xl @click="choose(0, '1day')">
           1D
         </div>
-        <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="idx = 1">
+        <div :class="selected(1)" flex="~" w13 items-center justify-center rounded-xl @click="choose(1, '1week')">
           1W
         </div>
-        <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="idx = 2">
+        <div :class="selected(2)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(2, '1mon')">
           1M
         </div>
-        <div :class="selected(3)" flex="~" h8 w13 items-center justify-center rounded-xl @click="idx = 3">
+        <div :class="selected(3)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(3, '1year')">
           1Y
         </div>
-        <div :class="selected(4)" flex="~" h8 w13 items-center justify-center rounded-xl @click="idx = 4">
+        <div :class="selected(4)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(4, '5year')">
           5Y
         </div>
       </div>
@@ -265,3 +256,23 @@ function go(url: string) {
   </div>
   <TheFooter :index="0" />
 </template>
+
+<style scoped>
+.color-6A3BF6 {
+  color: #6A3BF6;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0em;
+}
+
+.color-999999 {
+  color: #999999;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0em;
+}
+</style>

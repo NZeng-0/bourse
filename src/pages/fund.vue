@@ -308,16 +308,16 @@ onMounted(async () => {
       <div :class="selected(0)" flex="~" w13 items-center justify-center rounded-xl @click="choose(0, '1day')">
         1D
       </div>
-      <div :class="selected(1)" flex="~" w13 items-center justify-center rounded-xl @click="choose(1, '1day')">
+      <div :class="selected(1)" flex="~" w13 items-center justify-center rounded-xl @click="choose(1, '1week')">
         1W
       </div>
       <div :class="selected(2)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(2, '1mon')">
         1M
       </div>
-      <div :class="selected(3)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(3, '1week')">
+      <div :class="selected(3)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(3, '1year')">
         1Y
       </div>
-      <div :class="selected(4)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(4, '1year')">
+      <div :class="selected(4)" flex=" ~" w13 items-center justify-center rounded-xl @click="choose(4, '5year')">
         5Y
       </div>
     </div>

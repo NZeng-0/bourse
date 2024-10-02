@@ -1,4 +1,5 @@
 {
+  "authSuccess": "实名认证成功",
   "isEmpty": "暂无数据",
   "current_online": "当前在线人数",
   "yuEBao": "余额宝余额",
@@ -75,7 +76,7 @@
     }
   },
   "order": {
-    "title": "交易订单",
+    "newTitle": "持仓",
     "hold_order": "交易订单",
     "history": "历史明细",
     "buy_up": "买涨",

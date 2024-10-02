@@ -18,8 +18,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div flex="~" h30 items-center justify-between bg-white px6>
-    <img src="../../../assets/images/recommend/back.png" h10 w10 @click="back()">
+  <div flex="~" h16 items-center justify-between bg-white px6>
+    <img src="../../../assets/images/trading/back.png" h6.25 w6.25 @click="back()">
     <div class="text-5.5" text-center text-trading-title>
       {{ t('recommend.title') }}
     </div>
@@ -47,14 +47,6 @@ onMounted(async () => {
         <th>{{ t('recommend.history.withdraw') }}</th>
       </tr>
       <tr v-for="(e, key) in list" :key border-b="1px #F7F7F7" h9 text="center black">
-        <!-- {
-  "uid": 31,
-  "nickname": "ll",
-  "account": "admiin888",
-  "create_time": "2024-09-26 20:09:45",
-  "recharge_price": "0.00",
-  "withdraw_price": "0.00"
-} -->
         <td>
           {{ e.account }}
         </td>

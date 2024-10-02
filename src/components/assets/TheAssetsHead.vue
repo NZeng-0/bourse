@@ -15,9 +15,9 @@ function back() {
 </script>
 
 <template>
-  <div flex="~" h30 items-center justify-between rounded-b-2xl bg-white px6>
+  <div flex="~" h16 items-center justify-between rounded-b-2xl bg-white px6>
     <div w="1/3">
-      <img :src="back_url" h10 w10 @click="back()">
+      <img :src="back_url" h6.25 w6.25 @click="back()">
     </div>
     <div w="1/3">
       <div class="text-5.5" text-center text-trading-title>

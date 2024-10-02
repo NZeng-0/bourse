@@ -34,7 +34,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div flex="~ wrap" justify-center pt11>
+    <div flex="~ wrap" justify-center>
       <TheInfo :current="2" />
       <div mx5 mt2 h-screen wfull overflow-x-scroll text-sm>
         <TheEmpty v-if="loading" />
