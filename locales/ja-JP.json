@@ -63,7 +63,6 @@
     }
   },
   "order": {
-    "title": "取引注文",
     "hold_order": "保有注文",
     "history": "取引履歴",
     "buy_up": "買い注文",
@@ -78,7 +77,8 @@
     "buying_time": "購入時間",
     "settlement_time": "決済時間",
     "product_1": "USD 指数です",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "位置"
   },
   "popup": {
     "notice": "お知らせ",
@@ -327,5 +327,6 @@
   "order_trading": "取引注文",
   "yuEBao": "余額宝バランス",
   "current_online": "現在オンラインになっている人の数",
-  "isEmpty": "まだデータがありません"
+  "isEmpty": "まだデータがありません",
+  "authSuccess": "実名認証が成功しました"
 }

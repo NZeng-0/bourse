@@ -76,9 +76,9 @@
     "purchase_amount": "precio de compra",
     "remaining_time": "tiempo restante",
     "settlement_time": "tiempo de liquidación",
-    "title": "orden comercial",
     "product_1": "El índice USD",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Posición"
   },
   "popup": {
     "confrim": "Seguro",
@@ -327,5 +327,6 @@
   "order_trading": "orden comercial",
   "yuEBao": "equilibrio de yuebao",
   "current_online": "Número de personas actualmente en línea",
-  "isEmpty": "Aún no hay datos"
+  "isEmpty": "Aún no hay datos",
+  "authSuccess": "Autenticación de nombre real exitosa"
 }

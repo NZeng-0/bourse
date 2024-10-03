@@ -1,5 +1,5 @@
 <script setup lang=ts>
-import { getMoneyEarningsInfo, getNoticeList } from '~/api'
+import { getConfigList, getMoneyEarningsInfo, getNoticeList } from '~/api'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
@@ -9,9 +9,21 @@ import { useConf } from '~/store/useConf'
 import type { configlist, msgTypes } from '~/types'
 
 const conf = useConf()
-const type = conf.data.find((e: configlist) => {
-  return e.key === 'pay_show_type'
-}).value
+
+function getType() {
+  const res = conf.data.find(async (e: configlist) => {
+    if (!(e.key === 'pay_show_type')) {
+      const { data } = await getConfigList()
+      conf.data = data.value.data
+      init()
+    }
+    return e
+  })
+  if (res)
+    return res.value
+}
+
+const type = getType()
 
 const msgStore = useMessage()
 

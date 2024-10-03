@@ -221,9 +221,9 @@
     "purchase_amount": "para miktarı",
     "remaining_time": "kalan zaman",
     "settlement_time": "ödeme zamanı",
-    "title": "ticaret emri",
     "product_1": "USD indeks",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Konum"
   },
   "popup": {
     "confrim": "Elbette",
@@ -327,5 +327,6 @@
   "order_trading": "ticaret emri",
   "yuEBao": "Yu'ebao dengesi",
   "current_online": "Şu anda çevrimiçi olan kişi sayısı",
-  "isEmpty": "Henüz veri yok"
+  "isEmpty": "Henüz veri yok",
+  "authSuccess": "Gerçek adla kimlik doğrulama başarılı"
 }

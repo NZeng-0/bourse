@@ -63,7 +63,6 @@
     }
   },
   "order": {
-    "title": "Trading Order",
     "hold_order": "Position Order",
     "history": "Transaction History",
     "buy_up": "Buy to Rise",
@@ -78,7 +77,8 @@
     "buying_time": "Buying Time",
     "settlement_time": "Settlement Time",
     "product_1": "USD index",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Position"
   },
   "popup": {
     "notice": "Notice",
@@ -327,5 +327,6 @@
   "order_trading": "trading order",
   "yuEBao": "Yu'ebao balance",
   "current_online": "Number of people currently online",
-  "isEmpty": "No data yet"
+  "isEmpty": "No data yet",
+  "authSuccess": "Real-name authentication successful"
 }

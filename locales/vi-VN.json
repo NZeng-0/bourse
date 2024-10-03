@@ -63,7 +63,6 @@
     }
   },
   "order": {
-    "title": "Lệnh giao dịch",
     "hold_order": "Lệnh giữ vị trí",
     "history": "Chi tiết lịch sử",
     "buy_up": "mua tăng giá",
@@ -78,7 +77,8 @@
     "buying_time": "Mua thời gian",
     "settlement_time": "Thời gian giải quyết",
     "product_1": "USD Chỉ số",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Chức vụ"
   },
   "popup": {
     "notice": "Thông báo",
@@ -327,5 +327,6 @@
   "order_trading": "lệnh giao dịch",
   "yuEBao": "Số dư Yu'ebao",
   "current_online": "Số người hiện đang trực tuyến",
-  "isEmpty": "Chưa có dữ liệu"
+  "isEmpty": "Chưa có dữ liệu",
+  "authSuccess": "Xác thực tên thật thành công"
 }

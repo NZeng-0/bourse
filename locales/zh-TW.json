@@ -63,7 +63,6 @@
     }
   },
   "order": {
-    "title": "交易訂單",
     "hold_order": "持倉訂單",
     "history": "歷史明細",
     "buy_up": "買漲",
@@ -78,7 +77,8 @@
     "buying_time": "買入時間",
     "settlement_time": "結算時間",
     "product_1": "USD 指數",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "持倉"
   },
   "popup": {
     "notice": "公告",
@@ -327,5 +327,6 @@
   "order_trading": "交易訂單",
   "yuEBao": "餘額寶餘額",
   "current_online": "目前線上人數",
-  "isEmpty": "暫無數據"
+  "isEmpty": "暫無數據",
+  "authSuccess": "實名認證成功"
 }

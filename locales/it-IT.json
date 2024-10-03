@@ -63,7 +63,6 @@
     }
   },
   "order": {
-    "title": "Transaction Order",
     "hold_order": "Ordine di posizione",
     "history": "Dettagli storici",
     "buy_up": "Buy up",
@@ -78,7 +77,8 @@
     "buying_time": "buying time",
     "settlement_time": "Settlement time",
     "product_1": "Indice USD",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Posizione"
   },
   "popup": {
     "notice": "Annuncio",
@@ -327,5 +327,6 @@
   "order_trading": "ordine di negoziazione",
   "yuEBao": "Equilibrio Yu'ebao",
   "current_online": "Numero di persone attualmente online",
-  "isEmpty": "Nessun dato ancora"
+  "isEmpty": "Nessun dato ancora",
+  "authSuccess": "Autenticazione del nome reale riuscita"
 }

@@ -221,9 +221,9 @@
     "purchase_amount": "Сумма",
     "remaining_time": "оставшееся время",
     "settlement_time": "время расчета",
-    "title": "торговый приказ",
     "product_1": "USD индекс",
-    "product_2": "USD / EUR"
+    "product_2": "USD / EUR",
+    "newTitle": "Позиция"
   },
   "popup": {
     "confrim": "Конечно",
@@ -327,5 +327,6 @@
   "order_trading": "торговый приказ",
   "yuEBao": "Баланс Юэбао",
   "current_online": "Количество людей, которые сейчас онлайн",
-  "isEmpty": "Данных пока нет"
+  "isEmpty": "Данных пока нет",
+  "authSuccess": "Аутентификация по настоящему имени прошла успешно"
 }
