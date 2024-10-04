@@ -13,7 +13,6 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import { VantResolver } from '@vant/auto-import-resolver'
 
 export default defineConfig({
-  base: '/web/',
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,

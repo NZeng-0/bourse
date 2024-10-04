@@ -85,7 +85,8 @@ async function onRecharge() {
   })
   wait.value = false
   successAfter()
-  route.push('/menu/top-up')
+  if (data.value.code === 200)
+    route.push('/menu/top-up')
 }
 </script>
 

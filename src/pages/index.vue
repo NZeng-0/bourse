@@ -73,14 +73,14 @@ function getNum() {
 
 function animateNumber() {
   setInterval(() => {
-    min.value += 1
-    if (min.value >= max.value) {
-      min.value = max.value
-      const timer = setTimeout(() => {
-        min.value = store.value
-        clearTimeout(timer)
-      }, 1000)
-    }
+    min.value = Math.floor(Math.random() * (max.value - store.value) + store.value)
+    // if (min.value >= max.value) {
+    //   min.value = max.value
+    //   const timer = setTimeout(() => {
+    //     min.value = store.value
+    //     clearTimeout(timer)
+    //   }, 1000)
+    // }
   }, 1000)
 }
 

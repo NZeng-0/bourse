@@ -6,7 +6,6 @@ import { useUser } from '~/store/useUser'
 const userStore = useUser()
 
 const { t } = useI18n()
-const route = useRouter()
 
 const bank_info = reactive(userStore.data.bank_info)
 
@@ -19,10 +18,6 @@ const infos = ref<binding>({
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
-}
-
-function go() {
-  route.push(`/binding/usdt`)
 }
 
 async function after() {
@@ -58,7 +53,7 @@ async function submit() {
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <img src="../../assets/images/assets/bank.png" h4.25 w4.25>
-          <div ml1.25 @click="go()">
+          <div ml1.25>
             {{ t('assets.recharge.bank.use') }}
           </div>
           <div ml0.75>
@@ -67,20 +62,20 @@ async function submit() {
         </div>
       </div>
       <input
-        type="text" :value="bank_info.bank_user_name" :readonly="bank_info.bank_user_name !== ''"
+        type="text" :value="bank_info.bank_user_name"
         :placeholder="t('assets.withdrawal.bank.name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
       >
       <input
-        v-model="infos.bank_name" :readonly="bank_info.bank_name !== ''" type="text"
+        v-model="infos.bank_name" type="text"
         :placeholder="t('assets.withdrawal.bank.bank_name')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59
       >
       <input
-        v-model="infos.bank_branch_name" :readonly="bank_info.bank_branch_name !== ''" type="text"
+        v-model="infos.bank_branch_name" type="text"
         :placeholder="t('assets.withdrawal.bank.bank_of_deposit')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
         opacity59
       >
       <input
-        v-model="infos.bank_account" :readonly="bank_info.bank_account !== ''" type="text"
+        v-model="infos.bank_account" type="text"
         :placeholder="t('assets.withdrawal.bank.bank_card_number')" mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm
         opacity59
       >

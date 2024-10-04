@@ -44,9 +44,6 @@ async function onLogin() {
 function scoped() {
   return 'h12 w70 border rounded-2xl text-black  border="#E7E7E7"'
 }
-
-// eslint-disable-next-line no-console
-console.log(import.meta.url)
 </script>
 
 <template>

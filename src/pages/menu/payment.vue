@@ -7,18 +7,18 @@ const { t } = useI18n()
 
 const router = useRouter()
 
-const auth = userStore.data.auth_status === 1
+const { bank_account, wallet_address } = userStore.data.bank_info
 
 const list = [
   {
     title: t('me.payment_method.type.1'),
     icon: new URL('~/assets/images/me/menu/bank.png', import.meta.url).href,
-    to: auth ? '/binding/bank' : '/unBinding/bank',
+    to: bank_account ? '/binding/bank' : '/unBinding/bank',
   },
   {
     title: t('me.payment_method.type.2'),
     icon: new URL('~/assets/images/me/menu/usdt.png', import.meta.url).href,
-    to: auth ? '/binding/usdt' : '/unBinding/usdt',
+    to: wallet_address ? '/binding/usdt' : '/unBinding/usdt',
   },
 ]
 

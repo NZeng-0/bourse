@@ -6,24 +6,26 @@ import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
 import { useConf } from '~/store/useConf'
-import type { configlist, msgTypes } from '~/types'
+import type { msgTypes } from '~/types'
 
 const conf = useConf()
 
-function getType() {
-  const res = conf.data.find(async (e: configlist) => {
-    if (!(e.key === 'pay_show_type')) {
-      const { data } = await getConfigList()
-      conf.data = data.value.data
-      init()
-    }
-    return e
-  })
-  if (res)
-    return res.value
-}
+const type = ref('')
 
-const type = getType()
+async function getType() {
+  const isEmpty = ref(true)
+  for (const item of conf.data) {
+    if (item.key === 'pay_show_type') {
+      isEmpty.value = false
+      type.value = item.value
+    }
+  }
+  if (isEmpty.value) {
+    const { data } = await getConfigList()
+    conf.data = data.value.data
+    await getType()
+  }
+}
 
 const msgStore = useMessage()
 
@@ -90,7 +92,15 @@ function fetchTotal(arr: msgTypes[]) {
   }, 0)
 }
 
+function transferIn(type: string) {
+  if (type === '1')
+    return '/top-up/info/usdt'
+
+  return '/top-up/usdt'
+}
+
 onMounted(async () => {
+  await getType()
   user.value = userStore.data
   await init()
   const { data } = await getNoticeList()
@@ -175,7 +185,7 @@ onMounted(async () => {
           </div>
         </div>
         <div flex="~" justify-between px4 text-white>
-          <button w="1/2" h8.8 :class="scoped()" @click="transfer(type === '1' ? '/top-up/info/usdt' : '/top-up/usdt')">
+          <button w="1/2" h8.8 :class="scoped()" @click="transfer(transferIn(type))">
             {{ t('me.recharge') }}
           </button>
           <button w="1/2" h8.8 :class="scoped()" @click="transfer('/withdraw/balance')">
