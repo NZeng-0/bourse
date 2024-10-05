@@ -31,25 +31,24 @@ function getBgStyle() {
 <template>
   <div bg-trading font-normal opacity70>
     <TheMenuHead :title="t('me.message.title')" />
-    <div h-screen overflow-y-scroll px7.5>
+    <div h-screen overflow-y-scroll px5>
       <TheEmpty v-if="loading && list.length > 0" />
       <template v-else>
         <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative>
           <div class="font-['youshe']" text-lg>
-            {{ item.title }}:
+            {{ t('me.message.title') }}:
           </div>
-          <div wfull>
+          <div wfull opacity60>
+            {{ item.title }}
             <div>
               {{ item.create_time }}
             </div>
           </div>
           <div my1 wfull text-sm opacity60>
-            <p>
-              {{ item.message }}
-            </p>
+            <p v-html="item.message" />
           </div>
           <div wfull class="msg-display text-#4AADF0" @click="go(item.id)">
-            {{ t('me.message.details') }}
+            {{ item.is_read === 0 ? t('me.message.details') : t('me.message.read') }}
           </div>
         </div>
       </template>
@@ -58,3 +57,12 @@ function getBgStyle() {
     <TheFooter :index="4" />
   </div>
 </template>
+
+<style scoped>
+p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+</style>

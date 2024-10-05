@@ -7,6 +7,7 @@ import message from '../assets/images/me/menu/message.png'
 import secure from '../assets/images/me/menu/secure.png'
 import company from '../assets/images/me/menu/company.png'
 import download from '../assets/images/me/menu/download.png'
+import recommend from '../assets/images/me/menu/recommend.png'
 
 export const menu = [
   {
@@ -14,65 +15,83 @@ export const menu = [
     icon: title,
     right: ' ',
     to: 'withdraw',
+    class: false,
   },
   {
     title: 'me.recharge_record.title',
     icon: top_up,
     right: ' ',
     to: 'top-up',
+    class: false,
   },
   {
     title: 'order_trading',
     icon: title,
     right: ' ',
     to: 'order/to-hold',
+    class: false,
   },
   {
     title: 'order_history',
     icon: top_up,
     right: ' ',
     to: 'order/history',
+    class: false,
   },
   {
     title: 'me.payment_method.title',
     icon: method,
     right: ' ',
     to: 'payment',
+    class: false,
   },
   {
     title: 'me.auth.title',
     icon: auth,
     right: ' ',
     to: 'auth',
+    class: false,
   },
   {
     title: 'me.language.title',
     icon: language,
     right: 'me.language.current',
     to: 'language',
+    class: false,
   },
   {
-    title: 'me.message.title',
+    title: 'me.message.notice',
     icon: message,
     right: ' ',
     to: 'message/list',
+    class: true,
   },
   {
     title: 'me.secure.title',
     icon: secure,
     right: ' ',
     to: 'secure',
+    class: false,
   },
   {
     title: 'company.title',
     icon: company,
     right: ' ',
     to: 'company',
+    class: false,
   },
   {
     title: 'me.download.title',
     icon: download,
     right: ' ',
+    to: 'download',
+    class: false,
+  },
+  {
+    title: 'recommend.title',
+    icon: recommend,
+    right: ' ',
     to: 'recommend',
+    class: false,
   },
 ]

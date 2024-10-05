@@ -17,7 +17,7 @@ const moneyIndex = ref(-1)
 const timeList = store.data.time_scheme_list
 const moneyList = store.data.investment_money_list
 
-const { create_order_max_money, create_order_min_money } = store.data
+const { create_order_max_money, create_order_min_money, low_status } = store.data
 
 const submitData = ref({
   product_id: store.data.id,
@@ -125,7 +125,7 @@ async function submit() {
             </div>
             <span self-end text-xl>s</span>
           </div>
-          <div flex="~" mt4 wfull justify-center text-sm :text="timeIndex === key ? 'white' : '#969696'">
+          <div v-if="low_status === 1" flex="~" mt4 wfull justify-center text-sm :text="timeIndex === key ? 'white' : '#969696'">
             <div>{{ t('trading.buy.up') }}: {{ e.profit_rate }}%</div>
             <div>{{ t('trading.buy.down') }}: {{ e.loss_rate }}%</div>
           </div>

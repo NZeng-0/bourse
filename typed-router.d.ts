@@ -36,6 +36,7 @@ declare module 'vue-router/auto-routes' {
     '/menu/company': RouteRecordInfo<'/menu/company', '/menu/company', Record<never, never>, Record<never, never>>,
     '/menu/language': RouteRecordInfo<'/menu/language', '/menu/language', Record<never, never>, Record<never, never>>,
     '/menu/message/detail/[id]': RouteRecordInfo<'/menu/message/detail/[id]', '/menu/message/detail/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    '/menu/message/detail/list/[id]': RouteRecordInfo<'/menu/message/detail/list/[id]', '/menu/message/detail/list/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/menu/message/full': RouteRecordInfo<'/menu/message/full', '/menu/message/full', Record<never, never>, Record<never, never>>,
     '/menu/message/list': RouteRecordInfo<'/menu/message/list', '/menu/message/list', Record<never, never>, Record<never, never>>,
     '/menu/order/history': RouteRecordInfo<'/menu/order/history', '/menu/order/history', Record<never, never>, Record<never, never>>,

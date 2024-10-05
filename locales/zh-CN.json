@@ -273,7 +273,9 @@
     },
     "message": {
       "title": "消息通知",
-      "details": "查看详情"
+      "details": "查看详情",
+      "read": "已读",
+      "notice": "最新公告"
     },
     "secure": {
       "title": "账号与安全",

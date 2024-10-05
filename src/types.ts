@@ -142,6 +142,18 @@ export interface msgTypes {
   create_time: string
 }
 
+export interface notifyType {
+  id: number
+  name: string
+  value: string
+  status: number
+  is_top: number
+  sort: number
+  start_time: string
+  end_time: string
+  create_time: string
+}
+
 export interface configlist {
   id: number
   key: string

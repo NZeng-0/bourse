@@ -1,14 +1,24 @@
 <script setup lang=ts>
-import { getConfigList, getMoneyEarningsInfo, getNoticeList } from '~/api'
+import {
+  getConfigList,
+  getIndexNoticeList,
+  getMoneyEarningsInfo,
+  getNoticeList,
+} from '~/api'
 import { useLocalCache } from '~/hook'
 import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
 import { useConf } from '~/store/useConf'
-import type { msgTypes } from '~/types'
+import type {
+  configlist,
+  msgTypes,
+} from '~/types'
+import { useNotifyList } from '~/store/useNotifyList'
 
 const conf = useConf()
+const notifyList = useNotifyList()
 
 const type = ref('')
 
@@ -64,6 +74,11 @@ function width() {
 }
 
 function go(to: string) {
+  if (to === 'download') {
+    const donwload = conf.data.find((item: configlist) => item.key === 'app_download_url')
+    window.open(`https://${donwload.link}`)
+    return
+  }
   router.push(`/menu/${to}`)
 }
 
@@ -99,10 +114,16 @@ function transferIn(type: string) {
   return '/top-up/usdt'
 }
 
+async function getNotice() {
+  const { data } = await getIndexNoticeList()
+  notifyList.notifyList = data.value.data.data
+}
+
 onMounted(async () => {
   await getType()
   user.value = userStore.data
   await init()
+  await getNotice()
   const { data } = await getNoticeList()
   fetchTotal(data.value.data.data)
   msgStore.msg = data.value.data.data
@@ -198,10 +219,15 @@ onMounted(async () => {
           <div w="1/5">
             <img :src="getFullUrl(item.icon)" h10 w10>
           </div>
-          <div w="2/5" text-base>
+          <div w="2/5" relative text-base>
             <p>
               {{ t(item.title) }}
             </p>
+            <div v-if="item.class">
+              <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1 text="white xs">
+                {{ notifyList.notifyList.length }}
+              </div>
+            </div>
           </div>
           <div w="2/5" flex="~" justify-end>
             <div v-if="item.right !== ' '" text-sm class="text-#9EA3AE">
