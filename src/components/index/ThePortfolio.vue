@@ -8,7 +8,9 @@ const { t } = useI18n()
       {{ t('index.stock_market') }}
     </div>
     <div text-sm text-all-list font-normal>
-      {{ t('index.more') }}
+      <RouterLink to="/more">
+        {{ t('index.more') }}
+      </RouterLink>
     </div>
   </div>
   <ThePortfolioList />

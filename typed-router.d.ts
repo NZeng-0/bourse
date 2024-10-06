@@ -48,6 +48,7 @@ declare module 'vue-router/auto-routes' {
     '/menu/serve': RouteRecordInfo<'/menu/serve', '/menu/serve', Record<never, never>, Record<never, never>>,
     '/menu/top-up': RouteRecordInfo<'/menu/top-up', '/menu/top-up', Record<never, never>, Record<never, never>>,
     '/menu/withdraw': RouteRecordInfo<'/menu/withdraw', '/menu/withdraw', Record<never, never>, Record<never, never>>,
+    '/more': RouteRecordInfo<'/more', '/more', Record<never, never>, Record<never, never>>,
     '/passwrod/login': RouteRecordInfo<'/passwrod/login', '/passwrod/login', Record<never, never>, Record<never, never>>,
     '/passwrod/payment': RouteRecordInfo<'/passwrod/payment', '/passwrod/payment', Record<never, never>, Record<never, never>>,
     '/register': RouteRecordInfo<'/register', '/register', Record<never, never>, Record<never, never>>,

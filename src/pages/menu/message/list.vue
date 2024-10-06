@@ -6,9 +6,9 @@ import { useNotifyList } from '~/store/useNotifyList'
 const { t } = useI18n()
 const route = useRouter()
 const notifyStore = useNotify()
-const notifyList = useNotifyList()
+const listStore = useNotifyList()
 
-const list: Ref<notifyType[]> = ref(notifyList.notify)
+const list: Ref<notifyType[]> = ref(listStore.notifyList)
 
 function getBgStyle() {
   return 'py3 pl2.75 text-sm text-black mt2.5 h45 rounded-2.25 bg-white  pr4'
