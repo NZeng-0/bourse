@@ -30,6 +30,8 @@ declare module 'vue' {
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
     Unverified: typeof import('./src/components/menu/auth/unverified.vue')['default']
     VanNoticeBar: typeof import('vant/es')['NoticeBar']
+    VanSwipe: typeof import('vant/es')['Swipe']
+    VanSwipeItem: typeof import('vant/es')['SwipeItem']
     VanUploader: typeof import('vant/es')['Uploader']
     Verified: typeof import('./src/components/menu/auth/verified.vue')['default']
   }

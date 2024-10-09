@@ -10,6 +10,7 @@ import { useCompnay } from '~/store/useCompany'
 import type {
   IndexMsg,
   messageTypes,
+  swipeType,
   withdrawMethodType,
 } from '~/types'
 import { useConf } from '~/store/useConf'
@@ -29,9 +30,12 @@ const slide = ref<messageTypes[]>()
 const min = ref<number>(0)
 const max = ref<number>(1)
 const store = ref<number>(0)
+const onlineShow = ref<boolean>(true)
+const swipe = ref<swipeType[]>([])
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()
+  swipe.value = data.value.data.lbt
   messages.value = data.value.data.pop_window_message
   company.data = data.value.data.company_explain
 }
@@ -80,6 +84,10 @@ function getNum() {
 }
 
 function animateNumber() {
+  const online = conf.data.find((item: withdrawMethodType) => item.key === 'online_number_show').value
+  online === '0' ? onlineShow.value = false : onlineShow.value = true
+  if (online === '0')
+    return
   setInterval(() => {
     min.value = Math.floor(Math.random() * (max.value - store.value) + store.value)
   }, 1000)
@@ -98,15 +106,9 @@ onMounted(async () => {
 
   loading.show()
   await init()
-  if (conf.data === undefined) {
-    const { data } = await getConfigList()
-    conf.data = data.value.data
-
-    getNum()
-  }
-  else {
-    getNum()
-  }
+  const { data } = await getConfigList()
+  conf.data = data.value.data
+  getNum()
 
   setTimeout(() => {
     loading.close()
@@ -118,11 +120,11 @@ onMounted(async () => {
 
 <template>
   <div p="x-4 y-10">
-    <TheCard />
+    <TheCard :swipe />
     <van-notice-bar :scrollable="true" :left-icon="left_icon" color="#000000" background="white">
       <div v-for="(item, key) in slide" :key v-html="item?.value" />
     </van-notice-bar>
-    <div class="person-num">
+    <div v-if="onlineShow" class="person-num">
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">
         {{ t('current_online') }}：{{ min }}
