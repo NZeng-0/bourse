@@ -256,7 +256,9 @@
     },
     "message": {
       "title": "Notifica del messaggio",
-      "details": "Visualizza dettagli"
+      "details": "Visualizza dettagli",
+      "notice": "Ultimo annuncio",
+      "read": "Leggere"
     },
     "secure": {
       "title": "Conto e sicurezza",
@@ -328,5 +330,6 @@
   "yuEBao": "Equilibrio Yu'ebao",
   "current_online": "Numero di persone attualmente online",
   "isEmpty": "Nessun dato ancora",
-  "authSuccess": "Autenticazione del nome reale riuscita"
+  "authSuccess": "Autenticazione del nome reale riuscita",
+  "edit": "Se è necessario modificare, contattare il servizio clienti online"
 }

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { getProductDetail } from '~/api'
+import {
+  getProductDetail,
+  getProductTakeList,
+} from '~/api'
 import type { indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
 
@@ -28,7 +31,8 @@ function handleImageError(key: number) {
 }
 
 onMounted(async () => {
-  list.value = await getProduct()
+  const { data } = await getProductTakeList()
+  list.value = data.value.data
 })
 </script>
 

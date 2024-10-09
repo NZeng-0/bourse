@@ -142,7 +142,9 @@
     "member": "Sıradan üye",
     "message": {
       "details": "ayrıntıları kontrol et",
-      "title": "bildiri"
+      "title": "bildiri",
+      "notice": "Son duyuru",
+      "read": "Okumak"
     },
     "payment_method": {
       "binding": "bağlayıcı",
@@ -328,5 +330,6 @@
   "yuEBao": "Yu'ebao dengesi",
   "current_online": "Şu anda çevrimiçi olan kişi sayısı",
   "isEmpty": "Henüz veri yok",
-  "authSuccess": "Gerçek adla kimlik doğrulama başarılı"
+  "authSuccess": "Gerçek adla kimlik doğrulama başarılı",
+  "edit": "Değiştirmeniz gerekiyorsa lütfen çevrimiçi müşteri hizmetlerine başvurun."
 }

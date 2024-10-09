@@ -256,7 +256,9 @@
     },
     "message": {
       "title": "Message Notification",
-      "details": "View Details"
+      "details": "View Details",
+      "notice": "Latest announcement",
+      "read": "Read"
     },
     "secure": {
       "title": "Account and Security",
@@ -328,5 +330,6 @@
   "yuEBao": "Yu'ebao balance",
   "current_online": "Number of people currently online",
   "isEmpty": "No data yet",
-  "authSuccess": "Real-name authentication successful"
+  "authSuccess": "Real-name authentication successful",
+  "edit": "If you need to modify, please contact online customer service"
 }

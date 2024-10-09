@@ -256,7 +256,9 @@
     },
     "message": {
       "title": "Thông báo tin nhắn",
-      "details": "Xem chi tiết"
+      "details": "Xem chi tiết",
+      "notice": "Thông báo mới nhất",
+      "read": "Đọc"
     },
     "secure": {
       "title": "Số tài khoản và bảo mật",
@@ -328,5 +330,6 @@
   "yuEBao": "Số dư Yu'ebao",
   "current_online": "Số người hiện đang trực tuyến",
   "isEmpty": "Chưa có dữ liệu",
-  "authSuccess": "Xác thực tên thật thành công"
+  "authSuccess": "Xác thực tên thật thành công",
+  "edit": "Nếu bạn cần sửa đổi, vui lòng liên hệ với dịch vụ khách hàng trực tuyến"
 }

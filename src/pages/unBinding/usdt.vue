@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { submitWithdrawAccount } from '~/api'
+import { getUserInfo, submitWithdrawAccount } from '~/api'
 import type { binding } from '~/api/types'
 import { useUser } from '~/store/useUser'
 
 const userStore = useUser()
 const { t } = useI18n()
+const router = useRouter()
 
 const bank_info = reactive(userStore.data.bank_info)
 
@@ -15,6 +16,12 @@ const infos = ref<binding>({
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10.25 items-center justify-between text-sm'
+}
+
+async function after() {
+  const { data } = await getUserInfo()
+  userStore.data = data.value.data
+  router.push('/binding/bank')
 }
 
 async function submit() {
@@ -31,6 +38,7 @@ async function submit() {
     message: data.value.msg,
   })
   wait.value = false
+  await after()
 }
 </script>
 

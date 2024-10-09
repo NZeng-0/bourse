@@ -222,7 +222,9 @@
     "member": "Miembro ordinario",
     "message": {
       "details": "comprobar los detalles",
-      "title": "notificación"
+      "title": "notificación",
+      "notice": "Último anuncio",
+      "read": "Leer"
     },
     "payment_method": {
       "binding": "vinculante",
@@ -328,5 +330,6 @@
   "yuEBao": "equilibrio de yuebao",
   "current_online": "Número de personas actualmente en línea",
   "isEmpty": "Aún no hay datos",
-  "authSuccess": "Autenticación de nombre real exitosa"
+  "authSuccess": "Autenticación de nombre real exitosa",
+  "edit": "Si necesita modificarlo, comuníquese con el servicio de atención al cliente en línea."
 }

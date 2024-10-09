@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { getAuthIdcard } from '~/api'
+import { useAuth } from '~/store/useAuth'
 
 const { t } = useI18n()
+const authStore = useAuth()
 
-const name = ref('')
-const card = ref('')
-
-onMounted(async () => {
-  const { data } = await getAuthIdcard()
-  name.value = t('me.auth.name_true') + (data.value.data.name || '')
-  card.value = t('me.auth.card_true') + data.value.data.idcard || ''
-})
+const name = ref(t('me.auth.name_true') + (authStore.auth.name || ''))
+const card = ref(t('me.auth.card_true') + (authStore.auth.idcard || ''))
 </script>
 
 <template>

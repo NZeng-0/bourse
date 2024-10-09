@@ -35,9 +35,10 @@ function go() {
 
 const froms = new FormData()
 
-function read(file: any) {
+async function read(file: any) {
   // "file"表示给后台传的属性名字
   froms.append('file', file.file)
+  infos.value.pay_storageImage = await onUpload()
 }
 
 async function onUpload() {
@@ -72,7 +73,6 @@ async function onRecharge() {
     return wait.value = false
   }
 
-  infos.value.pay_storageImage = await onUpload()
   if (infos.value.pay_storageImage === null) {
     showToast({
       message: t('top-up.img'),

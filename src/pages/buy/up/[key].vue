@@ -21,7 +21,11 @@ const auth = conf.data.find((item: configlist) => {
   return item.key === 'auth_open'
 }).value === '1'
 
-const { create_order_max_money, create_order_min_money, profit_status } = store.data
+const {
+  create_order_max_money,
+  create_order_min_money,
+  profit_status,
+} = store.data
 
 const submitData = ref({
   product_id: store.data.id,
@@ -144,7 +148,10 @@ function parseProfit(value: string): number {
               </div>
               <span self-end text-xl>s</span>
             </div>
-            <div v-if="profit_status === 1" flex="~" mt4 wfull justify-between text-sm :text="timeIndex === key ? 'white' : '#969696'">
+            <div
+              v-if="profit_status === 1" flex="~" mt4 wfull justify-between text-sm
+              :text="timeIndex === key ? 'white' : '#969696'"
+            >
               <div>{{ t('trading.buy.up') }}: {{ e.profit_rate }}%</div>
               <div>{{ t('trading.buy.down') }}: {{ e.loss_rate }}%</div>
             </div>

@@ -28,10 +28,6 @@ function go() {
 const proof = ref([])
 const froms = new FormData()
 
-function read(file: any) {
-  froms.append('file', file.file)
-}
-
 const bank = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
@@ -44,6 +40,11 @@ const infos = ref<recharge>({
 })
 
 const wait = ref(false)
+
+async function read(file: any) {
+  froms.append('file', file.file)
+  infos.value.pay_storageImage = await onUpload()
+}
 
 async function onUpload() {
   const { data, error } = await upload(froms)
@@ -77,7 +78,6 @@ async function onRecharge() {
     return wait.value = false
   }
 
-  infos.value.pay_storageImage = await onUpload()
   if (infos.value.pay_storageImage === null) {
     showToast({
       message: t('top-up.img'),

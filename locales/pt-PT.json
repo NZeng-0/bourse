@@ -143,7 +143,9 @@
     "member": "Membro comum",
     "message": {
       "details": "verifique os detalhes",
-      "title": "notificação"
+      "title": "notificação",
+      "notice": "Último anúncio",
+      "read": "Ler"
     },
     "payment_method": {
       "binding": "vinculativo",
@@ -328,5 +330,6 @@
   "yuEBao": "Equilíbrio Yu'ebao",
   "current_online": "Número de pessoas atualmente online",
   "isEmpty": "Ainda não há dados",
-  "authSuccess": "Autenticação de nome real bem-sucedida"
+  "authSuccess": "Autenticação de nome real bem-sucedida",
+  "edit": "Se precisar de modificar, contacte o atendimento ao cliente on-line"
 }

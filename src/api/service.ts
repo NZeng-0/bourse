@@ -281,3 +281,9 @@ export function getAuthIdcard() {
     url: '/index/user/getAuthIdcard',
   })
 }
+
+export function getProductTakeList() {
+  return Request.get({
+    url: '/index/product/getProductTakeList',
+  })
+}

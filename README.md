@@ -1,5 +1,4 @@
 # todos
 
-- 协商考虑是否使用 webSocked 实现实时推送
-- 首页数字跳动问题
-- 充值后跳转问题
+- create_order_min_money 订单最小金额
+- 获取实名信息请求在路由前发送，显示使用 `store`

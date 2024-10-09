@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import pop from '~/components/popup'
-import { getConfigList, getIndexMsg, getIndexSlideshowMessage } from '~/api'
+import {
+  getConfigList,
+  getIndexMsg,
+  getIndexSlideshowMessage,
+} from '~/api'
 import loading from '~/components/loading'
 import { useCompnay } from '~/store/useCompany'
-import type { IndexMsg, messageTypes, withdrawMethodType } from '~/types'
+import type {
+  IndexMsg,
+  messageTypes,
+  withdrawMethodType,
+} from '~/types'
 import { useConf } from '~/store/useConf'
 import { usePopup } from '~/store/usePopupDay'
 

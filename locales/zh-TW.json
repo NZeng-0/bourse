@@ -256,7 +256,9 @@
     },
     "message": {
       "title": "消息通知",
-      "details": "查看詳情"
+      "details": "查看詳情",
+      "notice": "最新公告",
+      "read": "已讀"
     },
     "secure": {
       "title": "賬號與安全",
@@ -328,5 +330,6 @@
   "yuEBao": "餘額寶餘額",
   "current_online": "目前線上人數",
   "isEmpty": "暫無數據",
-  "authSuccess": "實名認證成功"
+  "authSuccess": "實名認證成功",
+  "edit": "如需修改請聯絡線上客服"
 }

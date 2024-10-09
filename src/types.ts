@@ -236,3 +236,15 @@ export interface serveType {
   end_time: null | string
   create_time: string
 }
+
+export interface authType {
+  id: number
+  uid: number
+  name: null | string
+  idcard: string
+  idcard_front_image: string
+  idcard_side_image: string
+  review_status: number
+  explain: string
+  create_time: string
+}

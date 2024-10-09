@@ -9,7 +9,7 @@ const store = useProduct()
 const { data } = storeToRefs(store) as { data: Ref<indexProduct> }
 
 const product = ref(data)
-const rawData = ref<Array<Array<number>>>([])
+const rawData = ref<Array<Array<number>> | undefined>([])
 const dataTime = ref<Array<string>>([])
 const barData = ref<Array<string>>([])
 const treadLine = ref<Array<string>>([])
@@ -232,6 +232,8 @@ function getRandom() {
 }
 
 function parseData(data: history[]) {
+  if (data === undefined)
+    return
   const result: Array<string[]> = []
   for (const h of data) {
     const val: Array<string> = []

@@ -30,7 +30,7 @@ const infos = ref<binding>({
         </div>
       </div>
       <div class="if" px2>
-        如需修改请联系在线客服
+        {{ t('edit') }}
       </div>
     </div>
   </div>

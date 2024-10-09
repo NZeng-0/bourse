@@ -27,7 +27,7 @@ defineExpose({
 
 <template>
   <div v-if="isShow" top="0" left="0" flex="~" fixed z100 h-screen wfull items-center justify-center bg-black:70 p6>
-    <div w-full rounded-2xl bg-white px3 pb7.5>
+    <div w-full rounded-2xl bg-white px3 pb7.5 text-black>
       <div flex="~" relative mt4.5 w-full justify-center text-center>
         <div text-center class="text-5.5 font-['youshe']" font-normal>
           {{ title }}

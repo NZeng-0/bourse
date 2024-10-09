@@ -1,5 +1,6 @@
 <script setup lang=ts>
 import {
+  getAuthIdcard,
   getConfigList,
   getIndexNoticeList,
   getMoneyEarningsInfo,
@@ -16,11 +17,13 @@ import type {
   msgTypes,
 } from '~/types'
 import { useNotifyList } from '~/store/useNotifyList'
+import { useAuth } from '~/store/useAuth'
 
 const conf = useConf()
-const notifyList = useNotifyList()
-
+const notify = useNotifyList()
+const notifyLen = ref(0)
 const type = ref('')
+const authStore = useAuth()
 
 async function getType() {
   const isEmpty = ref(true)
@@ -43,7 +46,7 @@ const unReadList = shallowReactive<msgTypes[]>([])
 
 const userStore = useUser()
 const router = useRouter()
-const { removeCache } = useLocalCache()
+const { clearCache } = useLocalCache()
 const { t, locale } = useI18n()
 
 const user = shallowRef<userTypes>()
@@ -73,7 +76,15 @@ function width() {
   }
 }
 
-function go(to: string) {
+async function initAuth() {
+  const { data } = await getAuthIdcard()
+  if (!data.value.data)
+    return undefined
+  if (data.value.data.review_status === 1)
+    authStore.auth = data.value.data
+}
+
+async function go(to: string) {
   if (to === 'download') {
     const donwload = conf.data.find((item: configlist) => item.key === 'app_download_url')
     window.open(`https://${donwload.link}`)
@@ -87,7 +98,8 @@ function transfer(tar: string) {
 }
 
 function signout() {
-  removeCache('token')
+  clearCache()
+  useStorage('lang', 'zh-CN')
   router.push('/login')
 }
 
@@ -98,6 +110,7 @@ function scoped() {
 async function init() {
   const { data } = await getMoneyEarningsInfo()
   money.value = data.value.data
+  await initAuth()
 }
 
 function fetchTotal(arr: msgTypes[]) {
@@ -116,7 +129,8 @@ function transferIn(type: string) {
 
 async function getNotice() {
   const { data } = await getIndexNoticeList()
-  notifyList.notifyList = data.value.data.data
+  notify.notifyList = data.value.data.data
+  notifyLen.value = notify.notifyList.length
 }
 
 onMounted(async () => {
@@ -224,8 +238,11 @@ onMounted(async () => {
               {{ t(item.title) }}
             </p>
             <div v-if="item.class">
-              <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1 text="white xs">
-                {{ notifyList.notifyList.length }}
+              <div
+                bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1
+                text="white xs"
+              >
+                {{ notifyLen }}
               </div>
             </div>
           </div>

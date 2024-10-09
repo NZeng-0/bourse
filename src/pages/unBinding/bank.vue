@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { getUserInfo, submitWithdrawAccount } from '~/api'
+import {
+  getUserInfo,
+  submitWithdrawAccount,
+} from '~/api'
 import type { binding } from '~/api/types'
 import { useUser } from '~/store/useUser'
 
 const userStore = useUser()
 
 const { t } = useI18n()
+const router = useRouter()
 
 const bank_info = reactive(userStore.data.bank_info)
 
@@ -23,6 +27,7 @@ function getClass() {
 async function after() {
   const { data } = await getUserInfo()
   userStore.data = data.value.data
+  router.push('/binding/bank')
 }
 
 async function submit() {
