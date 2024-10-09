@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { submitAuthIdcard, upload } from '~/api'
+import {
+  getAuthIdcard,
+  submitAuthIdcard,
+  upload,
+} from '~/api'
 
 const { t } = useI18n()
 
@@ -37,7 +41,9 @@ async function beforeSubmit(forms: FormData) {
 }
 
 async function afterSubmit() {
-  // const { data } = await getAuthIdcard()
+  const { data } = await getAuthIdcard()
+  // eslint-disable-next-line no-console
+  console.log(data.value)
 }
 
 async function submit() {

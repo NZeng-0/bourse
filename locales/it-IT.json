@@ -331,5 +331,6 @@
   "current_online": "Numero di persone attualmente online",
   "isEmpty": "Nessun dato ancora",
   "authSuccess": "Autenticazione del nome reale riuscita",
-  "edit": "Se è necessario modificare, contattare il servizio clienti online"
+  "edit": "Se è necessario modificare, contattare il servizio clienti online",
+  "authAudit": "In fase di revisione"
 }

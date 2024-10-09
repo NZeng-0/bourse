@@ -31,7 +31,9 @@ const min = ref<number>(0)
 const max = ref<number>(1)
 const store = ref<number>(0)
 const onlineShow = ref<boolean>(true)
-const swipe = ref<swipeType[]>([])
+const swipe = ref<swipeType[]>([
+  new URL('../assets/images/swipe/1.png', import.meta.url).href,
+])
 
 async function getPopMsg() {
   const { data } = await getIndexMsg()

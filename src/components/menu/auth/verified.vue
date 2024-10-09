@@ -4,8 +4,15 @@ import { useAuth } from '~/store/useAuth'
 const { t } = useI18n()
 const authStore = useAuth()
 
-const name = ref(t('me.auth.name_true') + (authStore.auth.name || ''))
-const card = ref(t('me.auth.card_true') + (authStore.auth.idcard || ''))
+const {
+  name,
+  idcard,
+  review_status,
+} = authStore.auth
+
+const _name = ref(t('me.auth.name_true') + (name || ''))
+const _card = ref(t('me.auth.card_true') + (idcard || ''))
+const review = review_status !== 0
 </script>
 
 <template>
@@ -15,18 +22,18 @@ const card = ref(t('me.auth.card_true') + (authStore.auth.idcard || ''))
       <div text-center>
         <img src="../../../assets/images/me/menu/verified.png" alt="verified" class="verified">
         <div class="text">
-          {{ t('authSuccess') }}!
+          {{ review ? t('authSuccess') : t('authAudit') }}!
         </div>
       </div>
       <div mt6>
         <input
-          v-model="name" type="text" readonly h13 wfull border rounded-2xl pl5.4
+          v-model="_name" type="text" readonly h13 wfull border rounded-2xl pl5.4
           :placeholder="t('me.auth.name_true')"
         >
       </div>
       <div mt6>
         <input
-          v-model="card" type="text" readonly h13 wfull border rounded-2xl pl5.4
+          v-model="_card" type="text" readonly h13 wfull border rounded-2xl pl5.4
           :placeholder="t('me.auth.card_true')"
         >
       </div>

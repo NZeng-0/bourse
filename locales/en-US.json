@@ -331,5 +331,6 @@
   "current_online": "Number of people currently online",
   "isEmpty": "No data yet",
   "authSuccess": "Real-name authentication successful",
-  "edit": "If you need to modify, please contact online customer service"
+  "edit": "If you need to modify, please contact online customer service",
+  "authAudit": "Under review"
 }

@@ -331,5 +331,6 @@
   "current_online": "Número de personas actualmente en línea",
   "isEmpty": "Aún no hay datos",
   "authSuccess": "Autenticación de nombre real exitosa",
-  "edit": "Si necesita modificarlo, comuníquese con el servicio de atención al cliente en línea."
+  "edit": "Si necesita modificarlo, comuníquese con el servicio de atención al cliente en línea.",
+  "authAudit": "En revisión"
 }

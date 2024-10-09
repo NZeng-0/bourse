@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { useUser } from '~/store/useUser'
+import { useAuth } from '~/store/useAuth'
 
-const user = useUser()
+const authStore = useAuth()
 
-const auth = user.data.auth_status === 1
+const { name, idcard } = authStore.auth
+
+let auth = false
+if (name !== '' && idcard !== '')
+  auth = true
 </script>
 
 <template>

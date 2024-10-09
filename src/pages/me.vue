@@ -25,21 +25,6 @@ const notifyLen = ref(0)
 const type = ref('')
 const authStore = useAuth()
 
-async function getType() {
-  const isEmpty = ref(true)
-  for (const item of conf.data) {
-    if (item.key === 'pay_show_type') {
-      isEmpty.value = false
-      type.value = item.value
-    }
-  }
-  if (isEmpty.value) {
-    const { data } = await getConfigList()
-    conf.data = data.value.data
-    await getType()
-  }
-}
-
 const msgStore = useMessage()
 
 const unReadList = shallowReactive<msgTypes[]>([])
@@ -54,6 +39,21 @@ const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
 })
+
+async function getType() {
+  const isEmpty = ref(true)
+  for (const item of conf.data) {
+    if (item.key === 'pay_show_type') {
+      isEmpty.value = false
+      type.value = item.value
+    }
+  }
+  if (isEmpty.value) {
+    const { data } = await getConfigList()
+    conf.data = data.value.data
+    await getType()
+  }
+}
 
 function getListStyle() {
   return 'mt3.75 h15 items-center rounded-2xl bg-white px4'
@@ -80,8 +80,7 @@ async function initAuth() {
   const { data } = await getAuthIdcard()
   if (!data.value.data)
     return undefined
-  if (data.value.data.review_status === 1)
-    authStore.auth = data.value.data
+  authStore.auth = data.value.data
 }
 
 async function go(to: string) {
