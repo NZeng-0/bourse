@@ -2,10 +2,12 @@
 import { submitRecharge, upload } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
+import { useProduct } from '~/store/useProduct'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
+const store = useProduct()
 
 const bank = new URL('~/assets/images/assets/bank.png', import.meta.url).href
 const right = new URL('~/assets/images/me/menu/right.png', import.meta.url).href
@@ -40,6 +42,11 @@ const infos = ref<recharge>({
   bank_account: bankStore.bank_account,
   remark: '',
 })
+
+const {
+  create_order_max_money,
+  create_order_min_money,
+} = store.data
 
 const froms = new FormData()
 
@@ -88,6 +95,23 @@ async function onRecharge() {
     wait.value = false
     return
   }
+
+  if (useToNumber(infos.value.money).value < create_order_min_money) {
+    showToast({
+      message: `${t('top-up.min')} ${create_order_min_money}`,
+    })
+    wait.value = false
+    return
+  }
+
+  if (useToNumber(infos.value.money).value > create_order_max_money) {
+    showToast({
+      message: `${t('top-up.max')} ${create_order_max_money}`,
+    })
+    wait.value = false
+    return
+  }
+
   const { data } = await submitRecharge(infos.value)
   showToast({
     message: data.value.msg,

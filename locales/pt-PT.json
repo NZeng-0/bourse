@@ -316,7 +316,9 @@
   "top-up": {
     "no": "Saldo insuficiente",
     "tips": "Por favor introduza um número acima de 0",
-    "img": "Por favor carregue o certificado"
+    "img": "Por favor carregue o certificado",
+    "max": "O valor não pode ser superior",
+    "min": "O valor não pode ser inferior"
   },
   "check": "Por favor verifique e preencha",
   "seconds": "Segundo",

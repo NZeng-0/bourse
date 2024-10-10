@@ -1,38 +1,29 @@
 <script setup lang="ts">
-import type { withdrawMethodType } from '~/types'
-import { getConfigList, getUserInfo, login, register } from '~/api'
+import {
+  getConfigList,
+  getUserInfo,
+  login,
+  register,
+} from '~/api'
 import { useConf } from '~/store/useConf'
 import { useLocalCache } from '~/hook'
-import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
-
-const userStore = useUser()
-const { setCache } = useLocalCache()
-const router = useRouter()
-
-interface userType {
-  account: string
-  pwd: string
-  verify_pwd: string
-  nickname: string
-  phone: string
-  operation_pwd: string
-  email: string
-  idcard: string
-  spread_code: string
-  [Key: string]: string
-}
+import type {
+  registerTypes,
+  userTypes,
+  withdrawMethodType,
+} from '~/types'
 
 const { t } = useI18n()
-
+const { setCache } = useLocalCache()
+const router = useRouter()
+const userStore = useUser()
 const conf = useConf()
-
 const useIdCard = ref(false)
 const usePhone = ref(false)
 const useEmail = ref(false)
 const wait = ref(false)
-
-const user = ref<userType>({
+const user = ref<registerTypes>({
   account: '',
   pwd: '',
   verify_pwd: '',
@@ -44,7 +35,7 @@ const user = ref<userType>({
   spread_code: '',
 })
 
-function isUserFilled(user: userType) {
+function isUserFilled(user: registerTypes) {
   // 获取对象的所有键
   const keys = Object.keys(user)
   // 遍历每个键，检查对应的值是否为空

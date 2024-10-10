@@ -1,22 +1,30 @@
 <script setup lang="ts">
-import { getUserInfo, login } from '~/api'
+import {
+  getConfigList,
+  getUserInfo,
+  login,
+} from '~/api'
 import { useLocalCache } from '~/hook'
-import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
+import { useConf } from '~/store/useConf'
+import type {
+  configlist,
+  userTypes,
+} from '~/types'
 import 'vant/es/notify/style'
 
-const userStore = useUser()
-
-const { setCache } = useLocalCache()
 const { t } = useI18n()
-const src = new URL('../assets/images/login/logo.png', import.meta.url).href
+const { setCache } = useLocalCache()
 const router = useRouter()
-
+const userStore = useUser()
+const conf = useConf()
+const wait = ref(false)
+// const src = ref(new URL('../assets/images/login/logo.png', import.meta.url).href)
+const src = ref(' ')
 const user = ref({
   name: 'qwer',
   pwd: '123456',
 })
-const wait = ref(false)
 
 async function onLoginSuccessful() {
   const { data } = await getUserInfo()
@@ -44,6 +52,13 @@ async function onLogin() {
 function scoped() {
   return 'h12 w70 border rounded-2xl text-black  border="#E7E7E7"'
 }
+
+onMounted(async () => {
+  const { data } = await getConfigList()
+  conf.data = data.value.data
+  const temp = conf.data.find((e: configlist) => e.key === 'website_logo')
+  src.value = temp.value
+})
 </script>
 
 <template>

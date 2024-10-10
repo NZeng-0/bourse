@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { submitRecharge, upload } from '~/api'
+import {
+  submitRecharge,
+  upload,
+} from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
+import { useProduct } from '~/store/useProduct'
 
-const userStore = useUser()
-const route = useRouter()
 const { t } = useI18n()
+const route = useRouter()
+const userStore = useUser()
+const store = useProduct()
 
 const uploadIcon = new URL('~/assets/images/assets/shot.png', import.meta.url).href
 const right = new URL('~/assets/images/me/menu/right.png', import.meta.url).href
@@ -24,6 +29,11 @@ const infos = ref<recharge>({
   wallet_address: bank.wallet_address,
   remark: '',
 })
+
+const {
+  create_order_max_money,
+  create_order_min_money,
+} = store.data
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
@@ -79,6 +89,23 @@ async function onRecharge() {
     })
     return wait.value = false
   }
+
+  if (useToNumber(infos.value.money).value < create_order_min_money) {
+    showToast({
+      message: `${t('top-up.min')} ${create_order_min_money}`,
+    })
+    wait.value = false
+    return
+  }
+
+  if (useToNumber(infos.value.money).value > create_order_max_money) {
+    showToast({
+      message: `${t('top-up.max')} ${create_order_max_money}`,
+    })
+    wait.value = false
+    return
+  }
+
   const { data } = await submitRecharge(infos.value)
   showToast({
     message: data.value.msg,

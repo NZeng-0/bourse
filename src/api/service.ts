@@ -287,3 +287,9 @@ export function getProductTakeList() {
     url: '/index/product/getProductTakeList',
   })
 }
+
+export function getPayModeList() {
+  return Request.get({
+    url: '/index/system/getPayModeList',
+  })
+}

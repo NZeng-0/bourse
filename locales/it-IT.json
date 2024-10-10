@@ -316,7 +316,9 @@
   "top-up": {
     "no": "Equilibrio insufficiente",
     "tips": "Inserisci un numero superiore a 0",
-    "img": "Si prega di caricare il certificato"
+    "img": "Si prega di caricare il certificato",
+    "max": "L'importo non può essere superiore a",
+    "min": "L'importo non può essere inferiore a"
   },
   "check": "Si prega di controllare e compilare",
   "seconds": "Secondo",

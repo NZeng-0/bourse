@@ -316,7 +316,9 @@
   "top-up": {
     "no": "Yetersiz bakiye",
     "tips": "Lütfen 0'ın üzerinde bir sayı girin",
-    "img": "Lütfen sertifikayı yükleyin"
+    "img": "Lütfen sertifikayı yükleyin",
+    "max": "Tutar şu miktardan büyük olamaz:",
+    "min": "Tutar daha az olamaz"
   },
   "check": "Lütfen kontrol edin ve doldurun",
   "seconds": "Saniye",
@@ -331,5 +333,6 @@
   "current_online": "Şu anda çevrimiçi olan kişi sayısı",
   "isEmpty": "Henüz veri yok",
   "authSuccess": "Gerçek adla kimlik doğrulama başarılı",
-  "edit": "Değiştirmeniz gerekiyorsa lütfen çevrimiçi müşteri hizmetlerine başvurun."
+  "edit": "Değiştirmeniz gerekiyorsa lütfen çevrimiçi müşteri hizmetlerine başvurun.",
+  "authAudit": "İnceleniyor"
 }

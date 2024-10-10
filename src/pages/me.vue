@@ -5,9 +5,9 @@ import {
   getIndexNoticeList,
   getMoneyEarningsInfo,
   getNoticeList,
+  getPayModeList,
 } from '~/api'
 import { useLocalCache } from '~/hook'
-import type { userTypes } from '~/store/useUser'
 import { useUser } from '~/store/useUser'
 import { menu } from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
@@ -15,6 +15,8 @@ import { useConf } from '~/store/useConf'
 import type {
   configlist,
   msgTypes,
+  pryModelType,
+  userTypes,
 } from '~/types'
 import { useNotifyList } from '~/store/useNotifyList'
 import { useAuth } from '~/store/useAuth'
@@ -24,7 +26,6 @@ const notify = useNotifyList()
 const notifyLen = ref(0)
 const type = ref('')
 const authStore = useAuth()
-
 const msgStore = useMessage()
 
 const unReadList = shallowReactive<msgTypes[]>([])
@@ -110,6 +111,7 @@ async function init() {
   const { data } = await getMoneyEarningsInfo()
   money.value = data.value.data
   await initAuth()
+  await getPayModel()
 }
 
 function fetchTotal(arr: msgTypes[]) {
@@ -130,6 +132,12 @@ async function getNotice() {
   const { data } = await getIndexNoticeList()
   notify.notifyList = data.value.data.data
   notifyLen.value = notify.notifyList.length
+}
+
+async function getPayModel() {
+  const { data } = await getPayModeList()
+  // eslint-disable-next-line no-console
+  console.log(data.value)
 }
 
 onMounted(async () => {

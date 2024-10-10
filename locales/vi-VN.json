@@ -316,7 +316,9 @@
   "top-up": {
     "no": "Số dư không đủ",
     "tips": "Vui lòng nhập số trên 0",
-    "img": "Vui lòng tải lên chứng chỉ"
+    "img": "Vui lòng tải lên chứng chỉ",
+    "max": "Số tiền không thể lớn hơn",
+    "min": "Số tiền không thể ít hơn"
   },
   "check": "Vui lòng kiểm tra và điền vào",
   "seconds": "Thứ hai",
@@ -331,5 +333,6 @@
   "current_online": "Số người hiện đang trực tuyến",
   "isEmpty": "Chưa có dữ liệu",
   "authSuccess": "Xác thực tên thật thành công",
-  "edit": "Nếu bạn cần sửa đổi, vui lòng liên hệ với dịch vụ khách hàng trực tuyến"
+  "edit": "Nếu bạn cần sửa đổi, vui lòng liên hệ với dịch vụ khách hàng trực tuyến",
+  "authAudit": "Đang xem xét"
 }

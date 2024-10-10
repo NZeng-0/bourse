@@ -316,7 +316,9 @@
   "top-up": {
     "no": "Insufficient balance",
     "tips": "Please enter a number above 0",
-    "img": "Please upload the certificate"
+    "img": "Please upload the certificate",
+    "max": "The amount cannot be greater than",
+    "min": "The amount cannot be less than"
   },
   "check": "Please check and fill in",
   "seconds": "Second",
