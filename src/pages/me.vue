@@ -25,9 +25,8 @@ const notifyLen = ref(0)
 const type = ref('')
 const authStore = useAuth()
 const msgStore = useMessage()
-
 const unReadList = shallowReactive<msgTypes[]>([])
-
+const avatar = ref('')
 const userStore = useUser()
 const router = useRouter()
 const { clearCache } = useLocalCache()
@@ -131,9 +130,18 @@ async function getNotice() {
   notifyLen.value = notify.notifyList.length
 }
 
+function getUrl(host: string, uri: string) {
+  return `${host}/${uri}`
+}
+
+function error() {
+  avatar.value = getUrl(import.meta.env.VITE_APP_URL, user.value!.avatar)
+}
+
 onMounted(async () => {
   await getType()
   user.value = userStore.data
+  avatar.value = user.value?.avatar || ''
   await init()
   await getNotice()
   const { data } = await getNoticeList()
@@ -158,11 +166,12 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+
     <div flex="~" h19.7 wfull border-t bg-white px6>
       <div w="1/2" flex="~" items-center>
         <div w="1.2/3">
           <div relative @click="go('avator')">
-            <img src="../assets/images/me/avatar.jpg" h15 w15 rounded-full>
+            <img :src="avatar" h15 w15 rounded-full @error="error">
             <img src="../assets/images/me/shot.png" absolute bottom-0 right--1 h6 w6>
           </div>
         </div>

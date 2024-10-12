@@ -293,3 +293,12 @@ export function getPayModeList() {
     url: '/index/system/getPayModeList',
   })
 }
+
+export function updateUserInfo(path: string) {
+  return Request.post({
+    url: '/index/user/updateUserInfo',
+    data: {
+      avatar: path,
+    },
+  })
+}
