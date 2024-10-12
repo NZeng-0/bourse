@@ -244,7 +244,7 @@ onMounted(async () => {
             <p>
               {{ t(item.title) }}
             </p>
-            <div v-if="item.class">
+            <div v-if="item.class && read">
               <div
                 bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1
                 text="white xs"

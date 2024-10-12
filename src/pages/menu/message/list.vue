@@ -15,6 +15,7 @@ function getBgStyle() {
 }
 
 function go(item: notifyType) {
+  read.value = false
   notifyStore.notify = item
   route.push(`/menu/message/detail/list/${item.id}`)
 }
