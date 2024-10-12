@@ -1,3 +1,7 @@
+:root{
+  --active-color: #7751F1;
+}
+
 html,
 body,
 #app {

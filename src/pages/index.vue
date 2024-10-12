@@ -32,7 +32,20 @@ const max = ref<number>(1)
 const store = ref<number>(0)
 const onlineShow = ref<boolean>(true)
 const swipe = ref<swipeType[]>([
-  new URL('../assets/images/swipe/1.png', import.meta.url).href,
+  {
+    id: 13,
+    key: 'lbt',
+    condition: null,
+    value: new URL('../assets/images/swipe/1.png', import.meta.url).href,
+    link: 'www.baidu.com',
+    remark: '轮播图',
+    status: 1,
+    sort: 0,
+    type: 0,
+    start_time: null,
+    end_time: null,
+    create_time: '2024-07-07 16:04:24',
+  },
 ])
 
 async function getPopMsg() {

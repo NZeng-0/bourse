@@ -105,7 +105,8 @@
         "account_opening_branch": "Mở cửa hàng",
         "account": "Số tài khoản nhận tiền",
         "name": "Tên người nhận"
-      }
+      },
+      "type": "Vui lòng chọn loại nạp tiền"
     },
     "withdrawal": {
       "title": "Rút tiền",

@@ -1,33 +1,46 @@
 <script setup lang="ts">
-import { submitRecharge, upload } from '~/api'
+import type { DropdownMenuInstance } from 'vant'
+import { getPayModeList, submitRecharge, upload } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
 import { useProduct } from '~/store/useProduct'
+import type { payModelType } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
 const store = useProduct()
+const froms = new FormData()
 
+const menuRef = ref<DropdownMenuInstance>()
+const typeRef = ref<DropdownMenuInstance>()
 const proof = ref([])
 const wait = ref(false)
-const bank = userStore.data.bank_info
+const { create_order_max_money, create_order_min_money } = store.data
+const { bank_name, bank_branch_name, bank_account } = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
   type: 2,
   pay_storageImage: '',
   pay_type: 1,
   receive_name: '',
-  bank_name: bank.bank_name,
-  bank_branch_name: bank.bank_branch_name,
-  bank_account: bank.bank_account,
+  bank_name,
+  bank_branch_name,
+  bank_account,
   remark: '',
 })
 
-const {
-  create_order_max_money,
-  create_order_min_money,
-} = store.data
+const value1 = t('assets.recharge.bank.use')
+const value2 = t('assets.recharge.usdt.use')
+
+const payList = reactive<payModelType[]>([])
+const pay = ref<payModelType>()
+
+function choosePay(id: number) {
+  const temp = toRaw(payList).find((e: payModelType) => e.id === id)
+  pay.value = temp
+  typeRef.value?.close()
+}
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
@@ -36,8 +49,6 @@ function getClass() {
 function go() {
   route.push(`/top-up/usdt`)
 }
-
-const froms = new FormData()
 
 async function read(file: any) {
   // "file"表示给后台传的属性名字
@@ -109,6 +120,14 @@ async function onRecharge() {
   if (data.value.code === 200)
     route.push('/menu/top-up')
 }
+
+onMounted(async () => {
+  const { data } = await getPayModeList()
+  data.value.data.forEach((e: payModelType) => {
+    if (e.type === 2)
+      payList.push(e)
+  })
+})
 </script>
 
 <template>
@@ -121,24 +140,48 @@ async function onRecharge() {
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <img src="../../assets/images/assets/bank.png" h4.25 w4.25>
-          <div class="text-#121826" ml1.25 @click="go()">
-            {{ t('assets.recharge.bank.use') }}
+          <div class="text-#121826" ml1.25>
+            <van-dropdown-menu ref="menuRef" active-color="#323233">
+              <van-dropdown-item :title="value1">
+                <van-cell v-model="value2" center text-center :title="value2" @click="go" />
+                <van-cell v-model="value1" center text-center text-all-list :title="value1" @click="menuRef!.close()" />
+              </van-dropdown-item>
+            </van-dropdown-menu>
           </div>
           <div ml0.75>
             <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
           </div>
         </div>
       </div>
+
+      <div mt5 :class="getClass()" flex="~">
+        <div w="1/2" class="text-#121826">
+          {{ t('assets.recharge.type') }}
+        </div>
+        <div w="1/2" flex="~" items-center justify-end>
+          <div ml1.25 w-full>
+            <van-dropdown-menu ref="typeRef" active-color="#323233">
+              <van-dropdown-item :title="pay?.pay_name">
+                <van-cell v-for="(e, key) in payList" :key :title="e.pay_name" text-center @click="choosePay(e.id)" />
+              </van-dropdown-item>
+            </van-dropdown-menu>
+          </div>
+          <div ml0.75>
+            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+          </div>
+        </div>
+      </div>
+
       <div mt6 h-full rounded-2.5 bg-white pb4.25 pt3.75>
         <div pl3.5 pr5.75 text-base>
-          <input
-            v-model="infos.money" type="text" :placeholder="t('assets.recharge.transfer_amount')"
-            class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
-          >
-          <input
-            v-model="infos.remark" type="text" :placeholder="t('assets.recharge.transfer_remarks')"
-            class="border border-#f4f4f4" mt2.5 h11.25 wfull rounded-xl pl4.75
-          >
+          <div flex="~" class="border border-#f4f4f4" mt6.25 h11.25 wfull items-center rounded-xl pl4.75>
+            <div>{{ t('assets.recharge.transfer_amount') }}</div>
+            <input v-model="infos.money" text-right type="text">
+          </div>
+          <div flex="~" class="border border-#f4f4f4" mt6.25 h11.25 wfull items-center rounded-xl pl4.75>
+            <div>{{ t('assets.recharge.transfer_remarks') }}</div>
+            <input v-model="infos.remark" text-right type="text">
+          </div>
           <van-uploader v-model="proof" wfull :after-read="read">
             <div class="border border-#f4f4f4" flex="~" mt6.25 h11.25 wfull items-center justify-center rounded-xl>
               <img src="../../assets/images/assets/shot.png" h8.5 w8.5>
@@ -163,20 +206,41 @@ async function onRecharge() {
   bottom: 113px
 }
 
-.van-uploader__wrapper{
+.van-uploader__wrapper {
   width: 100% !important;
 }
 
-.van-uploader__input{
+.van-uploader__input {
   width: 100% !important;
 }
- .van-uploader__input-wrapper{
+
+.van-uploader__input-wrapper {
   width: 100%;
 }
-.van-uploader__preview-delete{
+
+.van-uploader__preview-delete {
   margin-top: 10px
 }
-.van-image__img{
+
+.van-image__img {
   margin-top: 10px;
+}
+
+.van-dropdown-menu__title--down:after {
+  display: none;
+}
+
+.van-dropdown-menu__title:after {
+  display: none;
+}
+
+.van-dropdown-menu__bar {
+  height: none;
+  background: none;
+  box-shadow: none;
+}
+
+.van-dropdown-menu__item {
+  justify-content: right;
 }
 </style>

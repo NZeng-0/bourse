@@ -108,6 +108,7 @@
     "recharge": {
       "title": "充值",
       "method": "请选择充值方式",
+      "type": "请选择充值类型",
       "submit": "提交订单",
       "transfer_amount": "转账金额",
       "transfer_remarks": "转账附言",

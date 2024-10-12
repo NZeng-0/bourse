@@ -105,7 +105,8 @@
         "account_opening_branch": "開戶網點",
         "account": "收款賬號",
         "name": "收款姓名"
-      }
+      },
+      "type": "請選擇儲值類型"
     },
     "withdrawal": {
       "title": " 提現",

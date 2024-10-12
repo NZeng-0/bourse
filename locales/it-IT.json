@@ -105,7 +105,8 @@
         "account_opening_branch": "Filiale di apertura del conto",
         "account": "Conto ricevente",
         "name": "Nome ricevente"
-      }
+      },
+      "type": "Seleziona il tipo di ricarica"
     },
     "withdrawal": {
       "title": "Ritiro",

@@ -105,7 +105,8 @@
         "account_opening_branch": "口座開設支店",
         "account": "受取口座",
         "name": "受取人名"
-      }
+      },
+      "type": "充電タイプを選択してください"
     },
     "withdrawal": {
       "title": "出金",

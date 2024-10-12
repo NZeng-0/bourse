@@ -310,7 +310,7 @@ export interface swipeType {
   create_time: string
 }
 
-export interface pryModelType {
+export interface payModelType {
   id: number
   bank_user_name: string
   bank_account: string

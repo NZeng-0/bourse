@@ -105,7 +105,8 @@
       },
       "usdt": {
         "use": "USDT"
-      }
+      },
+      "type": "Por favor seleccione el tipo de recarga"
     },
     "withdrawal": {
       "title": "retirar",

@@ -105,7 +105,8 @@
         "account_opening_branch": "Account Opening Branch",
         "account": "Receiving Account",
         "name": "Receiving Name"
-      }
+      },
+      "type": "Please select the recharge type"
     },
     "withdrawal": {
       "title": "Withdrawal",

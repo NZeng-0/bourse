@@ -18,7 +18,8 @@
       "upload_credentials": "carregar certificado",
       "usdt": {
         "use": "USDT"
-      }
+      },
+      "type": "Selecione o tipo de recarga"
     },
     "title": "Minha bolsa",
     "withdrawal": {

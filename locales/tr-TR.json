@@ -18,7 +18,8 @@
       "upload_credentials": "sertifika yükle",
       "usdt": {
         "use": "USDT"
-      }
+      },
+      "type": "Lütfen şarj türünü seçin"
     },
     "title": "Çantam",
     "withdrawal": {

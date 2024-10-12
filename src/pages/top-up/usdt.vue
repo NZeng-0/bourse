@@ -1,39 +1,62 @@
 <script setup lang="ts">
+import type { DropdownMenuInstance } from 'vant'
 import {
+  getPayModeList,
   submitRecharge,
   upload,
 } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
 import { useProduct } from '~/store/useProduct'
+import type { payModelType } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
 const store = useProduct()
-
+const froms = new FormData()
 const uploadIcon = new URL('~/assets/images/assets/shot.png', import.meta.url).href
-const right = new URL('~/assets/images/me/menu/right.png', import.meta.url).href
 const proof = ref([])
 
-// const text = ref('09191278302wixnmhdgabisjng')
-const wait = ref(false)
+const menuRef = ref<DropdownMenuInstance>()
+const typeRef = ref<DropdownMenuInstance>()
 
-const bank = userStore.data.bank_info
+const wait = ref(false)
+const { create_order_max_money, create_order_min_money } = store.data
+const { wallet_name, wallet_address } = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
   type: 2,
   pay_storageImage: '',
   pay_type: 2,
-  wallet_name: bank.wallet_name,
-  wallet_address: bank.wallet_address,
+  wallet_name,
+  wallet_address,
   remark: '',
 })
 
-const {
-  create_order_max_money,
-  create_order_min_money,
-} = store.data
+const value1 = t('assets.recharge.usdt.use')
+const value2 = t('assets.recharge.bank.use')
+
+const payList = reactive<payModelType[]>([])
+const pay = ref<payModelType>({
+  id: 0,
+  bank_user_name: '',
+  bank_account: '',
+  bank_branch_name: '',
+  pay_name: '',
+  type: 0,
+  status: 0,
+  link_url: '',
+  explain: '',
+  qrcode: '',
+  create_time: '',
+})
+
+function choosePay(id: number) {
+  const temp = toRaw(payList).find((e: payModelType) => e.id === id) as payModelType
+  pay.value = temp
+  typeRef.value?.close()
+}
 
 function getClass() {
   return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
@@ -42,8 +65,6 @@ function getClass() {
 function go() {
   route.push(`/top-up/bank`)
 }
-
-const froms = new FormData()
 
 async function read(file: any) {
   // "file"表示给后台传的属性名字
@@ -115,6 +136,14 @@ async function onRecharge() {
   if (data.value.code === 200)
     route.push('/menu/top-up')
 }
+
+onMounted(async () => {
+  const { data } = await getPayModeList()
+  data.value.data.forEach((e: payModelType) => {
+    if (e.type === 1)
+      payList.push(e)
+  })
+})
 </script>
 
 <template>
@@ -127,14 +156,38 @@ async function onRecharge() {
         </div>
         <div w="1/2" flex="~" items-center justify-end>
           <img src="../../assets/images/USDT.png" h4.25 w4.25>
-          <div class="text-#121826" ml1.25 @click="go()">
-            {{ t('assets.recharge.usdt.use') }}
+          <div class="text-#121826" ml1.25>
+            <van-dropdown-menu ref="menuRef" active-color="#323233">
+              <van-dropdown-item :title="value1">
+                <van-cell v-model="value1" center text-center :title="value1" @click="menuRef!.close()" />
+                <van-cell v-model="value2" center text-center :title="value2" @click="go" />
+              </van-dropdown-item>
+            </van-dropdown-menu>
           </div>
           <div ml0.75>
-            <img :src="right" h4.25 w4.25>
+            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
           </div>
         </div>
       </div>
+
+      <div mt5 :class="getClass()" flex="~">
+        <div w="1/2" class="text-#121826">
+          {{ t('assets.recharge.type') }}
+        </div>
+        <div w="1/2" flex="~" items-center justify-end>
+          <div ml1.25 w-full>
+            <van-dropdown-menu ref="typeRef" active-color="#323233">
+              <van-dropdown-item :title="pay?.pay_name">
+                <van-cell v-for="(e, key) in payList" :key :title="e.pay_name" text-center @click="choosePay(e.id)" />
+              </van-dropdown-item>
+            </van-dropdown-menu>
+          </div>
+          <div ml0.75>
+            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
+          </div>
+        </div>
+      </div>
+
       <div mt6 h-full rounded-2.5 bg-white pb4.25 pt3.75>
         <div pl3.5 pr5.75 text-base>
           <input
@@ -189,5 +242,19 @@ async function onRecharge() {
 
 .van-image__img {
   margin-top: 10px;
+}
+
+.van-dropdown-menu__title--down:after {
+  display: none;
+}
+
+.van-dropdown-menu__title:after {
+  display: none;
+}
+
+.van-dropdown-menu__bar {
+  height: none;
+  background: none;
+  box-shadow: none;
 }
 </style>
