@@ -6,7 +6,7 @@ const { t } = useI18n()
 const store = useUser()
 const showBottom = ref(false)
 const froms = new FormData()
-
+const avatar = ref(store.data.avatar)
 const path = ref('')
 
 async function read(file: any) {
@@ -38,6 +38,10 @@ async function update() {
 function getUrl(host: string, uri: string) {
   return `${host}/${uri}`
 }
+
+function error() {
+  avatar.value = getUrl(baseUrl, store.data.avatar)
+}
 </script>
 
 <template>
@@ -45,7 +49,7 @@ function getUrl(host: string, uri: string) {
     <TheMenuHead :title="t('avator.title')" />
     <div flex="~" items-center justify-center>
       <div relative mt10>
-        <img bg="#DBEAFE" h50 w50 rounded-full :src="getUrl(import.meta.env.VITE_APP_URL, store.data.avatar)">
+        <img bg="#DBEAFE" h50 w50 rounded-full :src="avatar" @error="error">
         <img src="../../assets/images/shot.png" absolute bottom-1 right-5 h12 w12 @click="showBottom = !showBottom">
       </div>
     </div>

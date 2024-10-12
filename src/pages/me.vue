@@ -135,7 +135,7 @@ function getUrl(host: string, uri: string) {
 }
 
 function error() {
-  avatar.value = getUrl(import.meta.env.VITE_APP_URL, user.value!.avatar)
+  avatar.value = getUrl(baseUrl, user.value!.avatar)
 }
 
 onMounted(async () => {
