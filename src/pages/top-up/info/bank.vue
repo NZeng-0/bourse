@@ -3,13 +3,11 @@ import type { DropdownMenuInstance } from 'vant'
 import { getPayModeList, submitRecharge, upload } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
-import { useProduct } from '~/store/useProduct'
 import type { payModelType } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
-const store = useProduct()
 
 const bank = new URL('~/assets/images/assets/bank.png', import.meta.url).href
 const copy = new URL('~/assets/images/assets/copy.png', import.meta.url).href
@@ -32,11 +30,6 @@ const infos = ref<recharge>({
   bank_account,
   remark: '',
 })
-
-const {
-  create_order_max_money,
-  create_order_min_money,
-} = store.data
 
 const value1 = t('assets.recharge.bank.use')
 const value2 = t('assets.recharge.usdt.use')
@@ -122,7 +115,7 @@ async function onRecharge() {
     return
   }
 
-  if (useToNumber(infos.value.money).value < create_order_min_money) {
+  /* if (useToNumber(infos.value.money).value < create_order_min_money) {
     showToast({
       message: `${t('top-up.min')} ${create_order_min_money}`,
     })
@@ -136,7 +129,7 @@ async function onRecharge() {
     })
     wait.value = false
     return
-  }
+  } */
 
   const { data } = await submitRecharge(infos.value)
   showToast({

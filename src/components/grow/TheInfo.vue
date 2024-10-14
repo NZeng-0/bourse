@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getTotalMoneyAndYesterdayMoney } from '~/api'
-import type { userTypes } from '~/store/useUser'
+import type { userTypes } from '~/types'
 import { useUser } from '~/store/useUser'
 import { useMoney } from '~/store/useMoney'
 

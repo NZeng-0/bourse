@@ -21,7 +21,7 @@ function getClass() {
 async function after() {
   const { data } = await getUserInfo()
   userStore.data = data.value.data
-  router.push('/binding/bank')
+  router.push('/binding/usdt')
 }
 
 async function submit() {

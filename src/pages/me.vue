@@ -118,6 +118,20 @@ function fetchTotal(arr: msgTypes[]) {
 }
 
 function transferIn(type: string) {
+//   {
+//   "id": 120,
+//   "key": "pay_show_type",
+//   "condition": "",
+//   "value": "2",
+//   "link": null,
+//   "remark": "支付方式展示方式,1入款信息-提交申请，2在线客服提交申请",
+//   "status": 1,
+//   "sort": 0,
+//   "type": 0,
+//   "start_time": null,
+//   "end_time": null,
+//   "create_time": "2024-09-29 11:13:32"
+// }
   if (type === '1')
     return '/top-up/info/usdt'
 
@@ -135,7 +149,10 @@ function getUrl(host: string, uri: string) {
 }
 
 function error() {
-  avatar.value = getUrl(baseUrl, user.value!.avatar)
+  if (!user.value!.avatar)
+    avatar.value = new URL('../assets/images/defalut.png', import.meta.url).href
+  else
+    avatar.value = getUrl(baseUrl, user.value!.avatar)
 }
 
 onMounted(async () => {

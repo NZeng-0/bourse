@@ -40,7 +40,10 @@ function getUrl(host: string, uri: string) {
 }
 
 function error() {
-  avatar.value = getUrl(baseUrl, store.data.avatar)
+  if (!store.data.avatar)
+    avatar.value = new URL('../../assets/images/defalut.png', import.meta.url).href
+  else
+    avatar.value = getUrl(baseUrl, store.data.avatar)
 }
 </script>
 

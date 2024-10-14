@@ -7,13 +7,11 @@ import {
 } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
-import { useProduct } from '~/store/useProduct'
 import type { payModelType } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
-const store = useProduct()
 const froms = new FormData()
 const uploadIcon = new URL('~/assets/images/assets/shot.png', import.meta.url).href
 const proof = ref([])
@@ -22,7 +20,6 @@ const menuRef = ref<DropdownMenuInstance>()
 const typeRef = ref<DropdownMenuInstance>()
 
 const wait = ref(false)
-const { create_order_max_money, create_order_min_money } = store.data
 const { wallet_name, wallet_address } = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
@@ -111,7 +108,7 @@ async function onRecharge() {
     return wait.value = false
   }
 
-  if (useToNumber(infos.value.money).value < create_order_min_money) {
+  /* if (useToNumber(infos.value.money).value < create_order_min_money) {
     showToast({
       message: `${t('top-up.min')} ${create_order_min_money}`,
     })
@@ -125,7 +122,7 @@ async function onRecharge() {
     })
     wait.value = false
     return
-  }
+  } */
 
   const { data } = await submitRecharge(infos.value)
   showToast({
@@ -139,6 +136,8 @@ async function onRecharge() {
 
 onMounted(async () => {
   const { data } = await getPayModeList()
+  // eslint-disable-next-line no-console
+  console.log(data.value)
   data.value.data.forEach((e: payModelType) => {
     if (e.type === 1)
       payList.push(e)

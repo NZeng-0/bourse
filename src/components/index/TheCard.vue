@@ -4,25 +4,31 @@ import type { swipeType } from '~/types'
 const { swipe } = defineProps<{
   swipe: swipeType[]
 }>()
+
+function error(id: number) {
+  for (const item of swipe) {
+    if (item.id === id)
+      item.value = new URL('../../assets/images/swipe/1.png', import.meta.url).href
+  }
+}
 </script>
 
 <template>
   <div overflow-hidden rounded-2xl>
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+    <van-swipe class="my-swipe" :autoplay="3000" lazy-render>
       <van-swipe-item v-for="(item, key) in swipe" :key>
-        <img :src="item.value">
+        <img :src="item.value" h-full w-full @error="error(item.id)">
       </van-swipe-item>
     </van-swipe>
   </div>
 </template>
 
 <style>
-  .my-swipe .van-swipe-item {
-    color: #fff;
-    font-size: 20px;
-    line-height: 200px;
-    text-align: center;
-    background-color: #39a9ed;
-    height: 200px;
-  }
+.my-swipe .van-swipe-item {
+  font-size: 20px;
+  line-height: 200px;
+  text-align: center;
+  height: 200px;
+  background: #eee;
+}
 </style>

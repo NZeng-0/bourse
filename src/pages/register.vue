@@ -101,15 +101,15 @@ function eachConf() {
     return
   conf.data!.forEach((e: withdrawMethodType) => {
     if (e.key === 'register_idcard') {
-      if (e.status === 1)
+      if (e.value === '1')
         useIdCard.value = true
     }
     if (e.key === 'register_phone') {
-      if (e.status === 1)
+      if (e.value === '1')
         usePhone.value = true
     }
     if (e.key === 'register_email') {
-      if (e.status === 1)
+      if (e.value === '1')
         useEmail.value = true
     }
   })

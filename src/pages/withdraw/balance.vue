@@ -84,9 +84,25 @@ async function submit() {
   wait.value = false
 }
 
+// {
+//   "id": 114,
+//   "key": "withdraw_money_type",
+//   "condition": "",
+//   "value": "RMB",
+//   "link": null,
+//   "remark": "提现方式",
+//   "status": 1,
+//   "sort": 0,
+//   "type": 0,
+//   "start_time": null,
+//   "end_time": null,
+//   "create_time": "2024-09-26 09:19:21"
+// }
+
 onMounted(async () => {
   const { data } = await getConfigList()
   method.value = data.value.data
+
   method.value!.forEach((e: withdrawMethodType) => {
     if (e.value === 'RMB' || e.value === 'USDT') {
       if (e.status !== 1) {
@@ -97,6 +113,7 @@ onMounted(async () => {
         type.value = e
     }
   })
+
   const bank = user.data.bank_info
   infos.value.bank_name = bank.bank_name
   infos.value.bank_branch_name = bank.bank_branch_name

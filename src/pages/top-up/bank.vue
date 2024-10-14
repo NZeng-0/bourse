@@ -3,20 +3,17 @@ import type { DropdownMenuInstance } from 'vant'
 import { getPayModeList, submitRecharge, upload } from '~/api'
 import type { recharge } from '~/api/types'
 import { useUser } from '~/store/useUser'
-import { useProduct } from '~/store/useProduct'
 import type { payModelType } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
-const store = useProduct()
 const froms = new FormData()
 
 const menuRef = ref<DropdownMenuInstance>()
 const typeRef = ref<DropdownMenuInstance>()
 const proof = ref([])
 const wait = ref(false)
-const { create_order_max_money, create_order_min_money } = store.data
 const { bank_name, bank_branch_name, bank_account } = userStore.data.bank_info
 const infos = ref<recharge>({
   money: '',
@@ -95,21 +92,21 @@ async function onRecharge() {
     return wait.value = false
   }
 
-  if (useToNumber(infos.value.money).value < create_order_min_money) {
-    showToast({
-      message: `${t('top-up.min')} ${create_order_min_money}`,
-    })
-    wait.value = false
-    return
-  }
+  // if (useToNumber(infos.value.money).value < create_order_min_money) {
+  //   showToast({
+  //     message: `${t('top-up.min')} ${create_order_min_money}`,
+  //   })
+  //   wait.value = false
+  //   return
+  // }
 
-  if (useToNumber(infos.value.money).value > create_order_max_money) {
-    showToast({
-      message: `${t('top-up.max')} ${create_order_max_money}`,
-    })
-    wait.value = false
-    return
-  }
+  // if (useToNumber(infos.value.money).value > create_order_max_money) {
+  //   showToast({
+  //     message: `${t('top-up.max')} ${create_order_max_money}`,
+  //   })
+  //   wait.value = false
+  //   return
+  // }
 
   const { data } = await submitRecharge(infos.value)
   showToast({
