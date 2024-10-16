@@ -54,11 +54,14 @@ function isUserFilled(user: registerTypes) {
 
 async function onRegister() {
   const allFilled = isUserFilled(user.value)
+
   if (!allFilled) {
-    showToast({
-      message: t('check'),
-    })
-    return
+    if (useIdCard.value || usePhone.value || useEmail.value) {
+      showToast({
+        message: t('check'),
+      })
+      return
+    }
   }
 
   if (wait.value) {

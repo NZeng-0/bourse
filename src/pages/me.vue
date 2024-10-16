@@ -18,6 +18,7 @@ import type {
 } from '~/types'
 import { useNotifyList } from '~/store/useNotifyList'
 import { useAuth } from '~/store/useAuth'
+import { useRead } from '~/store/useRead'
 
 const conf = useConf()
 const notify = useNotifyList()
@@ -31,6 +32,7 @@ const userStore = useUser()
 const router = useRouter()
 const { clearCache } = useLocalCache()
 const { t, locale } = useI18n()
+const isRead = useRead()
 
 const user = shallowRef<userTypes>()
 const money = ref({
@@ -118,30 +120,32 @@ function fetchTotal(arr: msgTypes[]) {
 }
 
 function transferIn(type: string) {
-//   {
-//   "id": 120,
-//   "key": "pay_show_type",
-//   "condition": "",
-//   "value": "2",
-//   "link": null,
-//   "remark": "支付方式展示方式,1入款信息-提交申请，2在线客服提交申请",
-//   "status": 1,
-//   "sort": 0,
-//   "type": 0,
-//   "start_time": null,
-//   "end_time": null,
-//   "create_time": "2024-09-29 11:13:32"
-// }
   if (type === '1')
     return '/top-up/info/usdt'
 
   return '/top-up/usdt'
 }
 
+/**
+ * 如果缓存中存在这个目标，代表已访问过了
+ */
+function include(target: number) {
+  return !isRead.data.includes(target)
+}
+
 async function getNotice() {
   const { data } = await getIndexNoticeList()
   notify.notifyList = data.value.data.data
-  notifyLen.value = notify.notifyList.length
+
+  if (isRead.data) {
+    for (const item of notify.notifyList) {
+      if (include(item.id))
+        notifyLen.value++
+    }
+  }
+  else {
+    notifyLen.value = notify.notifyList.length
+  }
 }
 
 function getUrl(host: string, uri: string) {
@@ -261,14 +265,13 @@ onMounted(async () => {
             <p>
               {{ t(item.title) }}
             </p>
-            <div v-if="item.class && read">
-              <div
-                bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1
-                text="white xs"
-              >
-                {{ notifyLen }}
+            <template v-if="item.class && notifyLen !== 0">
+              <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1>
+                <span text="white xs">
+                  {{ notifyLen }}
+                </span>
               </div>
-            </div>
+            </template>
           </div>
           <div w="2/5" flex="~" justify-end>
             <div v-if="item.right !== ' '" text-sm class="text-#9EA3AE">

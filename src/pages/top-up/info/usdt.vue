@@ -8,7 +8,6 @@ import type { payModelType } from '~/types'
 const { t } = useI18n()
 const route = useRouter()
 const userStore = useUser()
-
 const menuRef = ref<DropdownMenuInstance>()
 const typeRef = ref<DropdownMenuInstance>()
 
@@ -104,29 +103,13 @@ async function onRecharge() {
     return wait.value = false
   }
 
-  if (infos.value.pay_storageImage === null) {
+  if (!infos.value.pay_storageImage) {
     showToast({
       message: t('top-up.img'),
     })
     wait.value = false
     return
   }
-
-  /* if (useToNumber(infos.value.money).value < create_order_min_money) {
-    showToast({
-      message: `${t('top-up.min')} ${create_order_min_money}`,
-    })
-    wait.value = false
-    return
-  }
-
-  if (useToNumber(infos.value.money).value > create_order_max_money) {
-    showToast({
-      message: `${t('top-up.max')} ${create_order_max_money}`,
-    })
-    wait.value = false
-    return
-  } */
 
   const { data } = await submitRecharge(infos.value)
   showToast({

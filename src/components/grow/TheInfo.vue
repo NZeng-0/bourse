@@ -42,8 +42,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div mt6 wfull text-center text-3xl>
-    {{ t('fortune.title') }}
+  <div wfull text-center>
+    <TheMenuHead :title="t('fortune.title')" />
   </div>
   <div class="bg" relative mx7 mt5.5 h68 w80 overflow-hidden rounded-2xl text-white>
     <div ml6 mt8 text-base>

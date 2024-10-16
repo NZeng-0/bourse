@@ -57,14 +57,14 @@ onMounted(async () => {
   const { data } = await getConfigList()
   conf.data = data.value.data
   const temp = conf.data.find((e: configlist) => e.key === 'website_logo')
-  src.value = temp.value
+  src.value = `${baseUrl}/${temp.value}`
 })
 </script>
 
 <template>
   <div>
     <div flex="~" justify-center>
-      <img mt10 h40 w40 :src>
+      <img mt10 min-h40 :src>
     </div>
     <div flex="~ wrap" mt10 justify-center>
       <div>

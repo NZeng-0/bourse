@@ -2,11 +2,13 @@
 import type { notifyType } from '~/types'
 import { useNotify } from '~/store/useNotify'
 import { useNotifyList } from '~/store/useNotifyList'
+import { useRead } from '~/store/useRead'
 
 const { t } = useI18n()
 const route = useRouter()
 const notifyStore = useNotify()
 const listStore = useNotifyList()
+const isRead = useRead()
 
 const list: Ref<notifyType[]> = ref(listStore.notifyList)
 
@@ -14,7 +16,16 @@ function getBgStyle() {
   return 'py3 pl2.75 text-sm text-black mt2.5 h45 rounded-2.25 bg-white  pr4'
 }
 
+/**
+ * 如果缓存中存在这个目标，代表已访问过了
+ */
+function include(target: number) {
+  return !isRead.data.includes(target)
+}
+
 function go(item: notifyType) {
+  if (include(item.id))
+    isRead.data = [item.id]
   read.value = false
   notifyStore.notify = item
   route.push(`/menu/message/detail/list/${item.id}`)
@@ -41,7 +52,7 @@ function go(item: notifyType) {
             <p v-html="item.value" />
           </div>
           <div wfull class="msg-display text-#4AADF0" @click="go(item)">
-            {{ true ? t('me.message.details') : t('me.message.read') }}
+            {{ include(item.id) ? t('me.message.details') : t('me.message.read') }}
           </div>
         </div>
       </template>

@@ -4,8 +4,8 @@ import { useUser } from '~/store/useUser'
 import type { withdraw } from '~/api/types'
 import type { withdrawMethodType } from '~/types'
 
-const route = useRouter()
 const { t } = useI18n()
+const route = useRouter()
 const user = useUser()
 
 const isBank = ref(true)
@@ -21,17 +21,13 @@ const infos = ref<withdraw>({
   operation_pwd: '',
 })
 
-watch(() => isBank.value, (value) => {
-  value ? infos.value.type = 1 : infos.value.type = 2
-})
-
 const banding = ref(user.data.auth_status !== 0)
 const wait = ref(false)
 
 const method = ref<withdrawMethodType[]>()
 
 const all = ref(true)
-const type = ref<withdrawMethodType>()
+const type = ref<string>('USDT')
 
 function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
@@ -84,33 +80,22 @@ async function submit() {
   wait.value = false
 }
 
-// {
-//   "id": 114,
-//   "key": "withdraw_money_type",
-//   "condition": "",
-//   "value": "RMB",
-//   "link": null,
-//   "remark": "提现方式",
-//   "status": 1,
-//   "sort": 0,
-//   "type": 0,
-//   "start_time": null,
-//   "end_time": null,
-//   "create_time": "2024-09-26 09:19:21"
-// }
-
 onMounted(async () => {
   const { data } = await getConfigList()
   method.value = data.value.data
 
-  method.value!.forEach((e: withdrawMethodType) => {
+  const temp = method.value!.filter((e: withdrawMethodType) => e.key === 'withdraw_money_type')
+
+  temp.forEach((e: withdrawMethodType) => {
     if (e.value === 'RMB' || e.value === 'USDT') {
+      // 两次都是 1 时 all 为 true，否则为 false
       if (e.status !== 1) {
-        // 两次都是 1 时 all 为 true，否则为 false
         all.value = false
       }
-      if (e.status === 1)
-        type.value = e
+      else {
+        isBank.value = e.value === 'RMB'
+        type.value = e.value
+      }
     }
   })
 
@@ -165,10 +150,10 @@ onMounted(async () => {
             {{ t('assets.withdrawal.method') }}
           </div>
           <div w="1/2" flex="~" items-center justify-end>
-            <img v-if="type!.value === 'RMB'" src="../../assets/images/assets/bank.png" h4.25 w4.25>
+            <img v-if="type! === 'RMB'" src="../../assets/images/assets/bank.png" h4.25 w4.25>
             <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
             <div ml1.25>
-              {{ type!.value === 'RMB' ? t('assets.recharge.bank.use') : 'USDT' }}
+              {{ type === 'RMB' ? t('assets.recharge.bank.use') : 'USDT' }}
             </div>
             <div ml0.75>
               <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
