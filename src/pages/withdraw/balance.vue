@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { getConfigList, submitWithdraw } from '~/api'
+import {
+  countWithdrawDeductMoney,
+  getConfigList,
+  submitWithdraw,
+} from '~/api'
 import { useUser } from '~/store/useUser'
 import type { withdraw } from '~/api/types'
 import type { withdrawMethodType } from '~/types'
@@ -7,7 +11,6 @@ import type { withdrawMethodType } from '~/types'
 const { t } = useI18n()
 const route = useRouter()
 const user = useUser()
-
 const isBank = ref(true)
 
 const infos = ref<withdraw>({
@@ -23,11 +26,10 @@ const infos = ref<withdraw>({
 
 const banding = ref(user.data.auth_status !== 0)
 const wait = ref(false)
-
 const method = ref<withdrawMethodType[]>()
-
 const all = ref(true)
 const type = ref<string>('USDT')
+const withdrawRate = ref(0)
 
 function getCommonStyle() {
   return 'border-box border-##f4f4f4 mt5.5 h11.25 items-center justify-start rounded-xl bg-white pl4.625'
@@ -106,6 +108,14 @@ onMounted(async () => {
   infos.value.wallet_name = bank.wallet_name
   infos.value.wallet_address = bank.wallet_address
 })
+
+async function getRate() {
+  const { data } = await countWithdrawDeductMoney(infos.value.withdraw_money)
+  if (data.value.data)
+    withdrawRate.value = data.value.data.deduct_money
+  else
+    withdrawRate.value = 0
+}
 </script>
 
 <template>
@@ -121,13 +131,13 @@ onMounted(async () => {
         </div>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input v-model.number="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69>
+        <input v-model.number="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69 @blur="getRate">
       </div>
       <div flex="~" :class="getCommonStyle()">
         <input v-model="infos.operation_pwd" type="password" :placeholder="t('assets.withdrawal.password')" opacity69>
       </div>
       <div mt5.25 pl1 text-sm>
-        {{ t('assets.withdrawal.service_charge') }}: {{ user.data.user_withdraw_rate }}
+        {{ t('assets.withdrawal.service_charge') }}: {{ withdrawRate }}
       </div>
       <div v-if="banding" mt5 :class="getClass()" flex="~">
         <template v-if="all">

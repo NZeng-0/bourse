@@ -302,3 +302,12 @@ export function updateUserInfo(path: string) {
     },
   })
 }
+
+export function countWithdrawDeductMoney(money: number) {
+  return Request.post({
+    url: '/index/user/countWithdrawDeductMoney',
+    data: {
+      withdraw_money: money,
+    },
+  })
+}
