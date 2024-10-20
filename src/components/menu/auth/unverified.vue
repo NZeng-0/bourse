@@ -4,12 +4,13 @@ import {
   submitAuthIdcard,
   upload,
 } from '~/api'
+import { useAuth } from '~/store/useAuth'
 
 const { t } = useI18n()
-
+const route = useRouter()
 const id_front = ref([])
 const id_back = ref([])
-
+const authStore = useAuth()
 const wait = ref(false)
 const infos = ref({
   name: '',
@@ -42,8 +43,8 @@ async function beforeSubmit(forms: FormData) {
 
 async function afterSubmit() {
   const { data } = await getAuthIdcard()
-  // eslint-disable-next-line no-console
-  console.log(data.value)
+  authStore.auth = data.value.data
+  route.go(0)
 }
 
 async function submit() {

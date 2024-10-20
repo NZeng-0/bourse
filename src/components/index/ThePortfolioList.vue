@@ -30,6 +30,10 @@ function handleImageError(key: number) {
   list.value[key].logo = icon
 }
 
+function getSrc(uri: string) {
+  return `${baseUrl}/${uri}`
+}
+
 onMounted(async () => {
   const { data } = await getProductTakeList()
   list.value = data.value.data
@@ -41,7 +45,7 @@ onMounted(async () => {
     <div v-for="(e, key) in list" :key mr-4 h37 w51 shrink-0 rounded-2xl bg-zinc-100 p1 @click="go(e.id)">
       <div flex="~">
         <div ml-4.5 mt-4>
-          <img h12 w12 rounded-full :src="e.logo" @error="handleImageError(key)">
+          <img h12 w12 rounded-full :src="getSrc(e.logo)" @error="handleImageError(key)">
         </div>
         <div ml-2 mt-5 text-left>
           <div text-sm text-portolio-primary font-normal>

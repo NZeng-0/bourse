@@ -6,7 +6,7 @@ defineProps<{
 const route = useRouter()
 
 function back() {
-  route.push('/me')
+  route.back()
 }
 </script>
 

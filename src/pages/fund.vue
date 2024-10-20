@@ -27,10 +27,6 @@ const card = ref<cardType>({
   vol: '',
 })
 
-function loadImg() {
-  product.value!.logo = icon
-}
-
 async function choose(index: number, type: string) {
   select.value = index
   await loadData(type)
@@ -273,6 +269,14 @@ async function loadData(type: string) {
   product.value = data.value.data
 }
 
+function handleImageError(that: EventTarget | null) {
+  (that as HTMLImageElement).src = icon
+}
+
+function getSrc(uri: string) {
+  return `${baseUrl}/${uri}`
+}
+
 onMounted(async () => {
   card.value = {
     count: product.value.count,
@@ -302,7 +306,7 @@ onMounted(async () => {
         </div>
       </div>
       <div mr-2.5>
-        <img :src="product!.logo" h12 w12 rounded-full @error="loadImg">
+        <img h12 w12 rounded-full :src="getSrc(product!.logo)" @error="handleImageError($event.target)">
       </div>
     </div>
     <div flex="~" mt3 justify-between px4 text-sm>

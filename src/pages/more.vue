@@ -9,10 +9,6 @@ const productStore = useProduct()
 const list: Ref<indexProduct[]> = ref([])
 const loading = ref(false)
 
-function handleImageError(key: number) {
-  list.value[key].logo = icon
-}
-
 function getIcon(range: number) {
   return range === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
 }
@@ -25,6 +21,14 @@ async function go(key: number) {
 
 function getColor(range: number) {
   return range === 1 ? '#19c09a' : '#fc6c6b'
+}
+
+function handleImageError(that: EventTarget | null) {
+  (that as HTMLImageElement).src = icon
+}
+
+function getSrc(uri: string) {
+  return `${baseUrl}/${uri}`
 }
 
 onMounted(async () => {
@@ -44,7 +48,7 @@ onMounted(async () => {
       <div v-for="(item, key) in list" :key mt4>
         <div flex="~" justify-between class="item" @click="go(item.id)">
           <div flex="~ gap2" w="2/4">
-            <img h12 w12 rounded-full :src="item.logo" @error="handleImageError(key)">
+            <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
             <div text-left>
               <div>
                 {{ item.product_name }}

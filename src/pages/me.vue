@@ -19,10 +19,12 @@ import type {
 import { useNotifyList } from '~/store/useNotifyList'
 import { useAuth } from '~/store/useAuth'
 import { useRead } from '~/store/useRead'
+import { useProduct } from '~/store/useProduct'
 
 const { removeCache } = useLocalCache()
 const { t, locale } = useI18n()
 const router = useRouter()
+const productStore = useProduct()
 const conf = useConf()
 const notify = useNotifyList()
 const notifyLen = ref(0)
@@ -101,6 +103,8 @@ function signout() {
   removeCache('token')
   userStore.data = null
   notify.notifyList = []
+  authStore.auth = null
+  productStore.product = null
   authStore.auth = null
   router.push('/login')
 }

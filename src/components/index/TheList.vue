@@ -16,7 +16,7 @@ const grid = {
 }
 
 const loading = ref(false)
-const list: Ref<indexProduct[]> = ref([])
+const list = shallowRef<indexProduct[]>([])
 
 function parseData(data: history[]) {
   const result: Array<string[]> = []
@@ -85,8 +85,12 @@ async function go(key: number) {
   router.push('fund')
 }
 
-function handleImageError(key: number) {
-  list.value[key].logo = icon
+function handleImageError(that: EventTarget | null) {
+  (that as HTMLImageElement).src = icon
+}
+
+function getSrc(uri: string) {
+  return `${baseUrl}/${uri}`
 }
 
 onMounted(async () => {
@@ -101,7 +105,7 @@ onMounted(async () => {
     <div v-for="(item, key) in list" :key :class="key !== 0 ? key === (list.length - 1) ? 'mt8 mb42' : 'mt8' : ''">
       <div flex="~ gap2" justify-between @click="go(item.id)">
         <div flex="~ gap2" w="2/4">
-          <img h12 w12 rounded-full :src="item.logo" @error="handleImageError(key)">
+          <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
           <div text-left>
             <div>
               {{ item.product_name }}
