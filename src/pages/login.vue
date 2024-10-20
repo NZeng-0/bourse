@@ -38,7 +38,10 @@ async function onLogin() {
   }
 
   wait.value = true
-  const { data } = await login(user.value)
+  const { data, error } = await login(user.value)
+  if (error)
+    wait.value = false
+
   showToast(data.value.msg)
 
   if (data.value.code === 200) {

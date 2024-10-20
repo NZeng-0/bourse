@@ -1,5 +1,7 @@
+import type { readType } from '~/types'
+
 export const useRead: any = defineStore('read', () => {
-  const _data = ref<number[]>([])
+  const _data = ref<readType[]>()
 
   const data = computed({
     get: () => _data.value,

@@ -20,6 +20,9 @@ import { useNotifyList } from '~/store/useNotifyList'
 import { useAuth } from '~/store/useAuth'
 import { useRead } from '~/store/useRead'
 
+const { removeCache } = useLocalCache()
+const { t, locale } = useI18n()
+const router = useRouter()
 const conf = useConf()
 const notify = useNotifyList()
 const notifyLen = ref(0)
@@ -29,12 +32,9 @@ const msgStore = useMessage()
 const unReadList = shallowReactive<msgTypes[]>([])
 const avatar = ref('')
 const userStore = useUser()
-const router = useRouter()
-const { clearCache } = useLocalCache()
-const { t, locale } = useI18n()
 const isRead = useRead()
-
-const user = shallowRef<userTypes>()
+const id = userStore.data.uid
+const user = shallowRef<userTypes>(userStore.data)
 const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
@@ -78,9 +78,10 @@ function width() {
 
 async function initAuth() {
   const { data } = await getAuthIdcard()
-  if (!data.value.data)
-    return undefined
-  authStore.auth = data.value.data
+  if (data.value.data)
+    authStore.auth = data.value.data
+  else
+    authStore.auth = null
 }
 
 async function go(to: string) {
@@ -97,8 +98,10 @@ function transfer(tar: string) {
 }
 
 function signout() {
-  clearCache()
-  useStorage('lang', 'zh-CN')
+  removeCache('token')
+  userStore.data = null
+  notify.notifyList = []
+  authStore.auth = null
   router.push('/login')
 }
 
@@ -129,17 +132,23 @@ function transferIn(type: string) {
 /**
  * 如果缓存中存在这个目标，代表已访问过了
  */
-function include(target: number) {
-  return !isRead.data.includes(target)
+function includes(target: number) {
+  const temp = toRaw(isRead.data)
+  if (!temp)
+    return false
+  for (const item of temp) {
+    if (id === item.id)
+      return item.list.includes(target)
+  }
+  return false
 }
-
 async function getNotice() {
   const { data } = await getIndexNoticeList()
   notify.notifyList = data.value.data.data
 
   if (isRead.data) {
     for (const item of notify.notifyList) {
-      if (include(item.id))
+      if (!includes(item.id))
         notifyLen.value++
     }
   }
@@ -161,7 +170,7 @@ function error() {
 
 onMounted(async () => {
   await getType()
-  user.value = userStore.data
+  // user.value = userStore.data
   avatar.value = user.value?.avatar || ''
   await init()
   await getNotice()

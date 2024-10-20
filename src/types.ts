@@ -336,3 +336,8 @@ export interface registerTypes {
   spread_code: string
   [Key: string]: string
 }
+
+export interface readType {
+  id: number
+  list: number[]
+}

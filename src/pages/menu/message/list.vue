@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import type { notifyType } from '~/types'
+import type { notifyType, readType } from '~/types'
 import { useNotify } from '~/store/useNotify'
 import { useNotifyList } from '~/store/useNotifyList'
 import { useRead } from '~/store/useRead'
+import { useUser } from '~/store/useUser'
 
 const { t } = useI18n()
 const route = useRouter()
 const notifyStore = useNotify()
 const listStore = useNotifyList()
 const isRead = useRead()
+const user = useUser()
 
+const id = user.data.uid
 const list: Ref<notifyType[]> = ref(listStore.notifyList)
 
 function getBgStyle() {
@@ -19,14 +22,58 @@ function getBgStyle() {
 /**
  * 如果缓存中存在这个目标，代表已访问过了
  */
-function include(target: number) {
-  return !isRead.data.includes(target)
+function includes(target: number) {
+  const temp = toRaw(isRead.data)
+  if (!temp)
+    return false
+  for (const item of temp) {
+    if (id === item.id)
+      return item.list.includes(target)
+  }
+  return false
+}
+
+function findUser() {
+  const temp = toRaw(isRead.data)
+  if (!temp)
+    return false
+  return temp.find((item: readType) => {
+    if (item.id === id)
+      return true
+    return false
+  })
 }
 
 function go(item: notifyType) {
-  if (include(item.id))
-    isRead.data = [item.id]
-  read.value = false
+  // includes 会返回 item.id 是否包含在 isRead.data 中，true包含，false不包含 如果没有添加，如果有追加
+  if (!includes(item.id)) {
+    // 如果不存在，检查temp是否存在，如果存在，则追加，如果不存在，则创建
+    const temp = isRead.data
+    if (!temp) {
+      isRead.data = [
+        {
+          id,
+          list: [item.id],
+        },
+      ]
+    }
+    else {
+      if (!findUser()) {
+        const newItem = {
+          id,
+          list: [item.id],
+        }
+        temp.push(newItem)
+      }
+      else {
+        for (const e of temp) {
+          if (e.id === id)
+            e.list.push(item.id)
+        }
+      }
+      isRead.data = temp
+    }
+  }
   notifyStore.notify = item
   route.push(`/menu/message/detail/list/${item.id}`)
 }
@@ -52,7 +99,7 @@ function go(item: notifyType) {
             <p v-html="item.value" />
           </div>
           <div wfull class="msg-display text-#4AADF0" @click="go(item)">
-            {{ include(item.id) ? t('me.message.details') : t('me.message.read') }}
+            {{ !includes(item.id) ? t('me.message.details') : t('me.message.read') }}
           </div>
         </div>
       </template>

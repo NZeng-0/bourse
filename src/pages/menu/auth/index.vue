@@ -3,11 +3,7 @@ import { useAuth } from '~/store/useAuth'
 
 const authStore = useAuth()
 
-const { name, idcard } = authStore.auth
-
-let auth = false
-if (name !== '' && idcard !== '')
-  auth = true
+const auth = !authStore.auth === null
 </script>
 
 <template>
