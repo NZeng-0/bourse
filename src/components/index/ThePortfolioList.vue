@@ -61,7 +61,7 @@ onMounted(async () => {
       </div>
       <div flex="~ gap2" ml4 justify-between>
         <div text-left text-lg text-portolio-primary>
-          ￥{{ e.price }}
+          {{ e.price }}
         </div>
         <div flex="~" mb5 mr1 h8 w19 items-center justify-center rounded-xl bg-white>
           <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h1.2rem w1.2rem />

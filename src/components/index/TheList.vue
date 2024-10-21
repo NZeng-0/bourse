@@ -101,7 +101,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div mt4.5 h80 overflow-y-scroll>
+  <div mt4.5>
     <div v-for="(item, key) in list" :key :class="key !== 0 ? key === (list.length - 1) ? 'mt8 mb42' : 'mt8' : ''">
       <div flex="~ gap2" justify-between @click="go(item.id)">
         <div flex="~ gap2" w="2/4">
@@ -120,7 +120,7 @@ onMounted(async () => {
             <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
           </div>
           <div text-right>
-            <div>￥{{ item.price }}</div>
+            <div>{{ item.price }}</div>
             <div flex="~" w-full justify-between text-right text-xs>
               <div
                 :class="getIcon(item.profit_status)" :style="{ color: getColor(item.profit_status) }" ml h-1.2rem

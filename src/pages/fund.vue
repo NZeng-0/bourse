@@ -35,16 +35,22 @@ async function choose(index: number, type: string) {
 function calculateMA(dayCount: number, data: Array<Array<number>>) {
   const result = []
   for (let i = 0, len = data.length; i < len; i++) {
-    if (i < dayCount) {
-      result.push('-')
-      continue
-    }
+    // if (i < dayCount) {
+    //   result.push('-')
+    //   continue
+    // }
     let sum = 0
-    for (let j = 0; j < dayCount; j++)
-      sum += +data[i - j][1]
+    for (let j = 0; j < dayCount; j++) {
+      if (data[i - j])
+        sum += data[i - j][1]
+    }
 
     result.push(sum / dayCount)
   }
+  // eslint-disable-next-line no-console
+  console.log('data =>> 51', data)
+  // eslint-disable-next-line no-console
+  console.log('debug =>> 53', result)
   return result
 }
 
@@ -170,7 +176,8 @@ function getOption() {
       {
         name: 'index',
         type: 'candlestick',
-        data: rawData.value,
+        data: toRaw(rawData.value),
+        barWidth: 10,
         itemStyle: {
           color: upColor,
           color0: downColor,
@@ -195,7 +202,7 @@ function getOption() {
         xAxisIndex: 1,
         yAxisIndex: 1,
         data: barData.value,
-        width: 5,
+        barWidth: 10,
         itemStyle: {
           color(params: any) {
             const index = params.dataIndex
@@ -248,8 +255,8 @@ function parseData(data: history[]) {
 }
 
 function parseVolume(amount: number, vol: number, count: number) {
-  treadLine.value?.push((((amount + vol) / count).toFixed(2)))
-  return ((amount + vol) / count).toFixed(2)
+  treadLine.value?.push((((vol) / count).toFixed(2)))
+  return ((vol) / count).toFixed(2)
 }
 
 function parseDate(unixTimestamp: number) {
@@ -286,14 +293,14 @@ onMounted(async () => {
     vol: product.value.vol,
   }
   rawData.value = parseData(product.value.history_list)
+  // eslint-disable-next-line no-console
+  console.log(getOption())
 })
 </script>
 
 <template>
-  <div px-4>
-    <TheHead back="/" :title="product?.product_name" />
-  </div>
-  <div h-screen overflow-y-scroll bg-trading>
+  <TheHead back="/" :title="product?.product_name" />
+  <div h-screen overflow-y-scroll border="0.1" bg-trading>
     <div flex="~" mt5.5 wfull justify-between px-4>
       <div>
         <div text-3xl>
@@ -350,6 +357,7 @@ onMounted(async () => {
     <div flex="~" my4 justify-between px5.5>
       <TheBuy :index="product?.id" selected="bg-btn-select" />
     </div>
+    <div h30 />
   </div>
   <TheFooter :index="0" />
 </template>

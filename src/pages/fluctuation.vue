@@ -191,10 +191,8 @@ async function loadData(type: string) {
 </script>
 
 <template>
-  <div p="x-4">
-    <TheHead back="/" :title="product?.product_name" />
-  </div>
-  <div h170 overflow-y-scroll bg-trading>
+  <TheHead p="x-4" back="/" :title="product?.product_name" />
+  <div h-screen overflow-y-scroll border="0.1" bg-trading>
     <section>
       <div flex="~" mt5.5 wfull justify-between px-4>
         <div>
@@ -253,6 +251,7 @@ async function loadData(type: string) {
     <div flex="~" my4 justify-between px5.5>
       <TheBuy :index="product?.id" selected="bg-btn-select" />
     </div>
+    <div h30 />
   </div>
   <TheFooter :index="0" />
 </template>

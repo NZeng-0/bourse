@@ -39,9 +39,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div px-4>
-    <TheHead back="/" title="股市交易" />
-  </div>
+  <TheHead px-4 back="/" title="股市交易" />
   <div h-screen overflow-y-scroll bg-trading px-4>
     <TheEmpty v-if="loading" />
     <template v-else>
@@ -75,6 +73,7 @@ onMounted(async () => {
         </div>
       </div>
     </template>
+    <div h20 />
   </div>
   <TheFooter :index="0" />
 </template>

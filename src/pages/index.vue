@@ -134,7 +134,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div p="x-4 y-10">
+  <div h-screen overflow-y-scroll p="x-4 y-10">
     <TheCard :swipe />
     <van-notice-bar :scrollable="true" :left-icon="left_icon" color="#000000" background="white">
       <div v-for="(item, key) in slide" :key v-html="item?.value" />
