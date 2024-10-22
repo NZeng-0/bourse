@@ -57,16 +57,16 @@ onMounted(async () => {
         </div>
       </div>
       <div ml4 mt5 text-sm text-portolio font-normal>
-        {{ t('index.rise_range') }}
+        {{ t('order.current_price') }}
       </div>
       <div flex="~ gap2" ml4 justify-between>
-        <div text-left text-lg text-portolio-primary>
+        <div text-left text-portolio-primary style="line-height: 30px;">
           {{ e.price }}
         </div>
         <div flex="~" mb5 mr1 h8 w19 items-center justify-center rounded-xl bg-white>
           <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h1.2rem w1.2rem />
           <span text-xs :style="{ color: e.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-            {{ e.diff_rate }}%
+            {{ e.diff }}%
           </span>
         </div>
       </div>

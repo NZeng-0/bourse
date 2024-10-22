@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { binding } from '~/api/types'
 import { useUser } from '~/store/useUser'
+import { useConf } from '~/store/useConf'
+import type { configlist } from '~/types'
 
-const userStore = useUser()
 const { t } = useI18n()
+const userStore = useUser()
+const confStore = useConf()
 
 const bg = new URL('~/assets/images/binding/bg.png', import.meta.url).href
 const bank_info = reactive(userStore.data.bank_info)
@@ -13,6 +16,28 @@ const infos = ref<binding>({
   bank_branch_name: bank_info?.bank_branch_name || '',
   bank_account: bank_info?.bank_account || '',
 })
+
+const { value: hideNumber } = confStore.data.find((e: configlist) => {
+  return e.key === 'user_money_account_hide_number'
+})
+
+const start = useToNumber(hideNumber.split(',')[0]).value
+const end = useToNumber(hideNumber.split(',')[1]).value
+function hide(raw: string) {
+  // 如果 raw.length 小于 start，则用 * 补足到 end 的长度
+  if (raw.length < start) {
+    raw = raw.padEnd(end, '*') // 用 * 补足到 end 的长度
+  }
+  // 如果 raw.length 大于等于 start，则从 start 到 end 范围内替换为 *
+  else {
+    const rawArray = raw.split('')
+    for (let i = start; i < Math.min(end, raw.length); i++)
+      rawArray[i] = '*' // 替换 start 到 end 之间的字符为 *
+
+    raw = rawArray.join('') // 重新拼成字符串
+  }
+  return raw
+}
 </script>
 
 <template>
@@ -26,7 +51,7 @@ const infos = ref<binding>({
             {{ infos.bank_name }}
           </div>
           <div class="account">
-            {{ infos.bank_account }}
+            {{ hide(infos.bank_account!) }}
           </div>
         </div>
       </div>

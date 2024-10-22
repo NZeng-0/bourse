@@ -39,9 +39,15 @@ export function getIndexMsg() {
   })
 }
 
-export function getIndexProduct() {
+export function getIndexProduct(show?: number) {
   return Request.get({
-    url: '/index/product/getProductList',
+    url: `/index/product/getProductList?is_show=${show}`,
+  })
+}
+
+export function getIndexProductAll() {
+  return Request.get({
+    url: `/index/product/getProductList`,
   })
 }
 

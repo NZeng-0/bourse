@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getProductDetail } from '~/api'
+import { getIndexProductAll, getProductDetail } from '~/api'
 import type { indexProduct } from '~/api/types'
 import { useProduct } from '~/store/useProduct'
 
@@ -33,7 +33,8 @@ function getSrc(uri: string) {
 
 onMounted(async () => {
   loading.value = true
-  list.value = await getProduct()
+  const { data } = await getIndexProductAll()
+  list.value = data.value.data
   loading.value = false
 })
 </script>
@@ -65,7 +66,7 @@ onMounted(async () => {
                   w-1.2rem
                 />
                 <div :style="{ color: item.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-                  {{ item.diff_rate }}%
+                  {{ item.diff }}%
                 </div>
               </div>
             </div>
