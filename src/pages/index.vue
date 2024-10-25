@@ -61,7 +61,7 @@ async function getSlide() {
 }
 
 async function init() {
-  Promise.all([getPopMsg(), getSlide()])
+  await Promise.all([getPopMsg(), getSlide()])
 }
 
 function showNextMessage(index = 0) {
@@ -170,7 +170,6 @@ onMounted(async () => {
   font-weight: normal;
   line-height: 16px;
   letter-spacing: 0em;
-  font-variation-settings: "opsz" auto;
   color: #6945DC;
 }
 

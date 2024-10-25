@@ -88,7 +88,7 @@ onMounted(async () => {
       </div>
       <div mt5>
         <RouterLink to="/register">
-          <div type="button" class="text-#673DDA" readonly h12 w70 rounded-2xl border-none text-center>
+          <div type="button" class="text-#673DDA" h12 w70 rounded-2xl border-none text-center>
             {{ t('login.sign_up') }}
           </div>
         </RouterLink>

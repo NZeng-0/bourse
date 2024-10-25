@@ -16,8 +16,14 @@ const timeIndex = ref(-1)
 const moneyIndex = ref(-1)
 const timeList = store.data.time_scheme_list
 const moneyList = store.data.investment_money_list
+const product_profit = ref(0)
 
-const { create_order_max_money, create_order_min_money, low_status } = store.data
+const {
+  create_order_max_money,
+  create_order_min_money,
+  profit_status,
+  low_status,
+} = store.data
 
 const submitData = ref({
   product_id: store.data.id,
@@ -42,9 +48,10 @@ function getMoneyStyle(index: number) {
     : ' px0.5 m0.5 h8.5 min-w12.5 items-center justify-center bg-white rounded-xl'
 }
 
-function selectTime(index: number, id: number) {
+function selectTime(index: number, profit: string, id: number) {
   timeIndex.value = index
   submitData.value.scheme_id = id
+  product_profit.value = parseProfit(profit)
 }
 
 function selectMoney(money: number, index: number) {
@@ -98,6 +105,24 @@ async function submit() {
     message: data.value.msg,
   })
 }
+
+function parseProfit(value: string): number {
+  // 判断value中是否有 - 这个字符
+  if (value.includes('-')) {
+    // 按照 - 分割字符
+    const arr = value.split('-')
+    // 将第一个字符转换为数字
+    const first = Number(arr[0])
+    // 将第二个字符转换为数字
+    const last = Number(arr[1])
+    // 生成一个随机数 范围在 first 和 last 之间
+    return Number.parseInt((first + Math.random() * (last - first)).toFixed(2))
+  }
+  else {
+    // 将value转换为数字
+    return Number(value)
+  }
+}
 </script>
 
 <template>
@@ -117,7 +142,7 @@ async function submit() {
         <!-- h15 -->
         <div
           v-for="(e, key) in timeList" :key w="47.25%" flex="~ wrap" :class="getTimeStyle(key)"
-          @click="selectTime(key, e.id)"
+          @click="selectTime(key, e.profit_rate, e.id)"
         >
           <div wfull flex="~" justify-center>
             <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
@@ -125,9 +150,13 @@ async function submit() {
             </div>
             <span self-end text-xl>s</span>
           </div>
-          <div v-if="low_status === 1" flex="~" mt4 wfull justify-center text-sm :text="timeIndex === key ? 'white' : '#969696'">
-            <div>{{ t('trading.buy.up') }}: {{ e.profit_rate }}%</div>
-            <div>{{ t('trading.buy.down') }}: {{ e.loss_rate }}%</div>
+          <div flex="~" mt4 wfull justify-center text-sm :text="timeIndex === key ? 'white' : '#969696'">
+            <div v-if="profit_status === 1">
+              {{ t('trading.buy.up') }}: {{ e.profit_rate }}%
+            </div>
+            <div v-if="low_status === 1">
+              {{ t('trading.buy.down') }}: {{ e.loss_rate }}%
+            </div>
           </div>
         </div>
       </div>
@@ -144,7 +173,7 @@ async function submit() {
       <button h8.5 min-w25 rounded-xl bg-white px2 text-lg @click="all()">
         {{ t('trading.buy.all') }}
       </button>
-      <input type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
+      <input v-model="submitData.money" type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
@@ -164,7 +193,8 @@ async function submit() {
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }}
+          {{ toNumber(submitData.money) + toNumber(submitData.money * product_profit / 100) }}
+          <!-- {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }} -->
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>

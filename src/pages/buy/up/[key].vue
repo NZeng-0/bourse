@@ -16,7 +16,6 @@ const moneyIndex = ref(-1)
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 const timeList = store.data.time_scheme_list
 const moneyList = store.data.investment_money_list
-
 const auth = conf.data.find((item: configlist) => {
   return item.key === 'auth_open'
 }).value === '1'
@@ -25,6 +24,7 @@ const {
   create_order_max_money,
   create_order_min_money,
   profit_status,
+  low_status,
 } = store.data
 
 const submitData = ref({
@@ -60,7 +60,7 @@ function getMoneyStyle(index: number) {
 }
 
 function subClass() {
-  return 'text-#707070 ml-6.8 h8.5 w25 rounded-xl bg-white pl4 text-lg'
+  return 'text-#707070 px-2 ml-6.8 h8.5 w25 rounded-xl bg-white text-lg'
 }
 
 function back() {
@@ -148,12 +148,13 @@ function parseProfit(value: string): number {
               </div>
               <span self-end text-xl>s</span>
             </div>
-            <div
-              v-if="profit_status === 1" flex="~" mt4 wfull justify-between text-sm
-              :text="timeIndex === key ? 'white' : '#969696'"
-            >
-              <div>{{ t('trading.buy.up') }}: {{ e.profit_rate }}%</div>
-              <div>{{ t('trading.buy.down') }}: {{ e.loss_rate }}%</div>
+            <div flex="~" mt4 wfull justify-between text-sm :text="timeIndex === key ? 'white' : '#969696'">
+              <div v-if="profit_status === 1">
+                {{ t('trading.buy.up') }}: {{ e.profit_rate }}%
+              </div>
+              <div v-if="low_status === 1">
+                {{ t('trading.buy.down') }}: {{ e.loss_rate }}%
+              </div>
             </div>
           </div>
         </template>
@@ -171,8 +172,7 @@ function parseProfit(value: string): number {
       <button h8.5 min-w25 border rounded-xl bg-white px2 text-lg @click="all()">
         {{ t('trading.buy.all') }}
       </button>
-      <span v-if="!submitData.money" :class="subClass()">{{ t('trading.buy.other') }}</span>
-      <input v-else v-model="submitData.money" type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
+      <input v-model="submitData.money" type="text" :placeholder="t('trading.buy.other')" :class="subClass()">
     </div>
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
