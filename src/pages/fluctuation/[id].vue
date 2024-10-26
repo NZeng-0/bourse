@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import type { TooltipShowRule } from 'klinecharts'
+import type { CandleType, TooltipShowRule } from 'klinecharts'
 import { dispose, init } from 'klinecharts'
-import type { indexProduct } from '~/api/types'
 import type { cardType } from '~/types'
+import type { indexProduct } from '~/api/types'
 import { useFund } from '~/hook/useFund'
+
+const id = useToNumber(useRoute('/fluctuation/[id]').params.id).value
 
 const {
   getSrc,
@@ -14,18 +16,10 @@ const {
   handleImageError,
 } = useFund()
 
-const id = useToNumber(useRoute('/fund/[id]').params.id).value
 const product = ref<indexProduct>()
 const select = ref(0)
 const period = ref('1day')
 const timer = ref()
-
-function _in(current: number) {
-  return select.value === current
-    ? 'color-6A3BF6 w13 items-center justify-center rounded-xl'
-    : 'color-999999 w13 items-center justify-center rounded-xl'
-}
-
 const card = ref<cardType>({
   count: '',
   amount: '',
@@ -33,6 +27,12 @@ const card = ref<cardType>({
   low: '',
   vol: '',
 })
+
+function _in(current: number) {
+  return select.value === current
+    ? 'color-6A3BF6 w13 items-center justify-center rounded-xl'
+    : 'color-999999 w13 items-center justify-center rounded-xl'
+}
 
 async function choose(index: number, type: string) {
   select.value = index
@@ -54,10 +54,9 @@ function updateChart(cb: Function = () => { }) {
   const chart = init('chart')
   const data = parseData(product.value!.history_list)
   chart!.applyNewData(data!)
-  chart?.createIndicator('MA', true, { id: 'candle_pane' })
-  chart?.createIndicator('VOL')
   chart?.setStyles({
     candle: {
+      type: 'area' as CandleType,
       tooltip: { showRule: 'none' as TooltipShowRule },
       priceMark: {
         low: { show: false },
@@ -99,31 +98,33 @@ onUnmounted(() => {
 <template>
   <TheHead back="/" :title="product?.product_name || ' '" />
   <div h-screen overflow-y-scroll border="0.1" bg-trading>
-    <div flex="~" mt5.5 wfull justify-between px-4>
-      <div>
-        <div text-3xl>
-          <!-- 当前价格 -->
-          {{ product?.price || 0 }}
+    <section>
+      <div flex="~" mt5.5 wfull justify-between px-4>
+        <div>
+          <div text-3xl>
+            <!-- 当前价格 -->
+            {{ product?.price || 0 }}
+          </div>
+          <div flex="~" text-xs :style="{ color: product?.profit_status || 0 > 0 ? '#19c09a' : '#fc6c6b' }">
+            <div :class="getIcon(product?.profit_status || 0)" h-1.2rem w-1.2rem />
+            <div>{{ product?.profit_status }} ({{ product?.fkzdbdz }}%)</div>
+          </div>
         </div>
-        <div flex="~" text-xs :style="{ color: product?.profit_status || 0 > 0 ? '#19c09a' : '#fc6c6b' }">
-          <div :class="getIcon(product?.profit_status || 0)" h-1.2rem w-1.2rem />
-          <div>{{ product?.profit_status }} ({{ product?.fkzdbdz }}%)</div>
+        <div mr-2.5>
+          <img :src="getSrc(product?.logo || ' ')" h12 w12 rounded-full @error="handleImageError($event.target)">
         </div>
       </div>
-      <div mr-2.5>
-        <img h12 w12 rounded-full :src="getSrc(product?.logo || ' ')" @error="handleImageError($event.target)">
+      <div flex="~" mt3 justify-between px4 text-sm>
+        <TheSwitched :id :k="false" />
+        <div v-for="(e, key) in getTimes()" :key :class="_in(key)" flex="~" @click="choose(key, e.key)">
+          {{ e.value }}
+        </div>
       </div>
-    </div>
-    <div flex="~" mt3 justify-between px4 text-sm>
-      <TheSwitched :id :k="true" />
-      <div v-for="(e, key) in getTimes()" :key :class="_in(key)" flex="~" @click="choose(key, e.key)">
-        {{ e.value }}
+      <div mt3.2 h70 w-full>
+        <div id="chart" style="width:100%;height:100%" />
       </div>
-    </div>
-    <div mt3.2 h70 w-full>
-      <div id="chart" style="width:100%;height:100%" />
-    </div>
-    <div flex="~" mt2 justify-around text-xs>
+    </section>
+    <div flex="~" mt0.25 justify-around text-xs>
       <span>
         13:00
       </span>

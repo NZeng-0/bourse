@@ -64,6 +64,10 @@ function selectTime(index: number, profit: string, id: number) {
     submitData.value.scheme_id = id
     timeIndex.value = index
   }
+  times.value?.forEach((e: timeList) => {
+    create_order_max_money.value = e.max_invest_money
+    create_order_min_money.value = e.min_invest_money
+  })
   product_profit.value = parseProfit(profit)
 }
 
@@ -147,8 +151,6 @@ onMounted(async () => {
   product.value = await actuator(id, '5min')
   times.value = product.value?.time_scheme_list
   moneyList.value = product.value?.investment_money_list
-  create_order_max_money.value = product.value!.create_order_max_money
-  create_order_min_money.value = product.value!.create_order_min_money
   profit_status.value = product.value!.profit_status
   low_status.value = product.value!.low_status
 })

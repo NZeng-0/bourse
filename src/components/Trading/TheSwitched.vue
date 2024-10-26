@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
+const { k, id } = defineProps<{
   k: boolean
+  id: number
 }>()
 
 const { t } = useI18n()
-const { k } = props
 
 const router = useRouter()
 
@@ -13,12 +13,11 @@ function style(isShow: boolean) {
 }
 
 function go(url: string) {
-  router.push(url)
+  router.push(`/${url}/${id}`)
 }
 </script>
 
 <template>
-  <!-- <div flex="~" justify-center> -->
   <div flex="~" h6.5 rounded-full bg-menu text-sm>
     <div :class="style(k)" flex="~" w10 items-center justify-center rounded-full @click="go('fund')">
       {{ t('trading.k_line') }}
@@ -27,5 +26,4 @@ function go(url: string) {
       {{ t('trading.undulate') }}
     </div>
   </div>
-  <!-- </div> -->
 </template>
