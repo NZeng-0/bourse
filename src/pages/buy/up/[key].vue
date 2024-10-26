@@ -1,34 +1,41 @@
 <script setup lang="ts">
 import { submitProductOrder } from '~/api'
-import { useProduct } from '~/store/useProduct'
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
 import type { configlist } from '~/types'
+import { useFund } from '~/hook'
+import type { indexProduct, timeList } from '~/api/types'
+
+const id = useToNumber(useRoute('/buy/up/[key]').params.key).value
+
+const {
+  actuator,
+} = useFund()
 
 const { t } = useI18n()
 const route = useRouter()
 
-const store = useProduct()
+const product = ref<indexProduct>()
+
 const conf = useConf()
 const user = useUser()
 const timeIndex = ref(-1)
 const moneyIndex = ref(-1)
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
-const timeList = store.data.time_scheme_list
-const moneyList = store.data.investment_money_list
+const times = ref<timeList[]>()
+const moneyList = ref()
+
+const create_order_max_money = ref()
+const create_order_min_money = ref()
+const profit_status = ref()
+const low_status = ref()
+
 const auth = conf.data.find((item: configlist) => {
   return item.key === 'auth_open'
 }).value === '1'
 
-const {
-  create_order_max_money,
-  create_order_min_money,
-  profit_status,
-  low_status,
-} = store.data
-
 const submitData = ref({
-  product_id: store.data.id,
+  product_id: id,
   money: 0,
   type: 1,
   scheme_id: -1,
@@ -37,8 +44,14 @@ const submitData = ref({
 const product_profit = ref(0)
 
 function selectTime(index: number, profit: string, id: number) {
-  submitData.value.scheme_id = id
-  timeIndex.value = index
+  if (timeIndex.value === index) {
+    submitData.value.scheme_id = -1
+    timeIndex.value = -1
+  }
+  else {
+    submitData.value.scheme_id = id
+    timeIndex.value = index
+  }
   product_profit.value = parseProfit(profit)
 }
 
@@ -49,8 +62,14 @@ function getTimeStyle(time: number) {
 }
 
 function selectMoney(money: number, index: number) {
-  submitData.value.money = money
-  moneyIndex.value = index
+  if (moneyIndex.value === index) {
+    moneyIndex.value = -1
+    submitData.value.money = 0
+  }
+  else {
+    submitData.value.money = money
+    moneyIndex.value = index
+  }
 }
 
 function getMoneyStyle(index: number) {
@@ -72,7 +91,7 @@ function toNumber(value: any) {
 }
 
 function all() {
-  submitData.value.money = store.data.usable_money
+  submitData.value.money = product.value!.usable_money || 0
 }
 
 async function submit() {
@@ -84,13 +103,13 @@ async function submit() {
 
   if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
     return showToast({
-      message: `${t('buy_tips.min')}${create_order_min_money}`,
+      message: `${t('buy_tips.min')}${create_order_min_money.value}`,
     })
   }
 
   if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
     return showToast({
-      message: `${t('buy_tips.max')}${create_order_max_money}`,
+      message: `${t('buy_tips.max')}${create_order_max_money.value}`,
     })
   }
 
@@ -123,6 +142,16 @@ function parseProfit(value: string): number {
     return Number(value)
   }
 }
+
+onMounted(async () => {
+  product.value = await actuator(id, '5min')
+  times.value = product.value?.time_scheme_list
+  moneyList.value = product.value?.investment_money_list
+  create_order_max_money.value = product.value!.create_order_max_money
+  create_order_min_money.value = product.value!.create_order_min_money
+  profit_status.value = product.value!.profit_status
+  low_status.value = product.value!.low_status
+})
 </script>
 
 <template>
@@ -140,7 +169,7 @@ function parseProfit(value: string): number {
       </div>
       <div flex="~ wrap" justify-between>
         <!-- h15 -->
-        <template v-for="(e, key) in timeList" :key>
+        <template v-for="(e, key) in times" :key>
           <div w="48%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(key, e.profit_rate, e.id)">
             <div wfull flex="~" justify-center>
               <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
@@ -177,11 +206,11 @@ function parseProfit(value: string): number {
     <div mt4 pl7.5 pr6 text-black opacity-69>
       <div flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.breed') }}</div>
-        <div>{{ store.data.product_name }}</div>
+        <div>{{ product?.product_name || '' }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.real_price') }}</div>
-        <div>{{ store.data.price }}</div>
+        <div>{{ product?.price || ' ' }}</div>
       </div>
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.amount') }}</div>
@@ -199,7 +228,7 @@ function parseProfit(value: string): number {
         <div>
           {{ t('trading.buy.amount_available') }}
           <span class="text-#5425EB">
-            {{ store.data.usable_money }}
+            {{ product?.usable_money || 0 }}
           </span>
         </div>
         <div>

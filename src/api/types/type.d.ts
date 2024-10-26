@@ -37,6 +37,23 @@ export interface indexProduct {
   high: string
   vol: string
   amount: number
+  time_scheme_list: Array<timeList>
+  investment_money_list: []
+  create_order_max_money: number
+  create_order_min_money: number
+  profit_status: number
+  low_status: number
+  usable_money: number
+}
+
+export interface timeList {
+  id: number
+  product_id: number
+  time: number
+  min_invest_money: string
+  max_invest_money: string
+  profit_rate: string
+  loss_rate: string
 }
 
 export interface history {

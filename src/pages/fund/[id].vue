@@ -141,7 +141,7 @@ onUnmounted(() => {
       <TheTradingCard :card />
     </div>
     <div flex="~" my4 justify-between px5.5>
-      <TheBuy :index="id" selected="bg-btn-select" />
+      <TheBuy :id selected="bg-btn-select" />
     </div>
     <div h30 />
   </div>
