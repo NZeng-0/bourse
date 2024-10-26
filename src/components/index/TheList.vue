@@ -3,11 +3,9 @@ import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
 import type { history, indexProduct } from '~/api/types'
-import { useProduct } from '~/store/useProduct'
-import { getIndexProduct, getProductDetail } from '~/api'
+import { getIndexProduct } from '~/api'
 
 const router = useRouter()
-const productStore = useProduct()
 
 const grid = {
   height: '80%',
@@ -80,9 +78,7 @@ function getLineColor(state: number): string {
 }
 
 async function go(key: number) {
-  const { data } = await getProductDetail(key, '1week')
-  productStore.data = data.value.data
-  router.push('fund')
+  router.push(`/fund/${key}`)
 }
 
 function handleImageError(that: EventTarget | null) {

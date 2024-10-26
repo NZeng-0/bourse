@@ -25,7 +25,7 @@ declare module 'vue-router/auto-routes' {
     '/buy/down/[key]': RouteRecordInfo<'/buy/down/[key]', '/buy/down/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/buy/up/[key]': RouteRecordInfo<'/buy/up/[key]', '/buy/up/:key', { key: ParamValue<true> }, { key: ParamValue<false> }>,
     '/fluctuation': RouteRecordInfo<'/fluctuation', '/fluctuation', Record<never, never>, Record<never, never>>,
-    '/fund': RouteRecordInfo<'/fund', '/fund', Record<never, never>, Record<never, never>>,
+    '/fund/[id]': RouteRecordInfo<'/fund/[id]', '/fund/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/grow/current': RouteRecordInfo<'/grow/current', '/grow/current', Record<never, never>, Record<never, never>>,
     '/grow/histroy': RouteRecordInfo<'/grow/histroy', '/grow/histroy', Record<never, never>, Record<never, never>>,
     '/grow/solution': RouteRecordInfo<'/grow/solution', '/grow/solution', Record<never, never>, Record<never, never>>,

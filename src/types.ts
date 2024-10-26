@@ -341,3 +341,12 @@ export interface readType {
   id: number
   list: number[]
 }
+
+export interface klineType {
+  close: number
+  high: number
+  low: number
+  open: number
+  timestamp: number
+  volume: number
+}
