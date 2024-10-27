@@ -17,7 +17,7 @@ const {
 const id = useToNumber(useRoute('/fund/[id]').params.id).value
 const product = ref<indexProduct>()
 const select = ref(0)
-const period = ref('1day')
+const period = ref('5min')
 const timer = ref()
 
 function _in(current: number) {
@@ -50,7 +50,6 @@ function updateChart(cb: Function = () => { }) {
 
   if (cb)
     cb()
-
   const chart = init('chart')
   const data = parseData(product.value!.history_list)
   chart!.applyNewData(data!)
