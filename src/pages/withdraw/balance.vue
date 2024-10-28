@@ -24,7 +24,7 @@ const infos = ref<withdraw>({
   operation_pwd: '',
 })
 
-const banding = ref(user.data.auth_status !== 0)
+const banding = ref(user.data.bank_info.bank_account !== '')
 const wait = ref(false)
 const method = ref<withdrawMethodType[]>()
 const all = ref(true)
@@ -179,7 +179,7 @@ async function getRate() {
           <div w="1/3">
             {{ t('assets.withdrawal.account') }}
           </div>
-          <div w="2/3" text-left>
+          <div w="2/3" overflow-hidden text-left>
             {{ isBank ? infos.bank_account : infos.wallet_address }}
           </div>
         </div>
