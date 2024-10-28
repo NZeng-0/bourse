@@ -27,6 +27,7 @@ const card = ref<cardType>({
   low: '',
   vol: '',
 })
+let chart
 
 function _in(current: number) {
   return select.value === current
@@ -39,21 +40,10 @@ async function choose(index: number, type: string) {
   period.value = type
 }
 
-function updateChart(cb: Function = () => { }) {
-  card.value = {
-    count: product.value!.count,
-    amount: product.value!.amount,
-    high: product.value!.high,
-    low: product.value!.low,
-    vol: product.value!.vol,
-  }
-
-  if (cb)
-    cb()
-
-  const chart = init('chart')
-  const data = parseData(product.value!.history_list)
-  chart!.applyNewData(data!)
+function initChart() {
+  chart = init('chart')
+  chart!.createIndicator('MA', true, { id: 'candle_pane' })
+  chart!.createIndicator('VOL')
   chart?.setStyles({
     candle: {
       type: 'area' as CandleType,
@@ -78,14 +68,29 @@ function updateChart(cb: Function = () => { }) {
   })
 }
 
+function updateChart(cb: Function = () => { }) {
+  card.value = {
+    count: product.value!.count,
+    amount: product.value!.amount,
+    high: product.value!.high,
+    low: product.value!.low,
+    vol: product.value!.vol,
+  }
+
+  if (cb)
+    cb()
+
+  const data = parseData(product.value!.history_list)
+  initChart()
+  chart!.applyNewData(data!)
+}
+
 onMounted(async () => {
   product.value = await actuator(id, period.value)
   updateChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
-    updateChart(() => {
-      dispose('chart')
-    })
+    chart!.updateData({ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 })
   }, 3000)
 })
 

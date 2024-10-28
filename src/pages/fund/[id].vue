@@ -19,6 +19,7 @@ const product = ref<indexProduct>()
 const select = ref(0)
 const period = ref('5min')
 const timer = ref()
+let chart
 
 function _in(current: number) {
   return select.value === current
@@ -37,25 +38,15 @@ const card = ref<cardType>({
 async function choose(index: number, type: string) {
   select.value = index
   period.value = type
+  dispose('chart')
+  initChart()
 }
 
-function updateChart(cb: Function = () => { }) {
-  card.value = {
-    count: product.value!.count,
-    amount: product.value!.amount,
-    high: product.value!.high,
-    low: product.value!.low,
-    vol: product.value!.vol,
-  }
-
-  if (cb)
-    cb()
-  const chart = init('chart')
-  const data = parseData(product.value!.history_list)
-  chart!.applyNewData(data!)
-  chart?.createIndicator('MA', true, { id: 'candle_pane' })
-  chart?.createIndicator('VOL')
-  chart?.setStyles({
+function initChart() {
+  chart = init('chart')
+  chart!.createIndicator('MA', true, { id: 'candle_pane' })
+  chart!.createIndicator('VOL')
+  chart!.setStyles({
     candle: {
       tooltip: { showRule: 'none' as TooltipShowRule },
       priceMark: {
@@ -65,9 +56,10 @@ function updateChart(cb: Function = () => { }) {
       },
     },
     indicator: { tooltip: { showRule: 'none' as TooltipShowRule } },
-    xAxis: { tickText: { show: false } },
+    // xAxis: { tickText: { show: false } },
+    // yAxis: { axisLine: { show: true }, tickLine: { show: true }, tickText: { show: true } },
     crosshair: {
-      vertical: { text: { show: false } },
+      // vertical: { text: { show: false } },
       horizontal: {
         text: {
           color: '#fff',
@@ -78,14 +70,29 @@ function updateChart(cb: Function = () => { }) {
   })
 }
 
+function loadChart(cb: Function = () => { }) {
+  card.value = {
+    count: product.value!.count,
+    amount: product.value!.amount,
+    high: product.value!.high,
+    low: product.value!.low,
+    vol: product.value!.vol,
+  }
+
+  if (cb)
+    cb()
+
+  const data = parseData(product.value!.history_list)
+  initChart()
+  chart!.applyNewData(data!)
+}
+
 onMounted(async () => {
   product.value = await actuator(id, period.value)
-  updateChart()
+  loadChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
-    updateChart(() => {
-      dispose('chart')
-    })
+    chart!.updateData({ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 })
   }, 3000)
 })
 

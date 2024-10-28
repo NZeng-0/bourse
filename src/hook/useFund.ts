@@ -10,6 +10,20 @@ const times = [
   { key: '5year', value: '5Y' },
 ]
 
+function getTimestamp(str: string) {
+  const year = str.slice(0, 4)
+  const month = str.slice(4, 6)
+  const day = str.slice(6, 8)
+  const hour = str.slice(8, 10)
+  const minute = str.slice(10, 12)
+
+  // 创建日期对象
+  const date = `${year}-${month}-${day} ${hour}:${minute}`
+
+  // 转换为时间戳
+  return new Date(date).getTime()
+}
+
 export function useFund() {
   function getTimes() {
     return times
@@ -29,17 +43,12 @@ export function useFund() {
         close: useToNumber(h.close).value,
         low: useToNumber(h.low).value,
         high: useToNumber(h.high).value,
-        timestamp: h.date,
+        timestamp: getTimestamp(h.timePoint.toString()),
         volume: useToNumber(h.vol).value,
       }
       result.push(val)
     }
     return result
-  }
-
-  async function loadData(id: number, type: string) {
-    const { data } = await getProductDetail(id, type)
-    return data.value.data
   }
 
   function getSrc(uri: string) {
@@ -51,8 +60,8 @@ export function useFund() {
   }
 
   async function actuator(id: number, period: string) {
-    const data = await loadData(id, period)
-    return data
+    const { data } = await getProductDetail(id, period)
+    return data.value.data
   }
 
   /* function parseDate(unixTimestamp: number) {

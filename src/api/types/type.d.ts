@@ -67,6 +67,7 @@ export interface history {
   low: string
   high: string
   vol: number
+  timePoint: number
 }
 
 export interface recharge {
