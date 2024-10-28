@@ -175,7 +175,7 @@ onMounted(async () => {
           <div w="47.25%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(key, e.profit_rate, e.id)">
             <div wfull flex="~" justify-center>
               <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-                {{ e.time }}
+                {{ e.time * 60 }}
               </div>
               <span self-end text-xl>s</span>
             </div>
