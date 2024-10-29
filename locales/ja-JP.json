@@ -78,7 +78,8 @@
     "settlement_time": "決済時間",
     "product_1": "USD 指数です",
     "product_2": "USD / EUR",
-    "newTitle": "位置"
+    "newTitle": "位置",
+    "current": "この注文の損益"
   },
   "popup": {
     "notice": "お知らせ",

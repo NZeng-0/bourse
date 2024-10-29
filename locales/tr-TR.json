@@ -226,7 +226,8 @@
     "settlement_time": "ödeme zamanı",
     "product_1": "USD indeks",
     "product_2": "USD / EUR",
-    "newTitle": "Konum"
+    "newTitle": "Konum",
+    "current": "Bu siparişin kar ve zararı"
   },
   "popup": {
     "confrim": "Elbette",

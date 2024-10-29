@@ -236,9 +236,9 @@ export function submitProductOrder(data: {
   })
 }
 
-export function getProductOrderList(status: number) {
+export function getProductOrderList(status: number, page: number) {
   return Request.get({
-    url: `/index/product/getProductOrderList?status=${status}`,
+    url: `/index/product/getProductOrderList?status=${status}&page=${page}`,
   })
 }
 

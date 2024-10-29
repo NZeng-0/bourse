@@ -78,7 +78,8 @@
     "settlement_time": "結算時間",
     "product_1": "USD 指數",
     "product_2": "USD / EUR",
-    "newTitle": "持倉"
+    "newTitle": "持倉",
+    "current": "本單盈虧"
   },
   "popup": {
     "notice": "公告",

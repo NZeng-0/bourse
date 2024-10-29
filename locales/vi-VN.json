@@ -78,7 +78,8 @@
     "settlement_time": "Thời gian giải quyết",
     "product_1": "USD Chỉ số",
     "product_2": "USD / EUR",
-    "newTitle": "Chức vụ"
+    "newTitle": "Chức vụ",
+    "current": "Lãi và lỗ của lệnh này"
   },
   "popup": {
     "notice": "Thông báo",

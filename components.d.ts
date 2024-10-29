@@ -32,6 +32,7 @@ declare module 'vue' {
     VanCell: typeof import('vant/es')['Cell']
     VanDropdownItem: typeof import('vant/es')['DropdownItem']
     VanDropdownMenu: typeof import('vant/es')['DropdownMenu']
+    VanList: typeof import('vant/es')['List']
     VanNoticeBar: typeof import('vant/es')['NoticeBar']
     VanPopup: typeof import('vant/es')['Popup']
     VanSwipe: typeof import('vant/es')['Swipe']

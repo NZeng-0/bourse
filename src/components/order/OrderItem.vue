@@ -7,13 +7,40 @@ const { data, history } = defineProps<{
 }>()
 
 const { t } = useI18n()
+
+const djs = ref('00:00')
+
+function getDjs(time: number) {
+  const minutes = Math.floor(time / 60)
+  const seconds = time % 60
+
+  const m = (`0${minutes}`).slice(-2)
+  const s = (`0${seconds}`).slice(-2)
+  djs.value = `${m}:${s}`
+}
+
+function startCountdown(duration: number) {
+  let time = duration
+
+  const interval = setInterval(() => {
+    getDjs(time)
+    if (time <= 0)
+      clearInterval(interval)
+    time--
+  }, 1000)
+}
+
+onMounted(() => {
+  startCountdown(data.time)
+  getDjs(data.time)
+})
 </script>
 
 <template>
   <div m-2 rounded-2xl bg-white p-2>
     <div flex="~">
       <div class="font-['YouShe']" text-lg leading-5>
-        {{ data.product_name }}
+        {{ data.product_name || '' }}
       </div>
       <div ml-4>
         <div v-if="data.type === 2" class="tips bg-38B781">
@@ -61,32 +88,32 @@ const { t } = useI18n()
       <div class="content">
         {{ data.time }}{{ t('seconds') }}
         <span v-if="!history" class="left">
-          ({{ t('order.remaining_time') }}：00:04:30)
+          ({{ t('order.remaining_time') }} : {{ djs }})
         </span>
       </div>
     </div>
-    <div v-if="history" flex="~" my-2 justify-between>
+    <div v-if="!history" flex="~" my-2 justify-between>
       <div class="sub">
-        {{ t('order.profit_and_loss') }}：
+        {{ t('order.profit_and_loss') }} :
       </div>
       <div class="content">
         {{ data.profit_loss_rate }}
       </div>
     </div>
-    <div v-if="!history" flex="~" my-2 justify-between>
+    <div v-if="history" flex="~" my-2 justify-between>
       <div class="sub">
-        {{ t('order.expected_income') }}
+        {{ t('order.current') }}
       </div>
-      <div class="expect">
-        {{ data.predict_earnings_money }}
+      <div :class="Number.parseInt(data.earnings_money) > 0 ? 'color-DF2040 expect' : 'color-38B781 expect'">
+        <span v-if="Number.parseInt(data.earnings_money) > 0">+</span>{{ data.earnings_money }}
       </div>
     </div>
     <div v-else flex="~" my-2 justify-between>
       <div class="sub">
         {{ t('order.expected_income') }}
       </div>
-      <div :class="Number.parseInt(data.earnings_money) > 0 ? 'color-DF2040 expect' : 'color-38B781 expect'">
-        <span v-if="Number.parseInt(data.earnings_money) > 0">+</span>{{ data.earnings_money }}
+      <div :class="Number.parseInt(data.predict_earnings_money) > 0 ? 'color-DF2040 expect' : 'color-38B781 expect'">
+        <span v-if="Number.parseInt(data.predict_earnings_money) > 0">+</span>{{ data.predict_earnings_money }}
       </div>
     </div>
     <div flex="~" my-2 justify-between>

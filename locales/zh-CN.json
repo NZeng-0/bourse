@@ -93,7 +93,8 @@
     "buying_time": "买入时间",
     "settlement_time": "结算时间",
     "product_1": "美元指数",
-    "product_2": "美元/欧元"
+    "product_2": "美元/欧元",
+    "current": "本单盈亏"
   },
   "popup": {
     "notice": "公告",

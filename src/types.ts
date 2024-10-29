@@ -145,7 +145,7 @@ export interface dataType {
   type: number
   jcdw: string
   pcdw: string | null
-  time: string
+  time: number
   wtye: string
   wxwtye: string
   yxwtye: string

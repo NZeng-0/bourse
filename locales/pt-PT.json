@@ -226,7 +226,8 @@
     "settlement_time": "hora de liquidação",
     "product_1": "O índice USD",
     "product_2": "USD / EUR",
-    "newTitle": "Posição"
+    "newTitle": "Posição",
+    "current": "Lucro e perda deste pedido"
   },
   "popup": {
     "confrim": "Claro",

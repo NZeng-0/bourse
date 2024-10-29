@@ -2,22 +2,39 @@
 import type { dataType } from '~/types'
 import { getProductOrderList } from '~/api'
 
-const route = useRouter()
 const { t } = useI18n()
+const route = useRouter()
+const my_loading = ref(true)
 const loading = ref(false)
-
+const finished = ref(false)
+const page = ref<number>(1)
 const list = ref<dataType[]>()
+const isDone = ref(false)
 
 function go(uri: string) {
   route.push(`/menu/order/${uri}`)
 }
 
-onMounted(async () => {
+async function onLoad() {
   loading.value = true
-  const { data } = await getProductOrderList(1)
-  list.value = data.value.data
+  if (isDone.value) {
+    finished.value = true
+    loading.value = false
+    return
+  }
+  const { data } = await getProductOrderList(1, page.value)
+  if (data.value.data.data.length < 1) {
+    isDone.value = true
+    finished.value = true
+    loading.value = false
+    return
+  }
+  list.value = data.value.data.data
+  my_loading.value = false
+  finished.value = false
   loading.value = false
-})
+  page.value++
+}
 </script>
 
 <template>
@@ -34,8 +51,10 @@ onMounted(async () => {
       </div>
     </div>
     <div h-screen overflow-y-scroll px2>
-      <TheEmpty v-if="loading" />
-      <OrderItem v-for="(data, key) in list" :key :data :history="false" />
+      <TheEmpty v-if="my_loading" />
+      <van-list v-model:loading="loading" loading-text=" " finished-text=" " :offset="100" @load="onLoad">
+        <OrderItem v-for="(data, key) in list" :key :data :history="false" />
+      </van-list>
       <div h60 />
     </div>
   </div>

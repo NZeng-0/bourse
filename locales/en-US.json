@@ -78,7 +78,8 @@
     "settlement_time": "Settlement Time",
     "product_1": "USD index",
     "product_2": "USD / EUR",
-    "newTitle": "Position"
+    "newTitle": "Position",
+    "current": "Profit and loss of this order"
   },
   "popup": {
     "notice": "Notice",

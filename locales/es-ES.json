@@ -78,7 +78,8 @@
     "settlement_time": "tiempo de liquidación",
     "product_1": "El índice USD",
     "product_2": "USD / EUR",
-    "newTitle": "Posición"
+    "newTitle": "Posición",
+    "current": "Ganancias y pérdidas de este pedido."
   },
   "popup": {
     "confrim": "Seguro",

@@ -78,7 +78,8 @@
     "settlement_time": "เวลาชำระบัญชี",
     "product_1": "USD เลขชี้กำลัง",
     "product_2": "USD / EUR",
-    "newTitle": "ตำแหน่ง"
+    "newTitle": "ตำแหน่ง",
+    "current": "กำไรและขาดทุนของคำสั่งซื้อนี้"
   },
   "popup": {
     "notice": "ประกาศ",

@@ -226,7 +226,8 @@
     "settlement_time": "время расчета",
     "product_1": "USD индекс",
     "product_2": "USD / EUR",
-    "newTitle": "Позиция"
+    "newTitle": "Позиция",
+    "current": "Прибыль и убыток этого ордера"
   },
   "popup": {
     "confrim": "Конечно",
