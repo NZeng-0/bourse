@@ -127,6 +127,7 @@ async function submit() {
   showToast({
     message: data.value.msg,
   })
+  route.replace('/menu/order/to-hold')
 }
 
 function parseProfit(value: string): number {

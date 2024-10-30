@@ -127,6 +127,7 @@ async function submit() {
   showToast({
     message: data.value.msg,
   })
+  route.replace('/menu/order/to-hold')
 }
 
 function parseProfit(value: string): number {
@@ -175,7 +176,7 @@ onMounted(async () => {
           <div w="48%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(key, e.profit_rate, e.id)">
             <div wfull flex="~" justify-center>
               <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-                {{ e.time * 60 }}
+                {{ e.time }}
               </div>
               <span self-end text-xl>s</span>
             </div>

@@ -8,7 +8,7 @@ import {
 } from '~/api'
 import { useLocalCache } from '~/hook'
 import { useUser } from '~/store/useUser'
-import { menu } from '~/composables/useMe'
+import menu from '~/composables/useMe'
 import { useMessage } from '~/store/useMessage'
 import { useConf } from '~/store/useConf'
 import type {

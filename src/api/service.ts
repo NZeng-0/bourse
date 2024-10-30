@@ -317,3 +317,9 @@ export function countWithdrawDeductMoney(money: number) {
     },
   })
 }
+
+export function getFrontMenuConfig() {
+  return Request.get({
+    url: '/index/system/getFrontMenuConfig',
+  })
+}
