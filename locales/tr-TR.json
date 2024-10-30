@@ -336,5 +336,6 @@
   "isEmpty": "Henüz veri yok",
   "authSuccess": "Gerçek adla kimlik doğrulama başarılı",
   "edit": "Değiştirmeniz gerekiyorsa lütfen çevrimiçi müşteri hizmetlerine başvurun.",
-  "authAudit": "İnceleniyor"
+  "authAudit": "İnceleniyor",
+  "copySuccess": "Başarıyla kopyalandı"
 }

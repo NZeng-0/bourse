@@ -336,5 +336,6 @@
   "isEmpty": "暫無數據",
   "authSuccess": "實名認證成功",
   "edit": "如需修改請聯絡線上客服",
-  "authAudit": "審核中"
+  "authAudit": "審核中",
+  "copySuccess": "複製成功"
 }

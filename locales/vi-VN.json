@@ -336,5 +336,6 @@
   "isEmpty": "Chưa có dữ liệu",
   "authSuccess": "Xác thực tên thật thành công",
   "edit": "Nếu bạn cần sửa đổi, vui lòng liên hệ với dịch vụ khách hàng trực tuyến",
-  "authAudit": "Đang xem xét"
+  "authAudit": "Đang xem xét",
+  "copySuccess": "Đã sao chép thành công"
 }

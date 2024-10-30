@@ -336,5 +336,6 @@
   "isEmpty": "Aún no hay datos",
   "authSuccess": "Autenticación de nombre real exitosa",
   "edit": "Si necesita modificarlo, comuníquese con el servicio de atención al cliente en línea.",
-  "authAudit": "En revisión"
+  "authAudit": "En revisión",
+  "copySuccess": "Copiado exitosamente"
 }
