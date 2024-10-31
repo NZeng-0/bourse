@@ -16,7 +16,7 @@ const id = user.data.uid
 const list: Ref<notifyType[]> = ref(listStore.notifyList)
 
 function getBgStyle() {
-  return 'py3 pl2.75 text-sm text-black mt2.5 h45 rounded-2.25 bg-white  pr4'
+  return 'py3 pl2.75 text-sm text-black mt2.5 min-h45 rounded-2.25 bg-white  pr4'
 }
 
 /**
@@ -95,7 +95,7 @@ function go(item: notifyType) {
               {{ item.create_time }}
             </div>
           </div>
-          <div my1 wfull text-sm opacity60>
+          <div mb2 wfull text-sm opacity60>
             <p v-html="item.value" />
           </div>
           <div wfull class="msg-display text-#4AADF0" @click="go(item)">

@@ -14,6 +14,7 @@ import { useConf } from '~/store/useConf'
 import type {
   configlist,
   msgTypes,
+  notifyType,
   userTypes,
 } from '~/types'
 import { useNotifyList } from '~/store/useNotifyList'
@@ -146,9 +147,19 @@ function includes(target: number) {
   }
   return false
 }
+
+function getTime(time: string) {
+  return new Date(time).getTime()
+}
+
 async function getNotice() {
   const { data } = await getIndexNoticeList()
-  notify.notifyList = data.value.data.data
+  const temp = data.value.data.data
+  temp.sort((a: notifyType, b: notifyType) => {
+    return getTime(b.create_time) - getTime(a.create_time)
+  })
+
+  notify.notifyList = temp
 
   if (isRead.data) {
     for (const item of notify.notifyList) {
