@@ -61,13 +61,16 @@ onMounted(async () => {
           {{ t('me.amount') }}: {{ item.money }}
         </div>
         <div wfull>
-          {{ t('me.type') }}: <span>{{ item.type === 1 ? '后台操作' : '前台充值' }}</span>
+          {{ t('me.type') }}: <span>{{ item.type === 1 ? t('back') : t('front') }}</span>
         </div>
         <div wfull>
           {{ t('me.state') }}:
           <span :class="getStateStyle(item.status)">
             {{ getState(item.status) }}
           </span>
+        </div>
+        <div w-full>
+          {{ t('failed') }}: 测试理由
         </div>
       </div>
       <div h50 />

@@ -337,5 +337,8 @@
   "authSuccess": "Autenticazione del nome reale riuscita",
   "edit": "Se è necessario modificare, contattare il servizio clienti online",
   "authAudit": "In fase di revisione",
-  "copySuccess": "Copiato con successo"
+  "copySuccess": "Copiato con successo",
+  "back": "operazioni in background",
+  "failed": "Motivo del rifiuto",
+  "front": "Ricarica alla reception"
 }

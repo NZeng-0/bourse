@@ -337,5 +337,8 @@
   "authSuccess": "Autenticación de nombre real exitosa",
   "edit": "Si necesita modificarlo, comuníquese con el servicio de atención al cliente en línea.",
   "authAudit": "En revisión",
-  "copySuccess": "Copiado exitosamente"
+  "copySuccess": "Copiado exitosamente",
+  "back": "operaciones en segundo plano",
+  "failed": "Motivo del rechazo",
+  "front": "Recarga energías en la recepción"
 }

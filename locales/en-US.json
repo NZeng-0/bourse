@@ -337,5 +337,8 @@
   "authSuccess": "Real-name authentication successful",
   "edit": "If you need to modify, please contact online customer service",
   "authAudit": "Under review",
-  "copySuccess": "Copied successfully"
+  "copySuccess": "Copied successfully",
+  "back": "background operations",
+  "failed": "Reason for rejection",
+  "front": "Recharge at the front desk"
 }

@@ -337,5 +337,8 @@
   "authSuccess": "Gerçek adla kimlik doğrulama başarılı",
   "edit": "Değiştirmeniz gerekiyorsa lütfen çevrimiçi müşteri hizmetlerine başvurun.",
   "authAudit": "İnceleniyor",
-  "copySuccess": "Başarıyla kopyalandı"
+  "copySuccess": "Başarıyla kopyalandı",
+  "back": "arka plan işlemleri",
+  "failed": "Reddedilme nedeni",
+  "front": "Resepsiyonda şarj edin"
 }

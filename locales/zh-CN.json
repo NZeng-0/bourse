@@ -1,4 +1,7 @@
 {
+  "failed": "拒绝理由",
+  "back": "后台操作",
+  "front": "前台充值",
   "copySuccess": "复制成功",
   "edit": "如需修改请联系在线客服",
   "authSuccess": "实名认证成功",

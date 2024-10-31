@@ -337,5 +337,8 @@
   "authSuccess": "Xác thực tên thật thành công",
   "edit": "Nếu bạn cần sửa đổi, vui lòng liên hệ với dịch vụ khách hàng trực tuyến",
   "authAudit": "Đang xem xét",
-  "copySuccess": "Đã sao chép thành công"
+  "copySuccess": "Đã sao chép thành công",
+  "back": "hoạt động nền",
+  "front": "Nạp tiền tại quầy lễ tân",
+  "failed": "Lý do từ chối"
 }
