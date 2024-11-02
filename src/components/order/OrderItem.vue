@@ -5,7 +5,8 @@ const { data, history } = defineProps<{
   data: dataType
   history: boolean
 }>()
-
+// eslint-disable-next-line no-console
+console.log(data)
 const { t } = useI18n()
 
 const djs = ref('00:00')

@@ -165,7 +165,7 @@ onMounted(async () => {
     </div>
     <div h10 w10 />
   </div>
-  <div hscreen overflow-x-scroll bg-trading>
+  <div hscreen overflow-x-scroll border bg-trading>
     <div mt5 px6.8>
       <div text-lg>
         {{ t('trading.buy.settlement_time') }}
@@ -176,7 +176,7 @@ onMounted(async () => {
           <div w="47.25%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(key, e.profit_rate, e.id)">
             <div wfull flex="~" justify-center>
               <div text-2xl font-black leading-6 class="font-['Alibaba-PuHuiTi']">
-                {{ e.time * 60 }}
+                {{ e.time }}
               </div>
               <span self-end text-xl>s</span>
             </div>
@@ -248,7 +248,7 @@ onMounted(async () => {
         {{ t('trading.submit') }}
       </button>
     </div>
-    <div h50 />
+    <div h40 />
   </div>
   <TheFooter :index="0" />
 </template>

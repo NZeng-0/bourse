@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { TooltipShowRule } from 'klinecharts'
 import { dispose, init } from 'klinecharts'
+import type { TooltipShowRule } from 'klinecharts'
+import { useFund } from '~/hook/useFund'
 import type { indexProduct } from '~/api/types'
 import type { cardType } from '~/types'
-import { useFund } from '~/hook/useFund'
 
 const {
   getSrc,
@@ -17,7 +17,7 @@ const {
 const id = useToNumber(useRoute('/fund/[id]').params.id).value
 const product = ref<indexProduct>()
 const select = ref(0)
-const period = ref('5min')
+const period = ref('1day')
 const timer = ref()
 let chart
 
@@ -36,10 +36,13 @@ const card = ref<cardType>({
 })
 
 async function choose(index: number, type: string) {
+  dispose('chart')
   select.value = index
   period.value = type
-  dispose('chart')
+  product.value = await actuator(id, period.value)
+  const data = parseData(product.value!.history_list)
   initChart()
+  chart!.applyNewData(data)
 }
 
 function initChart() {
@@ -92,8 +95,9 @@ onMounted(async () => {
   loadChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
-    chart!.updateData({ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 })
-  }, 3000)
+    const data = parseData(product.value!.history_list)
+    chart!.applyNewData(data)
+  }, 10000)
 })
 
 onUnmounted(() => {

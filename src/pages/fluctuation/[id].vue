@@ -36,8 +36,13 @@ function _in(current: number) {
 }
 
 async function choose(index: number, type: string) {
+  dispose('chart')
   select.value = index
   period.value = type
+  product.value = await actuator(id, period.value)
+  const data = parseData(product.value!.history_list)
+  initChart()
+  chart!.applyNewData(data)
 }
 
 function initChart() {
@@ -90,7 +95,8 @@ onMounted(async () => {
   updateChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
-    chart!.updateData({ close: 4985.09, high: 4988.62, low: 4980.30, open: 4986.72, timestamp: 1587660540000, volume: 76 })
+    const data = parseData(product.value!.history_list)
+    chart!.applyNewData(data)
   }, 3000)
 })
 
