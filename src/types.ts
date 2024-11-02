@@ -151,8 +151,8 @@ export interface dataType {
   yxwtye: string
   earnings_money: string
   predict_earnings_money: string
-  profit_loss_rate: string
-  settle_time: string | null
+  profit_rate: string
+  plan_settle_time: string | null
   create_time: string
   product_name: string
   price: string

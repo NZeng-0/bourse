@@ -35,7 +35,7 @@ const product_profit = ref(0)
 const submitData = ref({
   product_id: id,
   money: 0,
-  type: 1,
+  type: 2,
   scheme_id: -1,
 })
 

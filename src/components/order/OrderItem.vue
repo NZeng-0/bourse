@@ -5,8 +5,7 @@ const { data, history } = defineProps<{
   data: dataType
   history: boolean
 }>()
-// eslint-disable-next-line no-console
-console.log(data.down_time)
+
 const { t } = useI18n()
 
 const djs = ref('00:00')
@@ -30,7 +29,6 @@ function startCountdown(duration: number) {
     time--
   }, 1000)
 }
-
 onMounted(() => {
   if (data.down_time !== 0) {
     startCountdown(data.down_time)
@@ -100,7 +98,7 @@ onMounted(() => {
         {{ t('order.profit_and_loss') }} :
       </div>
       <div class="content">
-        {{ data.profit_loss_rate }}
+        {{ data.profit_rate }}
       </div>
     </div>
     <div v-if="history" flex="~" my-2 justify-between>
@@ -132,7 +130,7 @@ onMounted(() => {
         {{ t('order.settlement_time') }}:
       </div>
       <div class="content">
-        {{ data.settle_time || '--:--:--' }}
+        {{ data.plan_settle_time || '--:--:--' }}
       </div>
     </div>
   </div>
@@ -192,7 +190,7 @@ onMounted(() => {
 }
 
 .tips {
-  width: 59px;
+  min-width: 59px;
   height: 21px;
   border-radius: 4px;
   display: flex;
