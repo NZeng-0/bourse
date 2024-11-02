@@ -6,7 +6,7 @@ const { data, history } = defineProps<{
   history: boolean
 }>()
 // eslint-disable-next-line no-console
-console.log(data)
+console.log(data.down_time)
 const { t } = useI18n()
 
 const djs = ref('00:00')
@@ -32,8 +32,10 @@ function startCountdown(duration: number) {
 }
 
 onMounted(() => {
-  startCountdown(data.time)
-  getDjs(data.time)
+  if (data.down_time !== 0) {
+    startCountdown(data.down_time)
+    getDjs(data.down_time)
+  }
 })
 </script>
 

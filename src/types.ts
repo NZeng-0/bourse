@@ -156,6 +156,7 @@ export interface dataType {
   create_time: string
   product_name: string
   price: string
+  down_time: number
 }
 
 export interface withdrawType {
