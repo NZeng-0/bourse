@@ -130,30 +130,22 @@ async function submit() {
   route.replace('/menu/order/to-hold')
 }
 
-function parseProfit(value: string): number {
-  // 判断value中是否有 - 这个字符
-  if (value.includes('-')) {
-    // 按照 - 分割字符
-    const arr = value.split('-')
-    // 将第一个字符转换为数字
-    const first = Number(arr[0])
-    // 将第二个字符转换为数字
-    const last = Number(arr[1])
-    // 生成一个随机数 范围在 first 和 last 之间
-    return Number.parseInt((first + Math.random() * (last - first)).toFixed(2))
-  }
-  else {
-    // 将value转换为数字
-    return Number(value)
-  }
+function parseProfit(value: string) {
+  return useToNumber(value.split('-')[1]).value
+}
+
+function get(money: number, profit: number) {
+  return money * Math.floor(profit) / 100
 }
 
 onMounted(async () => {
   product.value = await actuator(id, '5min')
-  times.value = product.value?.time_scheme_list
-  moneyList.value = product.value?.investment_money_list
   profit_status.value = product.value!.profit_status
   low_status.value = product.value!.low_status
+  times.value = product.value?.time_scheme_list
+  setTimeout(() => {
+    moneyList.value = product.value?.investment_money_list
+  }, 1000)
 })
 </script>
 
@@ -165,7 +157,7 @@ onMounted(async () => {
     </div>
     <div h10 w10 />
   </div>
-  <div hscreen overflow-x-scroll border bg-trading>
+  <div hscreen overflow-x-scroll bg-trading>
     <div mt5 px6.8>
       <div text-lg>
         {{ t('trading.buy.settlement_time') }}
@@ -224,8 +216,7 @@ onMounted(async () => {
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          {{ toNumber(submitData.money) + toNumber(submitData.money * product_profit / 100) }}
-          <!-- {{ toNumber(submitData.money) + toNumber(submitData.money * .5) }} -->
+          {{ get(submitData.money, product_profit) }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>
@@ -244,7 +235,7 @@ onMounted(async () => {
       </div>
     </div>
     <div flex="~" justify-center>
-      <button mt7.5 h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="submit()">
+      <button mt7.5 h10.5 min-w37.5 rounded-lg bg-btn-select px2 text-lg text-white @click="submit">
         {{ t('trading.submit') }}
       </button>
     </div>
