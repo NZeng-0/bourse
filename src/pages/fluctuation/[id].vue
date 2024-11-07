@@ -127,7 +127,7 @@ onUnmounted(() => {
       </div>
       <div flex="~" mt3 justify-between px4 text-sm>
         <TheSwitched :id :k="false" />
-        <div v-for="(e, key) in getTimes()" :key :class="_in(key)" flex="~" @click="choose(key, e.key)">
+        <div v-for="(e, key) in getTimes()" :key cursor-pointer :class="_in(key)" flex="~" @click="choose(key, e.key)">
           {{ e.value }}
         </div>
       </div>
@@ -135,20 +135,6 @@ onUnmounted(() => {
         <div id="chart" style="width:100%;height:100%" />
       </div>
     </section>
-    <div flex="~" mt0.25 justify-around text-xs>
-      <span>
-        13:00
-      </span>
-      <span>
-        14:00
-      </span>
-      <span>
-        15:00
-      </span>
-      <span>
-        16:00
-      </span>
-    </div>
     <div flex="~" justify-center>
       <TheTradingCard :card />
     </div>
