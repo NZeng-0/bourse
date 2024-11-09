@@ -177,7 +177,7 @@ onUnmounted(() => {
   letter-spacing: 0em;
 }
 
-.up_card {
+.down_card {
   min-width: 120px;
   height: 45px;
   border-radius: 8px;
@@ -195,7 +195,7 @@ onUnmounted(() => {
   align-items: center;
 }
 
-.down_card {
+.up_card {
   min-width: 120px;
   height: 45px;
   border-radius: 8px;

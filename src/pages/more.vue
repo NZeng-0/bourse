@@ -103,7 +103,7 @@ onUnmounted(() => {
   align-items: center;
 }
 
-.up_card {
+.down_card {
   width: 75px;
   height: 30px;
   border-radius: 8px;
@@ -121,7 +121,7 @@ onUnmounted(() => {
   align-items: center;
 }
 
-.down_card {
+.up_card {
   width: 75px;
   height: 30px;
   border-radius: 8px;

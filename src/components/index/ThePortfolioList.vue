@@ -84,7 +84,7 @@ onUnmounted(() => {
   color: #353535;
 }
 
-.up_card {
+.down_card {
   width: 91px;
   height: 30px;
   border-radius: 6px;
@@ -104,7 +104,7 @@ onUnmounted(() => {
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
 }
-.down_card {
+.up_card {
   width: 91px;
   height: 30px;
   border-radius: 6px;

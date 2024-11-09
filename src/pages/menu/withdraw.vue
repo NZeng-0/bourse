@@ -31,6 +31,7 @@ onMounted(async () => {
   loading.value = true
   const { data } = await getWithdrawList()
   list.value = data.value.data.data
+  list.value?.sort((a: withdrawType, b: withdrawType) => b.id - a.id)
   loading.value = false
 })
 </script>

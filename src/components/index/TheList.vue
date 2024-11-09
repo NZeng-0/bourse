@@ -50,24 +50,26 @@ function getSeries(data: history[], range: number) {
           y2: 0,
           colorStops: [{
             offset: 0,
-            color: range < 0 ? 'rgba(252,108,107,0)' : 'rgba(25,192,154, 0)',
+            color: range === 1 ? 'rgba(252,108,107,1)' : 'rgba(25,192,154, 1)',
           }, {
             offset: 1,
-            color: range < 0 ? 'rgba(252,108,107,1)' : 'rgba(25,192,154, 1)',
+            color: range === 1 ? 'rgba(252,108,107,0)' : 'rgba(25,192,154, 0)',
           }],
           globalCoord: false,
         },
       },
     },
   ]
-  return getOption({
+
+  const test = getOption({
     grid,
     series,
   } as Props)
+  return test
 }
 
 function getLineColor(state: number): string {
-  return state === 1 ? '#19C09A' : '#FC6C6B'
+  return state === 1 ? '#FC6C6B' : '#19C09A'
 }
 
 async function go(key: number) {
@@ -86,7 +88,7 @@ function isUp(state: number) {
   return state === 1
 }
 
-async function init() {
+async function __init() {
   const { data } = await getIndexProduct(0)
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
@@ -94,9 +96,9 @@ async function init() {
 
 onMounted(async () => {
   loading.value = true
-  await init()
+  await __init()
   timer.value = setInterval(async () => {
-    await init()
+    await __init()
   }, 10000)
   loading.value = false
 })
@@ -162,7 +164,7 @@ onUnmounted(() => {
   justify-content: end;
 }
 
-.up_card {
+.down_card {
   height: 24px;
   border-radius: 6px;
 
@@ -183,7 +185,7 @@ onUnmounted(() => {
   color: #FFFFFF;
 }
 
-.down_card {
+.up_card {
   height: 24px;
   border-radius: 6px;
 
