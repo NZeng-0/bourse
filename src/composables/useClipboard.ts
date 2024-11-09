@@ -1,14 +1,12 @@
 import Clipboard from 'clipboard'
 
-const { t } = useI18n()
-
-export function useClipboard(key: string) {
+export function useClipboard(key: string, tips: string) {
   // 复制按钮的class
   const clipboard = new Clipboard(`.${key}`)
 
   clipboard.on('success', () => {
     showToast({
-      message: t('copySuccess'),
+      message: tips,
     })
     // 释放内存
     clipboard.destroy()

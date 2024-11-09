@@ -181,28 +181,34 @@ onMounted(async () => {
           <div class="border-#f4f4f4" flex="~" h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75>
             <div>{{ t('assets.recharge.bank.bank_of_deposit') }}</div>
             <input v-model="pay.pay_name" readonly text-right class="copy" type="text">
-            <div class="bank" :data-clipboard-text="pay.pay_name" @click="useClipboard('bank')">
+            <div class="bank" :data-clipboard-text="pay.pay_name" @click="useClipboard('bank', t('copySuccess'))">
               <img :src="copy" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
             <div>{{ t('assets.recharge.bank.account_opening_branch') }}</div>
             <input v-model="pay.bank_branch_name" readonly text-right class="copy" type="text">
-            <div class="address" :data-clipboard-text="pay.bank_branch_name" @click="useClipboard('address')">
+            <div
+              class="address" :data-clipboard-text="pay.bank_branch_name"
+              @click="useClipboard('address', t('copySuccess'))"
+            >
               <img :src="copy" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
             <div>{{ t('assets.recharge.bank.account') }}</div>
             <input v-model="pay.bank_account" readonly text-right class="copy" type="text">
-            <div class="account" :data-clipboard-text="pay.bank_account" @click="useClipboard('account')">
+            <div
+              class="account" :data-clipboard-text="pay.bank_account"
+              @click="useClipboard('account', t('copySuccess'))"
+            >
               <img :src="copy" h4.25 w4.25>
             </div>
           </div>
           <div :class="getCommonStyle()" flex="~">
             <div>{{ t('assets.recharge.bank.name') }}</div>
             <input v-model="pay.bank_user_name" readonly text-right class="copy" type="text">
-            <div class="name" :data-clipboard-text="pay.bank_user_name" @click="useClipboard('name')">
+            <div class="name" :data-clipboard-text="pay.bank_user_name" @click="useClipboard('name', t('copySuccess'))">
               <img :src="copy" h4.25 w4.25>
             </div>
           </div>

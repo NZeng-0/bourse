@@ -181,7 +181,7 @@ onMounted(async () => {
         <div mt7.5 pl3.5 pr5.75 text-base>
           <div class="border-#f4f4f4" flex="~" h7.5 items-center justify-between border rounded-xl py1.75 pl4.75 pr1.75>
             <input v-model="pay.link_url" readonly class="copy w-90%" type="text">
-            <div class="bank" :data-clipboard-text="pay.link_url" @click="useClipboard('bank')">
+            <div class="bank" :data-clipboard-text="pay.link_url" @click="useClipboard('bank', t('copySuccess'))">
               <img :src="copy" h4.25 w4.25>
             </div>
           </div>
