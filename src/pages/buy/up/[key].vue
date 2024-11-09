@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { submitProductOrder } from '~/api'
+import { getUserInfo, submitProductOrder } from '~/api'
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
 import type { configlist } from '~/types'
@@ -127,6 +127,8 @@ async function submit() {
   showToast({
     message: data.value.msg,
   })
+  if (data.value.code !== 200)
+    return
   route.replace('/menu/order/to-hold')
 }
 
@@ -138,7 +140,13 @@ function get(money: number, profit: number) {
   return money * Math.floor(profit) / 100
 }
 
+async function updateUserInfo() {
+  const { data } = await getUserInfo()
+  user.data = data.value.data
+}
+
 onMounted(async () => {
+  await updateUserInfo()
   product.value = await actuator(id, '5min')
   times.value = product.value?.time_scheme_list
   setTimeout(() => {

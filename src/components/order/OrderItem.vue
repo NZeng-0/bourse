@@ -93,14 +93,14 @@ onMounted(() => {
         </span>
       </div>
     </div>
-    <div v-if="!history" flex="~" my-2 justify-between>
+    <!-- <div v-if="!history" flex="~" my-2 justify-between>
       <div class="sub">
         {{ t('order.profit_and_loss') }} :
       </div>
       <div class="content">
         {{ data.profit_rate }}
       </div>
-    </div>
+    </div> -->
     <div v-if="history" flex="~" my-2 justify-between>
       <div class="sub">
         {{ t('order.current') }}
