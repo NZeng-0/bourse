@@ -129,11 +129,10 @@ export interface timeSchemeType {
 }
 
 export interface cardType {
-  count: string | number
-  amount: string | number
   high: string
   low: string
-  vol: string
+  open: string
+  close: string
 }
 
 export interface dataType {

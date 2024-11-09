@@ -60,7 +60,9 @@
       "earning_yield": "tỷ lệ lợi nhuận",
       "down": "Sự mất mát",
       "up": "lợi nhuận"
-    }
+    },
+    "close": "đóng",
+    "open": "khai mạc"
   },
   "order": {
     "hold_order": "Lệnh giữ vị trí",

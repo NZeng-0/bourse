@@ -60,7 +60,9 @@
       "earning_yield": "收益率",
       "down": "虧損",
       "up": "獲利"
-    }
+    },
+    "close": "收盤",
+    "open": "開盤"
   },
   "order": {
     "hold_order": "持倉訂單",

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import type { indexProduct } from '~/api/types'
+import { useProduct } from '~/store/useProduct'
+import type { cardType } from '~/types'
+
 const { card, select } = defineProps<{
   card: cardType
   select: number

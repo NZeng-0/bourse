@@ -27,11 +27,10 @@ function _in(current: number) {
 }
 
 const card = ref<cardType>({
-  count: '',
-  amount: '',
   high: '',
   low: '',
-  vol: '',
+  open: '',
+  close: '',
 })
 
 async function choose(index: number, type: string) {
@@ -74,11 +73,10 @@ function initChart() {
 
 function loadChart(cb: Function = () => { }) {
   card.value = {
-    count: product.value!.count,
-    amount: product.value!.amount,
+    open: product.value!.open,
+    close: product.value!.close,
     high: product.value!.high,
     low: product.value!.low,
-    vol: product.value!.vol,
   }
 
   if (cb)

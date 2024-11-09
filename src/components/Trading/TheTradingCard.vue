@@ -13,16 +13,26 @@ const { t } = useI18n()
     <p mt-5 text-lg>
       {{ t('trading.real_time') }}
     </p>
-    <div flex="~ wrap" wfull justify-between>
-      <div mt2.5 w="1/3">
+    <div flex="~ wrap" wfull justify-between px-5>
+      <div mt2.5>
         <div style="color:#9EA3AE" text-sm>
-          {{ t('trading.avg') }}
+          {{ t('trading.open') }}
         </div>
-        <div style="color:#121826" text-lg class="text" w="4/5">
-          {{ Number.parseInt(card.count) / Number.parseInt(card.high) || 0 }}
+        <div style="color:#121826" text-lg>
+          {{ card.open }}
         </div>
       </div>
-      <div w="1/3" mt2.5>
+      <div mt2.5>
+        <div style="color:#9EA3AE" text-sm>
+          {{ t('trading.close') }}
+        </div>
+        <div style="color:#121826" text-lg>
+          {{ card.close }}
+        </div>
+      </div>
+    </div>
+    <div flex="~ wrap" wfull justify-between px-5>
+      <div mt2.5>
         <div style="color:#9EA3AE" text-sm>
           {{ t('trading.max') }}
         </div>
@@ -30,33 +40,9 @@ const { t } = useI18n()
           {{ card.high }}
         </div>
       </div>
-      <div mt2.5 w="1/3">
+      <div mt2.5>
         <div style="color:#9EA3AE" text-sm>
           {{ t('trading.min') }}
-        </div>
-        <div style="color:#121826" text-lg>
-          {{ card.low }}
-        </div>
-      </div>
-      <div mt2.5 w="1/3">
-        <div style="color:#9EA3AE" text-sm>
-          {{ t('trading.vloume') }}
-        </div>
-        <div style="color:#121826" class="text" w="4/5">
-          {{ card.vol }}
-        </div>
-      </div>
-      <div mt2.5 w="1/3">
-        <div style="color:#9EA3AE" text-sm>
-          {{ t('trading.avg_vol') }}
-        </div>
-        <div style="color:#121826" text-lg>
-          {{ card.high }}
-        </div>
-      </div>
-      <div mt2.5 w="1/3">
-        <div style="color:#9EA3AE" text-sm>
-          {{ t('trading.market') }}
         </div>
         <div style="color:#121826" text-lg>
           {{ card.low }}

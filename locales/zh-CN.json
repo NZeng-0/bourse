@@ -54,6 +54,8 @@
     "me": "我的"
   },
   "trading": {
+    "open": "开盘",
+    "close": "收盘",
     "k_line": "k线",
     "undulate": "波动",
     "real_time": "实时交易",

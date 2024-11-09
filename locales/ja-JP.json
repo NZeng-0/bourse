@@ -60,7 +60,9 @@
       "earning_yield": "収益率",
       "down": "損失",
       "up": "利益"
-    }
+    },
+    "close": "近い",
+    "open": "オープニング"
   },
   "order": {
     "hold_order": "保有注文",

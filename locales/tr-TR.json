@@ -291,7 +291,9 @@
     "real_time": "gerçek zamanlı ticaret",
     "submit": "Siparişi Gönder",
     "undulate": "dalgalanma",
-    "vloume": "Hacim"
+    "vloume": "Hacim",
+    "close": "kapalı",
+    "open": "açılış"
   },
   "YuEBao": {
     "grater": "Tutar mevcut bakiyeden fazla olamaz",

@@ -60,7 +60,9 @@
       "earning_yield": "Rendimento",
       "down": "Perdita",
       "up": "profitto"
-    }
+    },
+    "close": "vicino",
+    "open": "apertura"
   },
   "order": {
     "hold_order": "Ordine di posizione",

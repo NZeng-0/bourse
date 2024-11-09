@@ -291,7 +291,9 @@
     "real_time": "negociação em tempo real",
     "submit": "Enviar pedido",
     "undulate": "flutuação",
-    "vloume": "Volume"
+    "vloume": "Volume",
+    "close": "fechar",
+    "open": "abertura"
   },
   "YuEBao": {
     "grater": "O valor não pode ser superior ao saldo atual",

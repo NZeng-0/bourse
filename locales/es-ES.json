@@ -60,7 +60,9 @@
     "real_time": "comercio en tiempo real",
     "submit": "Orden de envio",
     "undulate": "fluctuación",
-    "vloume": "Volumen"
+    "vloume": "Volumen",
+    "close": "cerca",
+    "open": "apertura"
   },
   "order": {
     "buy_of_fall": "comprar o vender",
