@@ -32,6 +32,7 @@ function getSrc(uri: string) {
 onMounted(async () => {
   const { data } = await getProductTakeList()
   list.value = data.value.data
+  list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
 })
 </script>
 

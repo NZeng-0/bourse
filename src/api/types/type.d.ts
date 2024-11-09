@@ -44,6 +44,7 @@ export interface indexProduct {
   profit_status: number
   low_status: number
   usable_money: number
+  sort: number
 }
 
 export interface timeList {

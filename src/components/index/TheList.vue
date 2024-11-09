@@ -93,6 +93,7 @@ onMounted(async () => {
   loading.value = true
   const { data } = await getIndexProduct(0)
   list.value = data.value.data
+  list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
   loading.value = false
 })
 </script>

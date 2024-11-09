@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { getIndexProductAll, getProductDetail } from '~/api'
+import { getIndexProductAll } from '~/api'
 import type { indexProduct } from '~/api/types'
-import { useProduct } from '~/store/useProduct'
 
 const router = useRouter()
-const productStore = useProduct()
 
 const list: Ref<indexProduct[]> = ref([])
 const loading = ref(false)
@@ -14,9 +12,7 @@ function getIcon(range: number) {
 }
 
 async function go(key: number) {
-  const { data } = await getProductDetail(key, '1week')
-  productStore.data = data.value.data
-  router.push('fund')
+  router.push(`/fund/${key}`)
 }
 
 function getColor(range: number) {
@@ -35,12 +31,13 @@ onMounted(async () => {
   loading.value = true
   const { data } = await getIndexProductAll()
   list.value = data.value.data
+  list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
   loading.value = false
 })
 </script>
 
 <template>
-  <TheHead px-4 back="/" title="股市交易" />
+  <TheHead back="/" title="股市交易" />
   <div h-screen overflow-y-scroll bg-trading px-4>
     <TheEmpty v-if="loading" />
     <template v-else>
@@ -74,7 +71,7 @@ onMounted(async () => {
         </div>
       </div>
     </template>
-    <div h20 />
+    <div h45 />
   </div>
   <TheFooter :index="0" />
 </template>
