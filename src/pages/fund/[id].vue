@@ -7,7 +7,6 @@ import type { cardType } from '~/types'
 
 const {
   getSrc,
-  getIcon,
   getTimes,
   actuator,
   parseData,
@@ -90,6 +89,10 @@ function loadChart(cb: Function = () => { }) {
   chart!.applyNewData(data!)
 }
 
+function isUp(state: number) {
+  return state === 1
+}
+
 onMounted(async () => {
   product.value = await actuator(id, period.value)
   loadChart()
@@ -110,14 +113,17 @@ onUnmounted(() => {
   <TheHead back="/" :title="product?.product_name || ' '" />
   <div h-screen overflow-y-scroll border="0.1" bg-trading>
     <div flex="~" mt5.5 wfull justify-between px-4>
-      <div>
-        <div text-3xl>
+      <div flex="~" items-center>
+        <div :class="isUp(product?.profit_status || 0) ? 'up_card' : 'down_card' ">
           <!-- 当前价格 -->
           {{ product?.price || 0 }}
         </div>
-        <div flex="~" text-xs :style="{ color: product?.profit_status || 0 > 0 ? '#19c09a' : '#fc6c6b' }">
-          <div :class="getIcon(product?.profit_status || 0)" h-1.2rem w-1.2rem />
-          <div>{{ product?.profit_status }} ({{ product?.fkzdbdz }}%)</div>
+        <div flex="~" ml-4 items-center text-xs>
+          <img v-if="isUp(product?.profit_status || 0)" src="../../assets/images/index/up.png" class="up_icon_2">
+          <img v-else src="../../assets/images/index/down.png" class="up_icon_2">
+          <div class="bfb">
+            {{ product?.diff }}%
+          </div>
         </div>
       </div>
       <div mr-2.5>
@@ -154,6 +160,16 @@ onUnmounted(() => {
   letter-spacing: 0em;
 }
 
+.bfb {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 23px;
+  text-align: right;
+  letter-spacing: 0px;
+  font-variation-settings: "opsz" auto;
+  color: #353535;
+}
+
 .color-999999 {
   color: #999999;
   font-size: 14px;
@@ -161,5 +177,41 @@ onUnmounted(() => {
   line-height: 14px;
   text-align: center;
   letter-spacing: 0em;
+}
+
+.up_card {
+  min-width: 120px;
+  height: 45px;
+  border-radius: 8px;
+  background: #19C09A;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 28px;
+  text-align: right;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.down_card {
+  min-width: 120px;
+  height: 45px;
+  border-radius: 8px;
+  background: #FC6C6B;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 28px;
+  text-align: right;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

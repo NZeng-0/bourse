@@ -29,10 +29,6 @@ export function useFund() {
     return times
   }
 
-  function getIcon(status: number) {
-    return status > 0 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
-  }
-
   function parseData(data: history[]) {
     if (data === undefined)
       return
@@ -78,7 +74,6 @@ export function useFund() {
   return {
     getTimes,
     getSrc,
-    getIcon,
     handleImageError,
     actuator,
     parseData,

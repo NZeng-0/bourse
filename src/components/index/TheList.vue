@@ -65,14 +65,6 @@ function getSeries(data: history[], range: number) {
   } as Props)
 }
 
-function getIcon(state: number) {
-  return state === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
-}
-
-function getColor(state: number) {
-  return state === 1 ? '#19c09a' : '#fc6c6b'
-}
-
 function getLineColor(state: number): string {
   return state === 1 ? '#19C09A' : '#FC6C6B'
 }
@@ -87,6 +79,10 @@ function handleImageError(that: EventTarget | null) {
 
 function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
+}
+
+function isUp(state: number) {
+  return state === 1
 }
 
 onMounted(async () => {
@@ -118,15 +114,13 @@ onMounted(async () => {
             <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
           </div>
           <div text-right>
-            <div>{{ item.price }}</div>
-            <div flex="~" w-full justify-between text-right text-xs>
-              <div
-                :class="getIcon(item.profit_status)" :style="{ color: getColor(item.profit_status) }" ml h-1.2rem
-                w-1.2rem
-              />
-              <div :style="{ color: item.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-                {{ item.diff }}%
-              </div>
+            <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
+              {{ item.price }}
+            </div>
+            <div flex="~" class="bfb">
+              <img v-if="isUp(item.profit_status)" src="../../assets/images/index/up.png" class="up_icon">
+              <img v-else src="../../assets/images/index/down.png" class="up_icon">
+              {{ item.diff }}%
             </div>
           </div>
         </div>
@@ -142,5 +136,59 @@ onMounted(async () => {
   line-height: 12px;
   letter-spacing: 0em;
   color: #8F92A1;
+}
+
+.bfb {
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0px;
+  font-variation-settings: "opsz" auto;
+  color: #353535;
+  justify-content: end;
+}
+
+.up_card {
+  height: 24px;
+  border-radius: 6px;
+
+  /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 7px;
+
+  background: #19C09A;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0em;
+
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+}
+
+.down_card {
+  height: 24px;
+  border-radius: 6px;
+
+  /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 7px;
+
+  background: #FC6C6B;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0em;
+
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
 }
 </style>

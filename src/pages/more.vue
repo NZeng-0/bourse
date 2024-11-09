@@ -7,16 +7,8 @@ const router = useRouter()
 const list: Ref<indexProduct[]> = ref([])
 const loading = ref(false)
 
-function getIcon(range: number) {
-  return range === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
-}
-
 async function go(key: number) {
   router.push(`/fund/${key}`)
-}
-
-function getColor(range: number) {
-  return range === 1 ? '#19c09a' : '#fc6c6b'
 }
 
 function handleImageError(that: EventTarget | null) {
@@ -25,6 +17,10 @@ function handleImageError(that: EventTarget | null) {
 
 function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
+}
+
+function isUp(state: number) {
+  return state === 1
 }
 
 onMounted(async () => {
@@ -54,18 +50,14 @@ onMounted(async () => {
               </div>
             </div>
           </div>
-          <div flex="~" justify-end w="2/4">
-            <div text-right>
-              <div>￥{{ item.price }}</div>
-              <div flex="~" w-full justify-between text-right text-xs>
-                <div
-                  :class="getIcon(item.profit_status)" :style="{ color: getColor(item.profit_status) }" ml h-1.2rem
-                  w-1.2rem
-                />
-                <div :style="{ color: item.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-                  {{ item.diff }}%
-                </div>
-              </div>
+          <div flex="~" w="2/4" items-center justify-between>
+            <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
+              {{ item.price }}
+            </div>
+            <div class="bfb">
+              <img v-if="isUp(item.profit_status)" src="../assets/images/index/up.png" class="up_icon">
+              <img v-else src="../assets/images/index/down.png" class="up_icon">
+              {{ item.diff }}%
             </div>
           </div>
         </div>
@@ -83,5 +75,55 @@ onMounted(async () => {
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 1);
   padding: 10px;
+}
+
+.bfb {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0px;
+  font-variation-settings: "opsz" auto;
+  color: #353535;
+  justify-content: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.up_card {
+  width: 75px;
+  height: 30px;
+  border-radius: 8px;
+  background: #19C09A;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 12px;
+  text-align: right;
+  letter-spacing: 0em;
+
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.down_card {
+  width: 75px;
+  height: 30px;
+  border-radius: 8px;
+  background: #FC6C6B;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 12px;
+  text-align: right;
+  letter-spacing: 0em;
+
+  font-variation-settings: "opsz" auto;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

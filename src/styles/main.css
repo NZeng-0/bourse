@@ -86,3 +86,15 @@ input::placeholder {
   position: absolute;
   bottom: 6px;
 }
+
+.up_icon {
+  width: 9px;
+  height: 11px;
+  margin-right: 7px;
+}
+
+.up_icon_2 {
+  width: 15px;
+  height: 18px;
+  margin-right: 5px;
+}

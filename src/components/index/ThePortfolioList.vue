@@ -4,18 +4,9 @@ import {
 } from '~/api'
 import type { indexProduct } from '~/api/types'
 
-const { t } = useI18n()
 const router = useRouter()
 
 const list: Ref<indexProduct[]> = ref([])
-
-function getIcon(range: number) {
-  return range === 1 ? 'i-carbon:caret-up' : 'i-carbon:caret-down'
-}
-
-function getColor(range: number) {
-  return range === 1 ? '#19c09a' : '#fc6c6b'
-}
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -29,6 +20,10 @@ function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
 }
 
+function isUp(state: number) {
+  return state === 1
+}
+
 onMounted(async () => {
   const { data } = await getProductTakeList()
   list.value = data.value.data
@@ -38,34 +33,84 @@ onMounted(async () => {
 
 <template>
   <div flex="~ gap2 nowrap" mt-4 w-full items-start overflow-y-hidden>
-    <div v-for="(e, key) in list" :key mr-4 h37 w51 shrink-0 rounded-2xl bg-zinc-100 p1 @click="go(e.id)">
+    <div v-for="(e, key) in list" :key mr-4 w51 shrink-0 rounded-2xl bg-zinc-100 p1 @click="go(e.id)">
       <div flex="~">
         <div ml-4.5 mt-4>
           <img h12 w12 rounded-full :src="getSrc(e.logo)" @error="handleImageError(key)">
         </div>
-        <div ml-2 mt-5 text-left>
+        <div ml-2 mt-5 text-left w="60%">
           <div text-sm text-portolio-primary font-normal>
             {{ e.product_name }}
           </div>
-          <div mt-2 text-xs text-portolio font-normal>
+          <div flex="~" mt-2 justify-between text-xs text-portolio font-normal>
             STOSX
+            <div flex="~" class="bfb">
+              <img v-if="isUp(e.profit_status)" src="../../assets/images/index/up.png" class="up_icon">
+              <img v-else src="../../assets/images/index/down.png" class="up_icon">
+              {{ e.diff }}%
+            </div>
           </div>
         </div>
       </div>
-      <div ml4 mt5 text-sm text-portolio font-normal>
-        {{ t('order.current_price') }}
-      </div>
-      <div flex="~ gap2" ml4 justify-between>
-        <div text-left text-portolio-primary style="line-height: 30px;">
+      <div flex="~">
+        <div ml-4.5 mt-4 h12 w12 />
+        <div w="60%" ml2 :class="isUp(e.profit_status) ? 'up_card' : 'down_card'">
           {{ e.price }}
-        </div>
-        <div flex="~" mb5 mr1 h8 w19 items-center justify-center rounded-xl bg-white>
-          <div :class="getIcon(e.profit_status)" :style="{ color: getColor(e.profit_status) }" h1.2rem w1.2rem />
-          <span text-xs :style="{ color: e.profit_status === 1 ? '#19c09a' : '#fc6c6b' }">
-            {{ e.diff }}%
-          </span>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.bfb {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0px;
+  font-variation-settings: "opsz" auto;
+  color: #353535;
+}
+
+.up_card {
+  width: 91px;
+  height: 30px;
+  border-radius: 6px;
+  margin-top: 20px;
+
+  /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 14px;
+  background: #19C09A;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+}
+.down_card {
+  width: 91px;
+  height: 30px;
+  border-radius: 6px;
+  margin-top: 20px;
+
+  /* 自动布局 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 14px;
+  background: #FC6C6B;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  letter-spacing: 0em;
+  font-variation-settings: "opsz" auto;
+  color: #FFFFFF;
+}
+</style>
