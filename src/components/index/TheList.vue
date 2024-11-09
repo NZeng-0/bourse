@@ -15,6 +15,7 @@ const grid = {
 
 const loading = ref(false)
 const list = shallowRef<indexProduct[]>([])
+const timer = ref()
 
 function parseData(data: history[]) {
   const result: Array<string[]> = []
@@ -85,12 +86,23 @@ function isUp(state: number) {
   return state === 1
 }
 
-onMounted(async () => {
-  loading.value = true
+async function init() {
   const { data } = await getIndexProduct(0)
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
+}
+
+onMounted(async () => {
+  loading.value = true
+  await init()
+  timer.value = setInterval(async () => {
+    await init()
+  }, 10000)
   loading.value = false
+})
+
+onUnmounted(() => {
+  clearInterval(timer.value)
 })
 </script>
 

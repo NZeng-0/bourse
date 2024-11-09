@@ -6,6 +6,7 @@ const router = useRouter()
 
 const list: Ref<indexProduct[]> = ref([])
 const loading = ref(false)
+const timer = ref()
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -23,12 +24,23 @@ function isUp(state: number) {
   return state === 1
 }
 
-onMounted(async () => {
-  loading.value = true
+async function init() {
   const { data } = await getIndexProductAll()
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
+}
+
+onMounted(async () => {
+  loading.value = true
+  await init()
+  timer.value = setInterval(async () => {
+    await init()
+  }, 10000)
   loading.value = false
+})
+
+onUnmounted(() => {
+  clearInterval(timer.value)
 })
 </script>
 
