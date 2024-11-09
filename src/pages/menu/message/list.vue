@@ -85,7 +85,7 @@ function go(item: notifyType) {
     <div h-screen overflow-y-scroll px5>
       <TheEmpty v-if="list.length <= 0" />
       <template v-else>
-        <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative>
+        <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative @click="go(item)">
           <div class="font-['youshe']" text-lg>
             {{ t('me.message.notice') }}:
           </div>
@@ -98,7 +98,7 @@ function go(item: notifyType) {
           <div mb2 wfull text-sm opacity60>
             <p v-html="item.value" />
           </div>
-          <div wfull class="msg-display text-#4AADF0" @click="go(item)">
+          <div wfull class="msg-display text-#4AADF0">
             {{ !includes(item.id) ? t('me.message.details') : t('me.message.read') }}
           </div>
         </div>

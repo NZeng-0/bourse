@@ -34,7 +34,7 @@ function getBgStyle() {
     <div h-screen overflow-y-scroll px5>
       <TheEmpty v-if="loading && list.length > 0" />
       <template v-else>
-        <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative>
+        <div v-for="(item, key) in list" :key :class="getBgStyle()" position-relative @click="go(item.id)">
           <div class="font-['youshe']" text-lg>
             {{ t('me.message.title') }}:
           </div>
@@ -47,7 +47,7 @@ function getBgStyle() {
           <div my1 wfull text-sm opacity60>
             <p v-html="item.message" />
           </div>
-          <div wfull class="msg-display text-#4AADF0" @click="go(item.id)">
+          <div wfull class="msg-display text-#4AADF0">
             {{ item.is_read === 0 ? t('me.message.details') : t('me.message.read') }}
           </div>
         </div>
