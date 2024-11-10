@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'
@@ -99,7 +100,7 @@ onMounted(async () => {
   await __init()
   timer.value = setInterval(async () => {
     await __init()
-  }, 10000)
+  }, 5000)
   loading.value = false
 })
 
@@ -112,13 +113,13 @@ onUnmounted(() => {
   <div mt4.5>
     <div v-for="(item, key) in list" :key :class="key !== 0 ? key === (list.length - 1) ? 'mt8 mb42' : 'mt8' : ''">
       <div flex="~ gap2" justify-between @click="go(item.id)">
-        <div flex="~ gap2" w="2/4">
+        <div flex="~ gap3" w="2/4">
           <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
-          <div text-left>
-            <div>
+          <div text-left class="c1">
+            <div w-full>
               {{ item.product_name }}
             </div>
-            <div class="stosx">
+            <div w-full class="stosx">
               STOSX
             </div>
           </div>
@@ -204,5 +205,11 @@ onUnmounted(() => {
 
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
+}
+
+.c1 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 </style>

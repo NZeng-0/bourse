@@ -34,7 +34,7 @@ onMounted(async () => {
   await init()
   timer.value = setInterval(async () => {
     await init()
-  }, 10000)
+  }, 5000)
 })
 
 onUnmounted(() => {

@@ -35,7 +35,7 @@ onMounted(async () => {
   await init()
   timer.value = setInterval(async () => {
     await init()
-  }, 10000)
+  }, 5000)
   loading.value = false
 })
 
@@ -53,16 +53,16 @@ onUnmounted(() => {
         <div flex="~" justify-between class="item" @click="go(item.id)">
           <div flex="~ gap2" w="2/4">
             <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
-            <div text-left>
-              <div>
+            <div class="c1" text-left>
+              <div w="80%" truncate class="sub_title">
                 {{ item.product_name }}
               </div>
-              <div class="stosx">
+              <div w-full flex="~" items-end class="stosx">
                 STOSX
               </div>
             </div>
           </div>
-          <div flex="~" w="2/4" items-center justify-between>
+          <div flex="~" w="60%" items-center justify-between>
             <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
               {{ item.price }}
             </div>
@@ -104,7 +104,7 @@ onUnmounted(() => {
 }
 
 .down_card {
-  width: 75px;
+  min-width: 75px;
   height: 30px;
   border-radius: 8px;
   background: #19C09A;
@@ -119,10 +119,11 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
 }
 
 .up_card {
-  width: 75px;
+  min-width: 75px;
   height: 30px;
   border-radius: 8px;
   background: #FC6C6B;
@@ -137,5 +138,24 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+}
+
+.stosx {
+  font-size: 12.24px;
+  font-weight: normal;
+  color: #575B66;
+}
+
+.sub_title {
+  font-size: 16.33px;
+  font-weight: 500;
+  line-height: 23px;
+}
+
+.c1 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 </style>
