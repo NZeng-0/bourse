@@ -342,5 +342,6 @@
   "copySuccess": "Đã sao chép thành công",
   "back": "hoạt động nền",
   "front": "Nạp tiền tại quầy lễ tân",
-  "failed": "Lý do từ chối"
+  "failed": "Lý do từ chối",
+  "only": "Hiện tại bạn chỉ có thể chọn"
 }

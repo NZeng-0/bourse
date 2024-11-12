@@ -8,6 +8,7 @@ import type {
   registerTypes,
   withdraw,
 } from './types'
+import type { earningsMoney } from '~/types'
 
 /**
  * @description 登录
@@ -321,5 +322,12 @@ export function countWithdrawDeductMoney(money: number) {
 export function getFrontMenuConfig() {
   return Request.get({
     url: '/index/system/getFrontMenuConfig',
+  })
+}
+
+export function countProductEarningsMoney(data: earningsMoney) {
+  return Request.post({
+    url: '/index/product/countProductEarningsMoney',
+    data,
   })
 }

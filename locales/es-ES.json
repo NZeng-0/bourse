@@ -342,5 +342,6 @@
   "copySuccess": "Copiado exitosamente",
   "back": "operaciones en segundo plano",
   "failed": "Motivo del rechazo",
-  "front": "Recarga energías en la recepción"
+  "front": "Recarga energías en la recepción",
+  "only": "Actualmente solo puedes elegir"
 }

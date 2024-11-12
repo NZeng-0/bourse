@@ -130,12 +130,12 @@ onUnmounted(() => {
           </div>
           <div text-right>
             <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
-              {{ item.price }}
+              {{ item.diff }}
             </div>
             <div flex="~" class="bfb">
               <img v-if="isUp(item.profit_status)" src="../../assets/images/index/up.png" class="up_icon">
               <img v-else src="../../assets/images/index/down.png" class="up_icon">
-              {{ item.diff }}%
+              {{ item.diff_rate }}%
             </div>
           </div>
         </div>

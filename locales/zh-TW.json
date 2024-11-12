@@ -342,5 +342,6 @@
   "copySuccess": "複製成功",
   "back": "後台操作",
   "failed": "拒絕理由",
-  "front": "前台儲值"
+  "front": "前台儲值",
+  "only": "目前只能選擇"
 }

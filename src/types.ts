@@ -365,3 +365,10 @@ export interface menuType {
   end_time: null | string
   create_time: string
 }
+
+export interface earningsMoney {
+  product_id: number
+  money: number
+  type: number
+  scheme_id: number
+}

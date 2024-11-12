@@ -342,5 +342,6 @@
   "copySuccess": "Copiato con successo",
   "back": "operazioni in background",
   "failed": "Motivo del rifiuto",
-  "front": "Ricarica alla reception"
+  "front": "Ricarica alla reception",
+  "only": "Al momento puoi solo scegliere"
 }

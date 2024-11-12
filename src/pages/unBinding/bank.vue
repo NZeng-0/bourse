@@ -6,10 +6,9 @@ import {
 import type { binding } from '~/api/types'
 import { useUser } from '~/store/useUser'
 
-const userStore = useUser()
-
 const { t } = useI18n()
 const router = useRouter()
+const userStore = useUser()
 
 const bank_info = reactive(userStore.data.bank_info)
 

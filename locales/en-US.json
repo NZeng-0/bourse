@@ -342,5 +342,6 @@
   "copySuccess": "Copied successfully",
   "back": "background operations",
   "failed": "Reason for rejection",
-  "front": "Recharge at the front desk"
+  "front": "Recharge at the front desk",
+  "only": "Currently you can only choose"
 }

@@ -83,7 +83,6 @@ async function onRegister() {
       name: user.value.account,
       pwd: user.value.pwd,
     })
-    showToast(data.value.msg)
     setCache('token', data.value.data.token)
     userStore.data = await onLoginSuccessful() as userTypes
     router.push('/')

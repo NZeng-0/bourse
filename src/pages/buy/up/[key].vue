@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { getUserInfo, submitProductOrder } from '~/api'
+import { countProductEarningsMoney, getUserInfo, submitProductOrder } from '~/api'
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
-import type { configlist } from '~/types'
+import type { configlist, earningsMoney } from '~/types'
 import { useFund } from '~/hook'
 import type { indexProduct, timeList } from '~/api/types'
 
@@ -24,26 +24,24 @@ const moneyIndex = ref(-1)
 const backUrl = new URL('~/assets/images/trading/back.png', import.meta.url).href
 const times = ref<timeList[]>()
 const moneyList = ref()
-
+const earning = ref(0)
 const create_order_max_money = ref()
 const create_order_min_money = ref()
 const profit_status = ref()
 const low_status = ref()
-
+const product_profit = ref(0)
 const auth = conf.data.find((item: configlist) => {
   return item.key === 'auth_open'
 }).value === '1'
 
-const submitData = ref({
+const submitData = ref<earningsMoney>({
   product_id: id,
   money: 0,
   type: 1,
   scheme_id: -1,
 })
 
-const product_profit = ref(0)
-
-function selectTime(index: number, profit: string, id: number) {
+async function selectTime(index: number, profit: string, id: number) {
   if (timeIndex.value === index) {
     submitData.value.scheme_id = -1
     timeIndex.value = -1
@@ -51,6 +49,8 @@ function selectTime(index: number, profit: string, id: number) {
   else {
     submitData.value.scheme_id = id
     timeIndex.value = index
+    if (submitData.value.money !== 0)
+      await getEarnings()
   }
   times.value?.forEach((e: timeList) => {
     create_order_max_money.value = e.max_invest_money
@@ -65,7 +65,7 @@ function getTimeStyle(time: number) {
     : 'bg-white rounded-lg mt4 p2.5'
 }
 
-function selectMoney(money: number, index: number) {
+async function selectMoney(money: number, index: number) {
   if (moneyIndex.value === index) {
     moneyIndex.value = -1
     submitData.value.money = 0
@@ -73,7 +73,14 @@ function selectMoney(money: number, index: number) {
   else {
     submitData.value.money = money
     moneyIndex.value = index
+    if (submitData.value.scheme_id !== -1)
+      await getEarnings()
   }
+}
+
+async function getEarnings() {
+  const { data } = await countProductEarningsMoney(submitData.value)
+  earning.value = data.value.data.predict_earnings_money
 }
 
 function getMoneyStyle(index: number) {
@@ -134,10 +141,6 @@ async function submit() {
 
 function parseProfit(value: string) {
   return useToNumber(value.split('-')[1]).value
-}
-
-function get(money: number, profit: number) {
-  return money * Math.floor(profit) / 100
 }
 
 async function updateUserInfo() {
@@ -224,7 +227,7 @@ onMounted(async () => {
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          {{ get(submitData.money, product_profit) }}
+          {{ earning }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>

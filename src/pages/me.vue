@@ -44,17 +44,12 @@ const money = ref({
 })
 
 async function getType() {
-  const isEmpty = ref(true)
+  const { data } = await getConfigList()
+  conf.data = data.value.data
+
   for (const item of conf.data) {
-    if (item.key === 'pay_show_type') {
-      isEmpty.value = false
+    if (item.key === 'pay_show_type')
       type.value = item.value
-    }
-  }
-  if (isEmpty.value) {
-    const { data } = await getConfigList()
-    conf.data = data.value.data
-    await getType()
   }
 }
 

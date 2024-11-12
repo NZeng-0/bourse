@@ -24,7 +24,7 @@ const infos = ref<withdraw>({
   operation_pwd: '',
 })
 
-const banding = ref(user.data.bank_info.bank_account !== '')
+const banding = ref(user.data.bank_info.bank_account !== undefined)
 const wait = ref(false)
 const method = ref<withdrawMethodType[]>()
 const all = ref(true)
@@ -40,7 +40,7 @@ function getClass() {
 }
 
 function go() {
-  route.push(`/binding/usdt`)
+  route.push(`/menu/payment`)
 }
 
 async function submit() {
@@ -131,7 +131,10 @@ async function getRate() {
         </div>
       </div>
       <div flex="~" :class="getCommonStyle()">
-        <input v-model.number="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69 @blur="getRate">
+        <input
+          v-model.number="infos.withdraw_money" type="text" :placeholder="t('assets.withdrawal.amount')" opacity69
+          @blur="getRate"
+        >
       </div>
       <div flex="~" :class="getCommonStyle()">
         <input v-model="infos.operation_pwd" type="password" :placeholder="t('assets.withdrawal.password')" opacity69>
