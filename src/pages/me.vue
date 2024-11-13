@@ -167,15 +167,16 @@ async function getNotice() {
   }
 }
 
-function getUrl(host: string, uri: string) {
-  return `${host}/${uri}`
-}
-
 function error() {
-  if (!user.value!.avatar)
-    avatar.value = new URL('../assets/images/defalut.png', import.meta.url).href
-  else
-    avatar.value = getUrl(baseUrl, user.value!.avatar)
+  if (!user.value!.avatar) {
+    conf.data.forEach((e: configlist) => {
+      if (e.key === 'app_log')
+        return avatar.value = `${baseUrl}/${e.value}`
+    })
+  }
+  else {
+    avatar.value = `${baseUrl}/${user.value!.avatar}`
+  }
 }
 
 onMounted(async () => {

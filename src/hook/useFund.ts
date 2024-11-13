@@ -11,17 +11,8 @@ const times = [
 ]
 
 function getTimestamp(str: string) {
-  const year = str.slice(0, 4)
-  const month = str.slice(4, 6)
-  const day = str.slice(6, 8)
-  const hour = str.slice(8, 10)
-  const minute = str.slice(10, 12)
-
-  // 创建日期对象
-  const date = `${year}-${month}-${day} ${hour}:${minute}`
-
   // 转换为时间戳
-  return new Date(date).getTime()
+  return new Date(str).getTime()
 }
 
 export function useFund() {
@@ -39,7 +30,7 @@ export function useFund() {
         close: useToNumber(h.close).value,
         low: useToNumber(h.low).value,
         high: useToNumber(h.high).value,
-        timestamp: getTimestamp(h.timePoint.toString()),
+        timestamp: getTimestamp(h.time.toString()),
         volume: useToNumber(h.vol).value,
       }
       result.push(val)

@@ -26,6 +26,8 @@ function isUp(state: number) {
 
 async function init() {
   const { data } = await getProductTakeList()
+  if (data.value.code !== 200)
+    clearInterval(timer.value)
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
 }
@@ -37,7 +39,7 @@ onMounted(async () => {
   }, 5000)
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   clearInterval(timer.value)
 })
 </script>

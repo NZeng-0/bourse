@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { getUserInfo, updateUserInfo, upload } from '~/api'
 import { useUser } from '~/store/useUser'
+import type { configlist } from '~/types'
+import { useConf } from '~/store/useConf'
 
 const { t } = useI18n()
 const store = useUser()
@@ -8,6 +10,7 @@ const showBottom = ref(false)
 const froms = new FormData()
 const avatar = ref(store.data.avatar)
 const path = ref('')
+const conf = useConf()
 
 async function read(file: any) {
   // "file"表示给后台传的属性名字
@@ -40,10 +43,15 @@ function getUrl(host: string, uri: string) {
 }
 
 function error() {
-  if (!store.data.avatar)
-    avatar.value = new URL('../../assets/images/defalut.png', import.meta.url).href
-  else
+  if (!store.data.avatar) {
+    conf.data.forEach((e: configlist) => {
+      if (e.key === 'app_log')
+        return avatar.value = `${baseUrl}/${e.value}`
+    })
+  }
+  else {
     avatar.value = getUrl(baseUrl, store.data.avatar)
+  }
 }
 </script>
 
