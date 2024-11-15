@@ -17,6 +17,7 @@
     "@vant/auto-import-resolver": "^1.2.1",
     "@vueuse/core": "^10.9.0",
     "clipboard": "^2.0.11",
+    "echarts": "^5.5.1",
     "klinecharts": "^9.8.10",
     "lightweight-charts": "^4.1.6",
     "pinia": "^2.1.7",

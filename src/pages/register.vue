@@ -22,6 +22,7 @@ const conf = useConf()
 const useIdCard = ref(false)
 const usePhone = ref(false)
 const useEmail = ref(false)
+const useCode = ref(false)
 const wait = ref(false)
 const user = ref<registerTypes>({
   account: '',
@@ -114,6 +115,10 @@ function eachConf() {
       if (e.value === '1')
         useEmail.value = true
     }
+    if (e.key === 'spread_code_switch') {
+      if (e.value === '1')
+        useCode.value = true
+    }
   })
 }
 
@@ -159,7 +164,7 @@ onMounted(async () => {
     <div v-if="useEmail" mt3>
       <input v-model="user.email" type="email" :class="getClass()" :placeholder="t('register.email')">
     </div>
-    <div mt3>
+    <div v-if="useCode" mt3>
       <input v-model="user.spread_code" type="text" :class="getClass()" :placeholder="t('register.invitation_code')">
     </div>
     <div mt8>
