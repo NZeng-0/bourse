@@ -29,7 +29,6 @@ const create_order_max_money = ref()
 const create_order_min_money = ref()
 const profit_status = ref()
 const low_status = ref()
-const product_profit = ref(0)
 const auth = conf.data.find((item: configlist) => {
   return item.key === 'auth_open'
 }).value === '1'
@@ -49,14 +48,13 @@ async function selectTime(index: number, profit: string, id: number) {
   else {
     submitData.value.scheme_id = id
     timeIndex.value = index
-    if (submitData.value.money !== 0)
-      await getEarnings()
+    // if (submitData.value.money !== 0)
+    // await getEarnings()
   }
   times.value?.forEach((e: timeList) => {
     create_order_max_money.value = e.max_invest_money
     create_order_min_money.value = e.min_invest_money
   })
-  product_profit.value = parseProfit(profit)
 }
 
 function getTimeStyle(time: number) {
@@ -73,14 +71,24 @@ async function selectMoney(money: number, index: number) {
   else {
     submitData.value.money = money
     moneyIndex.value = index
-    if (submitData.value.scheme_id !== -1)
-      await getEarnings()
+    // if (submitData.value.scheme_id !== -1)
+    //   await getEarnings()
   }
 }
 
 async function getEarnings() {
   const { data } = await countProductEarningsMoney(submitData.value)
   earning.value = data.value.data.predict_earnings_money
+
+  times.value?.forEach((e: timeList) => {
+    if (e.id === submitData.value.scheme_id) {
+      e.loss_rate = data.value.data.loss_rate.split('-')[1]
+      e.profit_rate = data.value.data.profit_rate.split('-')[0]
+    }
+  })
+
+  // eslint-disable-next-line no-console
+  console.log(times.value)
 }
 
 function getMoneyStyle(index: number) {
@@ -139,14 +147,14 @@ async function submit() {
   route.replace('/menu/order/to-hold')
 }
 
-function parseProfit(value: string) {
-  return useToNumber(value.split('-')[1]).value
-}
-
 async function updateUserInfo() {
   const { data } = await getUserInfo()
   user.data = data.value.data
 }
+
+watch(() => submitData.value.money, () => {
+  getEarnings()
+})
 
 onMounted(async () => {
   await updateUserInfo()

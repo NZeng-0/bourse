@@ -11,7 +11,8 @@ import type { withdrawMethodType } from '~/types'
 const { t } = useI18n()
 const route = useRouter()
 const user = useUser()
-const isBank = ref(true)
+const all = ref(false)
+const isBank = ref(false)
 
 const infos = ref<withdraw>({
   withdraw_money: 0,
@@ -27,8 +28,6 @@ const infos = ref<withdraw>({
 const banding = ref(user.data.bank_info.bank_account !== undefined)
 const wait = ref(false)
 const method = ref<withdrawMethodType[]>()
-const all = ref(true)
-const type = ref<string>('USDT')
 const withdrawRate = ref(0)
 
 function getCommonStyle() {
@@ -86,20 +85,12 @@ onMounted(async () => {
   const { data } = await getConfigList()
   method.value = data.value.data
 
-  const temp = method.value!.filter((e: withdrawMethodType) => e.key === 'withdraw_money_type')
+  const temp = method.value!.filter((e: withdrawMethodType) => e.key === 'withdraw_money_type')[0]
 
-  temp.forEach((e: withdrawMethodType) => {
-    if (e.value === 'RMB' || e.value === 'USDT') {
-      // 两次都是 1 时 all 为 true，否则为 false
-      if (e.status !== 1) {
-        all.value = false
-      }
-      else {
-        isBank.value = e.value === 'RMB'
-        type.value = e.value
-      }
-    }
-  })
+  if (temp.value === 'RMB和USDT')
+    all.value = true
+  else if (temp.value === 'RMB')
+    isBank.value = true
 
   const bank = user.data.bank_info
   infos.value.bank_name = bank.bank_name
@@ -163,10 +154,10 @@ async function getRate() {
             {{ t('assets.withdrawal.method') }}
           </div>
           <div w="1/2" flex="~" items-center justify-end>
-            <img v-if="type! === 'RMB'" src="../../assets/images/assets/bank.png" h4.25 w4.25>
+            <img v-if="isBank" src="../../assets/images/assets/bank.png" h4.25 w4.25>
             <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
             <div ml1.25>
-              {{ type === 'RMB' ? t('assets.recharge.bank.use') : 'USDT' }}
+              {{ isBank ? t('assets.recharge.bank.use') : 'USDT' }}
             </div>
             <div ml0.75>
               <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
