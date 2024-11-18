@@ -120,7 +120,7 @@ onUnmounted(() => {
           <img v-if="isUp(product?.profit_status || 0)" src="../../assets/images/index/up.png" class="up_icon_2">
           <img v-else src="../../assets/images/index/down.png" class="up_icon_2">
           <div class="bfb">
-            {{ product?.diff }}%
+            {{ product?.diff_rate }}%
           </div>
         </div>
       </div>
