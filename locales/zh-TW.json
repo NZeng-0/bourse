@@ -226,7 +226,8 @@
       "type": {
         "1": "銀行卡 提現",
         "2": "USDT錢包"
-      }
+      },
+      "explain": "原因"
     },
     "recharge_record": {
       "title": "充值記錄",

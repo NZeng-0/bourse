@@ -25,7 +25,8 @@ const infos = ref<withdraw>({
   operation_pwd: '',
 })
 
-const banding = ref(user.data.bank_info.bank_account !== undefined)
+const bindUsdt = ref(user.data.bank_info.wallet_address)
+const bindBank = ref(user.data.bank_info.bank_account)
 const wait = ref(false)
 const method = ref<withdrawMethodType[]>()
 const withdrawRate = ref(0)
@@ -69,11 +70,6 @@ async function submit() {
     return
   }
 
-  if (!banding.value) {
-    go()
-    return
-  }
-
   const { data } = await submitWithdraw(infos.value)
   showToast({
     message: data.value.msg,
@@ -98,6 +94,10 @@ onMounted(async () => {
   infos.value.bank_account = bank.bank_account
   infos.value.wallet_name = bank.wallet_name
   infos.value.wallet_address = bank.wallet_address
+})
+
+watchEffect(() => {
+  isBank.value ? infos.value.type = 1 : infos.value.type = 2
 })
 
 async function getRate() {
@@ -133,12 +133,12 @@ async function getRate() {
       <div mt5.25 pl1 text-sm>
         {{ t('assets.withdrawal.service_charge') }}: {{ withdrawRate }}
       </div>
-      <div v-if="banding" mt5 :class="getClass()" flex="~">
+      <div v-if="bindBank || bindUsdt" mt5 :class="getClass()" flex="~">
         <template v-if="all">
           <div w="1/2" opacity59>
             {{ t('assets.withdrawal.method') }}
           </div>
-          <div w="1/2" flex="~" items-center justify-end @click=" isBank = !isBank">
+          <div w="1/2" flex="~" items-center justify-end @click="isBank = !isBank">
             <img v-if="isBank" src="../../assets/images/assets/bank.png" h4.25 w4.25>
             <img v-else src="../../assets/images/assets/USDT.png" h4.25 w4.25>
             <div ml1.25>
@@ -166,7 +166,7 @@ async function getRate() {
         </template>
       </div>
       <div flex="~" :class="getCommonStyle()" mt3.25>
-        <div v-if="!banding" flex="~" wfull items-center justify-center text-sm opacity69>
+        <div v-if="(isBank && !bindBank) || (!isBank && !bindUsdt)" flex="~" wfull items-center justify-center text-sm opacity69>
           {{ t('assets.withdrawal.binding') }}
         </div>
         <div v-else flex="~" wfull items-center justify-between text-sm>
@@ -180,7 +180,7 @@ async function getRate() {
       </div>
     </div>
     <div flex="~" mt32.25 w-full justify-center>
-      <button v-if="!banding" h10.5 min-w37.5 rounded-lg bg-btn-select px-1 text-lg text-white @click="go()">
+      <button v-if="(isBank && !bindBank) || (!isBank && !bindUsdt)" h10.5 min-w37.5 rounded-lg bg-btn-select px-1 text-lg text-white @click="go()">
         {{ t('assets.withdrawal.btn') }}
       </button>
       <button v-else h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="submit()">

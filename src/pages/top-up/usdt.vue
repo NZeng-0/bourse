@@ -120,8 +120,6 @@ async function onRecharge() {
 
 onMounted(async () => {
   const { data } = await getPayModeList()
-  // eslint-disable-next-line no-console
-  console.log(data.value)
   data.value.data.forEach((e: payModelType) => {
     if (e.type === 1)
       payList.push(e)

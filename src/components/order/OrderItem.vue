@@ -79,7 +79,7 @@ onMounted(() => {
         {{ t('order.current_price') }}
       </div>
       <div class="content">
-        {{ data.price }}
+        {{ data.pcdw }}
       </div>
     </div>
     <div flex="~" my-2 justify-between>

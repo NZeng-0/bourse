@@ -226,7 +226,8 @@
       "type": {
         "1": "Bank Card Withdrawal",
         "2": "USDT Wallet"
-      }
+      },
+      "explain": "reason"
     },
     "recharge_record": {
       "title": "Recharge Record",

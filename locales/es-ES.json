@@ -285,7 +285,8 @@
         "1": "retiro de efectivo con tarjeta bancaria",
         "2": "billetera USDT"
       },
-      "under_review": "bajo revisión"
+      "under_review": "bajo revisión",
+      "explain": "razón"
     },
     "yesterdays_earnings": "Ganancias de ayer",
     "accumulated_earnings": "Ingresos acumulados",

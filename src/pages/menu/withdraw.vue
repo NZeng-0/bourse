@@ -40,7 +40,7 @@ onMounted(async () => {
   <div class="font-['PingFang_SC']" bg-trading>
     <TheMenuHead :title="t('me.withdrawal_record.title')" />
     <div h-screen overflow-y-scroll px6.5>
-      <TheEmpty v-if="loading" />
+      <TheEmpty v-if="loading || !list?.length" />
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h41 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
           {{ t('me.time') }}: {{ item.create_time }}
@@ -55,13 +55,16 @@ onMounted(async () => {
           {{ t('me.withdrawal_record.actual_receipt') }}: {{ item.reality_money }}
         </div>
         <div wfull>
-          {{ t('me.type') }}: <span>{{ item.bank_name === null ? t('me.withdrawal_record.type.2') : t('me.withdrawal_record.type.1') }}</span>
+          {{ t('me.type') }}: <span>{{ item.type === 2 ? t('me.withdrawal_record.type.2') : t('me.withdrawal_record.type.1') }}</span>
         </div>
         <div wfull>
           {{ t('me.state') }}:
           <span :class="getStateStyle(item.review_status)">
             {{ getState(item.review_status) }}
           </span>
+        </div>
+        <div v-if="item.review_status === 2" wfull>
+          {{ t('me.withdrawal_record.explain') }}: {{ item.explain }}
         </div>
       </div>
       <div h50 />

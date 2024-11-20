@@ -241,6 +241,7 @@
     "type": "类型",
     "state": "状态",
     "withdrawal_record": {
+      "explain": "原因",
       "title": "提现记录",
       "service_charge": "手续费",
       "actual_receipt": "实际到账",

@@ -203,7 +203,8 @@
       "type": {
         "1": "Levantamento de cartão",
         "2": "Carteira para USDT"
-      }
+      },
+      "explain": "razão"
     },
     "tips": {
       "new": "A nova palavra-passe é inconsistente",

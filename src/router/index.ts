@@ -1,3 +1,4 @@
+// import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 
 const router = createRouter({

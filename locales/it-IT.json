@@ -226,7 +226,8 @@
       "type": {
         "1": "Prelievo con carta bancaria",
         "2": "USDT Wallet"
-      }
+      },
+      "explain": "motivo"
     },
     "recharge_record": {
       "title": "Recharge Record",

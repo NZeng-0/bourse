@@ -175,6 +175,7 @@ export interface withdrawType {
   create_time: string
   account: string
   nickname: string
+  type: number
 }
 
 export interface msgTypes {

@@ -226,7 +226,8 @@
       "type": {
         "1": "銀行カード出金",
         "2": "USDTウォレット"
-      }
+      },
+      "explain": "理由"
     },
     "recharge_record": {
       "title": "入金履歴",

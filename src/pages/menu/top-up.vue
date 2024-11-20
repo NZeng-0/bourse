@@ -52,7 +52,7 @@ onMounted(async () => {
   <div bg-trading>
     <TheMenuHead :title="t('me.recharge_record.title')" />
     <div h-screen overflow-y-scroll px6.5>
-      <TheEmpty v-if="loading" />
+      <TheEmpty v-if="loading || !list?.length" />
       <div v-for="(item, key) in list" :key flex="~ wrap" mt2.5 h30 rounded-lg bg-white :class="getBgStyle()">
         <div wfull>
           {{ t('me.time') }}: {{ item.create_time }}

@@ -5,6 +5,7 @@ import {
   getIndexNoticeList,
   getMoneyEarningsInfo,
   getNoticeList,
+  getUserInfo,
 } from '~/api'
 import { useLocalCache } from '~/hook'
 import { useUser } from '~/store/useUser'
@@ -42,6 +43,11 @@ const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
 })
+
+async function getUser() {
+  const { data } = await getUserInfo()
+  user.value = data.value.data
+}
 
 async function getType() {
   const { data } = await getConfigList()
@@ -184,6 +190,7 @@ onMounted(async () => {
   // user.value = userStore.data
   avatar.value = user.value?.avatar || ''
   await init()
+  await getUser()
   await getNotice()
   const { data } = await getNoticeList()
   fetchTotal(data.value.data.data)

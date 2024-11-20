@@ -202,7 +202,8 @@
         "1": "Banka kartından nakit çekme",
         "2": "USDT cüzdanı"
       },
-      "under_review": "inceleme altında"
+      "under_review": "inceleme altında",
+      "explain": "sebep"
     },
     "yesterdays_earnings": "Dünkü kazanç",
     "tips": {

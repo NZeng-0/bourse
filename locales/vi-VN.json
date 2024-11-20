@@ -226,7 +226,8 @@
       "type": {
         "1": "Rút tiền mặt bằng thẻ ngân hàng",
         "2": "Ví USDT"
-      }
+      },
+      "explain": "lý do"
     },
     "recharge_record": {
       "title": "Kỷ lục nạp tiền",
