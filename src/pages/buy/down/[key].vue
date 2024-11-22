@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { submitProductOrder } from '~/api'
+import { countProductEarningsMoney, getUserInfo, submitProductOrder } from '~/api'
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
 import { useFund } from '~/hook'
-import type { configlist } from '~/types'
+import type { configlist, earningsMoney } from '~/types'
 import type { indexProduct, timeList } from '~/api/types'
 
 const id = useToNumber(useRoute('/buy/down/[key]').params.key).value
@@ -29,19 +29,18 @@ const create_order_max_money = ref()
 const create_order_min_money = ref()
 const profit_status = ref()
 const low_status = ref()
+const earning = ref(0)
 
-const product_profit = ref(0)
+const auth = conf.data.find((item: configlist) => {
+  return item.key === 'auth_open'
+}).value === '1'
 
-const submitData = ref({
+const submitData = ref<earningsMoney>({
   product_id: id,
   money: 0,
   type: 2,
   scheme_id: -1,
 })
-
-const auth = conf.data.find((item: configlist) => {
-  return item.key === 'auth_open'
-}).value === '1'
 
 function getTimeStyle(time: number) {
   return timeIndex.value === time
@@ -68,7 +67,6 @@ function selectTime(index: number, profit: string, id: number) {
     create_order_max_money.value = e.max_invest_money
     create_order_min_money.value = e.min_invest_money
   })
-  product_profit.value = parseProfit(profit)
 }
 
 function selectMoney(money: number, index: number) {
@@ -127,18 +125,38 @@ async function submit() {
   showToast({
     message: data.value.msg,
   })
+  if (data.value.code !== 200)
+    return
   route.replace('/menu/order/to-hold')
 }
 
-function parseProfit(value: string) {
-  return useToNumber(value.split('-')[1]).value
+async function getEarnings() {
+  const { data } = await countProductEarningsMoney(submitData.value)
+  earning.value = data.value.data.predict_earnings_money
+
+  times.value?.forEach((e: timeList) => {
+    if (e.id === submitData.value.scheme_id) {
+      e.loss_rate = data.value.data.loss_rate.split('-')[1]
+      e.profit_rate = data.value.data.profit_rate.split('-')[0]
+    }
+  })
 }
 
-function get(money: number, profit: number) {
-  return money * Math.floor(profit) / 100
+watch(() => submitData.value.money, () => {
+  getEarnings()
+})
+
+watch(() => submitData.value.scheme_id, () => {
+  getEarnings()
+})
+
+async function updateUserInfo() {
+  const { data } = await getUserInfo()
+  user.data = data.value.data
 }
 
 onMounted(async () => {
+  await updateUserInfo()
   product.value = await actuator(id, '5min')
   profit_status.value = product.value!.profit_status
   low_status.value = product.value!.low_status
@@ -216,7 +234,7 @@ onMounted(async () => {
       <div mt5 flex="~" h12.3 items-center justify-between rounded-2xl bg-white px5 pr1.8>
         <div>{{ t('trading.buy.anticipated_yield') }}</div>
         <div class="text-#5425EB">
-          {{ get(submitData.money, product_profit) }}
+          {{ earning }}
         </div>
       </div>
       <div mt6.5 flex="~" items-center justify-between>

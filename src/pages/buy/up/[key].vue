@@ -86,9 +86,6 @@ async function getEarnings() {
       e.profit_rate = data.value.data.profit_rate.split('-')[0]
     }
   })
-
-  // eslint-disable-next-line no-console
-  console.log(times.value)
 }
 
 function getMoneyStyle(index: number) {
@@ -153,6 +150,10 @@ async function updateUserInfo() {
 }
 
 watch(() => submitData.value.money, () => {
+  getEarnings()
+})
+
+watch(() => submitData.value.scheme_id, () => {
   getEarnings()
 })
 
