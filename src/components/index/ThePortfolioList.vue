@@ -7,6 +7,9 @@ import type { indexProduct } from '~/api/types'
 const router = useRouter()
 const list: Ref<indexProduct[]> = ref([])
 const timer = ref()
+const prevPrices = ref(new Map())
+const priceChanges = ref(new Map())
+const icons = ref<Map<number, boolean>>(new Map())
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -20,14 +23,36 @@ function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
 }
 
-function isUp(state: number) {
-  return state === 1
-}
-
 async function init() {
   const { data } = await getProductTakeList()
   if (data.value.code !== 200)
     clearInterval(timer.value)
+
+  data.value.data.forEach((product: indexProduct) => {
+    const id = product.id
+    const prevPrice = prevPrices.value.get(id)
+    if (prevPrice !== undefined) {
+      if (product.price > prevPrice) {
+        priceChanges.value.set(id, 'up_card')
+        icons.value.set(id, true)
+      }
+      else if (product.price < prevPrice) {
+        priceChanges.value.set(id, 'down_card')
+        icons.value.set(id, false)
+      }
+    }
+    prevPrices.value.set(product.id, product.price)
+
+    // 设置延时恢复到默认状态
+    setTimeout(() => {
+      priceChanges.value.set(
+        id,
+        product.profit_status === 1 ? 'up_card' : 'down_card',
+      )
+      icons.value.set(id, product.profit_status === 1)
+    }, 500)
+  })
+
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
 }
@@ -36,7 +61,7 @@ onMounted(async () => {
   await init()
   timer.value = setInterval(async () => {
     await init()
-  }, 5000)
+  }, 3000)
 })
 
 onBeforeUnmount(() => {
@@ -58,7 +83,7 @@ onBeforeUnmount(() => {
           <div flex="~" mt-2 justify-between text-xs text-portolio font-normal>
             STOSX
             <div flex="~" class="bfb">
-              <img v-if="isUp(e.profit_status)" src="../../assets/images/index/up.png" class="up_icon">
+              <img v-if="icons.get(e.id)" src="../../assets/images/index/up.png" class="up_icon">
               <img v-else src="../../assets/images/index/down.png" class="up_icon">
               {{ e.diff }}%
             </div>
@@ -67,7 +92,7 @@ onBeforeUnmount(() => {
       </div>
       <div flex="~">
         <div ml-4.5 mt-4 h12 w12 />
-        <div w="60%" ml2 :class="isUp(e.profit_status) ? 'up_card' : 'down_card'">
+        <div w="60%" ml2 :class="priceChanges.get(e.id)">
           {{ e.price }}
         </div>
       </div>

@@ -19,6 +19,9 @@ const select = ref(0)
 const period = ref('1day')
 const timer = ref()
 let chart
+const prevPrice = ref<number>()
+const priceChange = ref<'up_card' | 'down_card'>('up_card')
+const icon_type = ref(true)
 
 function _in(current: number) {
   return select.value === current
@@ -87,18 +90,35 @@ function loadChart(cb: Function = () => { }) {
   chart!.applyNewData(data!)
 }
 
-function isUp(state: number) {
-  return state === 1
+function onSuccess() {
+  if (prevPrice.value && product.value?.price) {
+    if (product.value.price > prevPrice.value) {
+      priceChange.value = 'up_card'
+      icon_type.value = true
+    }
+    else if (product.value.price < prevPrice.value) {
+      priceChange.value = 'down_card'
+      icon_type.value = false
+    }
+  }
+  prevPrice.value = product.value?.price
+  const timer = setTimeout(() => {
+    priceChange.value = product.value?.profit_status === 1 ? 'up_card' : 'down_card'
+    icon_type.value = product.value?.profit_status === 1
+    clearTimeout(timer)
+  }, 500)
 }
 
 onMounted(async () => {
   product.value = await actuator(id, period.value)
+  priceChange.value = product.value?.profit_status === 1 ? 'up_card' : 'down_card'
   loadChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
     const data = parseData(product.value!.history_list)
+    onSuccess()
     chart!.applyNewData(data)
-  }, 10000)
+  }, 3000)
 })
 
 onUnmounted(() => {
@@ -112,12 +132,13 @@ onUnmounted(() => {
   <div h-screen overflow-y-scroll border="0.1" bg-trading>
     <div flex="~" mt5.5 wfull justify-between px-4>
       <div flex="~" items-center>
-        <div :class="isUp(product?.profit_status || 0) ? 'up_card' : 'down_card' ">
+        <div :class="priceChange">
           <!-- 当前价格 -->
           {{ product?.price || 0 }}
         </div>
+
         <div flex="~" ml-4 items-center text-xs>
-          <img v-if="isUp(product?.profit_status || 0)" src="../../assets/images/index/up.png" class="up_icon_2">
+          <img v-if="icon_type" src="../../assets/images/index/up.png" class="up_icon_2">
           <img v-else src="../../assets/images/index/down.png" class="up_icon_2">
           <div class="bfb">
             {{ product?.diff_rate }}%

@@ -17,6 +17,9 @@ const grid = {
 const loading = ref(false)
 const list = shallowRef<indexProduct[]>([])
 const timer = ref()
+const prevPrices = ref(new Map())
+const priceChanges = ref(new Map())
+const icons = ref<Map<number, boolean>>(new Map())
 
 function parseData(data: history[]) {
   const result: Array<string[]> = []
@@ -85,14 +88,37 @@ function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
 }
 
-function isUp(state: number) {
-  return state === 1
-}
-
 async function __init() {
   const { data } = await getIndexProduct(0)
   if (data.value.code !== 200)
     clearInterval(timer.value)
+
+  // 对每个产品检查价格变化
+  data.value.data.forEach((product: indexProduct) => {
+    const id = product.id
+    const prevPrice = prevPrices.value.get(id)
+    if (prevPrice !== undefined) {
+      if (product.price > prevPrice) {
+        priceChanges.value.set(id, 'up_card')
+        icons.value.set(id, true)
+      }
+      else if (product.price < prevPrice) {
+        priceChanges.value.set(id, 'down_card')
+        icons.value.set(id, false)
+      }
+    }
+    prevPrices.value.set(product.id, product.price)
+
+    // 设置延时恢复到默认状态
+    setTimeout(() => {
+      priceChanges.value.set(
+        id,
+        product.profit_status === 1 ? 'up_card' : 'down_card',
+      )
+      icons.value.set(id, product.profit_status === 1)
+    }, 500)
+  })
+
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
 }
@@ -102,7 +128,7 @@ onMounted(async () => {
   await __init()
   timer.value = setInterval(async () => {
     await __init()
-  }, 5000)
+  }, 3000)
   loading.value = false
 })
 
@@ -131,11 +157,11 @@ onBeforeUnmount(() => {
             <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
           </div>
           <div text-right>
-            <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
+            <div :class="priceChanges.get(item.id)">
               {{ item.diff }}
             </div>
             <div flex="~" class="bfb">
-              <img v-if="isUp(item.profit_status)" src="../../assets/images/index/up.png" class="up_icon">
+              <img v-if="icons.get(item.id)" src="../../assets/images/index/up.png" class="up_icon">
               <img v-else src="../../assets/images/index/down.png" class="up_icon">
               {{ item.diff_rate }}%
             </div>
