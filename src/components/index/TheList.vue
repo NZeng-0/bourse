@@ -1,4 +1,3 @@
-<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'

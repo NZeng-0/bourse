@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
             <div flex="~" class="bfb">
               <img v-if="icons.get(e.id)" src="../../assets/images/index/up.png" class="up_icon">
               <img v-else src="../../assets/images/index/down.png" class="up_icon">
-              {{ e.diff }}%
+              {{ e.diff_rate }}%
             </div>
           </div>
         </div>
