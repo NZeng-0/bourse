@@ -149,12 +149,17 @@ async function updateUserInfo() {
   user.data = data.value.data
 }
 
-watch(() => submitData.value.money, () => {
-  getEarnings()
+watch(() => submitData.value.money, async () => {
+  if (submitData.value.scheme_id === -1)
+    return
+  if (submitData.value.money <= 0)
+    return
+  await getEarnings()
 })
 
-watch(() => submitData.value.scheme_id, () => {
-  getEarnings()
+watch(() => submitData.value.scheme_id, async () => {
+  if (submitData.value.money !== 0)
+    await getEarnings()
 })
 
 onMounted(async () => {
