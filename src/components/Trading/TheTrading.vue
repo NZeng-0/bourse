@@ -54,21 +54,22 @@ function loadImg() {
             <img :src="product!.logo" h12 w12 rounded-full @error="loadImg">
           </div>
         </div>
+        <!-- 1M  15M  30M   1H  1D -->
         <div flex="~" mt3 justify-between px4 text-sm>
           <div :class="selected(0)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('day')">
-            1D
-          </div>
-          <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('week')">
-            1W
-          </div>
-          <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('month')">
             1M
           </div>
+          <div :class="selected(1)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('week')">
+            15M
+          </div>
+          <div :class="selected(2)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('month')">
+            30M
+          </div>
           <div :class="selected(3)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('year')">
-            1Y
+            1H
           </div>
           <div :class="selected(4)" flex="~" h8 w13 items-center justify-center rounded-xl @click="go('five-year')">
-            5Y
+            1D
           </div>
         </div>
         <div mt3.2 h65 w-full>

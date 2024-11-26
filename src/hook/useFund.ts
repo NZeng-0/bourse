@@ -3,11 +3,11 @@ import { getProductDetail } from '~/api'
 import type { klineType } from '~/types'
 
 const times = [
-  { key: '1day', value: '1D' },
-  { key: '1week', value: '1W' },
-  { key: '1month', value: '1M' },
-  { key: '1year', value: '1Y' },
-  { key: '5year', value: '5Y' },
+  { key: '1day', value: '1M' },
+  { key: '1week', value: '15M' },
+  { key: '1month', value: '30M' },
+  { key: '1year', value: '1H' },
+  { key: '5year', value: '1D' },
 ]
 
 function getTimestamp(str: string) {

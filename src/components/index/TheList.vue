@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TheCharts from '~/components/TheCharts'
 import type { Props } from '~/composables/lineChartOption'
 import { getOption } from '~/composables/lineChartOption'
 import type { history, indexProduct } from '~/api/types'
@@ -18,7 +17,14 @@ const list = shallowRef<indexProduct[]>([])
 const timer = ref()
 const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
+const styles = ref(new Map())
+const chartOptions = ref<Map<number, any>>(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
+
+function updateChartOption(item: indexProduct) {
+  const option = getSeries(item.history_list, styles.value.get(item.id))
+  chartOptions.value.set(item.id, option)
+}
 
 function parseData(data: history[]) {
   const result: Array<string[]> = []
@@ -97,25 +103,29 @@ async function __init() {
     const id = product.id
     const prevPrice = prevPrices.value.get(id)
     if (prevPrice !== undefined) {
-      if (product.price > prevPrice) {
+      if (product.price < prevPrice) {
         priceChanges.value.set(id, 'up_card')
         icons.value.set(id, true)
+        styles.value.set(id, 1)
       }
-      else if (product.price < prevPrice) {
+      else if (product.price > prevPrice) {
         priceChanges.value.set(id, 'down_card')
         icons.value.set(id, false)
+        styles.value.set(id, -1)
       }
     }
     prevPrices.value.set(product.id, product.price)
-
     // 设置延时恢复到默认状态
     setTimeout(() => {
       priceChanges.value.set(
         id,
-        product.profit_status === 1 ? 'up_card' : 'down_card',
+        product.diff > 0 ? 'up_card' : 'down_card',
       )
-      icons.value.set(id, product.profit_status === 1)
+      icons.value.set(id, product.diff > 0)
+      styles.value.set(id, product.diff > 0 ? 1 : -1)
+      updateChartOption(product)
     }, 500)
+    updateChartOption(product)
   })
 
   list.value = data.value.data
@@ -153,7 +163,11 @@ onBeforeUnmount(() => {
         </div>
         <div flex="~" justify-between w="2/4">
           <div h-full w-19>
-            <TheCharts :option="getSeries(item.history_list, item.profit_status)" :dom="`list-${key}`" />
+            <TheChart
+              :option="chartOptions.get(item.id)"
+              :dom="`list-${key}`"
+            />
+            <!-- <TheChart :option="getSeries(item.history_list, styles.get(item.id))" :dom="`list-${key}`" /> -->
           </div>
           <div text-right>
             <div :class="priceChanges.get(item.id)">

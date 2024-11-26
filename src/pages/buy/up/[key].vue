@@ -249,7 +249,7 @@ onMounted(async () => {
         <div>
           {{ t('trading.buy.service_charge') }}
           <span class="text-#5425EB">
-            {{ user.data.user_withdraw_rate }}%
+            {{ user.data.create_order_rate }}%
           </span>
         </div>
       </div>
