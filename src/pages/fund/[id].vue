@@ -92,26 +92,28 @@ function loadChart(cb: Function = () => { }) {
 
 function onSuccess() {
   if (prevPrice.value && product.value?.price) {
-    if (product.value.price > prevPrice.value) {
+    if (product.value.price < prevPrice.value) {
       priceChange.value = 'up_card'
       icon_type.value = true
     }
-    else if (product.value.price < prevPrice.value) {
+    else if (product.value.price > prevPrice.value) {
       priceChange.value = 'down_card'
       icon_type.value = false
     }
   }
   prevPrice.value = product.value?.price
+
   const timer = setTimeout(() => {
-    priceChange.value = product.value?.profit_status === 1 ? 'up_card' : 'down_card'
-    icon_type.value = product.value?.profit_status === 1
+    priceChange.value = product.value!.diff > 0 ? 'up_card' : 'down_card'
+    icon_type.value = product.value!.diff > 0
     clearTimeout(timer)
   }, 500)
 }
 
 onMounted(async () => {
   product.value = await actuator(id, period.value)
-  priceChange.value = product.value?.profit_status === 1 ? 'up_card' : 'down_card'
+  priceChange.value = product.value!.diff > 0 ? 'up_card' : 'down_card'
+  icon_type.value = product.value!.diff > 0
   loadChart()
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)

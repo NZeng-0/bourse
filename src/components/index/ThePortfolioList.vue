@@ -47,9 +47,9 @@ async function init() {
     setTimeout(() => {
       priceChanges.value.set(
         id,
-        product.profit_status === 1 ? 'up_card' : 'down_card',
+        product.diff > 0 ? 'up_card' : 'down_card',
       )
-      icons.value.set(id, product.profit_status === 1)
+      icons.value.set(id, product.diff > 0)
     }, 500)
   })
 
