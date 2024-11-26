@@ -8,7 +8,7 @@ const my_loading = ref(true)
 const loading = ref(false)
 const finished = ref(false)
 const page = ref<number>(1)
-const list = ref<dataType[]>()
+const list = ref<dataType[]>([])
 const isDone = ref(false)
 
 function go(uri: string) {
@@ -29,7 +29,7 @@ async function onLoad() {
     loading.value = false
     return
   }
-  list.value = data.value.data.data
+  list.value.push(...data.value.data.data)
   my_loading.value = false
   finished.value = false
   loading.value = false
