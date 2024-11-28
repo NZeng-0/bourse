@@ -69,8 +69,8 @@ onMounted(async () => {
             {{ getState(item.status) }}
           </span>
         </div>
-        <div w-full>
-          {{ t('failed') }}: 测试理由
+        <div v-if="item.status === 2" wfull>
+          {{ t('me.withdrawal_record.explain') }}: {{ item.explain }}
         </div>
       </div>
       <div h50 />
