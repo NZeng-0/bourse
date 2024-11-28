@@ -103,13 +103,13 @@ async function submit() {
     })
   }
 
-  if (toNumber(submitData.value.money) < toNumber(create_order_min_money)) {
+  if (toNumber(submitData.value.money) < toNumber(create_order_min_money.value)) {
     return showToast({
       message: `${t('buy_tips.min')}${create_order_min_money.value}`,
     })
   }
 
-  if (toNumber(submitData.value.money) > toNumber(create_order_max_money)) {
+  if (toNumber(submitData.value.money) > toNumber(create_order_max_money.value)) {
     return showToast({
       message: `${t('buy_tips.max')}${create_order_max_money.value}`,
     })
