@@ -6,6 +6,7 @@ import hold from '~/assets/images/footer/select/hold.png'
 import serve from '~/assets/images/footer/select/serve.png'
 import financing from '~/assets/images/footer/select/financing.png'
 import me from '~/assets/images/footer/select/me.png'
+import { useBinding } from '~/store/useBinding'
 
 defineProps<{
   index: number
@@ -20,7 +21,9 @@ interface item {
 
 const { t } = useI18n()
 const icons = ref<menuType[]>([])
+const bindings = ref<menuType[]>([])
 const list = ref<item[]>([])
+const bindStore = useBinding()
 
 const keys = [
   'front_menu_bottom_sy',
@@ -31,6 +34,15 @@ const keys = [
   'front_menu_bottom_tg',
 ]
 
+const binding_key = [
+  'front_menu_bank_from_xm',
+  'front_menu_bank_from_yhmc',
+  'front_menu_bank_from_khh',
+  'front_menu_bank_from_yhkh',
+  'front_menu_bank_from_zfmm',
+  'front_menu_bank_from_qrzfmm',
+]
+
 async function getConf() {
   const { data } = await getFrontMenuConfig()
   const temp = data.value.data
@@ -38,6 +50,8 @@ async function getConf() {
   temp.forEach((e: menuType) => {
     if (keys.includes(e.key))
       icons.value.push(e)
+    if (binding_key.includes(e.key))
+      bindings.value.push(e)
   })
 
   list.value = [
@@ -85,19 +99,20 @@ function getIcon(key: string) {
 
 onMounted(async () => {
   await getConf()
+  bindStore.list = bindings.value
 })
 </script>
 
 <template>
   <div flex="~" absolute fixed inset-x-0 bottom--1 z10 h16.5 w-full items-center justify-around border-y bg-white>
-    <div v-for="(item, key) in list" :key>
-      <RouterLink :to="item.pointTo">
+    <div v-for="(e, key) in list" :key>
+      <RouterLink :to="e.pointTo">
         <div flex="~" items-center justify-center>
-          <img v-if="index === key" :src="item.selectIcon" h4.5 w4.5>
-          <img v-else :src="item.icon" h4.5 w4.5>
+          <img v-if="index === key" :src="e.selectIcon" h4.5 w4.5>
+          <img v-else :src="e.icon" h4.5 w4.5>
         </div>
         <div flex="~" mt1 items-center justify-center text-xs :style="{ color: index === key ? '#4400FF' : '#9EA3AE' }">
-          {{ item.name }}
+          {{ e.name }}
         </div>
       </RouterLink>
     </div>
