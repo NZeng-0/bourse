@@ -183,7 +183,9 @@
       "transferable_balance": "Saldo trasferibile",
       "to": "To balance",
       "amount": "Importo di trasferimento"
-    }
+    },
+    "buy": "Importo dell'ordine",
+    "tips": "Inserisci l'importo dell'ordine"
   },
   "recommend": {
     "title": "Regali raccomandati",

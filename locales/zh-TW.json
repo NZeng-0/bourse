@@ -183,7 +183,9 @@
       "transferable_balance": "可轉出餘額",
       "to": "到餘額",
       "amount": "轉出金額"
-    }
+    },
+    "buy": "下單金額",
+    "tips": "請輸入下單金額"
   },
   "recommend": {
     "title": "推薦有禮",

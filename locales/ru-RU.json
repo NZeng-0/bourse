@@ -100,7 +100,9 @@
       "transferable_balance": "Баланс можно перевести"
     },
     "yesterdays_balance": "Вчерашний баланс",
-    "yesterdays_earnings": "Вчерашний заработок"
+    "yesterdays_earnings": "Вчерашний заработок",
+    "buy": "Сумма заказа",
+    "tips": "Пожалуйста, введите сумму заказа"
   },
   "index": {
     "analysis": "анализ данных",

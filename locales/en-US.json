@@ -183,7 +183,9 @@
       "transferable_balance": "Transferable Balance",
       "to": "To Balance",
       "amount": "Transfer Amount"
-    }
+    },
+    "buy": "Order amount",
+    "tips": "Please enter the order amount"
   },
   "recommend": {
     "title": "Recommendation Reward",

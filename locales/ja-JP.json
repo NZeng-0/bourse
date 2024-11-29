@@ -183,7 +183,9 @@
       "transferable_balance": "出金可能残高",
       "to": "残高へ",
       "amount": "出金額"
-    }
+    },
+    "buy": "注文金額",
+    "tips": "注文金額を入力してください"
   },
   "recommend": {
     "title": "紹介特典",

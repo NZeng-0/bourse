@@ -183,7 +183,9 @@
       "transferable_balance": "Số dư có thể chuyển ra",
       "to": "đến số dư",
       "amount": "Chuyển số tiền"
-    }
+    },
+    "buy": "Số tiền đặt hàng",
+    "tips": "Vui lòng nhập số tiền đặt hàng"
   },
   "recommend": {
     "title": "Giới thiệu hữu lễ",

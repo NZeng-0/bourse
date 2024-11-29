@@ -191,6 +191,8 @@
     "all": "所有",
     "confirm": "确认下单",
     "current_balance": "当前余额",
+    "buy": "下单金额",
+    "tips": "请输入下单金额",
     "transfer_in": {
       "title": "转入",
       "plan": "方案名称",

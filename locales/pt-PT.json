@@ -100,7 +100,9 @@
       "transferable_balance": "Saldo transferível"
     },
     "yesterdays_balance": "O saldo de ontem",
-    "yesterdays_earnings": "Lucro de ontem"
+    "yesterdays_earnings": "Lucro de ontem",
+    "buy": "Valor do pedido",
+    "tips": "Por favor insira o valor do pedido"
   },
   "index": {
     "analysis": "análise de dados",

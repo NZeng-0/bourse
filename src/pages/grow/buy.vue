@@ -43,26 +43,26 @@ onMounted(async () => {
 <template>
   <div h-screen bg-trading>
     <div wfull text-center>
-      <TheMenuHead :title="t('fortune.title')" />
+      <TheMenuHead :title="t('fortune.fixture_plan')" />
     </div>
     <div px2>
       <!-- 商品信息 -->
       <div mx-4 mt-6 rounded-lg bg-white p-4>
         <div space-y-3>
           <div flex items-center>
-            <span style="color: #030319;">产品名称：</span>
+            <span style="color: #030319;"> {{ t('fortune.product_name') }}:&nbsp;&nbsp;</span>
             <span style="color: #030319;">{{ product.name }}</span>
           </div>
           <div flex items-center>
-            <span style="color: #030319;">最低存款：</span>
+            <span style="color: #030319;"> {{ t('fortune.minimum_deposit') }}:&nbsp;&nbsp;</span>
             <span style="color: #030319;">{{ product.min_price }}</span>
           </div>
           <div flex items-center>
-            <span style="color: #030319;">年化收益：</span>
+            <span style="color: #030319;"> {{ t('fortune.annualized_income') }}:&nbsp;&nbsp;</span>
             <span style="color: #030319;">{{ product.rate }}</span>
           </div>
           <div flex items-center>
-            <span style="color: #030319;">预计收益：</span>
+            <span style="color: #030319;"> {{ t('fortune.projected_revenue') }}:&nbsp;&nbsp;</span>
             <span style="color: #030319;">{{ product.rate_price }}</span>
           </div>
         </div>
@@ -71,22 +71,22 @@ onMounted(async () => {
       <div mx-4 mt-6 rounded-lg bg-white p-4>
         <!-- 余额信息 -->
         <div flex items-center justify-between>
-          <span>当前余额宝余额</span>
+          <span>  {{ t('fortune.current_balance') }} </span>
           <span>{{ current }}</span>
         </div>
 
         <!-- 下单金额 -->
         <div mx2 mt2 border-t pt4>
           <div h10 flex items-center justify-between border rounded-lg px4>
-            <span text-gray-600>下单金额</span>
-            <input v-model="money" text-right type="number" placeholder="请输入下单金额">
+            <span text-gray-600> {{ t('fortune.buy') }} </span>
+            <input v-model="money" text-right type="number" :placeholder="t('fortune.tips')">
           </div>
         </div>
 
         <!-- 确认按钮 -->
         <div mx-4 mt-8 flex justify-center>
           <button h10 w35 rounded-lg bg-btn-select text-white @click="buy">
-            确认下单
+            {{ t('fortune.confirm') }}
           </button>
         </div>
       </div>
