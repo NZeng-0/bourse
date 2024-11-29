@@ -284,27 +284,29 @@ onMounted(async () => {
         </div>
       </div>
       <div mb70 mt0.25>
-        <div v-for="(item, key) in menu" :key flex="~" :class="getListStyle()" @click="go(item.to)">
-          <div w="1/5">
-            <img :src="getFullUrl(item.icon)" h10 w10>
-          </div>
-          <div w="2/5" relative text-base>
-            <p>
-              {{ t(item.title) }}
-            </p>
-            <template v-if="item.class && notifyLen !== 0">
-              <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1>
-                <span text="white xs">
-                  {{ notifyLen }}
-                </span>
-              </div>
-            </template>
-          </div>
-          <div w="2/5" flex="~" justify-end>
-            <div v-if="item.right !== ' '" text-sm class="text-#9EA3AE">
-              {{ t(item.right) }}
+        <div v-for="(item, key) in menu" :key="key">
+          <div v-if="item.show" flex="~" :class="getListStyle()" @click="go(item.to)">
+            <div w="1/5">
+              <img :src="getFullUrl(item.icon)" h10 w10>
             </div>
-            <img src="../assets/images/me/menu/right.png" h5.5 w5.5>
+            <div w="2/5" relative text-base>
+              <p>
+                {{ t(item.title) }}
+              </p>
+              <template v-if="item.class && notifyLen !== 0">
+                <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1>
+                  <span text="white xs">
+                    {{ notifyLen }}
+                  </span>
+                </div>
+              </template>
+            </div>
+            <div w="2/5" flex="~" justify-end>
+              <div v-if="item.right !== ' '" text-sm class="text-#9EA3AE">
+                {{ t(item.right) }}
+              </div>
+              <img src="../assets/images/me/menu/right.png" h5.5 w5.5>
+            </div>
           </div>
         </div>
         <div flex="~" mt3.5 h16 items-center rounded-2xl bg-btn-select px4 @click="go('serve')">

@@ -25,6 +25,8 @@ async function after() {
 }
 
 async function submit() {
+  if (infos.value.wallet_address === '')
+    return
   if (wait.value) {
     showToast({
       message: t('assets.tips'),

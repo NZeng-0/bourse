@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
-import type { configlist } from '~/types'
-import { getConfigList } from '~/api'
+import type { configlist, menuType } from '~/types'
+import { getConfigList, getFrontMenuConfig } from '~/api'
 
 const { t } = useI18n()
 const userStore = useUser()
@@ -12,6 +12,8 @@ const router = useRouter()
 const type = ref('')
 
 const { bank_account, wallet_address } = userStore.data.bank_info
+
+// const keys = ['front_menu_mine_yhk']
 
 const list = [
   {
@@ -27,6 +29,13 @@ const list = [
     type: 'usdt',
   },
 ]
+
+// async function getList() {
+//   const { data } = await getFrontMenuConfig()
+//   const temp = data.value.data
+//   temp.forEach((e: menuType) => {
+//   })
+// }
 
 function getFullUrl(url: string) {
   return new URL(url, import.meta.url).href

@@ -32,6 +32,8 @@ async function after() {
 }
 
 async function submit() {
+  if (infos.value.bank_account === '')
+    return
   if (wait.value) {
     showToast({
       message: t('assets.tips'),
@@ -49,8 +51,8 @@ async function submit() {
 }
 
 function display(state: string) {
-  const temp = status.filter((e: menuType) => e.key === state)
-  return temp.status === 0
+  const temp = status.filter((e: menuType) => e.key === state)[0]
+  return temp.status !== 0
 }
 function com() {
   return 'mt3.25 h10.25 w-full rounded-xl px-3.25 text-sm opacity59'

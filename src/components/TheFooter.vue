@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { getFrontMenuConfig } from '~/api'
 import type { menuType } from '~/types'
-import home from '~/assets/images/footer/select/home.png'
-import hold from '~/assets/images/footer/select/hold.png'
-import serve from '~/assets/images/footer/select/serve.png'
-import financing from '~/assets/images/footer/select/financing.png'
-import me from '~/assets/images/footer/select/me.png'
 import { useBinding } from '~/store/useBinding'
 
 defineProps<{
@@ -56,32 +51,32 @@ async function getConf() {
 
   list.value = [
     {
-      icon: new URL('~/assets/images/footer/home.png', import.meta.url).href,
-      selectIcon: getIcon('front_menu_bottom_sy') || home,
+      icon: getIcon('front_menu_bottom_sy'),
+      selectIcon: getIcon('front_menu_bottom_sy'),
       name: t('footer.index'),
       pointTo: '/',
     },
     {
-      icon: new URL('~/assets/images/footer/hold.png', import.meta.url).href,
-      selectIcon: getIcon('front_menu_bottom_cc') || hold,
+      icon: getIcon('front_menu_bottom_cc'),
+      selectIcon: getIcon('front_menu_bottom_cc'),
       name: t('footer.assets'),
       pointTo: '/menu/order/to-hold',
     },
     {
-      icon: new URL('~/assets/images/footer/serve.png', import.meta.url).href,
-      selectIcon: getIcon('front_menu_bottom_kf') || serve,
+      icon: getIcon('front_menu_bottom_kf'),
+      selectIcon: getIcon('front_menu_bottom_kf'),
       name: '客服',
       pointTo: '/menu/serve',
     },
     {
-      icon: new URL('~/assets/images/footer/financing.png', import.meta.url).href,
-      selectIcon: getIcon('front_menu_bottom_lc') || financing,
+      icon: getIcon('front_menu_bottom_lc'),
+      selectIcon: getIcon('front_menu_bottom_lc'),
       name: t('footer.fortune'),
       pointTo: '/grow/solution',
     },
     {
-      icon: new URL('~/assets/images/footer/me.png', import.meta.url).href,
-      selectIcon: getIcon('front_menu_bottom_wd') || me,
+      icon: getIcon('front_menu_bottom_wd'),
+      selectIcon: getIcon('front_menu_bottom_wd'),
       name: t('footer.me'),
       pointTo: '/me',
     },

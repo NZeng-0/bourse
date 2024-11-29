@@ -35,7 +35,7 @@ function animationEnd() {
 
 function go(product: YuEBao) {
   YuEBaoStore.data = product
-  router.push(`/YuEBao/transfer-in`)
+  router.push(`/grow/buy`)
 }
 
 onMounted(async () => {

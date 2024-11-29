@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { getTotalMoneyAndYesterdayMoney, getUserInfo, transferIn } from '~/api'
-import type { userTypes } from '~/store/useUser'
-import type { YuEBao } from '~/types'
+import type { YuEBao, userTypes } from '~/types'
 import { useUser } from '~/store/useUser'
 import { useYuEBao } from '~/store/useYuEBao'
 import { useMoney } from '~/store/useMoney'
@@ -78,8 +77,8 @@ onMounted(() => {
 
 <template>
   <div h-screen bg-trading>
-    <div flex="~" h27 items-center justify-between rounded-b-2xl bg-white px6>
-      <img src="../../assets/images/trading/back.png" h10 w10 @click="back()">
+    <div flex="~" h16 items-center justify-between rounded-b-2xl bg-white px6>
+      <img src="../../assets/images/trading/back.png" h6.25 w6.25 @click="back()">
       <div class="text-5.5" text-trading-title>
         {{ t('fortune.transfer_in.title') }}
       </div>
