@@ -87,6 +87,8 @@ async function getConf() {
       pointTo: '/me',
     },
   ]
+
+  list.value.sort((a: item, b: item) => a.sort - b.sort)
 }
 
 function getIcon(key: string) {

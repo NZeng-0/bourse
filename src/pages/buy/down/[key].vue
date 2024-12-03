@@ -88,9 +88,9 @@ function back() {
   route.back()
 }
 
-function toNumber(value: any) {
-  return Number.parseInt(value)
-}
+// function toNumber(value: any) {
+//   return Number.parseInt(value)
+// }
 
 function all() {
   submitData.value.money = product.value!.usable_money || 0
@@ -103,17 +103,17 @@ async function submit() {
     })
   }
 
-  if (toNumber(submitData.value.money) < toNumber(create_order_min_money.value)) {
-    return showToast({
-      message: `${t('buy_tips.min')}${create_order_min_money.value}`,
-    })
-  }
+  // if (toNumber(submitData.value.money) < toNumber(create_order_min_money.value)) {
+  //   return showToast({
+  //     message: `${t('buy_tips.min')}${create_order_min_money.value}`,
+  //   })
+  // }
 
-  if (toNumber(submitData.value.money) > toNumber(create_order_max_money.value)) {
-    return showToast({
-      message: `${t('buy_tips.max')}${create_order_max_money.value}`,
-    })
-  }
+  // if (toNumber(submitData.value.money) > toNumber(create_order_max_money.value)) {
+  //   return showToast({
+  //     message: `${t('buy_tips.max')}${create_order_max_money.value}`,
+  //   })
+  // }
 
   if (auth && user.data.auth_status !== 1) {
     return showToast({
