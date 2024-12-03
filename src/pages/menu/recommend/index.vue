@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useClipboard } from '~/composables/useClipboard'
+
 const route = useRouter()
 const { t } = useI18n()
 
@@ -43,7 +45,7 @@ function back() {
           <div text-base class="text-#121826">
             {{ code }}
           </div>
-          <div :class="getCodeStyle()" flex="~" :data-clipboard-text="code" @click="useClipboard('code')">
+          <div :class="getCodeStyle()" flex="~" :data-clipboard-text="code" @click="useClipboard('code', t('copySuccess'))">
             <img src="../../../assets/images/recommend/copy.png" mr2 h6 w6>
             {{ t('recommend.copy') }}
           </div>

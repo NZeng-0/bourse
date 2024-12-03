@@ -32,7 +32,8 @@
     "index": "Homepage",
     "assets": "Attivo",
     "fortune": "Finanza",
-    "me": "Mio"
+    "me": "Mio",
+    "serve": "assistenza clienti"
   },
   "trading": {
     "k_line": "k-line",

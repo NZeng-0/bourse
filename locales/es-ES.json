@@ -32,7 +32,8 @@
     "assets": "activos",
     "fortune": "Finanzas",
     "index": "Principal",
-    "me": "mío"
+    "me": "mío",
+    "serve": "servicio al cliente"
   },
   "trading": {
     "avg": "promedio",

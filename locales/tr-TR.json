@@ -62,7 +62,8 @@
     "assets": "varlıklar",
     "fortune": "Finans",
     "index": "ön Sayfa",
-    "me": "bana ait"
+    "me": "bana ait",
+    "serve": "müşteri hizmetleri"
   },
   "fortune": {
     "accumulated_earnings": "Kümülatif gelir",

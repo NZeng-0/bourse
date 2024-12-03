@@ -32,7 +32,8 @@
     "index": "Home",
     "assets": "Assets",
     "fortune": "Finance",
-    "me": "Me"
+    "me": "Me",
+    "serve": "customer service"
   },
   "trading": {
     "k_line": "K-Line",

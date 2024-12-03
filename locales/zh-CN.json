@@ -52,7 +52,8 @@
     "index": "首页",
     "assets": "持仓",
     "fortune": "理财",
-    "me": "我的"
+    "me": "我的",
+    "serve": "客服"
   },
   "trading": {
     "open": "开盘",

@@ -171,22 +171,22 @@ onMounted(async () => {
 
 <template>
   <div flex="~ wrap" mt13 justify-center overflow-x-scroll>
-    <div v-if="isShow('front_menu_from_yhm')">
+    <div v-show="isShow('front_menu_from_yhm')">
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
-    <div v-if="isShow('front_menu_from_dlmm')" mt3>
+    <div v-show="isShow('front_menu_from_dlmm')" mt3>
       <input v-model="user.pwd" type="password" :class="getClass()" :placeholder="t('register.password')">
     </div>
-    <div v-if="isShow('front_menu_from_qrdlmm')" mt3>
+    <div v-show="isShow('front_menu_from_qrdlmm')" mt3>
       <input v-model="user.verify_pwd" type="password" :class="getClass()" :placeholder="t('register.confirm_pwd')">
     </div>
-    <div v-if="isShow('front_menu_from_zfmm')" mt3>
+    <div v-show="isShow('front_menu_from_zfmm')" mt3>
       <input v-model="user.operation_pwd" type="password" :class="getClass()" :placeholder="t('register.pay_pwd')">
     </div>
-    <div v-if="isShow('front_menu_from_qrzfmm')" mt3>
+    <div v-show="isShow('front_menu_from_qrzfmm')" mt3>
       <input type="password" :class="getClass()" :placeholder="t('register.confirm_pay_pwd')">
     </div>
-    <div v-if="isShow('front_menu_from_xm')" mt3>
+    <div v-show="isShow('front_menu_from_xm')" mt3>
       <input v-model="user.nickname" type="text" :class="getClass()" :placeholder="t('register.name')">
     </div>
     <div v-if="isShow('front_menu_from_sfzh')" mt3>

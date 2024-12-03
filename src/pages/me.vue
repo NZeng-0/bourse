@@ -291,7 +291,7 @@ onMounted(async () => {
             </div>
             <div w="2/5" relative text-base>
               <p>
-                {{ t(item.title) }}
+                {{ item.title }}
               </p>
               <template v-if="item.class && notifyLen !== 0">
                 <div bg="#FE3636" flex="~" absolute right-7 top--2 h5 min-w-6 items-center justify-center rounded-3xl p1>

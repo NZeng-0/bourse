@@ -1,6 +1,3 @@
-import language from '../assets/images/me/menu/language.png'
-import company from '../assets/images/me/menu/company.png'
-import download from '../assets/images/me/menu/download.png'
 import type { menuType } from '~/types'
 import { getFrontMenuConfig } from '~/api'
 
@@ -11,6 +8,7 @@ interface menuItem {
   to: string
   class: boolean
   show: boolean
+  sort: number
 }
 
 const keys = [
@@ -42,102 +40,106 @@ async function getConf() {
 
   menu.value = [
     {
-      title: 'me.withdrawal_record.title',
+      title: getRemark('front_menu_mine_txjl'),
       icon: getIcon('front_menu_mine_txjl'),
       right: ' ',
       to: 'withdraw',
       class: false,
       show: isShow('front_menu_mine_txjl'),
+      sort: getSort('front_menu_mine_txjl'),
     },
     {
-      title: 'me.recharge_record.title',
+      title: getRemark('front_menu_mine_czjl'),
       icon: getIcon('front_menu_mine_czjl'),
       right: ' ',
       to: 'top-up',
       class: false,
       show: isShow('front_menu_mine_czjl'),
+      sort: getSort('front_menu_mine_czjl'),
     },
     {
-      title: 'order_trading',
-      icon: getIcon('front_menu_mine_zxgg'),
-      right: ' ',
-      to: 'order/to-hold',
-      class: false,
-      show: isShow('front_menu_mine_zxgg'),
-    },
-    {
-      title: 'order_history',
-      icon: getIcon('front_menu_mine_czjl'),
+      title: getRemark('front_menu_mine_yhk'),
+      icon: getIcon('front_menu_mine_yhk'),
       right: ' ',
       to: 'order/history',
       class: false,
-      show: isShow('front_menu_mine_czjl'),
-    },
-    {
-      title: 'me.payment_method.title',
-      icon: getIcon('front_menu_mine_yhk'),
-      right: ' ',
-      to: 'payment',
-      class: false,
       show: isShow('front_menu_mine_yhk'),
+      sort: getSort('front_menu_mine_yhk'),
     },
     {
-      title: 'me.auth.title',
+      title: getRemark('front_menu_mine_smrz'),
       icon: getIcon('front_menu_mine_smrz'),
       right: ' ',
       to: 'auth',
       class: false,
       show: isShow('front_menu_mine_smrz'),
+      sort: getSort('front_menu_mine_smrz'),
     },
     {
-      title: 'me.language.title',
-      icon: language,
+      title: getRemark('front_menu_mine_pccx'),
+      icon: getIcon('front_menu_mine_pccx'),
       right: 'me.language.current',
       to: 'language',
       class: false,
-      show: isShow('front_menu_mine_czjl'),
+      show: isShow('front_menu_mine_pccx'),
+      sort: getSort('front_menu_mine_pccx'),
     },
     {
-      title: 'me.message.notice',
-      icon: getIcon('front_menu_mine_zxgg'),
+      title: getRemark('front_menu_mine_znxx'),
+      icon: getIcon('front_menu_mine_znxx'),
       right: ' ',
       to: 'message/list',
       class: true,
-      show: isShow('front_menu_mine_zxgg'),
+      show: isShow('front_menu_mine_znxx'),
+      sort: getSort('front_menu_mine_znxx'),
     },
     {
-      title: 'me.secure.title',
+      title: getRemark('front_menu_mine_zhaq'),
       icon: getIcon('front_menu_mine_zhaq'),
       right: ' ',
       to: 'secure',
       class: false,
       show: isShow('front_menu_mine_zhaq'),
+      sort: getSort('front_menu_mine_zhaq'),
     },
     {
-      title: 'company.title',
-      icon: company,
+      title: getRemark('front_menu_mine_zxgg'),
+      icon: getIcon('front_menu_mine_zxgg'),
       right: ' ',
       to: 'company',
       class: false,
-      show: isShow('front_menu_mine_czjl'),
+      show: isShow('front_menu_mine_zxgg'),
+      sort: getSort('front_menu_mine_zxgg'),
     },
     {
-      title: 'me.download.title',
-      icon: download,
+      title: getRemark('front_menu_mine_tcdl'),
+      icon: getIcon('front_menu_mine_tcdl'),
       right: ' ',
       to: 'download',
       class: false,
-      show: isShow('front_menu_mine_czjl'),
+      show: isShow('front_menu_mine_tcdl'),
+      sort: getSort('front_menu_mine_tcdl'),
     },
     {
-      title: 'recommend.title',
+      title: getRemark('front_menu_mine_tgm'),
       icon: getIcon('front_menu_mine_tgm'),
+      right: ' ',
+      to: 'payment',
+      class: false,
+      show: isShow('front_menu_mine_tgm'),
+      sort: getSort('front_menu_mine_tgm'),
+    },
+    {
+      title: getRemark('front_menu_mine_szmx'),
+      icon: getIcon('front_menu_mine_szmx'),
       right: ' ',
       to: 'recommend',
       class: false,
-      show: isShow('front_menu_mine_tgm'),
+      show: isShow('front_menu_mine_szmx'),
+      sort: getSort('front_menu_mine_szmx'),
     },
   ]
+  menu.value.sort((a: menuItem, b: menuItem) => a.sort - b.sort)
 }
 
 function getIcon(key: string) {
@@ -148,6 +150,14 @@ function getIcon(key: string) {
 function isShow(key: string) {
   const res = icons.value.filter((e: menuType) => e.key === key)[0]
   return res.status !== 0
+}
+
+function getSort(key: string) {
+  return icons.value.filter((e: menuType) => e.key === key)[0].sort
+}
+
+function getRemark(key: string) {
+  return icons.value.filter((e: menuType) => e.key === key)[0].remark
 }
 
 // 调用 getConf 以获取配置

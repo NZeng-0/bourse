@@ -12,6 +12,7 @@ interface item {
   selectIcon: string
   name: string
   pointTo: string
+  sort: number
 }
 
 const { t } = useI18n()
@@ -53,30 +54,35 @@ async function getConf() {
     {
       icon: getIcon('front_menu_bottom_sy'),
       selectIcon: getIcon('front_menu_bottom_sy'),
+      sort: getSort('front_menu_bottom_sy'),
       name: t('footer.index'),
       pointTo: '/',
     },
     {
-      icon: getIcon('front_menu_bottom_cc'),
-      selectIcon: getIcon('front_menu_bottom_cc'),
+      icon: getIcon('front_menu_bottom_cz'),
+      selectIcon: getIcon('front_menu_bottom_cz'),
+      sort: getSort('front_menu_bottom_cz'),
       name: t('footer.assets'),
       pointTo: '/menu/order/to-hold',
     },
     {
-      icon: getIcon('front_menu_bottom_kf'),
-      selectIcon: getIcon('front_menu_bottom_kf'),
-      name: '客服',
+      icon: getIcon('front_menu_bottom_cc'),
+      selectIcon: getIcon('front_menu_bottom_cc'),
+      sort: getSort('front_menu_bottom_cc'),
+      name: t('footer.serve'),
       pointTo: '/menu/serve',
     },
     {
-      icon: getIcon('front_menu_bottom_lc'),
-      selectIcon: getIcon('front_menu_bottom_lc'),
+      icon: getIcon('front_menu_bottom_kf'),
+      selectIcon: getIcon('front_menu_bottom_kf'),
+      sort: getSort('front_menu_bottom_kf'),
       name: t('footer.fortune'),
       pointTo: '/grow/solution',
     },
     {
       icon: getIcon('front_menu_bottom_wd'),
       selectIcon: getIcon('front_menu_bottom_wd'),
+      sort: getSort('front_menu_bottom_wd'),
       name: t('footer.me'),
       pointTo: '/me',
     },
@@ -90,6 +96,10 @@ function getIcon(key: string) {
       res = `${baseUrl}/${e.value}`
   })
   return res
+}
+
+function getSort(key: string) {
+  return icons.value.filter((e: menuType) => e.key === key)[0].sort
 }
 
 onMounted(async () => {

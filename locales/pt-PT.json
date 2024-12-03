@@ -62,7 +62,8 @@
     "assets": "ativos",
     "fortune": "Finanças",
     "index": "Principal",
-    "me": "meu"
+    "me": "meu",
+    "serve": "atendimento ao Cliente"
   },
   "fortune": {
     "accumulated_earnings": "Renda acumulada",
