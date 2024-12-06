@@ -80,6 +80,9 @@ async function getEarnings() {
   const { data } = await countProductEarningsMoney(submitData.value)
   earning.value = data.value.data.predict_earnings_money
 
+  if (product.value!.profit_status === 1)
+    return
+
   times.value?.forEach((e: timeList) => {
     if (e.id === submitData.value.scheme_id) {
       e.loss_rate = data.value.data.loss_rate.split('-')[1]
@@ -164,7 +167,7 @@ watch(() => submitData.value.scheme_id, async () => {
 
 onMounted(async () => {
   await updateUserInfo()
-  product.value = await actuator(id, '5min')
+  product.value = await actuator(id, '1min')
   times.value = product.value?.time_scheme_list
   setTimeout(() => {
     moneyList.value = product.value?.investment_money_list

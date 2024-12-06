@@ -134,6 +134,9 @@ async function getEarnings() {
   const { data } = await countProductEarningsMoney(submitData.value)
   earning.value = data.value.data.predict_earnings_money
 
+  if (product.value!.profit_status === 1)
+    return
+
   times.value?.forEach((e: timeList) => {
     if (e.id === submitData.value.scheme_id) {
       e.loss_rate = data.value.data.loss_rate.split('-')[1]
