@@ -77,11 +77,12 @@ export function getYuEBaoList() {
 /**
  * @description 余额宝订单列表
  * @param status 状态：0-未结算，1-已结算 当前收益传-0，历史传-1
+ * @param page 当前页
  * @returns 订单列表
  */
-export function getMoneyInvestmentOrderList(status: number = 0) {
+export function getMoneyInvestmentOrderList(status: number = 0, page: number = 1) {
   return Request.get({
-    url: `/index/moneyInvestment/getMoneyInvestmentOrderList?${status}`,
+    url: `/index/moneyInvestment/getMoneyInvestmentOrderList?${status}&page=${page}`,
   })
 }
 

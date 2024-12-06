@@ -4,7 +4,11 @@ import { getMoneyInvestmentOrderList, prolongMoneyInvestment, quitMoneyInvestmen
 
 const { t, locale } = useI18n()
 
-const isLoading = ref(false)
+const loading = ref(false)
+const my_loading = ref(false)
+const isDone = ref(false)
+const finished = ref(false)
+const page = ref(1)
 const list = ref<order[]>([])
 
 function margin() {
@@ -25,7 +29,7 @@ async function terminate(id: number) {
     duration: 1500,
   })
 
-  await init()
+  await onLoad()
 }
 
 async function renew(id: number) {
@@ -34,27 +38,40 @@ async function renew(id: number) {
     message: data.value.msg,
   })
 
-  await init()
+  await onLoad()
 }
 
-async function init() {
-  const { data } = await getMoneyInvestmentOrderList(0)
-  list.value = data.value.data.data
+async function onLoad() {
+  loading.value = true
+  if (isDone.value) {
+    finished.value = true
+    loading.value = false
+    return
+  }
+  const { data } = await getMoneyInvestmentOrderList(0, page.value)
+  if (data.value.data.data.length < 1) {
+    isDone.value = true
+    finished.value = true
+    loading.value = false
+    return
+  }
+  list.value.push(...data.value.data.data)
+  my_loading.value = false
+  loading.value = false
+  page.value++
 }
 
-onMounted(async () => {
-  isLoading.value = true
-  await init()
-  isLoading.value = false
-})
+onMounted(async () => onLoad())
 </script>
 
 <template>
-  <div>
-    <div flex="~ wrap" justify-center>
-      <TheInfo :current="1" />
-      <div mx5 mt2 h-screen wfull overflow-x-scroll text-sm>
-        <TheEmpty v-if="isLoading" />
+  <div flex="~ wrap" justify-center>
+    <TheInfo :current="1" />
+    <div mx5 mt2 wfull text-sm>
+      <van-list
+        v-model:loading="loading" h="25%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
+        @load="onLoad"
+      >
         <div v-for="(item, key) in list" :key mt4 h20 border rounded-lg pl2>
           <div flex="~" mt2 justify-between text-sm>
             <div w="1/3">
@@ -91,9 +108,9 @@ onMounted(async () => {
             </div>
           </div>
         </div>
-        <div h140 />
-      </div>
+      </van-list>
     </div>
-    <TheFooter :index="3" />
+    <TheEmpty v-if="my_loading" />
   </div>
+  <TheFooter :index="3" />
 </template>

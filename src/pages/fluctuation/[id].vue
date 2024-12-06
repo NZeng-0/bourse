@@ -17,7 +17,7 @@ const {
 
 const product = ref<indexProduct>()
 const select = ref(0)
-const period = ref('1day')
+const period = ref('1min')
 const timer = ref()
 const card = ref<cardType>({
   high: '',
@@ -187,6 +187,7 @@ onUnmounted(() => {
   text-align: center;
   letter-spacing: 0em;
 }
+
 .bfb {
   font-size: 16px;
   font-weight: normal;

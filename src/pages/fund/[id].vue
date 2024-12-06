@@ -16,7 +16,7 @@ const {
 const id = useToNumber(useRoute('/fund/[id]').params.id).value
 const product = ref<indexProduct>()
 const select = ref(0)
-const period = ref('1day')
+const period = ref('1min')
 const timer = ref()
 let chart
 const prevPrice = ref<number>()

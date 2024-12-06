@@ -8,13 +8,11 @@ const router = useRouter()
 const YuEBaoStore = useYuEBao()
 
 const loading = ref(false)
-const list: Ref<YuEBao[]> = ref([])
-
-async function init() {
-  const { data } = await getYuEBaoList()
-  if (data.value.data)
-    list.value = data.value.data
-}
+const my_loading = ref(false)
+const isDone = ref(false)
+const finished = ref(false)
+const page = ref(1)
+const list = ref<YuEBao[]>([])
 
 function margin() {
   switch (locale.value) {
@@ -38,21 +36,41 @@ function go(product: YuEBao) {
   router.push(`/grow/buy`)
 }
 
-onMounted(async () => {
+async function onLoad() {
   loading.value = true
-
-  await init()
-
+  if (isDone.value) {
+    finished.value = true
+    loading.value = false
+    return
+  }
+  const { data } = await getYuEBaoList()
+  // 预留给可能的分页服务
+  // if (data.value.data.length < 1) {
+  //   isDone.value = true
+  // finished.value = true
+  //   loading.value = false
+  //   return
+  // }
+  list.value.push(...data.value.data)
+  isDone.value = true
   loading.value = false
-})
+  finished.value = true
+  my_loading.value = false
+  loading.value = false
+  page.value++
+}
+
+onMounted(async () => onLoad())
 </script>
 
 <template>
-  <div>
-    <div flex="~ wrap" justify-center>
-      <TheInfo :current="0" />
-      <div mx5 mt2 h-screen wfull overflow-x-scroll text-sm>
-        <TheEmpty v-if="loading" />
+  <div flex="~ wrap" justify-center>
+    <TheInfo :current="0" />
+    <div mx5 mt2 wfull text-sm>
+      <van-list
+        v-model:loading="loading" h="75%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
+        @load="onLoad"
+      >
         <div v-for="(item, key) in list" :key flex="~ wrap" mt4 h20 border rounded-lg pl2 @click="go(item)">
           <div flex="~ wrap" justify-between w="1/2" :class="margin()">
             <div flex="~" w-full items-start>
@@ -81,11 +99,11 @@ onMounted(async () => {
             </div>
           </div>
         </div>
-        <div h150 />
-      </div>
+      </van-list>
+      <TheEmpty v-if="loading" />
     </div>
-    <TheFooter :index="3" />
   </div>
+  <TheFooter :index="3" />
 </template>
 
 <style scoped>

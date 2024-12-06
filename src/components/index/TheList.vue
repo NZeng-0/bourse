@@ -171,7 +171,7 @@ onBeforeUnmount(() => {
           </div>
           <div text-right>
             <div :class="priceChanges.get(item.id)">
-              {{ item.diff }}
+              {{ item.price }}
             </div>
             <div flex="~" class="bfb">
               <img v-if="icons.get(item.id)" src="../../assets/images/index/up.png" class="up_icon">
