@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Item: typeof import('./src/components/grow/Item.vue')['default']
     Loading: typeof import('./src/components/loading/loading.vue')['default']
     OrderItem: typeof import('./src/components/order/OrderItem.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -39,7 +38,6 @@ declare module 'vue' {
     VanPopup: typeof import('vant/es')['Popup']
     VanSwipe: typeof import('vant/es')['Swipe']
     VanSwipeItem: typeof import('vant/es')['SwipeItem']
-    VantList: typeof import('vant/es')['tList']
     VanUploader: typeof import('vant/es')['Uploader']
     Verified: typeof import('./src/components/menu/auth/verified.vue')['default']
   }

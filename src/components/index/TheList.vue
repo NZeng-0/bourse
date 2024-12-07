@@ -5,6 +5,7 @@ import type { history, indexProduct } from '~/api/types'
 import { getIndexProduct } from '~/api'
 
 const router = useRouter()
+const { t } = useI18n()
 
 const grid = {
   height: '80%',
@@ -152,15 +153,15 @@ onBeforeUnmount(() => {
       <tr>
         <th w="2/4" />
         <th w="1/4">
-          <span color="#FC6C6B">最高 </span>
+          <span color="#FC6C6B">{{ t('trading.max') }} </span>
           <span color="#121826">/</span>
-          <span color="#19C09A"> 最低</span>
+          <span color="#19C09A"> {{ t('trading.min') }}</span>
         </th>
         <th max-w="1.5/4" color="#121826">
-          当前值
+          {{ t('current') }}
         </th>
         <th w="1/4" text-end>
-          <span color="#121826">涨/跌幅</span>
+          <span color="#121826">{{ t('rate') }}</span>
         </th>
       </tr>
     </thead>

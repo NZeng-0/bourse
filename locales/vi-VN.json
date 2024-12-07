@@ -347,5 +347,7 @@
   "back": "hoạt động nền",
   "front": "Nạp tiền tại quầy lễ tân",
   "failed": "Lý do từ chối",
-  "only": "Hiện tại bạn chỉ có thể chọn"
+  "only": "Hiện tại bạn chỉ có thể chọn",
+  "current": "giá trị hiện tại",
+  "rate": "Tăng/giảm"
 }

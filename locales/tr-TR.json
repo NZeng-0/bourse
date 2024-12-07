@@ -347,5 +347,7 @@
   "back": "arka plan işlemleri",
   "failed": "Reddedilme nedeni",
   "front": "Resepsiyonda şarj edin",
-  "only": "Şu anda yalnızca seçebilirsiniz"
+  "only": "Şu anda yalnızca seçebilirsiniz",
+  "current": "mevcut değer",
+  "rate": "Arttırma/azaltma"
 }

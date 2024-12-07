@@ -347,5 +347,7 @@
   "back": "operazioni in background",
   "failed": "Motivo del rifiuto",
   "front": "Ricarica alla reception",
-  "only": "Al momento puoi solo scegliere"
+  "only": "Al momento puoi solo scegliere",
+  "current": "valore corrente",
+  "rate": "Aumenta/diminuisce"
 }

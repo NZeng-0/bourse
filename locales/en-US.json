@@ -347,5 +347,7 @@
   "back": "background operations",
   "failed": "Reason for rejection",
   "front": "Recharge at the front desk",
-  "only": "Currently you can only choose"
+  "only": "Currently you can only choose",
+  "current": "current value",
+  "rate": "Increase/decrease"
 }

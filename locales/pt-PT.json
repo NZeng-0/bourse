@@ -347,5 +347,7 @@
   "back": "operações em segundo plano",
   "failed": "Motivo da rejeição",
   "front": "Recarregue na receção",
-  "only": "Atualmente só pode escolher"
+  "only": "Atualmente só pode escolher",
+  "current": "valor atual",
+  "rate": "Aumentar/diminuir"
 }

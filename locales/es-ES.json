@@ -347,5 +347,7 @@
   "back": "operaciones en segundo plano",
   "failed": "Motivo del rechazo",
   "front": "Recarga energías en la recepción",
-  "only": "Actualmente solo puedes elegir"
+  "only": "Actualmente solo puedes elegir",
+  "current": "valor actual",
+  "rate": "Aumentar/disminuir"
 }
