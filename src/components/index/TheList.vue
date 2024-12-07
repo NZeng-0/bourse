@@ -147,10 +147,26 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div mt4.5>
-    <div v-for="(item, key) in list" :key :class="key !== 0 ? key === (list.length - 1) ? 'mt8 mb42' : 'mt8' : ''">
-      <div flex="~ gap2" justify-between @click="go(item.id)">
-        <div flex="~ gap3" w="2/4">
+  <table mt4.5>
+    <thead text="13px">
+      <tr>
+        <th w="2/4" />
+        <th w="1/4">
+          <span color="#FC6C6B">最高 </span>
+          <span color="#121826">/</span>
+          <span color="#19C09A"> 最低</span>
+        </th>
+        <th max-w="1.5/4" color="#121826">
+          当前值
+        </th>
+        <th w="1/4" text-end>
+          <span color="#121826">涨/跌幅</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(item, key) in list" :key="key" h15 @click="go(item.id)">
+        <td flex="~ gap3">
           <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
           <div text-left class="c1">
             <div w-full>
@@ -160,32 +176,38 @@ onBeforeUnmount(() => {
               STOSX
             </div>
           </div>
-        </div>
-        <div flex="~" justify-between w="2/4">
-          <div h-full w-19>
-            <TheChart
-              :option="chartOptions.get(item.id)"
-              :dom="`list-${key}`"
-            />
-            <!-- <TheChart :option="getSeries(item.history_list, styles.get(item.id))" :dom="`list-${key}`" /> -->
+        </td>
+        <td text="12px center">
+          <span> {{ format(item.high, 3) }} </span>
+          <br>
+          <span> {{ format(item.low, 3) }} </span>
+        </td>
+        <td text-right>
+          <div :class="priceChanges.get(item.id)">
+            {{ format(item.price, 3) }}
           </div>
-          <div text-right>
-            <div :class="priceChanges.get(item.id)">
-              {{ item.price }}
-            </div>
-            <div flex="~" class="bfb">
-              <img v-if="icons.get(item.id)" src="../../assets/images/index/up.png" class="up_icon">
-              <img v-else src="../../assets/images/index/down.png" class="up_icon">
-              {{ item.diff_rate }}%
-            </div>
+        </td>
+        <td class="bfb">
+          <div flex="~" items-center justify-end>
+            <img v-if="icons.get(item.id)" src="../../assets/images/index/up.png" class="up_icon">
+            <img v-else src="../../assets/images/index/down.png" class="up_icon">
+            {{ format(item.diff_rate, 2) }}%
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <style scoped>
+td {
+  vertical-align: middle;
+}
+
+th {
+  font-weight: normal;
+}
+
 .stosx {
   font-size: 10px;
   font-weight: normal;
@@ -195,7 +217,7 @@ onBeforeUnmount(() => {
 }
 
 .bfb {
-  margin-top: 9px;
+  /* margin-top: 9px; */
   font-size: 12px;
   font-weight: normal;
   line-height: 14px;
@@ -203,7 +225,6 @@ onBeforeUnmount(() => {
   letter-spacing: 0px;
   font-variation-settings: "opsz" auto;
   color: #353535;
-  justify-content: end;
 }
 
 .down_card {
