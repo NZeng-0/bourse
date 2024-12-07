@@ -77,7 +77,7 @@ onMounted(async () => {
           {{ t('fortune.yesterdays_balance') }}
         </div>
         <div mt3.5 text-center>
-          {{ user?.now_money }}
+          {{ user?.investment_money }}
         </div>
       </div>
     </div>

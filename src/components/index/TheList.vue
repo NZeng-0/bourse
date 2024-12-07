@@ -178,9 +178,9 @@ onBeforeUnmount(() => {
           </div>
         </td>
         <td text="12px center">
-          <span> {{ format(item.high, 3) }} </span>
+          <span color="#FC6C6B"> {{ format(item.high, 3) }} </span>
           <br>
-          <span> {{ format(item.low, 3) }} </span>
+          <span color="#19C09A"> {{ format(item.low, 3) }} </span>
         </td>
         <td text-right>
           <div :class="priceChanges.get(item.id)">
