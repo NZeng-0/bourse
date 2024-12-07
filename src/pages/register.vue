@@ -171,46 +171,44 @@ onMounted(async () => {
 
 <template>
   <div flex="~ wrap" mt13 justify-center overflow-x-scroll>
-    <div v-show="isShow('front_menu_from_yhm')">
+    <div v-show="isShow('front_menu_from_yhm')" w-full text-center>
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
-    <div v-show="isShow('front_menu_from_dlmm')" mt3>
+    <div v-show="isShow('front_menu_from_dlmm')" mt3 w-full text-center>
       <input v-model="user.pwd" type="password" :class="getClass()" :placeholder="t('register.password')">
     </div>
-    <div v-show="isShow('front_menu_from_qrdlmm')" mt3>
+    <div v-show="isShow('front_menu_from_qrdlmm')" mt3 w-full text-center>
       <input v-model="user.verify_pwd" type="password" :class="getClass()" :placeholder="t('register.confirm_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_zfmm')" mt3>
+    <div v-show="isShow('front_menu_from_zfmm')" mt3 w-full text-center>
       <input v-model="user.operation_pwd" type="password" :class="getClass()" :placeholder="t('register.pay_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_qrzfmm')" mt3>
+    <div v-show="isShow('front_menu_from_qrzfmm')" mt3 w-full text-center>
       <input type="password" :class="getClass()" :placeholder="t('register.confirm_pay_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_xm')" mt3>
+    <div v-show="isShow('front_menu_from_xm')" mt3 w-full text-center>
       <input v-model="user.nickname" type="text" :class="getClass()" :placeholder="t('register.name')">
     </div>
-    <div v-if="isShow('front_menu_from_sfzh')" mt3>
+    <div v-if="isShow('front_menu_from_sfzh')" mt3 w-full text-center>
       <input v-model="user.idcard" type="text" :class="getClass()" :placeholder="t('register.id_card')">
     </div>
-    <div v-if="isShow('front_menu_from_sjhm')" mt3>
+    <div v-if="isShow('front_menu_from_sjhm')" mt3 w-full text-center>
       <input v-model="user.phone" type="text" :class="getClass()" :placeholder="t('register.phone')">
     </div>
-    <div v-if="useEmail" mt3>
+    <div v-if="useEmail" mt3 w-full text-center>
       <input v-model="user.email" type="email" :class="getClass()" :placeholder="t('register.email')">
     </div>
-    <div v-if="isShow('front_menu_from_yqm')" mt3>
+    <div v-if="isShow('front_menu_from_yqm')" mt3 w-full text-center>
       <input v-model="user.spread_code" type="text" :class="getClass()" :placeholder="t('register.invitation_code')">
     </div>
-    <div mt8>
+    <div mt8 w-full text-center>
       <button class="bg-#673DDA" h12 w70 border rounded-2xl text-white @click="onRegister()">
         {{ t('register.sign_up') }}
       </button>
     </div>
-    <div mt5>
+    <div mt5 w-full text-center>
       <RouterLink to="/login">
-        <div type="button" readonly h12 w70 rounded-2xl text-center text-sm>
-          {{ t('register.login') }}
-        </div>
+        <input type="text" readonly h12 w70 cursor-pointer rounded-2xl text-center text-sm :value="t('register.login')">
       </RouterLink>
     </div>
     <div h60 />

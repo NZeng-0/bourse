@@ -70,31 +70,27 @@ onMounted(async () => {
       <img mt10 min-h40 :src>
     </div>
     <div flex="~ wrap" mt10 justify-center>
-      <div>
+      <div w-full text-center>
         <input v-model="user.name" type="text" :class="scoped()" p6 :placeholder="t('login.account')">
       </div>
-      <div mt5>
+      <div mt5 w-full text-center>
         <input v-model="user.pwd" type="password" :class="scoped()" p6 :placeholder="t('login.password')">
       </div>
-      <div mt4>
-        <div type="text" readonly h12 w70 rounded-2xl pl6 text-black>
-          {{ t('login.forget') }}
-        </div>
+      <div mt4 w-full text-center>
+        <input type="text" :class="scoped()" readonly cursor-pointer border-none pl6 text-start :value="t('login.forget')">
       </div>
-      <div mt3>
+      <div mt3 w-full text-center>
         <button class="border='#E7E7E7' h12 w70 border rounded-2xl bg-#673DDA text-white" @click="onLogin">
           {{ t('login.login') }}
         </button>
       </div>
-      <div mt5>
+      <div mt5 w-full text-center>
         <RouterLink to="/register">
-          <div type="button" class="text-#673DDA" h12 w70 rounded-2xl border-none text-center>
-            {{ t('login.sign_up') }}
-          </div>
+          <input type="button" class="text-#673DDA" h12 w70 cursor-pointer rounded-2xl border-none :value="t('login.sign_up')">
         </RouterLink>
       </div>
     </div>
-    <div flex="~" mt10 justify-center>
+    <div flex="~" mt10 w-full justify-center>
       <div h12 w70 rounded-2xl text-center>
         <RouterLink to="/menu/serve">
           {{ t('login.service') }}
