@@ -16,7 +16,6 @@ declare module 'vue' {
     TheBindHead: typeof import('./src/components/binding/TheBindHead.vue')['default']
     TheBuy: typeof import('./src/components/Trading/TheBuy.vue')['default']
     TheCard: typeof import('./src/components/index/TheCard.vue')['default']
-    TheChart: typeof import('./src/components/TheChart.vue')['default']
     TheEmpty: typeof import('./src/components/TheEmpty.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHead: typeof import('./src/components/Trading/TheHead.vue')['default']
