@@ -56,7 +56,7 @@ onMounted(async () => onLoad())
         <div v-for="(item, key) in list" :key mt4 h20 border rounded-lg pl2>
           <div flex="~" mt2 justify-between text-sm>
             <div w="1/3">
-              {{ item.money_investment_name }} {{ key }}
+              {{ item.money_investment_name }}
             </div>
             <div w="1/3" />
             <div w="1/3">

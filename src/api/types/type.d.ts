@@ -45,6 +45,7 @@ export interface indexProduct {
   low_status: number
   usable_money: number
   sort: number
+  mode_type: number
 }
 
 export interface timeList {
