@@ -357,7 +357,6 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>
@@ -664,7 +663,6 @@ declare module '@vue/runtime-core' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
-    readonly getOption: UnwrapRef<typeof import('./src/composables/lineChartOption')['getOption']>
     readonly getProduct: UnwrapRef<typeof import('./src/composables/useProduct')['getProduct']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly icon: UnwrapRef<typeof import('./src/composables/index')['icon']>

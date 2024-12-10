@@ -104,9 +104,11 @@ function animateNumber() {
   online === '0' ? onlineShow.value = false : onlineShow.value = true
   if (online === '0')
     return
+
   setInterval(() => {
-    const range = store.value * 0.05
-    min.value = Math.floor(Math.random() * (2 * range) + (store.value - range))
+    const range = Math.floor(Math.random() * ((max.value - min.value) * 0.05))
+    const adjustment = Math.floor(Math.random() * (2 * range + 1)) - range
+    min.value = store.value + adjustment
   }, 1000)
 }
 
