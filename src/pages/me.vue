@@ -16,7 +16,6 @@ import type {
   configlist,
   msgTypes,
   notifyType,
-  userTypes,
 } from '~/types'
 import { useNotifyList } from '~/store/useNotifyList'
 import { useAuth } from '~/store/useAuth'
@@ -38,7 +37,7 @@ const avatar = ref('')
 const userStore = useUser()
 const isRead = useRead()
 const id = userStore.data.uid
-const user = shallowRef<userTypes>(userStore.data)
+
 const money = ref({
   yesterday_money_earnings: 0,
   total_money_earnings: 0,
@@ -174,21 +173,20 @@ async function getNotice() {
 }
 
 function error() {
-  if (!user.value!.avatar) {
+  if (!userStore.data.avatar) {
     conf.data.forEach((e: configlist) => {
       if (e.key === 'app_log')
         return avatar.value = `${baseUrl}/${e.value}`
     })
   }
   else {
-    avatar.value = `${baseUrl}/${user.value!.avatar}`
+    avatar.value = `${baseUrl}/${userStore.data.avatar}`
   }
 }
 
 onMounted(async () => {
   await getType()
-  // user.value = userStore.data
-  avatar.value = user.value?.avatar || ''
+  avatar.value = userStore.data.avatar || ''
   await init()
   await getUser()
   await getNotice()
@@ -225,11 +223,11 @@ onMounted(async () => {
         </div>
         <div pl4 w="2/3">
           <div class="text-#121826" font-ps>
-            {{ user?.nickname }}
+            {{ userStore.data?.nickname }}
           </div>
           <div class="text-#9EA3AE" text-sm>
             <p>
-              {{ user?.level_name }}
+              {{ userStore.data?.level_name }}
             </p>
           </div>
         </div>
@@ -245,13 +243,13 @@ onMounted(async () => {
             {{ t('me.balance') }}:
           </div>
           <div text-2xl class="text-#3D3D3D">
-            {{ user?.now_money }}
+            {{ userStore.data?.now_money }}
           </div>
         </div>
         <div flex="~" h23 items-center justify-between>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              {{ user?.yesterday_earnings_money }}
+              {{ userStore.data?.yesterday_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.yesterdays_earnings') }}
@@ -259,7 +257,7 @@ onMounted(async () => {
           </div>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              {{ user?.today_earnings_money }}
+              {{ userStore.data?.today_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.todays_earnings') }}
@@ -267,7 +265,7 @@ onMounted(async () => {
           </div>
           <div w="1/3">
             <div class="text-#3D3D3D" text-center text-sm>
-              {{ user?.total_earnings_money }}
+              {{ userStore.data?.total_earnings_money }}
             </div>
             <div class="text-#9EA3AE" text-center text-xs>
               {{ t('me.accumulated_earnings') }}

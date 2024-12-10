@@ -2,6 +2,7 @@
 import {
   countWithdrawDeductMoney,
   getConfigList,
+  getUserInfo,
   submitWithdraw,
 } from '~/api'
 import { useUser } from '~/store/useUser'
@@ -77,7 +78,21 @@ async function submit() {
   wait.value = false
 }
 
+async function getUser() {
+  const { data } = await getUserInfo()
+  user.data = data.value.data
+}
+
+async function getRate() {
+  const { data } = await countWithdrawDeductMoney(infos.value.withdraw_money)
+  if (data.value.data)
+    withdrawRate.value = data.value.data.deduct_money
+  else
+    withdrawRate.value = 0
+}
+
 onMounted(async () => {
+  await getUser()
   const { data } = await getConfigList()
   method.value = data.value.data
 
@@ -99,14 +114,6 @@ onMounted(async () => {
 watchEffect(() => {
   isBank.value ? infos.value.type = 1 : infos.value.type = 2
 })
-
-async function getRate() {
-  const { data } = await countWithdrawDeductMoney(infos.value.withdraw_money)
-  if (data.value.data)
-    withdrawRate.value = data.value.data.deduct_money
-  else
-    withdrawRate.value = 0
-}
 </script>
 
 <template>

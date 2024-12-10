@@ -19,6 +19,10 @@ export const popupProps = {
     type: String as PropType<string>,
     default: '',
   },
+  notShow: {
+    type: String as PropType<string>,
+    default: '',
+  },
   onClose: {
     type: definePropType<() => void>(Function),
     required: false,

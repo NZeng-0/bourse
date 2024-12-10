@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import {
-  getConfigList,
   getFrontMenuConfig,
   getUserInfo,
   login,
   register,
 } from '~/api'
-import { useConf } from '~/store/useConf'
 import { useLocalCache } from '~/hook'
 import { useUser } from '~/store/useUser'
 import type {
   menuType,
   registerTypes,
   userTypes,
-  withdrawMethodType,
 } from '~/types'
 
 const { t } = useI18n()
@@ -23,11 +20,6 @@ const userStore = useUser()
 
 const shows = ref<menuType[]>([])
 
-const conf = useConf()
-const useIdCard = ref(false)
-const usePhone = ref(false)
-const useEmail = ref(false)
-const useCode = ref(false)
 const wait = ref(false)
 
 const register_key = [
@@ -54,18 +46,25 @@ const user = ref<registerTypes>({
   spread_code: '',
 })
 
+const inspect = new Map<string, boolean>()
+
 function isUserFilled(user: registerTypes) {
   // 获取对象的所有键
   const keys = Object.keys(user)
+
   // 遍历每个键，检查对应的值是否为空
   for (const key of keys) {
+    if (key === 'email')
+      continue
+
+    if (!inspect.get(key))
+      continue
+
+    // if (inspect.get(key))
     // 对于字符串类型的字段，检查是否为空字符串
     // 对于其他类型（如数字），可以根据需要调整检查逻辑
-    if (typeof user[key] === 'string' && user[key].trim() === '') {
-      if (key === 'spread_code')
-        continue
+    if (typeof user[key] === 'string' && user[key].trim() === '')
       return false
-    }
   }
   // 如果所有字段都非空，返回true
   return true
@@ -75,12 +74,10 @@ async function onRegister() {
   const allFilled = isUserFilled(user.value)
 
   if (!allFilled) {
-    if (useIdCard.value || usePhone.value || useEmail.value) {
-      showToast({
-        message: t('check'),
-      })
-      return
-    }
+    showToast({
+      message: t('check'),
+    })
+    return
   }
 
   if (wait.value) {
@@ -117,37 +114,46 @@ function getClass() {
   return 'border-#E7E7E7 h12 w70 border rounded-2xl p6 text-black'
 }
 
-function eachConf() {
-  if (conf.data === undefined)
-    return
-  conf.data!.forEach((e: withdrawMethodType) => {
-    if (e.key === 'register_idcard') {
-      if (e.value === '1')
-        useIdCard.value = true
-    }
-    if (e.key === 'register_phone') {
-      if (e.value === '1')
-        usePhone.value = true
-    }
-    if (e.key === 'register_email') {
-      if (e.value === '1')
-        useEmail.value = true
-    }
-    if (e.key === 'spread_code_switch') {
-      if (e.value === '1')
-        useCode.value = true
-    }
-  })
-}
-
 async function useShow() {
   const { data } = await getFrontMenuConfig()
   const temp = data.value.data
 
   temp.forEach((e: menuType) => {
-    if (register_key.includes(e.key))
+    if (register_key.includes(e.key)) {
+      addRule(e.key)
       shows.value.push(e)
+    }
   })
+}
+
+function addRule(key: string) {
+  // 使用字段的键（而不是值）作为映射的键
+  switch (key) {
+    case 'front_menu_from_xm':
+      inspect.set('nickname', isShow(key))
+      break
+    case 'front_menu_from_yhm':
+      inspect.set('account', isShow(key))
+      break
+    case 'front_menu_from_dlmm':
+      inspect.set('pwd', isShow(key))
+      break
+    case 'front_menu_from_qrdlmm':
+      inspect.set('verify_pwd', isShow(key))
+      break
+    case 'front_menu_from_zfmm':
+      inspect.set('operation_pwd', isShow(key))
+      break
+    case 'front_menu_from_sfzh':
+      inspect.set('idcard', isShow(key))
+      break
+    case 'front_menu_from_sjhm':
+      inspect.set('phone', isShow(key))
+      break
+    case 'front_menu_from_yqm':
+      inspect.set('spread_code', isShow(key))
+      break
+  }
 }
 
 function isShow(state: string) {
@@ -157,36 +163,27 @@ function isShow(state: string) {
 
 onMounted(async () => {
   await useShow()
-  if (conf.data === undefined) {
-    const { data } = await getConfigList()
-    conf.data = data.value.data
-
-    eachConf()
-  }
-  else {
-    eachConf()
-  }
 })
 </script>
 
 <template>
   <div flex="~ wrap" mt13 h-screen justify-center overflow-y-scroll>
-    <div v-show="isShow('front_menu_from_yhm')" w-full text-center>
+    <div v-if="isShow('front_menu_from_yhm')" w-full text-center>
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
-    <div v-show="isShow('front_menu_from_dlmm')" mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_dlmm')" mt3 w-full text-center>
       <input v-model="user.pwd" type="password" :class="getClass()" :placeholder="t('register.password')">
     </div>
-    <div v-show="isShow('front_menu_from_qrdlmm')" mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_qrdlmm')" mt3 w-full text-center>
       <input v-model="user.verify_pwd" type="password" :class="getClass()" :placeholder="t('register.confirm_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_zfmm')" mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_zfmm')" mt3 w-full text-center>
       <input v-model="user.operation_pwd" type="password" :class="getClass()" :placeholder="t('register.pay_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_qrzfmm')" mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_qrzfmm')" mt3 w-full text-center>
       <input type="password" :class="getClass()" :placeholder="t('register.confirm_pay_pwd')">
     </div>
-    <div v-show="isShow('front_menu_from_xm')" mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_xm')" mt3 w-full text-center>
       <input v-model="user.nickname" type="text" :class="getClass()" :placeholder="t('register.name')">
     </div>
     <div v-if="isShow('front_menu_from_sfzh')" mt3 w-full text-center>
@@ -195,7 +192,7 @@ onMounted(async () => {
     <div v-if="isShow('front_menu_from_sjhm')" mt3 w-full text-center>
       <input v-model="user.phone" type="text" :class="getClass()" :placeholder="t('register.phone')">
     </div>
-    <div v-if="useEmail" mt3 w-full text-center>
+    <div mt3 w-full text-center>
       <input v-model="user.email" type="email" :class="getClass()" :placeholder="t('register.email')">
     </div>
     <div v-if="isShow('front_menu_from_yqm')" mt3 w-full text-center>

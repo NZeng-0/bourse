@@ -79,6 +79,7 @@ function showNextMessage(index = 0) {
       message: e.value,
       title: e.remark,
       submit: t('popup.confrim'),
+      notShow: t('notShow'),
       onClose: () => showNextMessage(index + 1),
     })
   }

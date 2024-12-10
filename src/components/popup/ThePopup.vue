@@ -2,9 +2,7 @@
 import { popupProps } from './type'
 import { usePopup } from '~/store/usePopupDay'
 
-const { title, submit, message, onClose } = defineProps(popupProps)
-
-const { t } = useI18n()
+const { title, submit, message, notShow, onClose } = defineProps(popupProps)
 
 const proup = usePopup()
 
@@ -40,11 +38,11 @@ defineExpose({
       </div>
       <div mt9.25 text="center lg" v-html="message" />
       <div mt10 wfull flex="~" justify-around>
-        <button h7.5 w25 rounded-lg bg-btn-select text-white @click="close()">
+        <button h8.5 w28.75 rounded-lg bg-btn-select text-white @click="close()">
           {{ submit }}
         </button>
-        <button class="unDisplay" @click="toDayUnDisplay">
-          {{ t('notShow') }}
+        <button h8.5 w28.75 text-xl class="unDisplay" @click="toDayUnDisplay">
+          {{ notShow }}
         </button>
       </div>
     </div>
@@ -53,14 +51,9 @@ defineExpose({
 
 <style scoped>
 .unDisplay {
-  width: 7.143rem;
-  height: 2.143rem;
   border-radius: 0.571rem;
   opacity: 1;
   border: 0.071rem solid #7751F1;
-  font-size: 1.286rem;
-  font-weight: normal;
-  line-height: 1.286rem;
   letter-spacing: 0rem;
   color: #7751F1;
   -webkit-text-stroke: rgba(0, 0, 0, 0) 0.071rem;
