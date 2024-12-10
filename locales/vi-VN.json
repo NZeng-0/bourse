@@ -349,5 +349,6 @@
   "failed": "Lý do từ chối",
   "only": "Hiện tại bạn chỉ có thể chọn",
   "current": "giá trị hiện tại",
-  "rate": "Tăng/giảm"
+  "rate": "Tăng/giảm",
+  "notShow": "Không hiển thị lại"
 }

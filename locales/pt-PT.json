@@ -349,5 +349,6 @@
   "front": "Recarregue na receção",
   "only": "Atualmente só pode escolher",
   "current": "valor atual",
-  "rate": "Aumentar/diminuir"
+  "rate": "Aumentar/diminuir",
+  "notShow": "Não mostre novamente"
 }

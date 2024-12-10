@@ -349,5 +349,6 @@
   "front": "Resepsiyonda şarj edin",
   "only": "Şu anda yalnızca seçebilirsiniz",
   "current": "mevcut değer",
-  "rate": "Arttırma/azaltma"
+  "rate": "Arttırma/azaltma",
+  "notShow": "Bir daha gösterme"
 }

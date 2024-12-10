@@ -349,5 +349,6 @@
   "front": "Recarga energías en la recepción",
   "only": "Actualmente solo puedes elegir",
   "current": "valor actual",
-  "rate": "Aumentar/disminuir"
+  "rate": "Aumentar/disminuir",
+  "notShow": "No volver a mostrar"
 }

@@ -349,5 +349,6 @@
   "front": "Recharge at the front desk",
   "only": "Currently you can only choose",
   "current": "current value",
-  "rate": "Increase/decrease"
+  "rate": "Increase/decrease",
+  "notShow": "Don't show again"
 }

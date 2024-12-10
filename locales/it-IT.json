@@ -349,5 +349,6 @@
   "front": "Ricarica alla reception",
   "only": "Al momento puoi solo scegliere",
   "current": "valore corrente",
-  "rate": "Aumenta/diminuisce"
+  "rate": "Aumenta/diminuisce",
+  "notShow": "Non mostrare più"
 }
