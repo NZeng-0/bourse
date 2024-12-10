@@ -13,7 +13,7 @@ const company = useCompnay()
       <div mt-1 class="break-word">
         <div v-html="company.data.value" />
       </div>
-      <div h50 />
+      <div h70 />
     </div>
     <TheFooter :index="4" />
   </div>

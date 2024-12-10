@@ -170,7 +170,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div flex="~ wrap" mt13 justify-center overflow-x-scroll>
+  <div flex="~ wrap" mt13 h-screen justify-center overflow-y-scroll>
     <div v-show="isShow('front_menu_from_yhm')" w-full text-center>
       <input v-model="user.account" type="text" :class="getClass()" :placeholder="t('register.account')">
     </div>
@@ -211,6 +211,6 @@ onMounted(async () => {
         <input type="text" readonly h12 w70 cursor-pointer rounded-2xl text-center text-sm :value="t('register.login')">
       </RouterLink>
     </div>
-    <div h60 />
+    <div h70 />
   </div>
 </template>

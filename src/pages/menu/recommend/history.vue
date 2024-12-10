@@ -30,7 +30,7 @@ onMounted(async () => {
     <div absolute w-full text-center top="1/2" left="1/2" style=" transform: translate(-50%, -50%);">
       {{ t('recommend.history.sub') }}
     </div>
-    <div absolute top-30 h12 w-full rounded-t-3xl bg-white px3.5 pt4.5>
+    <div absolute bottom-0 h12 w-full rounded-t-3xl bg-white px3.5 pt4.5>
       <div text="black base" class="font-['PingFang_SC']">
         <div>
           <b>{{ t('recommend.history.record') }}</b>
@@ -60,6 +60,7 @@ onMounted(async () => {
           {{ e.withdraw_price }}
         </td>
       </tr>
+      <div h70 />
     </table>
   </div>
 </template>

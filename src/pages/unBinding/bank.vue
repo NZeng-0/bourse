@@ -21,10 +21,6 @@ const infos = ref<binding>({
   bank_account: bank_info?.bank_account || '',
 })
 
-function getClass() {
-  return 'border border-#F4F4F4 rounded-xl bg-white px-3.25 border-box h10 items-center justify-between text-sm'
-}
-
 async function after() {
   const { data } = await getUserInfo()
   userStore.data = data.value.data
@@ -63,20 +59,6 @@ function com() {
   <div h-screen bg-trading>
     <TheBindHead :title="t('assets.withdrawal.bank.title')" />
     <div px6 pt5 class="text-#121826">
-      <div :class="getClass()" flex="~">
-        <div w="1/2" opacity59>
-          {{ t('assets.withdrawal.method') }}
-        </div>
-        <div w="1/2" flex="~" items-center justify-end>
-          <img src="../../assets/images/assets/bank.png" h4.25 w4.25>
-          <div ml1.25>
-            {{ t('assets.recharge.bank.use') }}
-          </div>
-          <div ml0.75>
-            <img src="../../assets/images/me/menu/right.png" h4.25 w4.25>
-          </div>
-        </div>
-      </div>
       <div v-if="display('front_menu_bank_from_xm')">
         <input type="text" :placeholder="t('assets.withdrawal.bank.name')" :class="com()">
       </div>

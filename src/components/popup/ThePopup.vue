@@ -4,6 +4,8 @@ import { usePopup } from '~/store/usePopupDay'
 
 const { title, submit, message, onClose } = defineProps(popupProps)
 
+const { t } = useI18n()
+
 const proup = usePopup()
 
 const isShow = ref(true)
@@ -42,7 +44,7 @@ defineExpose({
           {{ submit }}
         </button>
         <button class="unDisplay" @click="toDayUnDisplay">
-          不再显示
+          {{ t('notShow') }}
         </button>
       </div>
     </div>
@@ -51,16 +53,16 @@ defineExpose({
 
 <style scoped>
 .unDisplay {
-  width: 100px;
-  height: 30px;
-  border-radius: 8px;
+  width: 7.143rem;
+  height: 2.143rem;
+  border-radius: 0.571rem;
   opacity: 1;
-  border: 1px solid #7751F1;
-  font-size: 18px;
+  border: 0.071rem solid #7751F1;
+  font-size: 1.286rem;
   font-weight: normal;
-  line-height: 18px;
-  letter-spacing: 0em;
+  line-height: 1.286rem;
+  letter-spacing: 0rem;
   color: #7751F1;
-  -webkit-text-stroke: rgba(0, 0, 0, 0) 1px;
+  -webkit-text-stroke: rgba(0, 0, 0, 0) 0.071rem;
 }
 </style>

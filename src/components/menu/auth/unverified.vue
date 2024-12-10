@@ -6,13 +6,20 @@ import {
 } from '~/api'
 import { useAuth } from '~/store/useAuth'
 
+interface infoTypes {
+  name: string
+  idcard: string
+  idcard_front_image: string
+  idcard_side_image: string
+}
+
 const { t } = useI18n()
 const route = useRouter()
 const id_front = ref([])
 const id_back = ref([])
 const authStore = useAuth()
 const wait = ref(false)
-const infos = ref({
+const infos = ref<infoTypes>({
   name: '',
   idcard: '',
   idcard_front_image: '',
@@ -47,11 +54,23 @@ async function afterSubmit() {
   route.go(0)
 }
 
+function checkRequiredFields() {
+  const requiredFields = ['name', 'idcard', 'idcard_front_image', 'idcard_side_image']
+  return requiredFields.every(field => infos.value[field as keyof infoTypes] !== '')
+}
+
 async function submit() {
-  // 先获取正面，在获取反面
+  // 先获取正面，再获取反面
   if (wait.value) {
     showToast({
       message: t('assets.tips'),
+    })
+    return
+  }
+
+  if (!checkRequiredFields()) {
+    showToast({
+      message: t('check'),
     })
     return
   }
@@ -87,13 +106,13 @@ async function submit() {
         <div h47.55 flex="~" text-base class="text-#999999">
           <van-uploader
             v-model="id_front" w="1/2" multiple :after-read="readFront"
-            class="flex-level h-full items-center justify-center border-r px5" :max-count="1" preview-size="100%"
+            class="flex-level h-full items-center justify-center border-r px5" :max-count="1"
           >
             {{ t('me.auth.front') }}
           </van-uploader>
           <van-uploader
             v-model="id_back" w="1/2" class="flex-level h-full items-center justify-center px5" multiple
-            :after-read="readBack" :max-count="1" preview-size="100%"
+            :after-read="readBack" :max-count="1"
           >
             {{ t('me.auth.back') }}
           </van-uploader>
@@ -107,3 +126,11 @@ async function submit() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.van-uploader__preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+</style>

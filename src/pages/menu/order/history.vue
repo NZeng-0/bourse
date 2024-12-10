@@ -55,7 +55,7 @@ async function onLoad() {
       <van-list v-model:loading="loading" loading-text=" " finished-text=" " :offset="100" @load="onLoad">
         <OrderItem v-for="(data, key) in list" :key :data :history="true" />
       </van-list>
-      <div h60 />
+      <div h80 />
     </div>
   </div>
   <TheFooter :index="1" />

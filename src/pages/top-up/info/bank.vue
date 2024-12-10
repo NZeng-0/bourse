@@ -135,8 +135,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div h-screen bg-trading>
-    <TheAssetsHead :title="t('assets.recharge.title')" to="/menu/top-up" />
+  <TheAssetsHead :title="t('assets.recharge.title')" to="/menu/top-up" />
+  <div h-screen overflow-y-scroll bg-trading>
     <div px6 pt3>
       <div :class="getClass()" flex="~">
         <div w="1/2" class="text-#121826">
@@ -236,15 +236,11 @@ onMounted(async () => {
         {{ t('assets.recharge.submit') }}
       </button>
     </div>
+    <div h70 />
   </div>
 </template>
 
 <style>
-.custom-fixed {
-  position: fixed;
-  bottom: 113px
-}
-
 .van-uploader__wrapper {
   width: 100% !important;
 }
@@ -258,11 +254,11 @@ onMounted(async () => {
 }
 
 .van-uploader__preview-delete {
-  margin-top: 10px
+  margin-top: 0.714rem;
 }
 
 .van-image__img {
-  margin-top: 10px;
+  margin-top: 0.714rem;
 }
 
 .van-dropdown-menu__title--down:after {

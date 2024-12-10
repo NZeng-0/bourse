@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getTotalMoneyAndYesterdayMoney } from '~/api'
+import { getMoneyEarningsInfo, getTotalMoneyAndYesterdayMoney } from '~/api'
 import type { userTypes } from '~/types'
 import { useUser } from '~/store/useUser'
 import { useMoney } from '~/store/useMoney'
@@ -16,6 +16,10 @@ const { t } = useI18n()
 const route = useRouter()
 
 const index = ref(0)
+const money = ref({
+  yesterday_money_earnings: 0,
+  total_money_earnings: 0,
+})
 
 const bg = new URL('../../assets/images/grow/cardd.png', import.meta.url).href
 
@@ -35,9 +39,15 @@ async function init() {
   moneyStore.money = data.value.data
 }
 
+async function __init() {
+  const { data } = await getMoneyEarningsInfo()
+  money.value = data.value.data
+}
+
 onMounted(async () => {
   user.value = userStore.data
   await init()
+  await __init()
 })
 </script>
 
@@ -69,7 +79,7 @@ onMounted(async () => {
           {{ t('fortune.accumulated_earnings') }}
         </div>
         <div mt3.5 text-center>
-          100
+          {{ money.total_money_earnings }}
         </div>
       </div>
       <div mr7 text-sm>

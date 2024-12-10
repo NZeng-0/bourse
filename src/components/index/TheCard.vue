@@ -25,9 +25,10 @@ function error(id: number) {
 
 <style>
 .my-swipe .van-swipe-item {
-  font-size: 20px;
+  font-size: 1.429rem;
   text-align: center;
   height: 12.5rem;
   background: #eee;
+  width: 23.357rem;
 }
 </style>

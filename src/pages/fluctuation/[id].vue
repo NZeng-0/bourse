@@ -116,7 +116,7 @@ onMounted(async () => {
     product.value = await actuator(id, period.value)
     const data = parseData(product.value!.history_list)
     onSuccess()
-    chart!.applyNewData(data)
+    chart!.updateData(data)
   }, 3000)
 })
 
@@ -134,13 +134,14 @@ onUnmounted(() => {
         <div flex="~" items-center>
           <div :class="priceChange">
             <!-- 当前价格 -->
-            {{ product?.price || 0 }}
+            {{ format(product?.price || 0, 3) }}
           </div>
+
           <div flex="~" ml-4 items-center text-xs>
             <img v-if="icon_type" src="../../assets/images/index/up.png" class="up_icon_2">
             <img v-else src="../../assets/images/index/down.png" class="up_icon_2">
             <div class="bfb">
-              {{ product?.diff_rate }}%
+              {{ format(product?.diff_rate, 2) }}%
             </div>
           </div>
         </div>
@@ -164,7 +165,7 @@ onUnmounted(() => {
     <div flex="~" my4 justify-between px5.5>
       <TheBuy :id selected="bg-btn-select" />
     </div>
-    <div h30 />
+    <div h70 />
   </div>
   <TheFooter :index="0" />
 </template>
@@ -172,72 +173,72 @@ onUnmounted(() => {
 <style scoped>
 .color-6A3BF6 {
   color: #6A3BF6;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: center;
   letter-spacing: 0em;
 }
 
 .color-999999 {
   color: #999999;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: center;
   letter-spacing: 0em;
 }
 
 .bfb {
-  font-size: 16px;
+  font-size: 1.143rem;
   font-weight: normal;
-  line-height: 23px;
+  line-height: 1.643rem;
   text-align: right;
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #353535;
 }
 
 .color-999999 {
   color: #999999;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: center;
   letter-spacing: 0em;
 }
 
 .down_card {
-  min-width: 120px;
-  height: 45px;
-  border-radius: 8px;
+  min-width: 8.571rem;
+  height: 3.214rem;
+  border-radius: 0.571rem;
   background: #19C09A;
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: normal;
-  line-height: 28px;
+  line-height: 2rem;
   text-align: right;
   letter-spacing: 0em;
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
-  padding: 10px;
+  padding: 0.714rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .up_card {
-  min-width: 120px;
-  height: 45px;
-  border-radius: 8px;
+  min-width: 8.571rem;
+  height: 3.214rem;
+  border-radius: 0.571rem;
   background: #FC6C6B;
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: normal;
-  line-height: 28px;
+  line-height: 2rem;
   text-align: right;
   letter-spacing: 0em;
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
-  padding: 10px;
+  padding: 0.714rem;
   display: flex;
   justify-content: center;
   align-items: center;

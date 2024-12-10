@@ -77,7 +77,7 @@ onMounted(async () => {
         <input v-model="user.pwd" type="password" :class="scoped()" p6 :placeholder="t('login.password')">
       </div>
       <div mt4 w-full text-center>
-        <input type="text" :class="scoped()" readonly cursor-pointer border-none pl6 text-start :value="t('login.forget')">
+        <input type="text" :class="scoped()" readonly cursor-pointer border-none pl3 text-start :value="t('login.forget')">
       </div>
       <div mt3 w-full text-center>
         <button class="border='#E7E7E7' h12 w70 border rounded-2xl bg-#673DDA text-white" @click="onLogin">

@@ -127,7 +127,7 @@ onMounted(() => {
     </div>
     <div flex="~" mt-2 justify-between>
       <div class="sub">
-        {{ t('order.settlement_time') }}:
+        {{ t('order.settlement_time') }}
       </div>
       <div class="content">
         {{ data.plan_settle_time || '--:--:--' }}

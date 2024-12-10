@@ -179,7 +179,7 @@ async function getRate() {
         </div>
       </div>
     </div>
-    <div flex="~" mt32.25 w-full justify-center>
+    <div flex="~" mt15.25 w-full justify-center>
       <button v-if="(isBank && !bindBank) || (!isBank && !bindUsdt)" h10.5 min-w37.5 rounded-lg bg-btn-select px-1 text-lg text-white @click="go()">
         {{ t('assets.withdrawal.btn') }}
       </button>

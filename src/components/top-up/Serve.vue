@@ -30,19 +30,19 @@ function go() {
 
 <style scoped>
 .title {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 15px;
+  line-height: 1.071rem;
   letter-spacing: 0em;
   font-variation-settings: "opsz" auto;
   color: #000000;
 }
 
 .sub-title {
-  font-size: 11px;
+  font-size: 0.786rem;
   font-weight: normal;
-  line-height: 11px;
-  letter-spacing: 0em;
+  line-height: 0.786rem;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: rgba(0, 0, 0, 0.27);
 }
@@ -51,15 +51,15 @@ function go() {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2px 10px;
+  padding: 0.143rem 0.714rem;
   box-sizing: border-box;
-  border: 0.8px solid #7751F1;
-  border-radius: 100px;
-  font-size: 15px;
+  border: 0.057rem solid #7751F1;
+  border-radius: 7.143rem;
+  font-size: 1.071rem;
   font-weight: normal;
-  line-height: 28px;
+  line-height: 2rem;
   text-align: center;
-  letter-spacing: 0em;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #7751F1;
 }

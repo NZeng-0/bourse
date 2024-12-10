@@ -30,8 +30,8 @@ onMounted(async () => {
 </script>
 
 <template>
+  <TheMenuHead :title="t('me.message.title')" />
   <div class="font-['PingFang_SC']" bg-trading font-normal opacity70>
-    <TheMenuHead :title="t('me.message.title')" />
     <div h-screen overflow-y-scroll px7.5>
       <div :class="getBgStyle()">
         <div class="font-['youshe']" text-lg>
@@ -47,6 +47,6 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <TheFooter :index="4" />
   </div>
+  <TheFooter :index="4" />
 </template>

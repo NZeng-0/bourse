@@ -102,51 +102,51 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .bfb {
-  font-size: 12px;
+  font-size: 0.857rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: right;
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #353535;
 }
 
 .down_card {
-  width: 91px;
-  height: 30px;
-  border-radius: 6px;
-  margin-top: 20px;
+  width: 6.5rem;
+  height: 2.143rem;
+  border-radius: 0.429rem;
+  margin-top: 1.071rem;
 
   /* 自动布局 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6px 14px;
+  padding: 0.429rem 1rem;
   background: #19C09A;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 1.286rem;
   letter-spacing: 0em;
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
 }
 .up_card {
-  width: 91px;
-  height: 30px;
-  border-radius: 6px;
-  margin-top: 20px;
+  width: 6.5rem;
+  height: 2.143rem;
+  border-radius: 0.429rem;
+  margin-top: 1.071rem ;
 
   /* 自动布局 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6px 14px;
+  padding: 0.429rem 1rem;
   background: #FC6C6B;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 1.286rem;
   letter-spacing: 0em;
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;

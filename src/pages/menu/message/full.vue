@@ -52,7 +52,7 @@ function getBgStyle() {
           </div>
         </div>
       </template>
-      <div h50 />
+      <div h70 />
     </div>
     <TheFooter :index="4" />
   </div>

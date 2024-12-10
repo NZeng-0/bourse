@@ -12,8 +12,8 @@ function getBgStyle() {
 </script>
 
 <template>
+  <TheMenuHead :title="t('me.message.notice')" />
   <div class="font-['PingFang_SC']" bg-trading font-normal opacity70>
-    <TheMenuHead :title="t('me.message.notice')" />
     <div h-screen overflow-y-scroll px7.5>
       <div :class="getBgStyle()">
         <div class="font-['youshe']" text-lg>
@@ -27,6 +27,6 @@ function getBgStyle() {
         </div>
       </div>
     </div>
-    <TheFooter :index="4" />
   </div>
+  <TheFooter :index="4" />
 </template>

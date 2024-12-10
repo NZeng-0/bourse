@@ -66,6 +66,7 @@ onMounted(async () => onLoad())
 <template>
   <div flex="~ wrap" justify-center>
     <TheInfo :current="0" />
+    <TheEmpty v-if="loading" />
     <div mx5 mt2 wfull text-sm>
       <van-list
         v-model:loading="loading" h="75%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
@@ -81,26 +82,36 @@ onMounted(async () => onLoad())
                 <div>{{ item.name }}</div>
               </div>
             </div>
-            <div>
-              {{ t('fortune.annualized_income') }}:&nbsp;{{ item.rate }}%
+            <div flex="~" w-full items-start>
+              <div w="1.2/3">
+                {{ t('fortune.annualized_income') }}:
+              </div>
+              <div w="1.8/3">
+                {{ item.rate }}%
+              </div>
             </div>
           </div>
           <div flex="~ wrap" justify-between w="1/2" :class="margin()">
-            <div pl5>
-              {{ t('fortune.minimum_deposit') }}: {{ item.min_price }}
+            <div flex="~" w-full items-start pl5>
+              <div w="1.2/3">
+                {{ t('fortune.minimum_deposit') }}:
+              </div>
+              <div w="1.8/3">
+                {{ item.min_price }}
+              </div>
             </div>
             <div flex="~" w-full items-start pl5>
               <div w="1.2/3">
                 {{ t('fortune.projected_revenue') }}:
               </div>
               <div :class="e ? 'e banner_textscroll' : 'banner_textscroll'" w="1.5/3" @animationend="animationEnd">
-                <div>&nbsp;{{ item.rate_price }}</div>
+                <div>{{ item.rate_price }}</div>
               </div>
             </div>
           </div>
         </div>
+        <div h90 />
       </van-list>
-      <TheEmpty v-if="loading" />
     </div>
   </div>
   <TheFooter :index="3" />

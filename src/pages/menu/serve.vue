@@ -43,35 +43,35 @@ onMounted(async () => {
 
 <style scoped>
 .item {
-  margin-top: 20px;
+  margin-top: 1.429rem;
   width: 100%;
-  height: 50px;
+  height: 3.571rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 1.143rem;
   background: #FFFFFF;
   box-sizing: border-box;
   border: 1px solid #F4F4F4;
-  padding: 10px;
+  padding: 0.714rem;
 
   .icon {
-    width: 25px;
-    height: 25px;
+    width: 1.786rem;
+    height: 1.786rem;
   }
 
   .to {
-    width: 24px;
-    height: 24px;
+    width: 1.714rem;
+    height: 1.714rem;
   }
 
   .text {
-    font-size: 16px;
+    font-size: 1.143rem;
     font-weight: normal;
-    line-height: 16px;
+    line-height: 1.143rem;
     letter-spacing: 0em;
     color: #000000;
-    margin-left: 10px;
+    margin-left: 0.714rem;
   }
 }
 </style>

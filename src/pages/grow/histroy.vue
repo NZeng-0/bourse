@@ -5,7 +5,6 @@ import { getMoneyInvestmentOrderList } from '~/api'
 const { t, locale } = useI18n()
 
 const loading = ref(false)
-const my_loading = ref(false)
 const isDone = ref(false)
 const finished = ref(false)
 const page = ref(1)
@@ -37,7 +36,6 @@ async function onLoad() {
     return
   }
   list.value.push(...data.value.data.data)
-  my_loading.value = false
   loading.value = false
   page.value++
 }
@@ -48,9 +46,10 @@ onMounted(async () => onLoad())
 <template>
   <div flex="~ wrap" justify-center>
     <TheInfo :current="2" />
+    <TheEmpty v-if="list.length <= 0" />
     <div mx5 mt2 wfull text-sm>
       <van-list
-        v-model:loading="loading" h="25%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
+        v-model:loading="loading" h="30%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
         @load="onLoad"
       >
         <div v-for="(item, key) in list" :key mt4 h20 border rounded-lg pl2>
@@ -81,9 +80,9 @@ onMounted(async () => onLoad())
             </div>
           </div>
         </div>
+        <div h60 />
       </van-list>
     </div>
-    <TheEmpty v-if="my_loading" />
   </div>
   <TheFooter :index="3" />
 </template>

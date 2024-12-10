@@ -7,6 +7,16 @@ import {
 } from 'unocss'
 
 export default defineConfig({
+  theme: {
+    breakpoints: {
+      xs: '320px',
+      sm: '480px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      xxl: '1600px',
+    },
+  },
   shortcuts: [
     ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
     ['icon-btn', 'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600 !outline-none'],
@@ -42,5 +52,25 @@ export default defineConfig({
         mono: 'DM Mono',
       },
     }),
+  ],
+  postprocess: [
+    (util) => {
+      const remRE = /(-?[.\d]+)rem/g
+      const designWidth = 375
+      const defaultWidth = 390
+      const rootFontSize = 16
+      const unoDefaultFontSize = 14
+      const scale = defaultWidth / designWidth
+
+      util.entries.forEach((entry) => {
+        const value = entry[1]
+        if (value && typeof value === 'string' && remRE.test(value)) {
+          entry[1] = value.replace(remRE, (_, p1) => {
+            const computeRem = (rootFontSize / unoDefaultFontSize) * scale
+            return `${(p1 / computeRem) * scale}rem`
+          })
+        }
+      })
+    },
   ],
 })

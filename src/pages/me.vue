@@ -46,7 +46,7 @@ const money = ref({
 
 async function getUser() {
   const { data } = await getUserInfo()
-  user.value = data.value.data
+  userStore.data = data.value.data
 }
 
 async function getType() {
@@ -322,7 +322,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <!-- <div h30 /> -->
+      <div h30 />
     </div>
     <TheFooter :index="4" />
   </div>

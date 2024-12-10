@@ -68,42 +68,42 @@ function hide(raw: string) {
 
   .text {
     position: absolute;
-    left: 19px;
+    left: 1.357rem;
     top: 0;
-    width: 143px;
-    height: 44px;
-    letter-spacing: 0em;
+    width: 10.214rem;
+    height: 3.143rem;
+    letter-spacing: 0rem;
     font-variation-settings: "opsz" auto;
     color: #FFFFFF;
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    margin-top: 18px;
-    margin-bottom: 18px;
-    height: 50px;
+    margin-top: 1.286rem;
+    margin-bottom: 1.286rem;
+    width: 100%;
 
     .bank {
-      font-size: 14px;
+      font-size: 1rem;
       font-weight: normal;
-      line-height: 14px;
+      line-height: 1rem;
       width: 100%;
     }
 
     .account {
-      font-size: 15px;
+      font-size: 1.071rem;
       font-weight: 500;
-      line-height: 15px;
+      line-height: 1.071rem;
       width: 100%;
     }
   }
 }
 
 .if {
-  margin-top: 15px;
-  font-size: 12px;
+  margin-top: 1.071rem;
+  font-size: 0.857rem;
   font-weight: normal;
-  line-height: 12px;
-  letter-spacing: 0em;
+  line-height: 0.857rem;
+  letter-spacing: 0rem;
   color: #9EA3AE;
 }
 </style>

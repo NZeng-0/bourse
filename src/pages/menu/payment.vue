@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useUser } from '~/store/useUser'
 import { useConf } from '~/store/useConf'
-import type { configlist, menuType } from '~/types'
-import { getConfigList, getFrontMenuConfig } from '~/api'
+import type { configlist } from '~/types'
+import { getConfigList } from '~/api'
 
 const { t } = useI18n()
 const userStore = useUser()

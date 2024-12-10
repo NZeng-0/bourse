@@ -67,7 +67,7 @@ onMounted(async () => {
           {{ t('me.withdrawal_record.explain') }}: {{ item.explain }}
         </div>
       </div>
-      <div h50 />
+      <div h70 />
     </div>
     <TheFooter :index="4" />
   </div>

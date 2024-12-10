@@ -1,17 +1,9 @@
 <script setup lang="ts">
-import type { Props } from '~/composables/lineChartOption'
-import { getOption } from '~/composables/lineChartOption'
-import type { history, indexProduct } from '~/api/types'
+import type { indexProduct } from '~/api/types'
 import { getIndexProduct } from '~/api'
 
 const router = useRouter()
 const { t } = useI18n()
-
-const grid = {
-  height: '80%',
-  bottom: '10%',
-  cursor: 'pointer',
-}
 
 const loading = ref(false)
 const list = shallowRef<indexProduct[]>([])
@@ -19,68 +11,7 @@ const timer = ref()
 const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
 const styles = ref(new Map())
-const chartOptions = ref<Map<number, any>>(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
-
-function updateChartOption(item: indexProduct) {
-  const option = getSeries(item.history_list, styles.value.get(item.id))
-  chartOptions.value.set(item.id, option)
-}
-
-function parseData(data: history[]) {
-  const result: Array<string[]> = []
-  for (const h of data) {
-    const val = []
-    val.push(h.open)
-    val.push(h.close)
-    val.push(h.low)
-    val.push(h.high)
-    result.push(val)
-  }
-  return result
-}
-
-function getSeries(data: history[], range: number) {
-  const series = [
-    {
-      data: parseData(data),
-      type: 'line',
-      smooth: 0.5,
-      lineStyle: {
-        color: getLineColor(range),
-        width: 2,
-      },
-      symbol: 'none',
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 1,
-          x2: 0,
-          y2: 0,
-          colorStops: [{
-            offset: 0,
-            color: range === 1 ? 'rgba(252,108,107,1)' : 'rgba(25,192,154, 1)',
-          }, {
-            offset: 1,
-            color: range === 1 ? 'rgba(252,108,107,0)' : 'rgba(25,192,154, 0)',
-          }],
-          globalCoord: false,
-        },
-      },
-    },
-  ]
-
-  const test = getOption({
-    grid,
-    series,
-  } as Props)
-  return test
-}
-
-function getLineColor(state: number): string {
-  return state === 1 ? '#FC6C6B' : '#19C09A'
-}
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -124,9 +55,7 @@ async function __init() {
       )
       icons.value.set(id, product.diff > 0)
       styles.value.set(id, product.diff > 0 ? 1 : -1)
-      updateChartOption(product)
     }, 500)
-    updateChartOption(product)
   })
 
   list.value = data.value.data
@@ -149,7 +78,7 @@ onBeforeUnmount(() => {
 
 <template>
   <table mt4.5>
-    <thead text="13px">
+    <thead text="1rem">
       <tr>
         <th w="2/4" />
         <th w="1/4">
@@ -170,7 +99,7 @@ onBeforeUnmount(() => {
         <td flex="~ gap3">
           <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
           <div text-left class="c1">
-            <div w-full>
+            <div wfull>
               {{ item.product_name }}
             </div>
             <div w-full class="stosx">
@@ -178,7 +107,7 @@ onBeforeUnmount(() => {
             </div>
           </div>
         </td>
-        <td text="12px center">
+        <td text="sm center">
           <span color="#FC6C6B"> {{ format(item.high, 3) }} </span>
           <br>
           <span color="#19C09A"> {{ format(item.low, 3) }} </span>
@@ -198,6 +127,7 @@ onBeforeUnmount(() => {
       </tr>
     </tbody>
   </table>
+  <div h10 />
 </template>
 
 <style scoped>
@@ -210,39 +140,39 @@ th {
 }
 
 .stosx {
-  font-size: 10px;
+  font-size: 0.714rem;
   font-weight: normal;
-  line-height: 12px;
+  line-height: 0.857rem;
   letter-spacing: 0em;
   color: #8F92A1;
 }
 
 .bfb {
   /* margin-top: 9px; */
-  font-size: 12px;
+  font-size: 0.857rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: right;
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #353535;
 }
 
 .down_card {
-  height: 24px;
-  border-radius: 6px;
+  height: 1.714rem;
+  border-radius: 0.429rem;
 
   /* 自动布局 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3px 7px;
+  padding: 0.214rem 0.5rem;
 
   background: #19C09A;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 1.286rem;
   letter-spacing: 0em;
 
   font-variation-settings: "opsz" auto;
@@ -250,20 +180,20 @@ th {
 }
 
 .up_card {
-  height: 24px;
-  border-radius: 6px;
+  height: 1.714rem;
+  border-radius: 0.429rem;
 
   /* 自动布局 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3px 7px;
+  padding: 0.214rem 0.5rem;
 
   background: #FC6C6B;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 1.286rem;
   letter-spacing: 0em;
 
   font-variation-settings: "opsz" auto;

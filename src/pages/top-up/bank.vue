@@ -173,7 +173,7 @@ onMounted(async () => {
       </div>
       <Serve />
     </div>
-    <div class="custom-fixed" flex="~" mt2.25 w-full justify-center>
+    <div flex="~" mt5.25 w-full justify-center>
       <button h10.5 w37.5 rounded-lg bg-btn-select text-lg text-white @click="onRecharge()">
         {{ t('assets.recharge.submit') }}
       </button>
@@ -182,11 +182,6 @@ onMounted(async () => {
 </template>
 
 <style>
-.custom-fixed {
-  position: fixed;
-  bottom: 113px
-}
-
 .van-uploader__wrapper {
   width: 100% !important;
 }
@@ -200,11 +195,11 @@ onMounted(async () => {
 }
 
 .van-uploader__preview-delete {
-  margin-top: 10px
+  margin-top: 0.714rem
 }
 
 .van-image__img {
-  margin-top: 10px;
+  margin-top: 0.714rem;
 }
 
 .van-dropdown-menu__title--down:after {

@@ -104,7 +104,8 @@ function animateNumber() {
   if (online === '0')
     return
   setInterval(() => {
-    min.value = Math.floor(Math.random() * (max.value - store.value) + store.value)
+    const range = store.value * 0.05
+    min.value = Math.floor(Math.random() * (2 * range) + (store.value - range))
   }, 1000)
 }
 
@@ -142,7 +143,7 @@ onMounted(async () => {
     <div v-if="onlineShow" class="person-num">
       <img :src="broad" alt="broad" class="broad">
       <div class="b-text">
-        {{ t('current_online') }}：{{ min }}
+        {{ t('current_online') }}: {{ min }}
       </div>
     </div>
     <ThePortfolio />
@@ -154,27 +155,27 @@ onMounted(async () => {
 <style scoped>
 .person-num {
   width: 100%;
-  height: 40px;
-  border-radius: 6px;
+  height: 2.857rem;
+  border-radius: 0.429rem;
   opacity: 1;
   background: rgba(119, 81, 241, 0.14);
-  margin: 10px auto;
+  margin: 0.714rem auto;
   display: flex;
   align-items: center;
-  padding-left: 13px;
+  padding-left: 0.929rem;
 }
 
 .b-text {
-  margin-left: 8px;
-  font-size: 16px;
+  margin-left: 0.571rem;
+  font-size: 1.143rem;
   font-weight: normal;
-  line-height: 16px;
+  line-height: 1.143rem;
   letter-spacing: 0em;
   color: #6945DC;
 }
 
 .broad {
-  width: 27px;
-  height: 27px;
+  width: 1.929rem;
+  height: 1.929rem;
 }
 </style>

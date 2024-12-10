@@ -44,24 +44,24 @@ const review = review_status !== 0
 <style scoped>
 .verified {
   margin: 0 auto;
-  width: 40px;
-  height: 40px;
+  width: 2.857rem;
+  height: 2.857rem;
   box-sizing: border-box;
-  border: 2px solid;
+  border: 0.143rem solid;
   border-image: linear-gradient(86deg, rgba(252, 252, 252, 0.3) 2%, rgba(252, 252, 252, 0.3) 51%);
 }
 
 .text {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: center;
   display: flex;
   align-items: center;
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #000000;
-  margin-top: 14px;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 }

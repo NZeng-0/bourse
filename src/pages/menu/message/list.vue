@@ -103,7 +103,7 @@ function go(item: notifyType) {
           </div>
         </div>
       </template>
-      <div h50 />
+      <div h70 />
     </div>
   </div>
 </template>

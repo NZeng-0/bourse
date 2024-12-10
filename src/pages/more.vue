@@ -7,6 +7,10 @@ const router = useRouter()
 const list: Ref<indexProduct[]> = ref([])
 const loading = ref(false)
 const timer = ref()
+const prevPrices = ref(new Map())
+const priceChanges = ref(new Map())
+const styles = ref(new Map())
+const icons = ref<Map<number, boolean>>(new Map())
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -20,12 +24,39 @@ function getSrc(uri: string) {
   return `${baseUrl}/${uri}`
 }
 
-function isUp(state: number) {
-  return state === 1
-}
-
 async function init() {
   const { data } = await getIndexProductAll()
+  if (data.value.code !== 200)
+    clearInterval(timer.value)
+
+  // 对每个产品检查价格变化
+  data.value.data.forEach((product: indexProduct) => {
+    const id = product.id
+    const prevPrice = prevPrices.value.get(id)
+    if (prevPrice !== undefined) {
+      if (product.price < prevPrice) {
+        priceChanges.value.set(id, 'up_card')
+        icons.value.set(id, true)
+        styles.value.set(id, 1)
+      }
+      else if (product.price > prevPrice) {
+        priceChanges.value.set(id, 'down_card')
+        icons.value.set(id, false)
+        styles.value.set(id, -1)
+      }
+    }
+    prevPrices.value.set(product.id, product.price)
+    // 设置延时恢复到默认状态
+    setTimeout(() => {
+      priceChanges.value.set(
+        id,
+        product.diff > 0 ? 'up_card' : 'down_card',
+      )
+      icons.value.set(id, product.diff > 0)
+      styles.value.set(id, product.diff > 0 ? 1 : -1)
+    }, 500)
+  })
+
   list.value = data.value.data
   list.value.sort((a: indexProduct, b: indexProduct) => a.sort - b.sort)
 }
@@ -48,53 +79,76 @@ onUnmounted(() => {
   <TheHead back="/" title="股市交易" />
   <div h-screen overflow-y-scroll bg-trading px-4>
     <TheEmpty v-if="loading" />
-    <template v-else>
-      <div v-for="(item, key) in list" :key mt4>
-        <div flex="~" justify-between class="item" @click="go(item.id)">
-          <div flex="~ gap2" w="2/4">
-            <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
-            <div class="c1" text-left>
-              <div w="80%" truncate class="sub_title">
-                {{ item.product_name }}
+    <table m-auto>
+      <tbody>
+        <tr v-for="(item, key) in list" :key="key" h20 class="item" @click="go(item.id)">
+          <td>
+            <div flex="~ gap2" w="2/4">
+              <img h12 w12 rounded-full :src="getSrc(item.logo)" @error="handleImageError($event.target)">
+              <div class="c1" text-left>
+                <div truncate class="sub_title">
+                  {{ item.product_name }}
+                </div>
+                <div w-full flex="~" items-end class="stosx">
+                  STOSX
+                </div>
               </div>
-              <div w-full flex="~" items-end class="stosx">
-                STOSX
+            </div>
+          </td>
+          <td>
+            <div flex="~" items-center justify-between>
+              <div w="1/2" :class="priceChanges.get(item.id)">
+                {{ format(item.price, 2) }}
+              </div>
+              <div w="1/2" ml1 class="bfb">
+                <img v-if="icons.get(item.id)" src="../assets/images/index/up.png" class="up_icon">
+                <img v-else src="../assets/images/index/down.png" class="up_icon">
+                {{ format(item.diff, 2) }}%
               </div>
             </div>
-          </div>
-          <div flex="~" w="60%" items-center justify-between>
-            <div :class="isUp(item.profit_status) ? 'up_card' : 'down_card'">
-              {{ item.price }}
-            </div>
-            <div class="bfb">
-              <img v-if="isUp(item.profit_status)" src="../assets/images/index/up.png" class="up_icon">
-              <img v-else src="../assets/images/index/down.png" class="up_icon">
-              {{ item.diff }}%
-            </div>
-          </div>
-        </div>
-      </div>
-    </template>
-    <div h45 />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div h70 />
   </div>
   <TheFooter :index="0" />
 </template>
 
 <style scoped>
+table {
+  border-collapse: separate;
+  border-spacing: 0 1.071rem; /* 0 水平间隔，10px 垂直间隔 */
+}
+td {
+  vertical-align: middle;
+}
 .item {
-  border-radius: 15.31px;
+  border-radius: 1.094rem;
   background: #FFFFFF;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 1);
-  padding: 10px;
+  border: 0.071rem solid rgba(255, 255, 255, 1);
+  width: 100%;
+}
+
+.item td:first-child {
+  border-top-left-radius: 1.094rem;
+  border-bottom-left-radius: 1.094rem;
+  padding: 0.714rem;
+}
+
+.item td:last-child {
+  padding: 0.714rem;
+  border-top-right-radius: 1.094rem;
+  border-bottom-right-radius: 1.094rem;
 }
 
 .bfb {
-  font-size: 12px;
+  font-size: 0.857rem;
   font-weight: normal;
-  line-height: 14px;
+  line-height: 1rem;
   text-align: right;
-  letter-spacing: 0px;
+  letter-spacing: 0rem;
   font-variation-settings: "opsz" auto;
   color: #353535;
   justify-content: end;
@@ -104,13 +158,13 @@ onUnmounted(() => {
 }
 
 .down_card {
-  min-width: 75px;
-  height: 30px;
-  border-radius: 8px;
+  min-width: 5.357rem;
+  height: 2.143rem;
+  border-radius: 0.571rem;
   background: #19C09A;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 12px;
+  line-height: 0.857rem;
   text-align: right;
   letter-spacing: 0em;
 
@@ -119,17 +173,17 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 0.357rem;
 }
 
 .up_card {
-  min-width: 75px;
-  height: 30px;
-  border-radius: 8px;
+  min-width: 5.357rem;
+  height: 2.143rem;
+  border-radius: 0.571rem;
   background: #FC6C6B;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 12px;
+  line-height: 0.857rem;
   text-align: right;
   letter-spacing: 0em;
 
@@ -138,19 +192,19 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 0.357rem;
 }
 
 .stosx {
-  font-size: 12.24px;
+  font-size: 0.874rem;
   font-weight: normal;
   color: #575B66;
 }
 
 .sub_title {
-  font-size: 16.33px;
+  font-size: 1.166rem;
   font-weight: 500;
-  line-height: 23px;
+  line-height: 1.643rem;
 }
 
 .c1 {

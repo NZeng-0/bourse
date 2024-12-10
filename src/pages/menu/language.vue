@@ -77,7 +77,7 @@ async function toggleLocales(newLocale: string) {
           <img src="../../assets/images/me/menu/check.png" h6 w6>
         </div>
       </div>
-      <div h35 />
+      <div h50 />
     </div>
   </div>
 </template>

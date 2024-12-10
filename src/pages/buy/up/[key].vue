@@ -48,8 +48,6 @@ async function selectTime(index: number, profit: string, id: number) {
   else {
     submitData.value.scheme_id = id
     timeIndex.value = index
-    // if (submitData.value.money !== 0)
-    // await getEarnings()
   }
   times.value?.forEach((e: timeList) => {
     create_order_max_money.value = e.max_invest_money
@@ -71,8 +69,6 @@ async function selectMoney(money: number, index: number) {
   else {
     submitData.value.money = money
     moneyIndex.value = index
-    // if (submitData.value.scheme_id !== -1)
-    //   await getEarnings()
   }
 }
 
@@ -87,6 +83,10 @@ async function getEarnings() {
     if (e.id === submitData.value.scheme_id) {
       e.loss_rate = data.value.data.loss_rate
       e.profit_rate = data.value.data.profit_rate
+    }
+    else {
+      e.loss_rate = ''
+      e.profit_rate = ''
     }
   })
 }
@@ -105,10 +105,6 @@ function back() {
   route.back()
 }
 
-// function toNumber(value: any) {
-//   return Number.parseInt(value)
-// }
-
 function all() {
   submitData.value.money = product.value!.usable_money || 0
 }
@@ -119,18 +115,6 @@ async function submit() {
       message: `${t('buy_tips.time')}`,
     })
   }
-
-  // if (toNumber(submitData.value.money) < toNumber(create_order_min_money.value)) {
-  //   return showToast({
-  //     message: `${t('buy_tips.min')}${create_order_min_money.value}`,
-  //   })
-  // }
-
-  // if (toNumber(submitData.value.money) > toNumber(create_order_max_money.value)) {
-  //   return showToast({
-  //     message: `${t('buy_tips.max')}${create_order_max_money.value}`,
-  //   })
-  // }
 
   if (auth && user.data.auth_status !== 1) {
     return showToast({
@@ -191,7 +175,6 @@ onMounted(async () => {
         {{ t('trading.buy.settlement_time') }}
       </div>
       <div flex="~ wrap" justify-between>
-        <!-- h15 -->
         <template v-for="(e, key) in times" :key>
           <div w="48%" flex="~ wrap" :class="getTimeStyle(key)" @click="selectTime(key, e.profit_rate, e.id)">
             <div wfull flex="~" justify-center>
@@ -267,7 +250,7 @@ onMounted(async () => {
         {{ t('trading.submit') }}
       </button>
     </div>
-    <div h50 />
+    <div h70 />
   </div>
   <TheFooter :index="0" />
 </template>
