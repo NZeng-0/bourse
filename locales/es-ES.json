@@ -169,7 +169,6 @@
       "to": "para equilibrar",
       "transferable_balance": "Saldo transferible"
     },
-    "yesterdays_balance": "saldo de ayer",
     "yesterdays_earnings": "Ganancias de ayer",
     "accumulated_earnings": "Ingresos acumulados",
     "all": "todo",
@@ -186,7 +185,8 @@
     "renewal": "Renovar",
     "repurchase": "readquirir",
     "buy": "Monto del pedido",
-    "tips": "Por favor ingrese el monto del pedido"
+    "tips": "Por favor ingrese el monto del pedido",
+    "available": "saldo disponible"
   },
   "recommend": {
     "content": "Recomendar y ganar dinero de regalo",
@@ -350,5 +350,6 @@
   "only": "Actualmente solo puedes elegir",
   "current": "valor actual",
   "rate": "Aumentar/disminuir",
-  "notShow": "No volver a mostrar"
+  "notShow": "No volver a mostrar",
+  "notNull": "Requerido"
 }

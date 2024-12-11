@@ -1,4 +1,5 @@
 {
+  "notNull": "必填",
   "notShow": "不再显示",
   "rate": "涨/跌幅",
   "current": "当前值",
@@ -176,7 +177,7 @@
     "balance": "总余额",
     "yesterdays_earnings": "昨日收益",
     "accumulated_earnings": "累计收益",
-    "yesterdays_balance": "昨日余额",
+    "available": "可用余额",
     "fixture_plan": "固定方案",
     "current_yield": "当前收益",
     "historical_yield": "历史收益",

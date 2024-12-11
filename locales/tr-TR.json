@@ -100,10 +100,10 @@
       "to": "dengelemek",
       "transferable_balance": "Bakiye aktarılabilir"
     },
-    "yesterdays_balance": "Dünkü bakiye",
     "yesterdays_earnings": "Dünkü kazanç",
     "buy": "Sipariş tutarı",
-    "tips": "Lütfen sipariş tutarını giriniz"
+    "tips": "Lütfen sipariş tutarını giriniz",
+    "available": "mevcut bakiye"
   },
   "index": {
     "analysis": "veri analizi",
@@ -350,5 +350,6 @@
   "only": "Şu anda yalnızca seçebilirsiniz",
   "current": "mevcut değer",
   "rate": "Arttırma/azaltma",
-  "notShow": "Bir daha gösterme"
+  "notShow": "Bir daha gösterme",
+  "notNull": "Gerekli"
 }

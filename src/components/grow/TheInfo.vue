@@ -84,7 +84,7 @@ onMounted(async () => {
       </div>
       <div mr7 text-sm>
         <div text-center>
-          {{ t('fortune.yesterdays_balance') }}
+          {{ t('fortune.available') }}
         </div>
         <div mt3.5 text-center>
           {{ user?.investment_money }}

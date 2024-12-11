@@ -26,7 +26,6 @@ declare module 'vue' {
     ThePortfolio: typeof import('./src/components/index/ThePortfolio.vue')['default']
     ThePortfolioList: typeof import('./src/components/index/ThePortfolioList.vue')['default']
     TheSwitched: typeof import('./src/components/Trading/TheSwitched.vue')['default']
-    TheTrading: typeof import('./src/components/Trading/TheTrading.vue')['default']
     TheTradingCard: typeof import('./src/components/Trading/TheTradingCard.vue')['default']
     Unverified: typeof import('./src/components/menu/auth/unverified.vue')['default']
     VanCell: typeof import('vant/es')['Cell']

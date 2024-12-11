@@ -100,10 +100,10 @@
       "to": "equilibrar",
       "transferable_balance": "Saldo transferível"
     },
-    "yesterdays_balance": "O saldo de ontem",
     "yesterdays_earnings": "Lucro de ontem",
     "buy": "Valor do pedido",
-    "tips": "Por favor insira o valor do pedido"
+    "tips": "Por favor insira o valor do pedido",
+    "available": "saldo disponível"
   },
   "index": {
     "analysis": "análise de dados",
@@ -350,5 +350,6 @@
   "only": "Atualmente só pode escolher",
   "current": "valor atual",
   "rate": "Aumentar/diminuir",
-  "notShow": "Não mostre novamente"
+  "notShow": "Não mostre novamente",
+  "notNull": "Obrigatório"
 }

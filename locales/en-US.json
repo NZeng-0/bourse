@@ -153,7 +153,6 @@
     "balance": "Total Balance",
     "yesterdays_earnings": "Yesterday' Earnings",
     "accumulated_earnings": "Accumulated Earnings",
-    "yesterdays_balance": "Yesterday's Balance",
     "fixture_plan": "Fixed Plan",
     "current_yield": "Current Earnings",
     "historical_yield": "Historical Earnings",
@@ -186,7 +185,8 @@
       "amount": "Transfer Amount"
     },
     "buy": "Order amount",
-    "tips": "Please enter the order amount"
+    "tips": "Please enter the order amount",
+    "available": "available balance"
   },
   "recommend": {
     "title": "Recommendation Reward",
@@ -350,5 +350,6 @@
   "only": "Currently you can only choose",
   "current": "current value",
   "rate": "Increase/decrease",
-  "notShow": "Don't show again"
+  "notShow": "Don't show again",
+  "notNull": "Required"
 }

@@ -153,7 +153,6 @@
     "balance": "Tổng số dư",
     "yesterdays_earnings": "Thu nhập ngày hôm qua",
     "accumulated_earnings": "Thu nhập tích lũy",
-    "yesterdays_balance": "Số dư ngày hôm qua",
     "fixture_plan": "sơ đồ cố định",
     "current_yield": "Lợi nhuận hiện tại",
     "historical_yield": "Lợi nhuận lịch sử",
@@ -186,7 +185,8 @@
       "amount": "Chuyển số tiền"
     },
     "buy": "Số tiền đặt hàng",
-    "tips": "Vui lòng nhập số tiền đặt hàng"
+    "tips": "Vui lòng nhập số tiền đặt hàng",
+    "available": "số dư khả dụng"
   },
   "recommend": {
     "title": "Giới thiệu hữu lễ",
@@ -350,5 +350,6 @@
   "only": "Hiện tại bạn chỉ có thể chọn",
   "current": "giá trị hiện tại",
   "rate": "Tăng/giảm",
-  "notShow": "Không hiển thị lại"
+  "notShow": "Không hiển thị lại",
+  "notNull": "Yêu cầu"
 }

@@ -153,7 +153,6 @@
     "balance": "總餘額",
     "yesterdays_earnings": "昨日收益",
     "accumulated_earnings": "累計收益",
-    "yesterdays_balance": "昨日餘額",
     "fixture_plan": "固定方案",
     "current_yield": "當前收益",
     "historical_yield": "歷史收益",
@@ -186,7 +185,8 @@
       "amount": "轉出金額"
     },
     "buy": "下單金額",
-    "tips": "請輸入下單金額"
+    "tips": "請輸入下單金額",
+    "available": "可用餘額"
   },
   "recommend": {
     "title": "推薦有禮",
@@ -350,5 +350,6 @@
   "only": "目前只能選擇",
   "current": "目前值",
   "rate": "漲/跌幅",
-  "notShow": "不再顯示"
+  "notShow": "不再顯示",
+  "notNull": "必填"
 }

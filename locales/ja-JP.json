@@ -153,7 +153,6 @@
     "balance": "総残高",
     "yesterdays_earnings": "昨日の収益",
     "accumulated_earnings": "累計収益",
-    "yesterdays_balance": "昨日の残高",
     "fixture_plan": "固定プラン",
     "current_yield": "現在の収益",
     "historical_yield": "過去の収益",
@@ -186,7 +185,8 @@
       "amount": "出金額"
     },
     "buy": "注文金額",
-    "tips": "注文金額を入力してください"
+    "tips": "注文金額を入力してください",
+    "available": "利用可能残高"
   },
   "recommend": {
     "title": "紹介特典",
@@ -350,5 +350,6 @@
   "only": "現在選択できるのは",
   "current": "現在値",
   "rate": "増減",
-  "notShow": "二度と表示しないでください"
+  "notShow": "二度と表示しないでください",
+  "notNull": "必須"
 }

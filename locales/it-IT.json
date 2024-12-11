@@ -153,7 +153,6 @@
     "balance": "Saldo totale",
     "yesterdays_earnings": "I guadagni di ieri",
     "accumulated_earnings": "Accumulated earnings",
-    "yesterdays_balance": "Saldo di ieri",
     "fixture_plan": "Piano fisso",
     "current_yield": "Current yield",
     "historical_yield": "Rendimento storico",
@@ -186,7 +185,8 @@
       "amount": "Importo di trasferimento"
     },
     "buy": "Importo dell'ordine",
-    "tips": "Inserisci l'importo dell'ordine"
+    "tips": "Inserisci l'importo dell'ordine",
+    "available": "saldo disponibile"
   },
   "recommend": {
     "title": "Regali raccomandati",
@@ -350,5 +350,6 @@
   "only": "Al momento puoi solo scegliere",
   "current": "valore corrente",
   "rate": "Aumenta/diminuisce",
-  "notShow": "Non mostrare più"
+  "notShow": "Non mostrare più",
+  "notNull": "Necessario"
 }
