@@ -44,12 +44,13 @@ onMounted(async () => onLoad())
 </script>
 
 <template>
+  <TheInfo :current="2" />
   <div flex="~ wrap" justify-center>
-    <TheInfo :current="2" />
     <TheEmpty v-if="list.length <= 0" />
     <div mx5 mt2 wfull text-sm>
       <van-list
-        v-model:loading="loading" h="30%" wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
+        v-model:loading="loading" h-screen wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
+        pb-120
         @load="onLoad"
       >
         <div v-for="(item, key) in list" :key mt4 h20 border rounded-lg pl2>
@@ -80,7 +81,6 @@ onMounted(async () => onLoad())
             </div>
           </div>
         </div>
-        <div h60 />
       </van-list>
     </div>
   </div>

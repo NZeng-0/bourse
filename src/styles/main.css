@@ -28,7 +28,7 @@ input::placeholder {
 }
 
 .custom {
-  border-radius: 8px 8px 8px 0 !important;
+  border-radius: 0.571rem 0.571rem 0.571rem 0 !important;
 }
 
 .empty {
@@ -84,17 +84,17 @@ input::placeholder {
 
 .msg-display {
   position: absolute;
-  bottom: 6px;
+  bottom: 0.429rem;
 }
 
 .up_icon {
-  width: 9px;
-  height: 11px;
-  margin-right: 7px;
+  width: 0.643rem;
+  height: 0.786rem;
+  margin-right: 0.5rem;
 }
 
 .up_icon_2 {
-  width: 15px;
-  height: 18px;
-  margin-right: 5px;
+  width: 1.071rem;
+  height: 1.286rem;
+  margin-right: 0.357rem;
 }

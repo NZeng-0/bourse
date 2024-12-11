@@ -29,6 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/grow/buy': RouteRecordInfo<'/grow/buy', '/grow/buy', Record<never, never>, Record<never, never>>,
     '/grow/current': RouteRecordInfo<'/grow/current', '/grow/current', Record<never, never>, Record<never, never>>,
     '/grow/histroy': RouteRecordInfo<'/grow/histroy', '/grow/histroy', Record<never, never>, Record<never, never>>,
+    '/grow/record': RouteRecordInfo<'/grow/record', '/grow/record', Record<never, never>, Record<never, never>>,
     '/grow/solution': RouteRecordInfo<'/grow/solution', '/grow/solution', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
     '/me': RouteRecordInfo<'/me', '/me', Record<never, never>, Record<never, never>>,

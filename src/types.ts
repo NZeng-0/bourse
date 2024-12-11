@@ -373,3 +373,8 @@ export interface earningsMoney {
   type: number
   scheme_id: number
 }
+
+export interface earningType {
+  yesterday_money_earnings: number
+  total_money_earnings: number
+}
