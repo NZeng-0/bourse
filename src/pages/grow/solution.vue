@@ -69,9 +69,8 @@ async function onLoad() {
     <TheEmpty v-if="loading" />
     <div mx5 mt2 wfull text-sm>
       <van-list
-        v-model:loading="loading" h-screen wfull overflow-y-auto loading-text=" " finished-text=" " :offset="100"
-        pb-120
-        @load="onLoad"
+        v-model:loading="loading" h-screen wfull overflow-y-auto loading-text=" " finished-text=" "
+        :offset="100" pb-120 @load="onLoad"
       >
         <div v-for="(item, key) in list" :key flex="~ wrap" mt4 h20 border rounded-lg pl2 @click="go(item)">
           <div flex="~ wrap" justify-between w="1/2" :class="margin()">
@@ -111,7 +110,7 @@ async function onLoad() {
             </div>
           </div>
         </div>
-        <!-- <div h90 /> -->
+        <div h30 />
       </van-list>
     </div>
   </div>

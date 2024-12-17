@@ -378,3 +378,10 @@ export interface earningType {
   yesterday_money_earnings: number
   total_money_earnings: number
 }
+export interface footerItem {
+  icon: string
+  selectIcon: string
+  name: string
+  pointTo: string
+  sort: number
+}

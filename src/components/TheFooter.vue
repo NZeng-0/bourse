@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import { getFrontMenuConfig } from '~/api'
-import type { menuType } from '~/types'
+import type { footerItem, menuType } from '~/types'
 import { useBinding } from '~/store/useBinding'
+import { useFooter } from '~/store/useFooter'
 
 defineProps<{
   index: number
 }>()
 
-interface item {
-  icon: string
-  selectIcon: string
-  name: string
-  pointTo: string
-  sort: number
-}
-
 const { t } = useI18n()
 const icons = ref<menuType[]>([])
 const bindings = ref<menuType[]>([])
-const list = ref<item[]>([])
+const list = ref<footerItem[]>([])
 const bindStore = useBinding()
 
 const keys = [
@@ -88,7 +81,8 @@ async function getConf() {
     },
   ]
 
-  list.value.sort((a: item, b: item) => a.sort - b.sort)
+  list.value.sort((a: footerItem, b: footerItem) => a.sort - b.sort)
+  useFooter.data = list.value
 }
 
 function getIcon(key: string) {
@@ -112,7 +106,7 @@ onMounted(async () => {
 
 <template>
   <div flex="~" absolute fixed inset-x-0 bottom--1 z10 h16.5 w-full items-center justify-around border-y bg-white>
-    <div v-for="(e, key) in list" :key>
+    <div v-for="(e, key) in useFooter.data" :key>
       <RouterLink :to="e.pointTo">
         <div flex="~" items-center justify-center>
           <img v-if="index === key" :src="e.selectIcon" h4.5 w4.5>

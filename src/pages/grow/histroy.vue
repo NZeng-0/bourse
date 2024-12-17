@@ -81,6 +81,7 @@ async function onLoad() {
             </div>
           </div>
         </div>
+        <div h30 />
       </van-list>
     </div>
   </div>
