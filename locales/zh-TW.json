@@ -351,5 +351,6 @@
   "current": "目前值",
   "rate": "漲/跌幅",
   "notShow": "不再顯示",
-  "notNull": "必填"
+  "notNull": "必填",
+  "yuEBaoRecord": "餘額寶記錄"
 }

@@ -351,5 +351,6 @@
   "current": "valor actual",
   "rate": "Aumentar/disminuir",
   "notShow": "No volver a mostrar",
-  "notNull": "Requerido"
+  "notNull": "Requerido",
+  "yuEBaoRecord": "Registros de Yu'e Bao"
 }

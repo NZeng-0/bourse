@@ -116,6 +116,6 @@ onMounted(async () => await useShow())
         <input type="text" readonly h12 w70 cursor-pointer rounded-2xl text-center text-sm :value="t('register.login')">
       </RouterLink>
     </div>
-    <div h70 />
+    <div h140 />
   </div>
 </template>

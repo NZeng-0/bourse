@@ -332,3 +332,9 @@ export function countProductEarningsMoney(data: earningsMoney) {
     data,
   })
 }
+
+export function getUserInvestmentBillList() {
+  return Request.get({
+    url: '/index/user/getUserInvestmentBillList',
+  })
+}

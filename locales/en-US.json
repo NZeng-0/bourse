@@ -351,5 +351,6 @@
   "current": "current value",
   "rate": "Increase/decrease",
   "notShow": "Don't show again",
-  "notNull": "Required"
+  "notNull": "Required",
+  "yuEBaoRecord": "Yu'e Bao records"
 }

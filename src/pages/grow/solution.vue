@@ -60,7 +60,7 @@ async function onLoad() {
   page.value++
 }
 
-onMounted(async () => onLoad())
+// onMounted(async () => onLoad())
 </script>
 
 <template>

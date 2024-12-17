@@ -351,5 +351,6 @@
   "current": "มูลค่าปัจจุบัน",
   "rate": "เพิ่ม/ลด",
   "notShow": "อย่าแสดงอีก",
-  "notNull": "ที่จำเป็น"
+  "notNull": "ที่จำเป็น",
+  "yuEBaoRecord": "บันทึกของ Yu'e Bao"
 }
