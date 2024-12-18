@@ -55,8 +55,20 @@ async function afterSubmit() {
 }
 
 function checkRequiredFields() {
-  const requiredFields = ['name', 'idcard', 'idcard_front_image', 'idcard_side_image']
-  return requiredFields.every(field => infos.value[field as keyof infoTypes] !== '')
+  const requiredFields = [
+    { field: 'name', message: `t('me.auth.name')${t('notNull')}` },
+    { field: 'idcard', message: `${t('me.auth.id_card')}${t('notNull')}` },
+    { field: 'idcard_front_image', message: t('me.auth.photo') },
+    { field: 'idcard_side_image', message: t('me.auth.photo') },
+  ]
+
+  for (const { field, message } of requiredFields) {
+    if (infos.value[field as keyof infoTypes] === '') {
+      showToast({ message })
+      return false
+    }
+  }
+  return true
 }
 
 async function submit() {
@@ -68,12 +80,8 @@ async function submit() {
     return
   }
 
-  if (!checkRequiredFields()) {
-    showToast({
-      message: t('check'),
-    })
+  if (!checkRequiredFields())
     return
-  }
 
   wait.value = true
 

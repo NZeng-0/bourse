@@ -256,7 +256,8 @@
       "back": "Click to Upload Back",
       "submit": "Submit Authentication",
       "card_true": "ID number:",
-      "name_true": "Name:"
+      "name_true": "Name:",
+      "photo": "Please upload a picture of your ID card"
     },
     "language": {
       "title": "Change Language",

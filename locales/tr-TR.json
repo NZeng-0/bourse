@@ -132,7 +132,8 @@
       "submit": "Sertifikayı gönder",
       "title": "Doğrulandı",
       "card_true": "Kimlik numarası:",
-      "name_true": "İsim:"
+      "name_true": "İsim:",
+      "photo": "Lütfen kimlik kartınızın resmini yükleyiniz"
     },
     "balance": "Hesap bakiyesi",
     "download": {

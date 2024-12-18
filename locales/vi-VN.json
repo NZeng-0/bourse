@@ -256,7 +256,8 @@
       "back": "click upload ngược lại",
       "submit": "Gửi chứng nhận",
       "card_true": "Số ID:",
-      "name_true": "Tên:"
+      "name_true": "Tên:",
+      "photo": "Vui lòng tải lên hình ảnh chứng minh nhân dân của bạn"
     },
     "language": {
       "title": "Thay đổi ngôn ngữ",

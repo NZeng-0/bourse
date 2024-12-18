@@ -215,7 +215,8 @@
       "name": "Nombre",
       "submit": "Enviar certificación",
       "card_true": "Número de identificación:",
-      "name_true": "Nombre:"
+      "name_true": "Nombre:",
+      "photo": "Por favor sube una foto de tu documento de identidad."
     },
     "balance": "Saldo de la cuenta",
     "download": {

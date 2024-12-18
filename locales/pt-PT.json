@@ -133,7 +133,8 @@
       "submit": "Enviar certificação",
       "title": "Verificado",
       "card_true": "Número de identificação:",
-      "name_true": "Nome:"
+      "name_true": "Nome:",
+      "photo": "Por favor, carregue uma foto do seu cartão de identificação"
     },
     "balance": "Saldo da conta",
     "download": {

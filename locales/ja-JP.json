@@ -256,7 +256,8 @@
       "back": "裏をクリックしてアップロード",
       "submit": "認証を送信",
       "card_true": "ID番号:",
-      "name_true": "名前："
+      "name_true": "名前：",
+      "photo": "身分証明書の写真をアップロードしてください"
     },
     "language": {
       "title": "言語を変更",

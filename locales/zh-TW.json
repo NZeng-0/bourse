@@ -256,7 +256,8 @@
       "back": "點擊上傳反面",
       "submit": "提交認證",
       "card_true": "證件號碼：",
-      "name_true": "姓名："
+      "name_true": "姓名：",
+      "photo": "請上傳身分證圖片"
     },
     "language": {
       "title": "更換語言",

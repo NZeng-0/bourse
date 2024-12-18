@@ -256,7 +256,8 @@
       "back": "Clicca per caricare il retro",
       "submit": "Invia autenticazione",
       "card_true": "Numero identificativo:",
-      "name_true": "Nome:"
+      "name_true": "Nome:",
+      "photo": "Per favore carica una foto della tua carta d'identità"
     },
     "language": {
       "title": "Cambia lingua",
