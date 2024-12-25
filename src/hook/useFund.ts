@@ -1,5 +1,5 @@
 import type { history } from '~/api/types'
-import { getProductDetail } from '~/api'
+import { getProductDetail, getProductInfo } from '~/api'
 import type { klineType } from '~/types'
 
 const times = [
@@ -51,16 +51,10 @@ export function useFund() {
     return data.value.data
   }
 
-  /* function parseDate(unixTimestamp: number) {
-    // 将时间戳转换为毫秒
-    const date = new Date(unixTimestamp * 1000)
-
-    // 获取北京时间
-    const beijingTime = new Date(date.getTime() + 8 * 60 * 60 * 1000)
-
-    // 格式化输出日期部分
-    return beijingTime.toISOString().split('T')[0]
-  } */
+  async function getProductPrice(id: number) {
+    const { data } = await getProductInfo(id)
+    return data.value.data
+  }
 
   return {
     getTimes,
@@ -68,5 +62,6 @@ export function useFund() {
     handleImageError,
     actuator,
     parseData,
+    getProductPrice,
   }
 }

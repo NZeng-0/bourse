@@ -338,3 +338,9 @@ export function getUserInvestmentBillList() {
     url: '/index/user/getUserInvestmentBillList',
   })
 }
+
+export function getProductInfo(id: number) {
+  return Request.get({
+    url: `/index/product/getProductInfo?id=${id}`,
+  })
+}

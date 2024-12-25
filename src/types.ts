@@ -385,3 +385,38 @@ export interface footerItem {
   pointTo: string
   sort: number
 }
+
+export interface price {
+  id: number
+  product_name: string
+  product_code: string
+  sort: number
+  open: string
+  close: string
+  price: string
+  high: string
+  low: string
+  diff: string
+  diff_rate: string
+  vol: string
+  count: string
+  type: number
+  is_show: number
+  status: number
+  source: string
+  profit_status: number
+  low_status: number
+  logo: string
+  remark: string
+  fkzxbdz: string
+  fkzdbdz: string
+  sjbdfw: string
+  mode_type: number
+  start_time: null | string
+  end_time: null | string
+  open_time: string
+  date: number
+  is_update: number
+  create_time: string
+  update_time: string
+}

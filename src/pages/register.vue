@@ -100,7 +100,7 @@ onMounted(async () => await useShow())
     <div v-if="isShow('front_menu_from_sjhm')" mt3 w-full text-center>
       <input v-model="user.phone" type="text" :class="getClass()" :placeholder="t('register.phone')">
     </div>
-    <div mt3 w-full text-center>
+    <div v-if="isShow('front_menu_from_email')" mt3 w-full text-center>
       <input v-model="user.email" type="email" :class="getClass()" :placeholder="t('register.email')">
     </div>
     <div v-if="isShow('front_menu_from_yqm')" mt3 w-full text-center>

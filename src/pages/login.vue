@@ -19,11 +19,10 @@ const router = useRouter()
 const userStore = useUser()
 const conf = useConf()
 const wait = ref(false)
-// const src = ref(new URL('../assets/images/login/logo.png', import.meta.url).href)
 const src = ref(' ')
 const user = ref({
-  name: 'qwer',
-  pwd: '123456',
+  name: '',
+  pwd: '',
 })
 
 async function onLoginSuccessful() {

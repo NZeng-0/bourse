@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CandleType, TooltipShowRule } from 'klinecharts'
 import { dispose, init } from 'klinecharts'
-import type { cardType } from '~/types'
+import type { cardType, price } from '~/types'
 import type { indexProduct } from '~/api/types'
 import { useFund } from '~/hook/useFund'
 
@@ -13,12 +13,15 @@ const {
   actuator,
   parseData,
   handleImageError,
+  getProductPrice,
 } = useFund()
 
 const product = ref<indexProduct>()
+const pPrice = ref<price>()
 const select = ref(0)
 const period = ref('1min')
 const timer = ref()
+const t1 = ref()
 const card = ref<cardType>({
   high: '',
   low: '',
@@ -75,13 +78,6 @@ function initChart() {
 }
 
 function updateChart(cb: Function = () => { }) {
-  card.value = {
-    open: product.value!.open,
-    close: product.value!.close,
-    high: product.value!.high,
-    low: product.value!.low,
-  }
-
   if (cb)
     cb()
 
@@ -109,20 +105,41 @@ function onSuccess() {
   }, 500)
 }
 
-onMounted(async () => {
-  product.value = await actuator(id, period.value)
-  updateChart()
+async function getInfo() {
+  const data = await getProductPrice(id)
+  pPrice.value = data
+  card.value = {
+    open: format(data.open, 2),
+    close: format(data.close, 2),
+    high: format(data.high, 2),
+    low: format(data.low, 2),
+  }
+}
+
+function timers() {
+  t1.value = setInterval(async () => {
+    getInfo()
+  }, 10000)
+  // 每一分钟刷新一次
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
     const data = parseData(product.value!.history_list)
     onSuccess()
     chart!.updateData(data)
-  }, 3000)
+  }, 1000 * 60)
+}
+
+onMounted(async () => {
+  getInfo()
+  product.value = await actuator(id, period.value)
+  updateChart()
+  timers()
 })
 
 onUnmounted(() => {
   dispose('chart')
   clearInterval(timer.value)
+  clearInterval(t1.value)
 })
 </script>
 
@@ -134,14 +151,14 @@ onUnmounted(() => {
         <div flex="~" items-center>
           <div :class="priceChange">
             <!-- 当前价格 -->
-            {{ format(product?.price || 0, 3) }}
+            {{ format(pPrice?.price || 0, 3) }}
           </div>
 
           <div flex="~" ml-4 items-center text-xs>
             <img v-if="icon_type" src="../../assets/images/index/up.png" class="up_icon_2">
             <img v-else src="../../assets/images/index/down.png" class="up_icon_2">
             <div class="bfb">
-              {{ format(product?.diff_rate, 2) }}%
+              {{ format(pPrice?.diff_rate, 2) }}%
             </div>
           </div>
         </div>

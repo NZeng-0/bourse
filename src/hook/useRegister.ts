@@ -12,6 +12,7 @@ tips.set('operation_pwd', 'register.pay_pwd')
 tips.set('idcard', 'register.id_card')
 tips.set('phone', 'register.phone')
 tips.set('spread_code', 'register.invitation_code')
+tips.set('email', 'register.email')
 
 const register_key = [
   'front_menu_from_xm',
@@ -23,6 +24,7 @@ const register_key = [
   'front_menu_from_sfzh',
   'front_menu_from_sjhm',
   'front_menu_from_yqm',
+  'front_menu_from_email',
 ]
 
 export function useRegister() {
@@ -32,9 +34,6 @@ export function useRegister() {
 
     // 遍历每个键，检查对应的值是否为空
     for (const key of keys) {
-      if (key === 'email')
-        continue
-
       if (!inspect.get(key))
         continue
 
@@ -74,6 +73,9 @@ export function useRegister() {
         break
       case 'front_menu_from_yqm':
         inspect.set('spread_code', isShow(key))
+        break
+      case 'front_menu_from_email':
+        inspect.set('email', isShow(key))
         break
     }
   }

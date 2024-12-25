@@ -1,6 +1,6 @@
 {
   "yuEBaoRecord": "余额宝记录",
-  "notNull": "必填",
+  "notNull": "不能为空",
   "notShow": "不再显示",
   "rate": "涨/跌幅",
   "current": "当前值",
