@@ -1,4 +1,4 @@
-import type { menuType } from '~/types'
+import type { configlist } from '~/types'
 import { getFrontMenuConfig } from '~/api'
 
 interface menuItem {
@@ -26,14 +26,14 @@ const keys = [
   'front_menu_mine_smrz',
 ]
 
-const icons = ref<menuType[]>([])
+const icons = ref<configlist[]>([])
 const menu = ref<menuItem[]>([])
 
 async function getConf() {
   const { data } = await getFrontMenuConfig()
   const temp = data.value.data
 
-  temp.forEach((e: menuType) => {
+  temp.forEach((e: configlist) => {
     if (keys.includes(e.key))
       icons.value.push(e)
   })
@@ -143,21 +143,21 @@ async function getConf() {
 }
 
 function getIcon(key: string) {
-  const res = icons.value.filter((e: menuType) => e.key === key)[0]
+  const res = icons.value.filter((e: configlist) => e.key === key)[0]
   return `${baseUrl}/${res.value}`
 }
 
 function isShow(key: string) {
-  const res = icons.value.filter((e: menuType) => e.key === key)[0]
+  const res = icons.value.filter((e: configlist) => e.key === key)[0]
   return res.status !== 0
 }
 
 function getSort(key: string) {
-  return icons.value.filter((e: menuType) => e.key === key)[0].sort
+  return icons.value.filter((e: configlist) => e.key === key)[0].sort
 }
 
 function getRemark(key: string) {
-  return icons.value.filter((e: menuType) => e.key === key)[0].remark
+  return icons.value.filter((e: configlist) => e.key === key)[0].remark
 }
 
 // 调用 getConf 以获取配置

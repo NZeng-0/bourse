@@ -216,50 +216,6 @@ export interface configlist {
   create_time: string
 }
 
-export interface messageTypes {
-  id: number
-  key: string
-  condition: null | string
-  value: string
-  link: null | string
-  remark: string
-  status: number
-  sort: number
-  type: number
-  start_time: string
-  end_time: null | string
-  create_time: string
-}
-
-export interface IndexMsg {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: string
-  remark: string
-  status: number
-  sort: number
-  start_time: string
-  end_time: string
-  create_time: string
-}
-
-export interface withdrawMethodType {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: null | string
-  remark: string
-  status: number
-  sort: number
-  type: number
-  start_time: null | string
-  end_time: null | string
-  create_time: string
-}
-
 export interface inviteType {
   nickname: string
   account: string
@@ -267,21 +223,6 @@ export interface inviteType {
   recharge_price: string
   withdraw_price: string
   uid: number
-}
-
-export interface serveType {
-  id: number
-  key: string
-  condition: null | string
-  value: string
-  link: string
-  remark: string
-  status: number
-  sort: number
-  type: number
-  start_time: null | string
-  end_time: null | string
-  create_time: string
 }
 
 export interface authType {
@@ -293,21 +234,6 @@ export interface authType {
   idcard_side_image: string
   review_status: number
   explain: string
-  create_time: string
-}
-
-export interface swipeType {
-  id: number
-  key: string
-  condition: null | string
-  value: string
-  link: string
-  remark: string
-  status: number
-  sort: number
-  type: number
-  start_time: null | string
-  end_time: null | string
   create_time: string
 }
 
@@ -350,21 +276,6 @@ export interface klineType {
   open: number
   timestamp: number
   volume: number
-}
-
-export interface menuType {
-  id: number
-  key: string
-  condition: string
-  value: string
-  link: null | string
-  remark: string
-  status: number
-  sort: number
-  type: number
-  start_time: null | string
-  end_time: null | string
-  create_time: string
 }
 
 export interface earningsMoney {

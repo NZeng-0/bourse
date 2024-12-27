@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCustomerService } from '~/api'
-import type { serveType } from '~/types'
+import type { configlist } from '~/types'
 
 const { t } = useI18n()
 
@@ -8,7 +8,7 @@ const whats = new URL('../../assets/images/me/serve/whats.png', import.meta.url)
 const online = new URL('../../assets/images/me/serve/online.png', import.meta.url).href
 const tel = new URL('../../assets/images/me/serve/tel.png', import.meta.url).href
 const line = new URL('../../assets/images/me/serve/line.png', import.meta.url).href
-const list = ref<serveType[]>([])
+const list = ref<configlist[]>([])
 
 function go(url: string) {
   window.open(`http://${url}`)
@@ -24,7 +24,7 @@ onMounted(async () => {
   <TheMenuHead :title="t('serve.contact')" />
   <div class="method-list" px6>
     <template v-for="(item, key) in list" :key>
-      <div v-if="item.value === '1'" class="item" @click="go(item.link)">
+      <div v-if="item.value === '1'" class="item" @click="go(item.link!)">
         <div flex="~" items-center>
           <img v-if="item.key === 'zxkf'" :src="online" class="icon">
           <img v-if="item.key === 'whatsapp'" :src="whats" class="icon">

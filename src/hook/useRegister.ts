@@ -1,8 +1,8 @@
 import { getFrontMenuConfig, getUserInfo } from '~/api'
-import type { menuType, registerTypes } from '~/types'
+import type { configlist, registerTypes } from '~/types'
 
 const inspect = new Map<string, boolean>()
-const shows = ref<menuType[]>([])
+const shows = ref<configlist[]>([])
 const tips = new Map<string, string>()
 tips.set('nickname', 'register.name')
 tips.set('account', 'register.account')
@@ -81,7 +81,7 @@ export function useRegister() {
   }
 
   function isShow(state: string) {
-    const temp = shows.value.filter((e: menuType) => e.key === state)[0]
+    const temp = shows.value.filter((e: configlist) => e.key === state)[0]
     return temp?.status !== 0
   }
 
@@ -89,7 +89,7 @@ export function useRegister() {
     const { data } = await getFrontMenuConfig()
     const temp = data.value.data
 
-    temp.forEach((e: menuType) => {
+    temp.forEach((e: configlist) => {
       if (register_key.includes(e.key)) {
         addRule(e.key)
         shows.value.push(e)

@@ -1,7 +1,7 @@
-import type { messageTypes } from '~/types'
+import type { configlist } from '~/types'
 
 export const useCompnay: any = defineStore('company', () => {
-  const _data = ref<messageTypes>()
+  const _data = ref<configlist>()
 
   const data = computed({
     get: () => _data.value,

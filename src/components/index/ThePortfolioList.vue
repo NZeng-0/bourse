@@ -3,6 +3,8 @@ import {
   getProductTakeList,
 } from '~/api'
 import type { indexProduct } from '~/api/types'
+import { useConf } from '~/store/useConf'
+import type { configlist } from '~/types'
 
 const router = useRouter()
 const list: Ref<indexProduct[]> = ref([])
@@ -10,6 +12,7 @@ const timer = ref()
 const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
+const requestTime = useConf().data.find((e: configlist) => e.key === 'index_list_request_time')?.value
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -61,7 +64,7 @@ onMounted(async () => {
   await init()
   timer.value = setInterval(async () => {
     await init()
-  }, 3000)
+  }, 1000 * Number(requestTime) || 5)
 })
 
 onBeforeUnmount(() => {
@@ -93,7 +96,7 @@ onBeforeUnmount(() => {
       <div flex="~">
         <div ml-4.5 mt-4 h12 w12 />
         <div w="60%" ml2 :class="priceChanges.get(e.id)">
-          {{ format(e.price, 3) }}
+          {{ format(e.price, 4) }}
         </div>
       </div>
     </div>

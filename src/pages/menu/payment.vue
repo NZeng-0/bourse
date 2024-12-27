@@ -30,13 +30,6 @@ const list = [
   },
 ]
 
-// async function getList() {
-//   const { data } = await getFrontMenuConfig()
-//   const temp = data.value.data
-//   temp.forEach((e: menuType) => {
-//   })
-// }
-
 function getFullUrl(url: string) {
   return new URL(url, import.meta.url).href
 }

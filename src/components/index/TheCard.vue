@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { swipeType } from '~/types'
+import type { configlist } from '~/types'
 
 const { swipe } = defineProps<{
-  swipe: swipeType[]
+  swipe: configlist[]
 }>()
 
 function error(id: number) {

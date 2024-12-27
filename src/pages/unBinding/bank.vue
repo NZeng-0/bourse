@@ -6,7 +6,7 @@ import {
 import type { binding } from '~/api/types'
 import { useUser } from '~/store/useUser'
 import { useBinding } from '~/store/useBinding'
-import type { menuType } from '~/types'
+import type { configlist } from '~/types'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -47,7 +47,7 @@ async function submit() {
 }
 
 function display(state: string) {
-  const temp = status.filter((e: menuType) => e.key === state)[0]
+  const temp = status.filter((e: configlist) => e.key === state)[0]
   return temp.status !== 0
 }
 function com() {

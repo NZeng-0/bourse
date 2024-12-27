@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { CandleType, TooltipShowRule } from 'klinecharts'
 import { dispose, init } from 'klinecharts'
-import type { cardType, price } from '~/types'
+import type { cardType, configlist, price } from '~/types'
 import type { indexProduct } from '~/api/types'
 import { useFund } from '~/hook/useFund'
+import { useConf } from '~/store/useConf'
 
 const id = useToNumber(useRoute('/fluctuation/[id]').params.id).value
 
@@ -32,6 +33,8 @@ let chart
 const prevPrice = ref<number>()
 const priceChange = ref<'up_card' | 'down_card'>('up_card')
 const icon_type = ref(true)
+const priceTime = useConf().data.find((e: configlist) => e.key === 'product_price_request_time')?.value
+const kLineTime = useConf().data.find((e: configlist) => e.key === 'product_kdata_request_time')?.value
 
 function _in(current: number) {
   return select.value === current
@@ -119,14 +122,14 @@ async function getInfo() {
 function timers() {
   t1.value = setInterval(async () => {
     getInfo()
-  }, 10000)
+  }, 1000 * (Number(priceTime) || 3))
   // 每一分钟刷新一次
   timer.value = setInterval(async () => {
     product.value = await actuator(id, period.value)
     const data = parseData(product.value!.history_list)
     onSuccess()
     chart!.updateData(data)
-  }, 1000 * 60)
+  }, 1000 * (Number(kLineTime) || 60))
 }
 
 onMounted(async () => {
@@ -151,7 +154,7 @@ onUnmounted(() => {
         <div flex="~" items-center>
           <div :class="priceChange">
             <!-- 当前价格 -->
-            {{ format(pPrice?.price || 0, 3) }}
+            {{ format(pPrice?.price || 0, 4) }}
           </div>
 
           <div flex="~" ml-4 items-center text-xs>

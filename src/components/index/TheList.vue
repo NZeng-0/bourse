@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { indexProduct } from '~/api/types'
 import { getIndexProduct } from '~/api'
+import { useConf } from '~/store/useConf'
+import type { configlist } from '~/types'
 
 const router = useRouter()
 const { t } = useI18n()
@@ -12,6 +14,7 @@ const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
 const styles = ref(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
+const requestTime = useConf().data.find((e: configlist) => e.key === 'index_list_request_time')?.value
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -67,7 +70,7 @@ onMounted(async () => {
   await __init()
   timer.value = setInterval(async () => {
     await __init()
-  }, 3000)
+  }, 1000 * Number(requestTime) || 5)
   loading.value = false
 })
 
@@ -114,7 +117,7 @@ onBeforeUnmount(() => {
         </td>
         <td text-right>
           <div :class="priceChanges.get(item.id)">
-            {{ format(item.price, 3) }}
+            {{ format(item.price, 4) }}
           </div>
         </td>
         <td class="bfb">

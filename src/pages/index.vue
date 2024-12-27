@@ -8,10 +8,7 @@ import {
 import loading from '~/components/loading'
 import { useCompnay } from '~/store/useCompany'
 import type {
-  IndexMsg,
-  messageTypes,
-  swipeType,
-  withdrawMethodType,
+  configlist,
 } from '~/types'
 import { useConf } from '~/store/useConf'
 import { usePopup } from '~/store/usePopupDay'
@@ -24,18 +21,17 @@ const conf = useConf()
 
 const left_icon = new URL('../assets/images/inform.png', import.meta.url).href
 const broad = new URL('../assets/images/broadcast.png', import.meta.url).href
-
-const messages = ref<IndexMsg[]>()
-const slide = ref<messageTypes[]>()
+const messages = ref<configlist[]>()
+const slide = ref<configlist[]>()
 const min = ref<number>(0)
 const max = ref<number>(1)
 const store = ref<number>(0)
 const onlineShow = ref<boolean>(true)
-const swipe = ref<swipeType[]>([
+const swipe = ref<configlist[]>([
   {
     id: 13,
     key: 'lbt',
-    condition: null,
+    condition: '',
     value: new URL('../assets/images/swipe/1.png', import.meta.url).href,
     link: 'www.baidu.com',
     remark: '轮播图',
@@ -88,7 +84,7 @@ function showNextMessage(index = 0) {
 function getNum() {
   if (conf.data === undefined)
     return
-  conf.data!.forEach((e: withdrawMethodType) => {
+  conf.data!.forEach((e: configlist) => {
     if (e.key === 'persion_number_section') {
       if (e.status === 1) {
         min.value = useToNumber(e.value.split(',')[0]).value
@@ -100,7 +96,7 @@ function getNum() {
 }
 
 function animateNumber() {
-  const online = conf.data.find((item: withdrawMethodType) => item.key === 'online_number_show').value
+  const online = conf.data.find((item: configlist) => item.key === 'online_number_show').value
   online === '0' ? onlineShow.value = false : onlineShow.value = true
   if (online === '0')
     return

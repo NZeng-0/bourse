@@ -7,7 +7,7 @@ import {
 } from '~/api'
 import { useUser } from '~/store/useUser'
 import type { withdraw } from '~/api/types'
-import type { withdrawMethodType } from '~/types'
+import type { configlist } from '~/types'
 
 const { t } = useI18n()
 const route = useRouter()
@@ -29,7 +29,7 @@ const infos = ref<withdraw>({
 const bindUsdt = ref(user.data.bank_info.wallet_address)
 const bindBank = ref(user.data.bank_info.bank_account)
 const wait = ref(false)
-const method = ref<withdrawMethodType[]>()
+const method = ref<configlist[]>()
 const withdrawRate = ref(0)
 
 function getCommonStyle() {
@@ -96,7 +96,7 @@ onMounted(async () => {
   const { data } = await getConfigList()
   method.value = data.value.data
 
-  const temp = method.value!.filter((e: withdrawMethodType) => e.key === 'withdraw_money_type')[0]
+  const temp = method.value!.filter((e: configlist) => e.key === 'withdraw_money_type')[0]
 
   if (temp.value === 'RMB和USDT')
     all.value = true

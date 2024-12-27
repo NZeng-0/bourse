@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getFrontMenuConfig } from '~/api'
-import type { footerItem, menuType } from '~/types'
+import type { configlist, footerItem } from '~/types'
 import { useBinding } from '~/store/useBinding'
 import { useFooter } from '~/store/useFooter'
 
@@ -9,8 +9,8 @@ defineProps<{
 }>()
 
 const { t } = useI18n()
-const icons = ref<menuType[]>([])
-const bindings = ref<menuType[]>([])
+const icons = ref<configlist[]>([])
+const bindings = ref<configlist[]>([])
 const list = ref<footerItem[]>([])
 const bindStore = useBinding()
 
@@ -36,7 +36,7 @@ async function getConf() {
   const { data } = await getFrontMenuConfig()
   const temp = data.value.data
 
-  temp.forEach((e: menuType) => {
+  temp.forEach((e: configlist) => {
     if (keys.includes(e.key))
       icons.value.push(e)
     if (binding_key.includes(e.key))
@@ -87,7 +87,7 @@ async function getConf() {
 
 function getIcon(key: string) {
   let res = ''
-  icons.value.forEach((e: menuType) => {
+  icons.value.forEach((e: configlist) => {
     if (e.key === key)
       res = `${baseUrl}/${e.value}`
   })
@@ -95,7 +95,11 @@ function getIcon(key: string) {
 }
 
 function getSort(key: string) {
-  return icons.value.filter((e: menuType) => e.key === key)[0].sort
+  return icons.value.filter((e: configlist) => e.key === key)[0].sort
+}
+
+function getColor(index: number, key: number) {
+  return { color: index === key ? '#4400FF' : '#9EA3AE' }
 }
 
 onMounted(async () => {
@@ -106,16 +110,31 @@ onMounted(async () => {
 
 <template>
   <div flex="~" absolute fixed inset-x-0 bottom--1 z10 h16.5 w-full items-center justify-around border-y bg-white>
-    <div v-for="(e, key) in useFooter.data" :key>
-      <RouterLink :to="e.pointTo">
-        <div flex="~" items-center justify-center>
-          <img v-if="index === key" :src="e.selectIcon" h4.5 w4.5>
-          <img v-else :src="e.icon" h4.5 w4.5>
-        </div>
-        <div flex="~" mt1 items-center justify-center text-xs :style="{ color: index === key ? '#4400FF' : '#9EA3AE' }">
-          {{ e.name }}
-        </div>
-      </RouterLink>
-    </div>
+    <template v-if="useFooter.data">
+      <div v-for="(e, key) in useFooter.data" :key>
+        <RouterLink :to="e.pointTo">
+          <div flex="~" items-center justify-center>
+            <img v-if="index === key" :src="e.selectIcon" h4.5 w4.5>
+            <img v-else :src="e.icon" h4.5 w4.5>
+          </div>
+          <div flex="~" mt1 items-center justify-center text-xs :style="getColor(index, key)">
+            {{ e.name }}
+          </div>
+        </RouterLink>
+      </div>
+    </template>
+    <template v-else>
+      <div v-for="(e, key) in list" :key>
+        <RouterLink :to="e.pointTo">
+          <div flex="~" items-center justify-center>
+            <img v-if="index === key" :src="e.selectIcon" h4.5 w4.5>
+            <img v-else :src="e.icon" h4.5 w4.5>
+          </div>
+          <div flex="~" mt1 items-center justify-center text-xs :style="getColor(index, key)">
+            {{ e.name }}
+          </div>
+        </RouterLink>
+      </div>
+    </template>
   </div>
 </template>

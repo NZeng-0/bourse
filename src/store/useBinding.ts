@@ -1,7 +1,7 @@
-import type { menuType } from '~/types'
+import type { configlist } from '~/types'
 
 export const useBinding: any = defineStore('bind', () => {
-  const _list = ref<menuType>()
+  const _list = ref<configlist>()
 
   const list = computed({
     get: () => _list.value,
