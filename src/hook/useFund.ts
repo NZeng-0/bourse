@@ -35,7 +35,7 @@ export function useFund() {
       }
       result.push(val)
     }
-    return result.reverse()
+    return result
   }
 
   function getSrc(uri: string) {
