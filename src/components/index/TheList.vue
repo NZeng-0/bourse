@@ -14,8 +14,14 @@ const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
 const styles = ref(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
-const requestTime = useConf().data.find((e: configlist) => e.key === 'index_list_request_time')?.value
+const requestTime = getTimestamp()
 
+function getTimestamp() {
+  const conf = useConf().data
+  if (conf)
+    return conf.find((e: configlist) => e.key === 'index_list_request_time')?.value
+  return 5
+}
 async function go(key: number) {
   router.push(`/fund/${key}`)
 }

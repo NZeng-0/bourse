@@ -116,7 +116,7 @@ importers:
         version: 5.2.14(@types/node@20.12.12)
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.12.12)(jsdom@24.0.0)
+        version: 1.6.0(@types/@20.12.12)(jsdom@24.0.0)
       vue-tsc:
         specifier: ^2.0.19
         version: 2.0.19(typescript@5.4.5)

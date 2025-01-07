@@ -12,7 +12,14 @@ const timer = ref()
 const prevPrices = ref(new Map())
 const priceChanges = ref(new Map())
 const icons = ref<Map<number, boolean>>(new Map())
-const requestTime = useConf().data.find((e: configlist) => e.key === 'index_list_request_time')?.value
+const requestTime = getTimestamp()
+
+function getTimestamp() {
+  const conf = useConf().data
+  if (conf)
+    return conf.find((e: configlist) => e.key === 'index_list_request_time')?.value
+  return 5
+}
 
 async function go(key: number) {
   router.push(`/fund/${key}`)
@@ -64,7 +71,7 @@ onMounted(async () => {
   await init()
   timer.value = setInterval(async () => {
     await init()
-  }, 1000 * Number(requestTime) || 5)
+  }, 1000 * Number(requestTime))
 })
 
 onBeforeUnmount(() => {
@@ -134,11 +141,12 @@ onBeforeUnmount(() => {
   font-variation-settings: "opsz" auto;
   color: #FFFFFF;
 }
+
 .up_card {
   width: 6.5rem;
   height: 2.143rem;
   border-radius: 0.429rem;
-  margin-top: 1.071rem ;
+  margin-top: 1.071rem;
 
   /* 自动布局 */
   display: flex;

@@ -6,8 +6,10 @@ const { getCache } = useLocalCache()
 
 const _lang = useStorage('lang', 'zh-CN')
 
+const baseUrl = import.meta.env.VITE_BASE_URL
+
 export const Request = new Fetch({
-  baseUrl: 'http://47.109.206.211:82',
+  baseUrl,
   options: {
     beforeFetch({ options }) {
       const token = getCache('token')
