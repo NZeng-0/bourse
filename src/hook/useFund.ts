@@ -10,11 +10,6 @@ const times = [
   { key: '1day', value: '1D' },
 ]
 
-function getTimestamp(str: string) {
-  // 转换为时间戳
-  return new Date(str).getTime()
-}
-
 export function useFund() {
   function getTimes() {
     return times
@@ -30,7 +25,7 @@ export function useFund() {
         close: useToNumber(h.close).value,
         low: useToNumber(h.low).value,
         high: useToNumber(h.high).value,
-        timestamp: getTimestamp(h.time.toString()),
+        timestamp: h.date,
         volume: useToNumber(h.vol).value,
       }
       result.push(val)

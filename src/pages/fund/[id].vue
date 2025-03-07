@@ -56,7 +56,7 @@ async function choose(index: number, type: string) {
 function initChart() {
   chart = init('chart')
   chart!.createIndicator('MA', true, { id: 'candle_pane' })
-  chart!.createIndicator('VOL')
+  chart!.setPriceVolumePrecision(4, 0)
   chart!.setStyles({
     candle: {
       tooltip: { showRule: 'none' as TooltipShowRule },
@@ -113,8 +113,6 @@ function onSuccess() {
 async function getInfo() {
   const data = await getProductPrice(id)
   pPrice.value = data
-  // eslint-disable-next-line no-console
-  console.log(data.price)
   card.value = {
     open: format(data.open, 2),
     close: format(data.close, 2),
